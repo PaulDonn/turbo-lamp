@@ -28,9 +28,21 @@ namespace DataModel
         public int ExperiencePoints { get; set; }
         public int? PartyId { get; set; }
 
+        [ForeignKey("AlignmentId")]
+        [InverseProperty("PlayerCharacter")]
+        public Alignment Alignment { get; set; }
+        [ForeignKey("BackgroundId")]
+        [InverseProperty("PlayerCharacter")]
+        public Background Background { get; set; }
+        [ForeignKey("ClassId")]
+        [InverseProperty("PlayerCharacter")]
+        public Class Class { get; set; }
         [ForeignKey("PartyId")]
         [InverseProperty("PlayerCharacter")]
         public Party Party { get; set; }
+        [ForeignKey("RaceId")]
+        [InverseProperty("PlayerCharacter")]
+        public Race Race { get; set; }
         [InverseProperty("Pc")]
         public ICollection<PcAbilityScore> PcAbilityScore { get; set; }
         [InverseProperty("Pc")]

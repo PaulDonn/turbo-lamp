@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TavernNoticeBoard.Models.Player;
 
 namespace TavernNoticeBoard.Controllers
 {
@@ -18,6 +19,15 @@ namespace TavernNoticeBoard.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Create(CreatePlayerModel model)
+        {
+            return RedirectToAction(nameof(Details), new { });
+        }
 
+        public IActionResult Details(int id)
+        {
+            return View();
+        }
     }
 }

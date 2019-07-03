@@ -11,10 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Player\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\DataModel\DataModel.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 

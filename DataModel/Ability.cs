@@ -17,6 +17,9 @@ namespace DataModel
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
+        [Required]
+        [StringLength(3)]
+        public string Code { get; set; }
 
         [InverseProperty("Ability")]
         public ICollection<PcAbilityScore> PcAbilityScore { get; set; }

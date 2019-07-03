@@ -5,15 +5,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataModel
 {
-    public partial class Feature
+    public partial class SubFeature
     {
-        public Feature()
-        {
-            PcFeature = new HashSet<PcFeature>();
-            SubFeature = new HashSet<SubFeature>();
-        }
-
         public int Id { get; set; }
+        public int FeatureId { get; set; }
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
@@ -23,9 +18,8 @@ namespace DataModel
         [StringLength(50)]
         public string Code { get; set; }
 
-        [InverseProperty("Feature")]
-        public ICollection<PcFeature> PcFeature { get; set; }
-        [InverseProperty("Feature")]
-        public ICollection<SubFeature> SubFeature { get; set; }
+        [ForeignKey("FeatureId")]
+        [InverseProperty("SubFeature")]
+        public Feature Feature { get; set; }
     }
 }

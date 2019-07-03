@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataModel;
+using Infrastructure.Mediator;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -33,6 +36,20 @@ namespace TavernNoticeBoard
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddTransient<IMediator, Mediator>();
+            new Utility.DIMappers.MainMapper().Setup(services);
+
+            // DB Setup
+            services.AddTransient<NoticeBoardContext>(serviceProvider =>
+            {
+                DbContextOptionsBuilder<NoticeBoardContext> options = new DbContextOptionsBuilder<NoticeBoardContext>();
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+
+                var context = new NoticeBoardContext(options.Options);
+
+                return context;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
