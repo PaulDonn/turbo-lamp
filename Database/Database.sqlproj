@@ -110,4 +110,19 @@
   <ItemGroup>
     <PostDeploy Include="dbo\Scripts\Script.PostDeployment1.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="dbo\Scripts\PopulateAlignment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dbo\Scripts\PopulateClass.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dbo\Scripts\PopulateRace.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dbo\Scripts\PopulateBackground.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dbo\Scripts\PopulateSubClass.sql" />
+  </ItemGroup>
 </Project>

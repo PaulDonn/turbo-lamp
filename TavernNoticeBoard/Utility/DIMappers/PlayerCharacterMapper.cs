@@ -1,9 +1,7 @@
-﻿using Infrastructure.CQRS;
+﻿using Core.PlayerCharacter.Command;
+using Core.PlayerCharacter.CommandHandler;
+using Infrastructure.CQRS;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TavernNoticeBoard.Utility.DIMappers
 {
@@ -12,6 +10,7 @@ namespace TavernNoticeBoard.Utility.DIMappers
         public static void Setup(IServiceCollection services)
         {
             //Command Handlers
+            services.AddTransient<ICommandHandler<CreatePCCommand>, CreatePCCommandHandler>();
 
             //Query Handlers
         }

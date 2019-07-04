@@ -1,0 +1,10 @@
+﻿INSERT INTO [dbo].[Alignment] ([Id],[Name], [Code],[Description]) VALUES (1, 'Lawful Good', 'LG', 'Lawful Good creatures can be counted on to do the right thing as expected by society.')
+INSERT INTO [dbo].[Alignment] ([Id],[Name], [Code],[Description]) VALUES (2, 'Neutral Good', 'NG', 'Neutral Good folks do the best they can to help others according to their needs.')
+INSERT INTO [dbo].[Alignment] ([Id],[Name], [Code],[Description]) VALUES (3, 'Chaotic Good', 'CG', 'Chaotic Good creatures act as their conscience directs, with little regard for what others expect.')
+INSERT INTO [dbo].[Alignment] ([Id],[Name], [Code],[Description]) VALUES (4, 'Lawful Neutral', 'LN', 'Lawful Neutral individuals act in accordance with law, tradition, or personal codes.')
+INSERT INTO [dbo].[Alignment] ([Id],[Name], [Code],[Description]) VALUES (5, 'Neutral', 'N', 'Neutral is the alignment of those who prefer to steer clear of moral questions and don''t take sides, doing what seems best at the time.')
+INSERT INTO [dbo].[Alignment] ([Id],[Name], [Code],[Description]) VALUES (6, 'Chaotic Neutral', 'CN', 'Chaotic Neutral creatures follow their whims, holding their personal freedom above all else.')
+INSERT INTO [dbo].[Alignment] ([Id],[Name], [Code],[Description]) VALUES (7, 'Lawful Evil', 'LE', 'Lawful Evil creatures methodically take what they want, within the limits of a code of tradition, loyalty, or order.')
+INSERT INTO [dbo].[Alignment] ([Id],[Name], [Code],[Description]) VALUES (8, 'Neutral Evil', 'NE', 'Lawful Neutral is the alignment of those who do whatever they can get away with, without compassion or qualms.')
+INSERT INTO [dbo].[Alignment] ([Id],[Name], [Code],[Description]) VALUES (9, 'Chaotic Evil', 'CE', 'Chaotic Evil creatures act with abitrary violence, spurred by their greed, hatred, or bloodlust.')
+GO

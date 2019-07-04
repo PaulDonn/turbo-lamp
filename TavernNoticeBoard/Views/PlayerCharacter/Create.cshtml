@@ -5,27 +5,49 @@
 }
 
 <h2>Create</h2>
-
-<h4>CreatePlayerModel</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+<div class="row" id="createCharacter">
+    <div v-if="pageNo==1">
+        <div class="col-md-4">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="CharacterName" class="control-label"></label>
-                <input asp-for="CharacterName" class="form-control" />
+                <input v-model="name" asp-for="CharacterName" class="form-control" />
+                <span asp-validation-for="CharacterName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RaceId" class="control-label"></label>
+                <select asp-for="RaceId" asp-items="Model.Races" class="form-control" v-on:change="updateRaceInfo" v-model="raceId"></select>
+                <span asp-validation-for="ClassId" class="text-danger"></span>
+            </div>
+            <div class="btn btn-primary">Next</div>
+        </div>
+        <div class="col-md-8">
+            <div class="col-md-6">
+                <img class="resize" :src="'/images/race/' + raceName + '.png'" />
+            </div>
+            <div class="col-md-6">
+                {{raceDescription}}
+            </div>
+        </div>
+    </div>
+    <div v-if="pageNo==2">
+        <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CharacterName" class="control-label"></label>
+                <input v-model="name" asp-for="CharacterName" class="form-control" />
                 <span asp-validation-for="CharacterName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ClassId" class="control-label"></label>
-                <input asp-for="ClassId" class="form-control" />
+                <select asp-for="ClassId" asp-items="Model.Classes" class="form-control" v-on:change="updateClassInfo" v-model="classId"></select>
                 <span asp-validation-for="ClassId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SubClassId" class="control-label"></label>
-                <input asp-for="SubClassId" class="form-control" />
-                <span asp-validation-for="SubClassId" class="text-danger"></span>
+                <label asp-for="ArchetypeId" class="control-label"></label>
+                <input asp-for="ArchetypeId" class="form-control" />
+                <span asp-validation-for="ArchetypeId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="BackGroundId" class="control-label"></label>
@@ -42,10 +64,15 @@
                 <input asp-for="AlignmentId" class="form-control" />
                 <span asp-validation-for="AlignmentId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+        <div class="col-md-8">
+            <div class="col-md-6">
+                <img class="resize" :src="'/images/class/' + className + '.png'" />
             </div>
-        </form>
+            <div class="col-md-6">
+                {{classDescription}}
+            </div>
+        </div>
     </div>
 </div>
 
@@ -55,4 +82,6 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script asp-append-version="true" src="~/js/vue.js"></script>
+    <script asp-append-version="true" src="~/js/CreatePC.js"></script>
 }

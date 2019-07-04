@@ -1,0 +1,13 @@
+﻿INSERT INTO [dbo].[Class] ([Id],[Name],[Description],[HitDie]) VALUES (1, 'Barbarian', '', 12)
+INSERT INTO [dbo].[Class] ([Id],[Name],[Description],[HitDie]) VALUES (2, 'Bard', '', 8)
+INSERT INTO [dbo].[Class] ([Id],[Name],[Description],[HitDie]) VALUES (3, 'Cleric', '', 8)
+INSERT INTO [dbo].[Class] ([Id],[Name],[Description],[HitDie]) VALUES (4, 'Druid', '', 8)
+INSERT INTO [dbo].[Class] ([Id],[Name],[Description],[HitDie]) VALUES (5, 'Fighter', '', 10)
+INSERT INTO [dbo].[Class] ([Id],[Name],[Description],[HitDie]) VALUES (6, 'Monk', '', 8)
+INSERT INTO [dbo].[Class] ([Id],[Name],[Description],[HitDie]) VALUES (7, 'Paladin', '', 10)
+INSERT INTO [dbo].[Class] ([Id],[Name],[Description],[HitDie]) VALUES (8, 'Ranger', '', 10)
+INSERT INTO [dbo].[Class] ([Id],[Name],[Description],[HitDie]) VALUES (9, 'Rogue', '', 8)
+INSERT INTO [dbo].[Class] ([Id],[Name],[Description],[HitDie]) VALUES (10, 'Sorceror', '', 6)
+INSERT INTO [dbo].[Class] ([Id],[Name],[Description],[HitDie]) VALUES (11, 'Warlock', '', 8)
+INSERT INTO [dbo].[Class] ([Id],[Name],[Description],[HitDie]) VALUES (12, 'Wizard', '', 6)
+GO

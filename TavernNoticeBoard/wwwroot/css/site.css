@@ -35,3 +35,8 @@ body {
         display: none;
     }
 }
+
+img.resize {
+    max-width: 100%;
+    max-height: 100%;
+}

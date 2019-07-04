@@ -1,8 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TavernNoticeBoard.Utility.DIMappers
 {
@@ -11,6 +7,10 @@ namespace TavernNoticeBoard.Utility.DIMappers
         public void Setup(IServiceCollection services)
         {
             PlayerCharacterMapper.Setup(services);
+            RaceMapper.Setup(services);
+            ClassMapper.Setup(services);
+            BackgroundMapper.Setup(services);
+            AlignmentMapper.Setup(services);
         }
     }
 }
