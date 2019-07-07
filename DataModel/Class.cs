@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,6 +20,12 @@ namespace DataModel
         [Required]
         public string Description { get; set; }
         public int HitDie { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string ArchetypeName { get; set; }
+        [Required]
+        public string ArchetypeDescription { get; set; }
+        public int ArchetypeLevel { get; set; }
 
         [InverseProperty("Class")]
         public ICollection<Archetype> Archetype { get; set; }

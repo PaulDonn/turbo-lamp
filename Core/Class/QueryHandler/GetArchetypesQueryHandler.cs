@@ -28,6 +28,7 @@ namespace Core.Class.QueryHandler
                 {
                     Id = archetype.Id,
                     Name = archetype.Name,
+                    ShortName = archetype.ShortName,
                     Description = archetype.Description,
                     ClassId = archetype.ClassId
                 });

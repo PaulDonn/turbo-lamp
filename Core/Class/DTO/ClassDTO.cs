@@ -9,5 +9,11 @@
         public string Description { get; set; }
 
         public string HitDie { get; set; }
+
+        public string ArchetypeName { get; set; }
+
+        public string ArchetypeDescription { get; set; }
+
+        public int ArchetypeLevel { get; set; }
     }
 }

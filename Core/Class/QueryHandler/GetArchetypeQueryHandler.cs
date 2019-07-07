@@ -23,6 +23,7 @@ namespace Core.Class.QueryHandler
 
             dto.Id = archetype.Id;
             dto.Name = archetype.Name;
+            dto.ShortName = archetype.ShortName;
             dto.Description = archetype.Description;
             dto.ClassId = archetype.ClassId;
             

@@ -24,6 +24,7 @@ namespace Core.Race.QueryHandler
             dto.Id = race.Id;
             dto.Name = race.Name;
             dto.Description = race.Description;
+            dto.HasSubRace = context.SubRace.Any(n => n.RaceId == race.Id);
             
             return dto;
         }

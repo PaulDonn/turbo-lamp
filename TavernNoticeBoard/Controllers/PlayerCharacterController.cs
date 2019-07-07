@@ -39,20 +39,20 @@ namespace TavernNoticeBoard.Controllers
             model.Races = new SelectList(racesDto, nameof(RaceDTO.Id), nameof(RaceDTO.Name));
             model.Races.First().Selected = true;
 
-            var subRacesQuery = new GetSubRacesQuery();
+            var subRacesQuery = new GetSubRacesQuery { RaceId = 1 };
             var subRacesDto = SendQuery<GetSubRacesQuery, IEnumerable<SubRaceDTO>>(subRacesQuery);
             model.SubRaces = new SelectList(subRacesDto, nameof(SubRaceDTO.Id), nameof(SubRaceDTO.Name));
-            model.SubRaces.First().Selected = true;
+            if (model.SubRaces.Count() > 0) { model.SubRaces.First().Selected = true; }
 
             var classesQuery = new GetClassesQuery();
             var classesDto = SendQuery<GetClassesQuery, IEnumerable<ClassDTO>>(classesQuery);
             model.Classes = new SelectList(classesDto, nameof(ClassDTO.Id), nameof(ClassDTO.Name));
             model.Classes.First().Selected = true;
 
-            var subClassesQuery = new GetArchetypesQuery();
-            var subClassesDto = SendQuery<GetArchetypesQuery, IEnumerable<ArchetypeDTO>>(subClassesQuery);
-            model.Archetypes = new SelectList(subClassesDto, nameof(ArchetypeDTO.Id), nameof(ArchetypeDTO.Name));
-            model.Archetypes.First().Selected = true;
+            var archetypesQuery = new GetArchetypesQuery { ClassId = 1 };
+            var archetypesDto = SendQuery<GetArchetypesQuery, IEnumerable<ArchetypeDTO>>(archetypesQuery);
+            model.Archetypes = new SelectList(archetypesDto, nameof(ArchetypeDTO.Id), nameof(ArchetypeDTO.Name));
+            if (model.Archetypes.Count() > 0) { model.Archetypes.FirstOrDefault().Selected = true; }
 
             var backgroundsQuery = new GetBackgroundsQuery();
             var backgroundsDto = SendQuery<GetBackgroundsQuery, IEnumerable<BackgroundDTO>>(backgroundsQuery);
@@ -61,7 +61,7 @@ namespace TavernNoticeBoard.Controllers
 
             var alignmentsQuery = new GetAlignmentsQuery();
             var alignmentsDto = SendQuery<GetAlignmentsQuery, IEnumerable<AlignmentDTO>>(alignmentsQuery);
-            model.Alignments = new SelectList(backgroundsDto, nameof(AlignmentDTO.Id), nameof(AlignmentDTO.Name));
+            model.Alignments = new SelectList(alignmentsDto, nameof(AlignmentDTO.Id), nameof(AlignmentDTO.Name));
             model.Alignments.First().Selected = true;
 
             return View(model);
@@ -98,6 +98,16 @@ namespace TavernNoticeBoard.Controllers
             var result = SendQuery<GetRaceQuery, RaceDTO>(query);
 
             return Json(result);
+        }
+
+        public JsonResult GetSubRaces(int raceId)
+        {
+            var subRacesQuery = new GetSubRacesQuery { RaceId = raceId };
+            var subRacesDto = SendQuery<GetSubRacesQuery, IEnumerable<SubRaceDTO>>(subRacesQuery);
+            var subRaces = new SelectList(subRacesDto, nameof(SubRaceDTO.Id), nameof(SubRaceDTO.Name));
+            if (subRaces.Count() > 0) { subRaces.First().Selected = true; }
+
+            return Json(subRaces);
         }
 
         public JsonResult GetSubRaceDetails(int subRaceId)

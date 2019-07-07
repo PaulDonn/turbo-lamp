@@ -13,5 +13,8 @@ Post-Deployment Script Template
 :r .\"PopulateSkill.sql"
 :r .\"PopulateAlignment.sql"
 :r .\"PopulateClass.sql"
+:r .\"PopulateArchetype.sql"
 :r .\"PopulateRace.sql"
+:r .\"PopulateSubRace.sql"
 :r .\"PopulateBackground.sql"
+

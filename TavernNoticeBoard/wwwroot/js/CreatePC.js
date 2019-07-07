@@ -6,14 +6,21 @@ $(document).ready(function () {
         el: '#createCharacter',
         data: {
             pageNo: 1,
+            showSubRaceInfo: false,
+            showClassInfo: false,
+            showArchetypeInfo: false,
+            showBackgroundInfo: false,
+            showAlignmentInfo: false,
 
             name: null,
             raceId: $('#RaceId  option:selected')[0].value,
             raceName: null,
             raceDescription: null,
-            subraceId: $('#SubRaceId  option:selected')[0].value,
-            subraceName: null,
-            subraceDescription: null,
+            hasSubRace: false,
+            subRaces: $('#SubRaces'),
+            subRaceId: null,
+            subRaceName: null,
+            subRaceDescription: null,
             age: null,
             height: null,
             weight: null,
@@ -21,15 +28,15 @@ $(document).ready(function () {
             skinColour: null,
             hairColour: null,
 
-            classId: $('#ClassId  option:selected')[0].value,
+            //classId: $('#ClassId  option:selected')[0].value,
             className: null,
             classDescription: null,
             selectSubclass: false,
-            archetypeId: $('#SubClassId  option:selected')[0].value,
+            //archetypeId: $('#SubClassId  option:selected')[0].value,
             archetypeName: null,
             archetypeDescription: null,
 
-            backgroundId: $('#BackgroundId  option:selected')[0].value,
+            //backgroundId: $('#BackgroundId  option:selected')[0].value,
             backgroundName: null,
             backgroundDescription: null,
             languages: [],
@@ -55,9 +62,10 @@ $(document).ready(function () {
                     page++;
                 }
             },
-            updateRaceInfo: function () {
+            updateRaceInfo: function (toggleInfo) {
 
                 var that = this;
+
 
                 $.ajax({
                     type: 'POST',
@@ -69,7 +77,41 @@ $(document).ready(function () {
 
                         that.raceName = result.name;
                         that.raceDescription = result.description;
+                        that.hasSubRace = result.hasSubRace;
+                        
+                        that.subRaces = null;
+                        that.subRaceId = null;
+                        that.subRaceName = null;
+                        that.subRaceDescription = null;
+                        that.showSubRaceInfo = false;
 
+                        if (that.hasSubRace) {
+                            that.updateSubRaces();
+                            showSubRaceInfo = true;
+                        }
+
+                        if (toggleInfo) {
+                            $('#collapse_race').collapse('show');
+                        }
+
+                    },
+                    error: function () {
+                        alert('An error occured when processing this request');
+                    }
+                });
+            },
+            updateSubRaces: function () {
+
+                var that = this;
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/PlayerCharacter/GetSubRaces',
+                    data: {
+                        raceId: that.raceId
+                    },
+                    success: function (result) {
+                        that.subRaces = result;
                     },
                     error: function () {
                         alert('An error occured when processing this request');
@@ -77,7 +119,7 @@ $(document).ready(function () {
                 });
 
             },
-            updateSubRaceInfo: function () {
+            updateSubRaceInfo: function (toggleInfo) {
 
                 var that = this;
 
@@ -99,7 +141,7 @@ $(document).ready(function () {
                 });
 
             },
-            updateClassInfo: function () {
+            updateClassInfo: function (toggleInfo) {
 
                 var that = this;
 
@@ -120,7 +162,7 @@ $(document).ready(function () {
                     }
                 });
             },
-            updateArchetypeInfo: function () {
+            updateArchetypeInfo: function (toggleInfo) {
 
                 var that = this;
 
@@ -141,7 +183,7 @@ $(document).ready(function () {
                     }
                 });
             },
-            updateBackgroudInfo: function () {
+            updateBackgroudInfo: function (toggleInfo) {
 
                 var that = this;
 
@@ -162,7 +204,7 @@ $(document).ready(function () {
                     }
                 });
             },
-            updateAlignmentInfo: function () {
+            updateAlignmentInfo: function (toggleInfo) {
 
                 var that = this;
 
@@ -183,9 +225,9 @@ $(document).ready(function () {
                     }
                 });
             }
+        },
+        mounted: function () {
+            this.updateRaceInfo(true);
         }
     });
-
-    characterCreate.updateRaceInfo();
-    
 });

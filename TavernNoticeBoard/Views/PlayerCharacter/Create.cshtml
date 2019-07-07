@@ -4,12 +4,17 @@
     ViewData["Title"] = "Create";
 }
 
+@Html.HiddenFor(m => m.Races)
+@Html.HiddenFor(m => m.SubRaces)
+@Html.HiddenFor(m => m.Classes)
+@Html.HiddenFor(m => m.Archetypes)
+@Html.HiddenFor(m => m.Backgrounds)
+@Html.HiddenFor(m => m.Alignments)
 <h2>Create</h2>
 <hr />
 <div class="row" id="createCharacter">
     <div v-if="pageNo==1">
         <div class="col-md-4">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="CharacterName" class="control-label"></label>
                 <input v-model="name" asp-for="CharacterName" class="form-control" />
@@ -17,28 +22,47 @@
             </div>
             <div class="form-group">
                 <label asp-for="RaceId" class="control-label"></label>
-                <select asp-for="RaceId" asp-items="Model.Races" class="form-control" v-on:change="updateRaceInfo" v-model="raceId"></select>
-                <span asp-validation-for="ClassId" class="text-danger"></span>
+                <select asp-for="RaceId" asp-items="Model.Races" class="form-control" v-on:change="updateRaceInfo(true)" v-model="raceId"></select>
+                <span asp-validation-for="RaceId" class="text-danger"></span>
+            </div>
+            <div v-if="hasSubRace" class="form-group">
+                <label asp-for="SubRaceId" class="control-label"></label>
+                <select asp-for="SubRaceId" class="form-control" v-on:change="updateSubRaceInfo()" v-model="subRaceId">
+                    <option v-for="subrace in subRaces" v-bind:selected="subrace.selected" v-bind:value="subrace.value">
+                        {{ subrace.text }}
+                    </option>
+                </select>
+                <span asp-validation-for="SubRaceId" class="text-danger"></span>
             </div>
             <div class="btn btn-primary">Next</div>
         </div>
         <div class="col-md-8">
             <div class="col-md-6">
-                <img class="resize" :src="'/images/race/' + raceName + '.png'" />
+                <img v-if="subRaceName" class="resize" :src="'/images/race/' + subRaceName + '.png'" />
+                <img v-if="!subRaceName && raceName" class="resize" :src="'/images/race/' + raceName + '.png'" />
             </div>
             <div class="col-md-6">
-                {{raceDescription}}
+                <a id="accordion_race" class="accordion-toggle collapsed" data-parent="#accordion_race" data-toggle="collapse" href="#collapse_race" role="button" aria-expanded="false" aria-controls="collapse_race">
+                    Race
+                </a>
+                <div class="panel-collapse collapse" id="collapse_race">
+                    <div><strong>{{raceName}}</strong></div>
+                    <div v-html="raceDescription"></div>
+                </div>
+                <div v-if="showSubRaceInfo">
+                    <a id="accordion_subRace" class="accordion-toggle collapsed" data-parent="#accordion_subRace" data-toggle="collapse" href="#collapse_subRace" role="button" aria-expanded="false" aria-controls="collapse_subRace">
+                        Sub Race
+                    </a>
+                    <div class="panel-collapse collapse" id="collapse_subRace">
+                        <div><strong>{{subRaceName}}</strong></div>
+                        <div v-html="subRaceDescription"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div v-if="pageNo==2">
-        <div class="col-md-4">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="CharacterName" class="control-label"></label>
-                <input v-model="name" asp-for="CharacterName" class="form-control" />
-                <span asp-validation-for="CharacterName" class="text-danger"></span>
-            </div>
+        @*<div class="col-md-4">
             <div class="form-group">
                 <label asp-for="ClassId" class="control-label"></label>
                 <select asp-for="ClassId" asp-items="Model.Classes" class="form-control" v-on:change="updateClassInfo" v-model="classId"></select>
@@ -46,23 +70,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="ArchetypeId" class="control-label"></label>
-                <input asp-for="ArchetypeId" class="form-control" />
+                <select asp-for="ArchetypeId" asp-items="Model.Archetypes" class="form-control" v-on:change="updateArchetypeInfo" v-model="archetypeId"></select>
                 <span asp-validation-for="ArchetypeId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BackGroundId" class="control-label"></label>
-                <input asp-for="BackGroundId" class="form-control" />
-                <span asp-validation-for="BackGroundId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RaceId" class="control-label"></label>
-                <input asp-for="RaceId" class="form-control" />
-                <span asp-validation-for="RaceId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AlignmentId" class="control-label"></label>
-                <input asp-for="AlignmentId" class="form-control" />
-                <span asp-validation-for="AlignmentId" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-8">
@@ -72,16 +81,12 @@
             <div class="col-md-6">
                 {{classDescription}}
             </div>
-        </div>
+        </div>*@
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script asp-append-version="true" src="~/js/vue.js"></script>
-    <script asp-append-version="true" src="~/js/CreatePC.js"></script>
+    <script  type="application/javascript" asp-append-version="true" src="~/js/vue.js"></script>
+    <script  type="application/javascript" asp-append-version="true" src="~/js/CreatePC.js"></script>
 }

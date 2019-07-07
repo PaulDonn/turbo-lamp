@@ -29,7 +29,10 @@ namespace Core.Class.QueryHandler
                     Id = playerClass.Id,
                     Name = playerClass.Name,
                     Description = playerClass.Description,
-                    HitDie = "d" + playerClass.HitDie.ToString()
+                    HitDie = "d" + playerClass.HitDie.ToString(),
+                    ArchetypeName = playerClass.ArchetypeName,
+                    ArchetypeDescription = playerClass.ArchetypeDescription,
+                    ArchetypeLevel = playerClass.ArchetypeLevel
                 });
             }
 

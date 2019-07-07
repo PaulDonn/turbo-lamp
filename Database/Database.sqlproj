@@ -123,6 +123,9 @@
     <None Include="dbo\Scripts\PopulateBackground.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="dbo\Scripts\PopulateSubClass.sql" />
+    <None Include="dbo\Scripts\PopulateArchetype.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dbo\Scripts\PopulateSubRace.sql" />
   </ItemGroup>
 </Project>
