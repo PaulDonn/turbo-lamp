@@ -13,20 +13,20 @@
 <h2>Create</h2>
 <hr />
 <div class="row" id="createCharacter">
-    <div v-if="pageNo==1">
-        <div class="col-md-4">
+    <div class="col-md-4">
+        <div v-if="pageNo==1">
             <div class="form-group">
-                <label asp-for="CharacterName" class="control-label"></label>
+                <label asp-for="CharacterName" class="control-label"></label><span class="requiredFieldMarker">*</span>
                 <input v-model="name" asp-for="CharacterName" class="form-control" />
                 <span asp-validation-for="CharacterName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RaceId" class="control-label"></label>
+                <label asp-for="RaceId" class="control-label"></label><span class="requiredFieldMarker">*</span>
                 <select asp-for="RaceId" asp-items="Model.Races" class="form-control" v-on:change="updateRaceInfo(true)" v-model="raceId"></select>
                 <span asp-validation-for="RaceId" class="text-danger"></span>
             </div>
             <div v-if="hasSubRace" class="form-group">
-                <label asp-for="SubRaceId" class="control-label"></label>
+                <label asp-for="SubRaceId" class="control-label"></label><span class="requiredFieldMarker">*</span>
                 <select asp-for="SubRaceId" class="form-control" v-on:change="updateSubRaceInfo()" v-model="subRaceId">
                     <option v-for="subrace in subRaces" v-bind:selected="subrace.selected" v-bind:value="subrace.value">
                         {{ subrace.text }}
@@ -34,59 +34,91 @@
                 </select>
                 <span asp-validation-for="SubRaceId" class="text-danger"></span>
             </div>
-            <div class="btn btn-primary">Next</div>
-        </div>
-        <div class="col-md-8">
-            <div class="col-md-6">
-                <img v-if="subRaceName" class="resize" :src="'/images/race/' + subRaceName + '.png'" />
-                <img v-if="!subRaceName && raceName" class="resize" :src="'/images/race/' + raceName + '.png'" />
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input v-model="age" asp-for="Age" class="form-control" />
             </div>
-            <div class="col-md-6">
-                <a id="accordion_race" class="accordion-toggle collapsed" data-parent="#accordion_race" data-toggle="collapse" href="#collapse_race" role="button" aria-expanded="false" aria-controls="collapse_race">
-                    Race
-                </a>
-                <div class="panel-collapse collapse" id="collapse_race">
-                    <div><strong>{{raceName}}</strong></div>
-                    <div v-html="raceDescription"></div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input v-model="gender" asp-for="Gender" class="form-control" />
+            </div>
+            <div class="form-group">
+                <div>
+                    <label class="control-label">Height</label>
                 </div>
-                <div v-if="showSubRaceInfo">
-                    <a id="accordion_subRace" class="accordion-toggle collapsed" data-parent="#accordion_subRace" data-toggle="collapse" href="#collapse_subRace" role="button" aria-expanded="false" aria-controls="collapse_subRace">
-                        Sub Race
+                <div class="col-md-5">
+                    <input v-model="heightFt" asp-for="HeightFt" class="form-control" />
+                </div>
+                <div class="col-md-1">
+                    <label asp-for="HeightFt" class="control-label"></label>
+                </div>
+                <div class="col-md-5">
+                    <input v-model="heightIn" asp-for="HeightIn" class="form-control" />
+                </div>
+                <div class="col-md-1">
+                    <label asp-for="HeightIn" class="control-label"></label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weight" class="control-label"></label>
+                <input v-model="weight" asp-for="Weight" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="SkinColour" class="control-label"></label>
+                <input v-model="skinColour" asp-for="SkinColour" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="HairColour" class="control-label"></label>
+                <input v-model="hairColour" asp-for="HairColour" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="EyeColour" class="control-label"></label>
+                <input v-model="eyeColour" asp-for="EyeColour" class="form-control" />
+            </div>
+        </div>
+        <div class="btn btn-primary" v-if="pageNo > 1" v-on:click="previous">Previous</div>
+        <div class="btn btn-primary pull-right" v-on:click="next">Next</div>
+    </div>
+    <div class="col-md-8">
+        <div class="col-md-6">
+            <img v-if="subRaceName" class="resize" :src="'/images/race/' + subRaceName + '.png'" />
+            <img v-if="!subRaceName && raceName" class="resize" :src="'/images/race/' + raceName + '.png'" />
+        </div>
+        <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-heading">
+                    <a id="accordion_race" class="accordion-toggle collapsed" data-parent="#accordion_race" data-toggle="collapse" href="#collapse_race" role="button" aria-expanded="false" aria-controls="collapse_race">
+                        Race
                     </a>
-                    <div class="panel-collapse collapse" id="collapse_subRace">
-                        <div><strong>{{subRaceName}}</strong></div>
-                        <div v-html="subRaceDescription"></div>
+                </div>
+                <div class="panel-body">
+                    <div class="panel-collapse collapse" id="collapse_race">
+                        <div><strong>{{raceName}}</strong></div>
+                        <div v-html="raceDescription"></div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="showSubRaceInfo">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <a id="accordion_subRace" class="accordion-toggle collapsed" data-parent="#accordion_subRace" data-toggle="collapse" href="#collapse_subRace" role="button" aria-expanded="false" aria-controls="collapse_subRace">
+                            Sub Race
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel-collapse collapse" id="collapse_subRace">
+                            <div><strong>{{subRaceName}}</strong></div>
+                            <div v-html="subRaceDescription"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div v-if="pageNo==2">
-        @*<div class="col-md-4">
-            <div class="form-group">
-                <label asp-for="ClassId" class="control-label"></label>
-                <select asp-for="ClassId" asp-items="Model.Classes" class="form-control" v-on:change="updateClassInfo" v-model="classId"></select>
-                <span asp-validation-for="ClassId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ArchetypeId" class="control-label"></label>
-                <select asp-for="ArchetypeId" asp-items="Model.Archetypes" class="form-control" v-on:change="updateArchetypeInfo" v-model="archetypeId"></select>
-                <span asp-validation-for="ArchetypeId" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <div class="col-md-6">
-                <img class="resize" :src="'/images/class/' + className + '.png'" />
-            </div>
-            <div class="col-md-6">
-                {{classDescription}}
-            </div>
-        </div>*@
-    </div>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script  type="application/javascript" asp-append-version="true" src="~/js/vue.js"></script>
-    <script  type="application/javascript" asp-append-version="true" src="~/js/CreatePC.js"></script>
+    <script type="application/javascript" asp-append-version="true" src="~/js/vue.js"></script>
+    <script type="application/javascript" asp-append-version="true" src="~/js/CreatePC.js"></script>
 }

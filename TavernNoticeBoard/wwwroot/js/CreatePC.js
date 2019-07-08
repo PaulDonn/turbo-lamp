@@ -22,11 +22,13 @@ $(document).ready(function () {
             subRaceName: null,
             subRaceDescription: null,
             age: null,
-            height: null,
+            gender: null,
+            heightFt: null,
+            heightIn: null,
             weight: null,
-            eyeColour: null,
             skinColour: null,
             hairColour: null,
+            eyeColour: null,
 
             //classId: $('#ClassId  option:selected')[0].value,
             className: null,
@@ -53,13 +55,13 @@ $(document).ready(function () {
         },
         methods: {
             previous: function () {
-                if (page > 0) {
-                    page--;
+                if (this.pageNo > 0) {
+                    this.pageNo--;
                 }
             },
             next: function () {
-                if (page < 4) {
-                    page++;
+                if (this.pageNo < 4) {
+                    this.pageNo++;
                 }
             },
             updateRaceInfo: function (toggleInfo) {

@@ -5,6 +5,7 @@ namespace TavernNoticeBoard.Models.Player
 {
     public class CreatePlayerModel
     {
+        //Page 1 - Race
         [Display(Name="Character Name")]
         public string CharacterName { get; set; }
 
@@ -18,6 +19,28 @@ namespace TavernNoticeBoard.Models.Player
 
         public SelectList SubRaces { get; set; }
 
+        public string Age { get; set; }
+
+        public string Gender { get; set; }
+
+        [Display(Name = "'")]
+        public string HeightFt { get; set; }
+
+        [Display(Name = "''")]
+        public string HeightIn { get; set; }
+
+        public string Weight { get; set; }
+
+        [Display(Name = "Skin Colour")]
+        public string SkinColour { get; set; }
+
+        [Display(Name = "Hair Colour")]
+        public string HairColour { get; set; }
+
+        [Display(Name = "Eye Colour")]
+        public string EyeColour { get; set; }
+
+        //Page 2 - Class
         [Display(Name = "Class")]
         public int ClassId { get; set; }
 
@@ -27,11 +50,13 @@ namespace TavernNoticeBoard.Models.Player
 
         public SelectList Archetypes { get; set; }
 
+        //Page 3 - Background
         [Display(Name = "Background")]
         public int BackGroundId { get; set; }
 
         public SelectList Backgrounds { get; set; }
 
+        //Page 4 - Alignment
         [Display(Name = "Alignment")]
         public int AlignmentId { get; set; }
 
