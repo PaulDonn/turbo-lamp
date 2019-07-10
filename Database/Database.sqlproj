@@ -110,5 +110,7 @@
     <Build Include="dbo\Tables\dbo.Language.Table.sql" />
     <Build Include="dbo\Tables\dbo.PcLanguage.Table.sql" />
     <Build Include="dbo\Tables\dbo.RaceLanguage.Table.sql" />
+    <None Include="dbo\Scripts\PopulateLanguage.sql" />
+    <None Include="dbo\Scripts\PopulateRaceLanguage.sql" />
   </ItemGroup>
 </Project>

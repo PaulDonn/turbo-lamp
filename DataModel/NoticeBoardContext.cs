@@ -21,12 +21,15 @@ namespace DataModel
         public virtual DbSet<Background> Background { get; set; }
         public virtual DbSet<Class> Class { get; set; }
         public virtual DbSet<Feature> Feature { get; set; }
+        public virtual DbSet<Language> Language { get; set; }
         public virtual DbSet<Party> Party { get; set; }
         public virtual DbSet<PcAbilityScore> PcAbilityScore { get; set; }
         public virtual DbSet<PcFeature> PcFeature { get; set; }
+        public virtual DbSet<PcLanguage> PcLanguage { get; set; }
         public virtual DbSet<PcSkill> PcSkill { get; set; }
         public virtual DbSet<PlayerCharacter> PlayerCharacter { get; set; }
         public virtual DbSet<Race> Race { get; set; }
+        public virtual DbSet<RaceLanguage> RaceLanguage { get; set; }
         public virtual DbSet<Skill> Skill { get; set; }
         public virtual DbSet<SubFeature> SubFeature { get; set; }
         public virtual DbSet<SubRace> SubRace { get; set; }
@@ -78,6 +81,11 @@ namespace DataModel
                 entity.Property(e => e.Id).ValueGeneratedNever();
             });
 
+            modelBuilder.Entity<Language>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+            });
+
             modelBuilder.Entity<PcAbilityScore>(entity =>
             {
                 entity.HasOne(d => d.Ability)
@@ -106,6 +114,21 @@ namespace DataModel
                     .HasForeignKey(d => d.PcId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PcFeature_PlayerCharacter");
+            });
+
+            modelBuilder.Entity<PcLanguage>(entity =>
+            {
+                entity.HasOne(d => d.Language)
+                    .WithMany(p => p.PcLanguage)
+                    .HasForeignKey(d => d.LanguageId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PcLanguage_Language");
+
+                entity.HasOne(d => d.Pc)
+                    .WithMany(p => p.PcLanguage)
+                    .HasForeignKey(d => d.PcId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PcLanguage_PlayerCharacter");
             });
 
             modelBuilder.Entity<PcSkill>(entity =>
@@ -157,6 +180,23 @@ namespace DataModel
             modelBuilder.Entity<Race>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<RaceLanguage>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(d => d.Language)
+                    .WithMany(p => p.RaceLanguage)
+                    .HasForeignKey(d => d.LanguageId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_RaceLanguage_Language");
+
+                entity.HasOne(d => d.Race)
+                    .WithMany(p => p.RaceLanguage)
+                    .HasForeignKey(d => d.RaceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_RaceLanguage_Race");
             });
 
             modelBuilder.Entity<Skill>(entity =>

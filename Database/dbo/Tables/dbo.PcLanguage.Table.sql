@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[PcLanguage](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[PcId] [int] NOT NULL,
 	[LanguageId] [int] NOT NULL,
  CONSTRAINT [PK_PcLanguage] PRIMARY KEY CLUSTERED 

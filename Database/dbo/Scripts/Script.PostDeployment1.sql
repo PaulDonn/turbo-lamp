@@ -17,4 +17,5 @@ Post-Deployment Script Template
 :r .\"PopulateRace.sql"
 :r .\"PopulateSubRace.sql"
 :r .\"PopulateBackground.sql"
-
+:r .\"PopulateLanguage.sql"
+:r .\"PopulateRaceLanguage.sql"
