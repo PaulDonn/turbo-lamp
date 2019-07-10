@@ -19,14 +19,17 @@ namespace Core.Class.QueryHandler
         {
             var dto = new ArchetypeDTO();
 
-            var archetype = context.Archetype.Single(n => n.Id == query.Id);
+            if (query.Id > 0)
+            {
+                var archetype = context.Archetype.Single(n => n.Id == query.Id);
 
-            dto.Id = archetype.Id;
-            dto.Name = archetype.Name;
-            dto.ShortName = archetype.ShortName;
-            dto.Description = archetype.Description;
-            dto.ClassId = archetype.ClassId;
-            
+                dto.Id = archetype.Id;
+                dto.Name = archetype.Name;
+                dto.ShortName = archetype.ShortName;
+                dto.Description = archetype.Description;
+                dto.ClassId = archetype.ClassId;
+            }
+
             return dto;
         }
     }

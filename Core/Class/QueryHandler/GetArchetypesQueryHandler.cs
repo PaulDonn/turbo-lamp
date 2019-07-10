@@ -20,7 +20,7 @@ namespace Core.Class.QueryHandler
         {
             var result = new List<ArchetypeDTO>();
 
-            var archetypes = context.Archetype.ToList();
+            var archetypes = context.Archetype.Where(n => n.ClassId == query.ClassId).ToList();
 
             foreach(var archetype in archetypes)
             {

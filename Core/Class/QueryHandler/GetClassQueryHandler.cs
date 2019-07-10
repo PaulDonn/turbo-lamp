@@ -19,13 +19,19 @@ namespace Core.Class.QueryHandler
         {
             var dto = new ClassDTO();
 
-            var playerClass = context.Class.Single(n => n.Id == query.Id);
+            if (query.Id > 0)
+            {
+                var playerClass = context.Class.Single(n => n.Id == query.Id);
 
-            dto.Id = playerClass.Id;
-            dto.Name = playerClass.Name;
-            dto.Description = playerClass.Description;
-            dto.HitDie = "d" + playerClass.HitDie.ToString();
-            
+                dto.Id = playerClass.Id;
+                dto.Name = playerClass.Name;
+                dto.Description = playerClass.Description;
+                dto.HitDie = "d" + playerClass.HitDie.ToString();
+                dto.ArchetypeLevel = playerClass.ArchetypeLevel;
+                dto.ArchetypeName = playerClass.ArchetypeName;
+                dto.ArchetypeDescription = playerClass.ArchetypeDescription;
+            }
+
             return dto;
         }
     }

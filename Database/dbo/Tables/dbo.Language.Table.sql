@@ -1,8 +1,10 @@
-﻿CREATE TABLE [dbo].[Ability](
+﻿CREATE TABLE [dbo].[Language](
 	[Id] [int] NOT NULL,
 	[Name] [nvarchar](50) NOT NULL,
- [Code] NVARCHAR(3) NOT NULL, 
-    CONSTRAINT [PK_Ability] PRIMARY KEY CLUSTERED 
+	[TypicalSpeakers] [nvarchar](50) NOT NULL,
+	[Script] [nvarchar](50) NOT NULL,
+	[IsExotic] [bit] NOT NULL,
+ CONSTRAINT [PK_Language] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]

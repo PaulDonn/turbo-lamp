@@ -19,13 +19,16 @@ namespace Core.Race.QueryHandler
         {
             var dto = new RaceDTO();
 
-            var race = context.Race.Single(n => n.Id == query.Id);
+            if (query.Id > 0)
+            {
+                var race = context.Race.Single(n => n.Id == query.Id);
 
-            dto.Id = race.Id;
-            dto.Name = race.Name;
-            dto.Description = race.Description;
-            dto.HasSubRace = context.SubRace.Any(n => n.RaceId == race.Id);
-            
+                dto.Id = race.Id;
+                dto.Name = race.Name;
+                dto.Description = race.Description;
+                dto.HasSubRace = context.SubRace.Any(n => n.RaceId == race.Id);
+            }
+
             return dto;
         }
     }

@@ -18,14 +18,16 @@ namespace Core.Alignment.QueryHandler
         AlignmentDTO IQueryHandler<GetAlignmentQuery, AlignmentDTO>.Handle(GetAlignmentQuery query)
         {
             var dto = new AlignmentDTO();
+            if (query.Id > 0)
+            {
+                var alignment = context.Alignment.Single(n => n.Id == query.Id);
 
-            var alignment = context.Alignment.Single(n => n.Id == query.Id);
+                dto.Id = alignment.Id;
+                dto.Name = alignment.Name;
+                dto.Description = alignment.Description;
+                dto.Code = alignment.Code;
+            }
 
-            dto.Id = alignment.Id;
-            dto.Name = alignment.Name;
-            dto.Description = alignment.Description;
-            dto.Code = alignment.Code;
-            
             return dto;
         }
     }

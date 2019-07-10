@@ -18,13 +18,15 @@ namespace Core.Background.QueryHandler
         BackgroundDTO IQueryHandler<GetBackgroundQuery, BackgroundDTO>.Handle(GetBackgroundQuery query)
         {
             var dto = new BackgroundDTO();
+            if (query.Id > 0)
+            {
+                var background = context.Background.Single(n => n.Id == query.Id);
 
-            var background = context.Class.Single(n => n.Id == query.Id);
+                dto.Id = background.Id;
+                dto.Name = background.Name;
+                dto.Description = background.Description;
+            }
 
-            dto.Id = background.Id;
-            dto.Name = background.Name;
-            dto.Description = background.Description;
-            
             return dto;
         }
     }

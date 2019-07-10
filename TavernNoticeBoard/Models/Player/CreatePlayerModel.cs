@@ -52,7 +52,7 @@ namespace TavernNoticeBoard.Models.Player
 
         //Page 3 - Background
         [Display(Name = "Background")]
-        public int BackGroundId { get; set; }
+        public int BackgroundId { get; set; }
 
         public SelectList Backgrounds { get; set; }
 
@@ -61,5 +61,14 @@ namespace TavernNoticeBoard.Models.Player
         public int AlignmentId { get; set; }
 
         public SelectList Alignments { get; set; }
+
+        [Display(Name = "Personality Traits")]
+        public string PersonalityTraits { get; set; }
+
+        public string Ideals { get; set; }
+
+        public string Bonds { get; set; }
+
+        public string Flaws { get; set; }
     }
 }

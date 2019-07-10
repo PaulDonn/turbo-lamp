@@ -20,7 +20,7 @@ namespace Core.Background.QueryHandler
         {
             var result = new List<BackgroundDTO>();
             
-            var backgrounds = context.Class.ToList();
+            var backgrounds = context.Background.ToList();
 
             foreach(var background in backgrounds)
             {
