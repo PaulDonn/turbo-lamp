@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace TavernNoticeBoard.Models.Player
 {
@@ -12,12 +11,8 @@ namespace TavernNoticeBoard.Models.Player
         [Display(Name = "Race")]
         public int RaceId { get; set; }
 
-        public SelectList Races { get; set; }
-
         [Display(Name = "Sub Race")]
         public int SubRaceId { get; set; }
-
-        public SelectList SubRaces { get; set; }
 
         public string Age { get; set; }
 
@@ -44,23 +39,15 @@ namespace TavernNoticeBoard.Models.Player
         [Display(Name = "Class")]
         public int ClassId { get; set; }
 
-        public SelectList Classes { get; set; }
-
         public int ArchetypeId { get; set; }
-
-        public SelectList Archetypes { get; set; }
 
         //Page 3 - Background
         [Display(Name = "Background")]
         public int BackgroundId { get; set; }
 
-        public SelectList Backgrounds { get; set; }
-
         //Page 4 - Alignment
         [Display(Name = "Alignment")]
         public int AlignmentId { get; set; }
-
-        public SelectList Alignments { get; set; }
 
         [Display(Name = "Personality Traits")]
         public string PersonalityTraits { get; set; }

@@ -14,6 +14,7 @@ namespace DataModel
         [Required]
         public string Description { get; set; }
         public int RaceId { get; set; }
+        public int? AdditionalLanguages { get; set; }
 
         [ForeignKey("RaceId")]
         [InverseProperty("SubRace")]

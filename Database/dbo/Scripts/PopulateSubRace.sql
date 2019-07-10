@@ -1,6 +1,6 @@
 ﻿INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 1, 'Hill Dwarf', '', 1)
 INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 2, 'Mountain Dwarf', '', 1)
-INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 3, 'High Elf', '', 2)
+INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId],[AdditionalLanguages]) VALUES ( 3, 'High Elf', '', 2, 1)
 INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 4, 'Wood Elf', '', 2)
 INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 5, 'Drow', '', 2)
 INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 6, 'Lightfoot', '', 3)

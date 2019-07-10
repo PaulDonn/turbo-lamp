@@ -2,6 +2,7 @@
 using Core.Race.Query;
 using DataModel;
 using Infrastructure.CQRS;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace Core.Race.QueryHandler
@@ -21,12 +22,17 @@ namespace Core.Race.QueryHandler
 
             if (query.Id > 0)
             {
-                var race = context.Race.Single(n => n.Id == query.Id);
+                var race = context.Race.Include(n => n.RaceLanguage).Single(n => n.Id == query.Id);
 
                 dto.Id = race.Id;
                 dto.Name = race.Name;
                 dto.Description = race.Description;
                 dto.HasSubRace = context.SubRace.Any(n => n.RaceId == race.Id);
+
+                foreach(var language in race.RaceLanguage)
+                {
+                    dto.Languages.Add(language.LanguageId);
+                }
             }
 
             return dto;

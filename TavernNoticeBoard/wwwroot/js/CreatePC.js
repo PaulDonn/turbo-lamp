@@ -15,6 +15,7 @@ $(document).ready(function () {
             raceId: null,
             raceName: null,
             raceDescription: null,
+            raceLanguages: [],
             hasSubRace: false,
 
             //page 2 - subRace
@@ -45,9 +46,13 @@ $(document).ready(function () {
             //page 6 - alignment
             alignments: null,
             alignmentId: null,
+            alignmentName: null,
+            alignmentDescription: null,
 
             //page 7 - languages
-            languages: null,
+            maxLanguages: null,
+            standardLanguages: null,
+            exoticLanguages: null,
             selectedLanguages: [],
 
             //page 8 - skills
@@ -100,39 +105,40 @@ $(document).ready(function () {
             },
             setPage: function (direction) {
                 if (this.pageNo === 2) { //SubRace
-                    if (this.hasSubRace) {
-                        this.getSubRaces(true);
-                    }
-                    else if (direction === "next") {
+                    
+                    if (!this.hasSubRace && direction === "next") {
                         this.next();
                     }
-                    else if (direction === "previous") {
+                    else if (!this.hasSubRace && direction === "previous") {
                         this.previous();
                     }
+                    if (direction === "next") {
+                        this.getSubRaces();
+                    }
                 }
-                else if (this.pageNo === 3) { //Class
-                    this.getClasses(true);
+                else if (this.pageNo === 3 && direction === "next") { //Class
+                        this.getClasses();
                 }
                 else if (this.pageNo === 4) { //Archetype
-                    if (this.archetypeLevel === 1) {
-                        this.getArchetypes(true);
-                    }
-                    else if (direction === "next") {
+                    
+                    if (this.archetypeLevel !== 1  && direction === "next") {
                         this.next();
                     }
-                    else if (direction === "previous") {
+                    else if (this.archetypeLevel !== 1 && direction === "previous") {
                         this.previous();
                     }
+                    if (direction === "next") {
+                        this.getArchetypes();
+                    }
                 }
-                else if (this.pageNo === 5) { //Background
-                    this.getBackgrounds(true);
+                else if (this.pageNo === 5 && direction === "next") { //Background
+                    this.getBackgrounds();
                 }
-                else if (this.pageNo === 6) { //Alignment
-                    this.getAlignments(true);
+                else if (this.pageNo === 6 && direction === "next") { //Alignment
+                    this.getAlignments();
                 }
-                else if (this.pageNo === 7) { //Languages
-                    this.panelHeading = this.languageName;
-                    this.panelDescription = this.languageDescription;
+                else if (this.pageNo === 7 && direction === "next") { //Languages
+                    this.getLanguages();
                 }
                 else if (this.pageNo === 8) { //Skills
                     this.panelHeading = this.skillName;
@@ -286,6 +292,59 @@ $(document).ready(function () {
                     }
                 });
             },
+            getLanguages: function () {
+                var that = this;
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/PlayerCharacter/GetLanguages',
+                    data: {
+                        raceId: that.raceId,
+                        archetypeId: that.archetypeId,
+                        backgroundId: that.backgroundId
+                    },
+                    success: function (result) {
+                        that.selectedLanguages = that.raceLanguages;
+
+                        that.standardLanguages = [];
+                        that.exoticLanguages = [];
+
+                        for (i = 0; i < result.length; i++) {
+                            if (result[i].isExotic) {
+                                that.exoticLanguages.push(result[i]);
+                            }
+                            else {
+                                that.standardLanguages.push(result[i]);
+                            }
+                        }
+
+                        that.getMaxLanguages();
+                    },
+                    error: function () {
+                        alert('An error occured when processing this request');
+                    }
+                });
+            },
+            getMaxLanguages: function () {
+                var that = this;
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/PlayerCharacter/GetMaxLanguages',
+                    data: {
+                        raceId: that.raceId,
+                        subRaceId: that.subRaceId,
+                        archetypeId: that.archetypeId,
+                        backgroundId: that.backgroundId
+                    },
+                    success: function (result) {
+                        that.maxLanguages = result;
+                    },
+                    error: function () {
+                        alert('An error occured when processing this request');
+                    }
+                });
+            },
             updateRaceInfo: function (toggleInfo) {
 
                 var that = this;
@@ -301,6 +360,8 @@ $(document).ready(function () {
                         that.raceName = result.name;
                         that.raceDescription = result.description;
                         that.hasSubRace = result.hasSubRace;
+                        that.raceLanguages = result.languages;
+                        that.selectedLanguages = that.raceLanguages;
 
                         if (toggleInfo) {
                             that.panelHeading = that.raceName;
@@ -399,7 +460,7 @@ $(document).ready(function () {
                     }
                 });
             },
-            updateBackgroudInfo: function (toggleInfo) {
+            updateBackgroundInfo: function (toggleInfo) {
 
                 var that = this;
 
@@ -407,16 +468,16 @@ $(document).ready(function () {
                     type: 'POST',
                     url: '/PlayerCharacter/GetBackgroundDetails',
                     data: {
-                        backgroudId: that.backgroudId
+                        backgroundId: that.backgroundId
                     },
                     success: function (result) {
 
-                        that.backgroudName = result.name;
-                        that.backgroudDescription = result.description;
+                        that.backgroundName = result.name;
+                        that.backgroundDescription = result.description;
 
                         if (toggleInfo) {
-                            that.panelHeading = that.backgroudName;
-                            that.panelDescription = that.backgroudDescription;
+                            that.panelHeading = that.backgroundName;
+                            that.panelDescription = that.backgroundDescription;
                         }
                     },
                     error: function () {

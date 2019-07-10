@@ -4,6 +4,8 @@ using Core.Background.DTO;
 using Core.Background.Query;
 using Core.Class.DTO;
 using Core.Class.Query;
+using Core.Language.DTO;
+using Core.Language.Query;
 using Core.PlayerCharacter.Command;
 using Core.Race.DTO;
 using Core.Race.Query;
@@ -13,7 +15,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
-using System.Linq;
 using TavernNoticeBoard.Models.Player;
 
 namespace TavernNoticeBoard.Controllers
@@ -32,37 +33,6 @@ namespace TavernNoticeBoard.Controllers
         public IActionResult Create()
         {
             var model = new CreatePlayerModel();
-
-
-            var racesQuery = new GetRacesQuery();
-            var racesDto = SendQuery<GetRacesQuery, IEnumerable<RaceDTO>>(racesQuery);
-            model.Races = new SelectList(racesDto, nameof(RaceDTO.Id), nameof(RaceDTO.Name));
-            model.Races.First().Selected = true;
-
-            var subRacesQuery = new GetSubRacesQuery { RaceId = 1 };
-            var subRacesDto = SendQuery<GetSubRacesQuery, IEnumerable<SubRaceDTO>>(subRacesQuery);
-            model.SubRaces = new SelectList(subRacesDto, nameof(SubRaceDTO.Id), nameof(SubRaceDTO.Name));
-            if (model.SubRaces.Count() > 0) { model.SubRaces.First().Selected = true; }
-
-            var classesQuery = new GetClassesQuery();
-            var classesDto = SendQuery<GetClassesQuery, IEnumerable<ClassDTO>>(classesQuery);
-            model.Classes = new SelectList(classesDto, nameof(ClassDTO.Id), nameof(ClassDTO.Name));
-            model.Classes.First().Selected = true;
-
-            var archetypesQuery = new GetArchetypesQuery { ClassId = 1 };
-            var archetypesDto = SendQuery<GetArchetypesQuery, IEnumerable<ArchetypeDTO>>(archetypesQuery);
-            model.Archetypes = new SelectList(archetypesDto, nameof(ArchetypeDTO.Id), nameof(ArchetypeDTO.Name));
-            if (model.Archetypes.Count() > 0) { model.Archetypes.FirstOrDefault().Selected = true; }
-
-            var backgroundsQuery = new GetBackgroundsQuery();
-            var backgroundsDto = SendQuery<GetBackgroundsQuery, IEnumerable<BackgroundDTO>>(backgroundsQuery);
-            model.Backgrounds = new SelectList(backgroundsDto, nameof(BackgroundDTO.Id), nameof(BackgroundDTO.Name));
-            model.Backgrounds.First().Selected = true;
-
-            var alignmentsQuery = new GetAlignmentsQuery();
-            var alignmentsDto = SendQuery<GetAlignmentsQuery, IEnumerable<AlignmentDTO>>(alignmentsQuery);
-            model.Alignments = new SelectList(alignmentsDto, nameof(AlignmentDTO.Id), nameof(AlignmentDTO.Name));
-            model.Alignments.First().Selected = true;
 
             return View(model);
         }
@@ -92,7 +62,6 @@ namespace TavernNoticeBoard.Controllers
             var racesQuery = new GetRacesQuery { };
             var racesDto = SendQuery<GetRacesQuery, IEnumerable<RaceDTO>>(racesQuery);
             var races = new SelectList(racesDto, nameof(RaceDTO.Id), nameof(RaceDTO.Name));
-            if (races.Count() > 0) { races.First().Selected = true; }
 
             return Json(races);
         }
@@ -102,7 +71,6 @@ namespace TavernNoticeBoard.Controllers
             var subRacesQuery = new GetSubRacesQuery { RaceId = raceId };
             var subRacesDto = SendQuery<GetSubRacesQuery, IEnumerable<SubRaceDTO>>(subRacesQuery);
             var subRaces = new SelectList(subRacesDto, nameof(SubRaceDTO.Id), nameof(SubRaceDTO.Name));
-            if (subRaces.Count() > 0) { subRaces.First().Selected = true; }
 
             return Json(subRaces);
         }
@@ -112,7 +80,6 @@ namespace TavernNoticeBoard.Controllers
             var classesQuery = new GetClassesQuery { };
             var classesDto = SendQuery<GetClassesQuery, IEnumerable<ClassDTO>>(classesQuery);
             var classes = new SelectList(classesDto, nameof(ClassDTO.Id), nameof(ClassDTO.Name));
-            if (classes.Count() > 0) { classes.First().Selected = true; }
 
             return Json(classes);
         }
@@ -122,7 +89,6 @@ namespace TavernNoticeBoard.Controllers
             var archetypesQuery = new GetArchetypesQuery { ClassId = classId };
             var archetypesDto = SendQuery<GetArchetypesQuery, IEnumerable<ArchetypeDTO>>(archetypesQuery);
             var archetypes = new SelectList(archetypesDto, nameof(ArchetypeDTO.Id), nameof(ArchetypeDTO.Name));
-            if (archetypes.Count() > 0) { archetypes.First().Selected = true; }
 
             return Json(archetypes);
         }
@@ -132,7 +98,6 @@ namespace TavernNoticeBoard.Controllers
             var backgroundsQuery = new GetBackgroundsQuery { };
             var backgroundsDto = SendQuery<GetBackgroundsQuery, IEnumerable<BackgroundDTO>>(backgroundsQuery);
             var backgrounds = new SelectList(backgroundsDto, nameof(BackgroundDTO.Id), nameof(BackgroundDTO.Name));
-            if (backgrounds.Count() > 0) { backgrounds.First().Selected = true; }
 
             return Json(backgrounds);
         }
@@ -142,9 +107,17 @@ namespace TavernNoticeBoard.Controllers
             var alignmentsQuery = new GetAlignmentsQuery { };
             var alignmentsDto = SendQuery<GetAlignmentsQuery, IEnumerable<AlignmentDTO>>(alignmentsQuery);
             var alignments = new SelectList(alignmentsDto, nameof(AlignmentDTO.Id), nameof(AlignmentDTO.Name));
-            if (alignments.Count() > 0) { alignments.First().Selected = true; }
 
             return Json(alignments);
+        }
+
+        public JsonResult GetLanguages(bool filter, bool? isExotic)
+        {
+            var langagesQuery = new GetLanguagesQuery { Filter = filter, IsExotic = isExotic };
+            var languagesDto = SendQuery<GetLanguagesQuery, IEnumerable<LanguageDTO>>(langagesQuery);
+            //var languages = new SelectList(languagesDto, nameof(LanguageDTO.Id), nameof(LanguageDTO.Name));
+
+            return Json(languagesDto);
         }
 
         public JsonResult GetRaceDetails(int raceId)
@@ -217,6 +190,14 @@ namespace TavernNoticeBoard.Controllers
             var result = SendQuery<GetAlignmentQuery, AlignmentDTO>(query);
 
             return Json(result);
+        }
+
+        public JsonResult GetMaxLanguages(int raceId, int? subRaceId, int? archetypeId, int backgroundId)
+        {
+            var langagesQuery = new GetMaxLanguagesQuery { RaceId = raceId, SubRaceId = subRaceId, ArchetypeId = archetypeId, BackgroundId = backgroundId };
+            var languagesDto = SendQuery<GetMaxLanguagesQuery, int>(langagesQuery);
+
+            return Json(languagesDto);
         }
 
         #endregion

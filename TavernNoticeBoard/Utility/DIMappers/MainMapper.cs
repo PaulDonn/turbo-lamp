@@ -6,11 +6,12 @@ namespace TavernNoticeBoard.Utility.DIMappers
     {
         public void Setup(IServiceCollection services)
         {
+            AlignmentMapper.Setup(services);
+            BackgroundMapper.Setup(services);
+            ClassMapper.Setup(services);
+            LanguageMapper.Setup(services);
             PlayerCharacterMapper.Setup(services);
             RaceMapper.Setup(services);
-            ClassMapper.Setup(services);
-            BackgroundMapper.Setup(services);
-            AlignmentMapper.Setup(services);
         }
     }
 }
