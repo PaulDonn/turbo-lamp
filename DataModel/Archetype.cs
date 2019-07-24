@@ -17,7 +17,6 @@ namespace DataModel
         [Required]
         public string Description { get; set; }
         public int ClassId { get; set; }
-        public int? AdditionalLanguages { get; set; }
 
         [ForeignKey("ClassId")]
         [InverseProperty("Archetype")]

@@ -192,10 +192,10 @@ namespace TavernNoticeBoard.Controllers
             return Json(result);
         }
 
-        public JsonResult GetMaxLanguages(int raceId, int? subRaceId, int? archetypeId, int backgroundId)
+        public JsonResult GetPcLanguages(int raceId, int? subRaceId, int? archetypeId, int backgroundId)
         {
-            var langagesQuery = new GetMaxLanguagesQuery { RaceId = raceId, SubRaceId = subRaceId, ArchetypeId = archetypeId, BackgroundId = backgroundId };
-            var languagesDto = SendQuery<GetMaxLanguagesQuery, int>(langagesQuery);
+            var langagesQuery = new GetPcLanguagesQuery { RaceId = raceId, SubRaceId = subRaceId, ArchetypeId = archetypeId, BackgroundId = backgroundId };
+            var languagesDto = SendQuery<GetPcLanguagesQuery, PcLanguagesDTO>(langagesQuery);
 
             return Json(languagesDto);
         }

@@ -21,6 +21,7 @@ namespace DataModel
         [Required]
         public string Description { get; set; }
         public int? AdditionalLanguages { get; set; }
+        public int? AdditionalSkills { get; set; }
 
         [InverseProperty("Race")]
         public ICollection<PlayerCharacter> PlayerCharacter { get; set; }

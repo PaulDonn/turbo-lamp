@@ -10,10 +10,12 @@
 
         public string HitDie { get; set; }
 
-        public string ArchetypeName { get; set; }
+        public string ArchetypeTypeName { get; set; }
 
-        public string ArchetypeDescription { get; set; }
+        public string ArchetypeTypeDescription { get; set; }
 
-        public int ArchetypeLevel { get; set; }
+        public int ArchetypeStartingLevel { get; set; }
+
+        public int NumberOfStartingSkills { get; set; }
     }
 }

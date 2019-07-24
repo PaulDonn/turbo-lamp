@@ -30,9 +30,10 @@ namespace Core.Class.QueryHandler
                     Name = playerClass.Name,
                     Description = playerClass.Description,
                     HitDie = "d" + playerClass.HitDie.ToString(),
-                    ArchetypeName = playerClass.ArchetypeName,
-                    ArchetypeDescription = playerClass.ArchetypeDescription,
-                    ArchetypeLevel = playerClass.ArchetypeLevel
+                    ArchetypeTypeName = playerClass.ArchetypeTypeName,
+                    ArchetypeTypeDescription = playerClass.ArchetypeTypeDescription,
+                    ArchetypeStartingLevel = playerClass.ArchetypeStartingLevel,
+                    NumberOfStartingSkills = playerClass.NumberOfStartingSkills
                 });
             }
 

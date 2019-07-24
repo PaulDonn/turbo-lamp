@@ -8,6 +8,10 @@
 <hr />
 <div class="row" id="createCharacter">
     <div class="col-md-4">
+        @*buttons*@
+        <div class="btn btn-primary" v-if="pageNo > 1" v-on:click="previous">Previous</div>
+        <div class="btn btn-primary pull-right" v-if="pageNo < 14" v-on:click="next">Next</div>
+        <div class="btn btn-primary pull-right" v-if="pageNo === 14" v-on:click="finish">Finish</div>
         @*page 1 - Race*@
         <div v-if="pageNo==1">
             <label asp-for="RaceId" class="control-label"></label><span class="requiredFieldMarker">*</span>
@@ -41,7 +45,7 @@
         </div>
         @*page 4 - Archetype*@
         <div v-if="pageNo==4">
-            <div v-if="archetypeLevel == 1" class="form-group">
+            <div v-if="archetypeStartingLevel == 1" class="form-group">
                 <label class="control-label">{{archetypeTypeName}}</label><span class="requiredFieldMarker">*</span>
                 <div>{{archetypeTypeDescription}}</div>
                 <span asp-validation-for="ArchetypeId" class="text-danger"></span>
@@ -76,17 +80,18 @@
         @*page 7 - Languages*@
         <div v-if="pageNo==7">
             <div v-if="maxLanguages - selectedLanguages.length > 0"><strong>Select {{maxLanguages - selectedLanguages.length}} more languages</strong></div>
+            <div v-if="maxLanguages - selectedLanguages.length <= 0"><strong>All languages selected</strong></div>
             <div class="form-group">
                 <label class="control-label">Standard Langauges</label>
                 <div v-for="language in standardLanguages">
-                    <input type="checkbox" :value="language.id" v-model="selectedLanguages" :disabled="raceLanguages.includes(language.id) || (selectedLanguages.length >= maxLanguages && !selectedLanguages.includes(language.id))">
+                    <input type="checkbox" :value="language.id" v-model="selectedLanguages" :disabled="mandatoryLanguages.includes(language.id) || (selectedLanguages.length >= maxLanguages && !selectedLanguages.includes(language.id))">
                     <label>{{language.name}}</label>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label">Exotic Langauges</label>
                 <div v-for="language in exoticLanguages">
-                    <input type="checkbox" :value="language.id" v-model="selectedLanguages" :disabled="raceLanguages.includes(language.id) || (selectedLanguages.length >= maxLanguages && !selectedLanguages.includes(language.id))">
+                    <input type="checkbox" :value="language.id" v-model="selectedLanguages" :disabled="mandatoryLanguages.includes(language.id) || (selectedLanguages.length >= maxLanguages && !selectedLanguages.includes(language.id))">
                     <label>{{language.name}}</label>
                 </div>
             </div>
@@ -170,10 +175,6 @@
                 <span asp-validation-for="CharacterName" class="text-danger"></span>
             </div>
         </div>
-        @*buttons*@
-        <div class="btn btn-primary" v-if="pageNo > 1" v-on:click="previous">Previous</div>
-        <div class="btn btn-primary pull-right" v-if="pageNo < 14" v-on:click="next">Next</div>
-        <div class="btn btn-primary pull-right" v-if="pageNo === 14" v-on:click="finish">Finish</div>
     </div>
     <div class="col-md-8">
         <div class="col-md-6">

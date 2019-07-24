@@ -16,7 +16,7 @@ namespace TavernNoticeBoard.Utility.DIMappers
             //Query Handlers
             services.AddTransient<IQueryHandler<GetLanguageQuery, LanguageDTO>, GetLanguageQueryHandler>();
             services.AddTransient<IQueryHandler<GetLanguagesQuery, IEnumerable<LanguageDTO>>, GetLanguagesQueryHandler>();
-            services.AddTransient<IQueryHandler<GetMaxLanguagesQuery, int>, GetMaxLanguagesQueryHandler>();
+            services.AddTransient<IQueryHandler<GetPcLanguagesQuery, PcLanguagesDTO>, GetPcLanguagesQueryHandler>();
         }
     }
 }

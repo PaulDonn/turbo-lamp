@@ -22,10 +22,11 @@ namespace DataModel
         public int HitDie { get; set; }
         [Required]
         [StringLength(50)]
-        public string ArchetypeName { get; set; }
+        public string ArchetypeTypeName { get; set; }
         [Required]
-        public string ArchetypeDescription { get; set; }
-        public int ArchetypeLevel { get; set; }
+        public string ArchetypeTypeDescription { get; set; }
+        public int ArchetypeStartingLevel { get; set; }
+        public int NumberOfStartingSkills { get; set; }
 
         [InverseProperty("Class")]
         public ICollection<Archetype> Archetype { get; set; }

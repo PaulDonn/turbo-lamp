@@ -2,7 +2,7 @@
 INSERT INTO [dbo].[Archetype] ([Id],[Name],[ShortName],[Description],[ClassId]) VALUES ( 2,  'Path of the Totem Warrior', 'Totem Warrior', '', 1)
 INSERT INTO [dbo].[Archetype] ([Id],[Name],[ShortName],[Description],[ClassId]) VALUES ( 3,  'College of Lore', 'Lore Bard', '', 2)
 INSERT INTO [dbo].[Archetype] ([Id],[Name],[ShortName],[Description],[ClassId]) VALUES ( 4,  'College of Valor', 'Valor Bard', '', 2)
-INSERT INTO [dbo].[Archetype] ([Id],[Name],[ShortName],[Description],[ClassId],[AdditionalLanguages]) VALUES ( 5,  'Knowledge Domain', 'Knowledge Cleric', '', 3, 2)
+INSERT INTO [dbo].[Archetype] ([Id],[Name],[ShortName],[Description],[ClassId]) VALUES ( 5,  'Knowledge Domain', 'Knowledge Cleric', '', 3)
 INSERT INTO [dbo].[Archetype] ([Id],[Name],[ShortName],[Description],[ClassId]) VALUES ( 6,  'Life Domain', 'Life Cleric', '', 3)
 INSERT INTO [dbo].[Archetype] ([Id],[Name],[ShortName],[Description],[ClassId]) VALUES ( 7,  'Light Domain', 'Light Cleric', '', 3)
 INSERT INTO [dbo].[Archetype] ([Id],[Name],[ShortName],[Description],[ClassId]) VALUES ( 8,  'Nature Domain', 'Nature Cleric', '', 3)

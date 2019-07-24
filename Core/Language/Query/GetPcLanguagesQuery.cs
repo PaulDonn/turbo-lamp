@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Core.Language.Query
 {
-    public class GetMaxLanguagesQuery : IQuery<int>
+    public class GetPcLanguagesQuery : IQuery<PcLanguagesDTO>
     {
         public int RaceId { get; set; }
 

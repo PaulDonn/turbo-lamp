@@ -15,7 +15,7 @@ $(document).ready(function () {
             raceId: null,
             raceName: null,
             raceDescription: null,
-            raceLanguages: [],
+            raceSkills: [],
             hasSubRace: false,
 
             //page 2 - subRace
@@ -29,7 +29,10 @@ $(document).ready(function () {
             classId: null,
             className: null,
             classDescription: null,
-            archetypeLevel: null,
+            archetypeStartingLevel: null,
+            archetypeTypeName: null,
+            archetypeTypeDescription: null,
+            numberOfStartingSkills: null,
 
             //page 4 - archetype
             archetypes: null,
@@ -53,6 +56,7 @@ $(document).ready(function () {
             maxLanguages: null,
             standardLanguages: null,
             exoticLanguages: null,
+            mandatoryLanguages: [],
             selectedLanguages: [],
 
             //page 8 - skills
@@ -104,41 +108,81 @@ $(document).ready(function () {
                 }
             },
             setPage: function (direction) {
-                if (this.pageNo === 2) { //SubRace
+                if (this.pageNo === 1) { //Race
+                    this.panelHeading = this.raceName;
+                    this.panelDescription = this.raceDescription;
+                }
+                else if (this.pageNo === 2) { //SubRace
                     
-                    if (!this.hasSubRace && direction === "next") {
-                        this.next();
+                    if (!this.hasSubRace) {
+                        if (direction === "previous") {
+                            this.previous();
+                        }
+                        else if (direction === "next") {
+                            this.next();
+                        }
                     }
-                    else if (!this.hasSubRace && direction === "previous") {
-                        this.previous();
+                    else if (direction === "previous") {
+                        this.panelHeading = this.subRaceName;
+                        this.panelDescription = this.subRaceDescription;
                     }
-                    if (direction === "next") {
+                    else if (direction === "next") {
                         this.getSubRaces();
                     }
                 }
-                else if (this.pageNo === 3 && direction === "next") { //Class
+                else if (this.pageNo === 3) { //Class
+                    if (direction === "previous") {
+                        this.panelHeading = this.className;
+                        this.panelDescription = this.classDescription;
+                    }
+                    else if (direction === "next") {
                         this.getClasses();
+                    }
                 }
                 else if (this.pageNo === 4) { //Archetype
                     
-                    if (this.archetypeLevel !== 1  && direction === "next") {
-                        this.next();
+                    if (this.archetypeStartingLevel !== 1) {
+                        if (direction === "previous") {
+                            this.previous();
+                        }
+                        else if (direction === "next") {
+                            this.next();
+                        }
                     }
-                    else if (this.archetypeLevel !== 1 && direction === "previous") {
-                        this.previous();
+                    else if (direction === "previous") {
+                        this.panelHeading = this.archetypeName;
+                        this.panelDescription = this.archetypeDescription;
                     }
-                    if (direction === "next") {
+                    else if (direction === "next") {
                         this.getArchetypes();
                     }
                 }
-                else if (this.pageNo === 5 && direction === "next") { //Background
-                    this.getBackgrounds();
+                else if (this.pageNo === 5) { //Background
+                    if (direction === "previous") {
+                        this.panelHeading = this.backgroundName;
+                        this.panelDescription = this.backgroundDescription;
+                    }
+                    else if (direction === "next") {
+                        this.getBackgrounds();
+                    }
                 }
-                else if (this.pageNo === 6 && direction === "next") { //Alignment
-                    this.getAlignments();
+                else if (this.pageNo === 6) { //Alignment
+                    if (direction === "previous") {
+                        this.panelHeading = this.alignmentName;
+                        this.panelDescription = this.alignmentDescription;
+                    }
+                    else if (direction === "next") {
+                        this.getAlignments();
+                    }
                 }
-                else if (this.pageNo === 7 && direction === "next") { //Languages
-                    this.getLanguages();
+                else if (this.pageNo === 7) { //Languages
+                    if (direction === "previous") {
+                        this.panelHeading = null;
+                        this.panelDescription = null;
+                    }
+                    else if (direction === "next") {
+                        this.getLanguages(true);
+                    }
                 }
                 else if (this.pageNo === 8) { //Skills
                     this.panelHeading = this.skillName;
@@ -292,45 +336,12 @@ $(document).ready(function () {
                     }
                 });
             },
-            getLanguages: function () {
+            getLanguages: function (toggleInfo) {
                 var that = this;
 
                 $.ajax({
                     type: 'POST',
-                    url: '/PlayerCharacter/GetLanguages',
-                    data: {
-                        raceId: that.raceId,
-                        archetypeId: that.archetypeId,
-                        backgroundId: that.backgroundId
-                    },
-                    success: function (result) {
-                        that.selectedLanguages = that.raceLanguages;
-
-                        that.standardLanguages = [];
-                        that.exoticLanguages = [];
-
-                        for (i = 0; i < result.length; i++) {
-                            if (result[i].isExotic) {
-                                that.exoticLanguages.push(result[i]);
-                            }
-                            else {
-                                that.standardLanguages.push(result[i]);
-                            }
-                        }
-
-                        that.getMaxLanguages();
-                    },
-                    error: function () {
-                        alert('An error occured when processing this request');
-                    }
-                });
-            },
-            getMaxLanguages: function () {
-                var that = this;
-
-                $.ajax({
-                    type: 'POST',
-                    url: '/PlayerCharacter/GetMaxLanguages',
+                    url: '/PlayerCharacter/GetPcLanguages',
                     data: {
                         raceId: that.raceId,
                         subRaceId: that.subRaceId,
@@ -338,7 +349,16 @@ $(document).ready(function () {
                         backgroundId: that.backgroundId
                     },
                     success: function (result) {
-                        that.maxLanguages = result;
+                        that.standardLanguages = result.standardLanguages;
+                        that.exoticLanguages = result.exoticLanguages;
+                        that.mandatoryLanguages = result.mandatoryLanguages;
+                        that.selectedLanguages = result.mandatoryLanguages;
+                        that.maxLanguages = result.maxLanguages;
+
+                        if (toggleInfo) {
+                            that.panelHeading = null;
+                            that.panelDescription = null;
+                        }
                     },
                     error: function () {
                         alert('An error occured when processing this request');
@@ -360,8 +380,6 @@ $(document).ready(function () {
                         that.raceName = result.name;
                         that.raceDescription = result.description;
                         that.hasSubRace = result.hasSubRace;
-                        that.raceLanguages = result.languages;
-                        that.selectedLanguages = that.raceLanguages;
 
                         if (toggleInfo) {
                             that.panelHeading = that.raceName;
@@ -417,7 +435,10 @@ $(document).ready(function () {
 
                         that.className = result.name;
                         that.classDescription = result.description;
-                        that.archetypeLevel = result.archetypeLevel;
+                        that.archetypeStartingLevel = result.archetypeStartingLevel;
+                        that.archetypeTypeName = result.archetypeTypeName;
+                        that.archetypeTypeDescription = result.archetypeTypeDescription;
+                        that.numberOfStartingSkills = result.numberOfStartingSkills;
 
                         if (toggleInfo) {
                             that.panelHeading = that.className;
@@ -497,12 +518,12 @@ $(document).ready(function () {
                     },
                     success: function (result) {
 
-                        that.aligmentName = result.name;
-                        that.aligmentDescription = result.description;
+                        that.alignmentName = result.name;
+                        that.alignmentDescription = result.description;
 
                         if (toggleInfo) {
-                            that.panelHeading = that.aligmentName;
-                            that.panelDescription = that.aligmentDescription;
+                            that.panelHeading = that.alignmentName;
+                            that.panelDescription = that.alignmentDescription;
                         }
                     },
                     error: function () {
