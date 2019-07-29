@@ -1,0 +1,24 @@
+﻿CREATE TABLE [dbo].[BgSkill](
+	[Id] [int] NOT NULL,
+	[BackgroundId] [int] NOT NULL,
+	[SkillId] [int] NOT NULL,
+ CONSTRAINT [PK_BgSkill] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[BgSkill]  WITH CHECK ADD  CONSTRAINT [FK_BgSkill_Background] FOREIGN KEY([BackgroundId])
+REFERENCES [dbo].[Background] ([Id])
+GO
+
+ALTER TABLE [dbo].[BgSkill] CHECK CONSTRAINT [FK_BgSkill_Background]
+GO
+
+ALTER TABLE [dbo].[BgSkill]  WITH CHECK ADD  CONSTRAINT [FK_BgSkill_Skill] FOREIGN KEY([SkillId])
+REFERENCES [dbo].[Skill] ([Id])
+GO
+
+ALTER TABLE [dbo].[BgSkill] CHECK CONSTRAINT [FK_BgSkill_Skill]
+GO

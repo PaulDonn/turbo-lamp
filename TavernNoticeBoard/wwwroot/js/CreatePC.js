@@ -60,7 +60,10 @@ $(document).ready(function () {
             selectedLanguages: [],
 
             //page 8 - skills
+            maxSkills: null,
             skills: null,
+            availableSkills: [],
+            mandatorySkills: [],
             selectedSkills: [],
 
             //page 9 - features
@@ -354,6 +357,33 @@ $(document).ready(function () {
                         that.mandatoryLanguages = result.mandatoryLanguages;
                         that.selectedLanguages = result.mandatoryLanguages;
                         that.maxLanguages = result.maxLanguages;
+
+                        if (toggleInfo) {
+                            that.panelHeading = null;
+                            that.panelDescription = null;
+                        }
+                    },
+                    error: function () {
+                        alert('An error occured when processing this request');
+                    }
+                });
+            },
+            getSkills: function (toggleInfo) {
+                var that = this;
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/PlayerCharacter/GetPcSkills',
+                    data: {
+                        raceId: that.raceId,
+                        classId: that.archetypeId,
+                        backgroundId: that.backgroundId
+                    },
+                    success: function (result) {                        
+                        that.maxSkills = result.maxSkills;
+                        that.skills = result.skills;
+                        that.availableSkills = result.availableSkills;
+                        that.selectedSkills = result.selectedSkills;
 
                         if (toggleInfo) {
                             that.panelHeading = null;
