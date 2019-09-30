@@ -10,6 +10,7 @@ namespace DataModel
         public Class()
         {
             Archetype = new HashSet<Archetype>();
+            ClassSkill = new HashSet<ClassSkill>();
             PlayerCharacter = new HashSet<PlayerCharacter>();
         }
 
@@ -30,6 +31,8 @@ namespace DataModel
 
         [InverseProperty("Class")]
         public ICollection<Archetype> Archetype { get; set; }
+        [InverseProperty("Class")]
+        public ICollection<ClassSkill> ClassSkill { get; set; }
         [InverseProperty("Class")]
         public ICollection<PlayerCharacter> PlayerCharacter { get; set; }
     }

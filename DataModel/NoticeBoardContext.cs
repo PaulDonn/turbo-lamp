@@ -19,7 +19,9 @@ namespace DataModel
         public virtual DbSet<Alignment> Alignment { get; set; }
         public virtual DbSet<Archetype> Archetype { get; set; }
         public virtual DbSet<Background> Background { get; set; }
+        public virtual DbSet<BgSkill> BgSkill { get; set; }
         public virtual DbSet<Class> Class { get; set; }
+        public virtual DbSet<ClassSkill> ClassSkill { get; set; }
         public virtual DbSet<Feature> Feature { get; set; }
         public virtual DbSet<Language> Language { get; set; }
         public virtual DbSet<Party> Party { get; set; }
@@ -71,9 +73,43 @@ namespace DataModel
                 entity.Property(e => e.Id).ValueGeneratedNever();
             });
 
+            modelBuilder.Entity<BgSkill>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(d => d.Background)
+                    .WithMany(p => p.BgSkill)
+                    .HasForeignKey(d => d.BackgroundId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_BgSkill_Background");
+
+                entity.HasOne(d => d.Skill)
+                    .WithMany(p => p.BgSkill)
+                    .HasForeignKey(d => d.SkillId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_BgSkill_Skill");
+            });
+
             modelBuilder.Entity<Class>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<ClassSkill>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(d => d.Class)
+                    .WithMany(p => p.ClassSkill)
+                    .HasForeignKey(d => d.ClassId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ClassSkill_Class");
+
+                entity.HasOne(d => d.Skill)
+                    .WithMany(p => p.ClassSkill)
+                    .HasForeignKey(d => d.SkillId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ClassSkill_Skill");
             });
 
             modelBuilder.Entity<Feature>(entity =>
@@ -154,6 +190,11 @@ namespace DataModel
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PlayerCharacter_Alignment");
 
+                entity.HasOne(d => d.Archetype)
+                    .WithMany(p => p.PlayerCharacter)
+                    .HasForeignKey(d => d.ArchetypeId)
+                    .HasConstraintName("FK_PlayerCharacter_Archetype");
+
                 entity.HasOne(d => d.Background)
                     .WithMany(p => p.PlayerCharacter)
                     .HasForeignKey(d => d.BackgroundId)
@@ -175,6 +216,11 @@ namespace DataModel
                     .HasForeignKey(d => d.RaceId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PlayerCharacter_Race");
+
+                entity.HasOne(d => d.SubRace)
+                    .WithMany(p => p.PlayerCharacter)
+                    .HasForeignKey(d => d.SubRaceId)
+                    .HasConstraintName("FK_PlayerCharacter_SubRace");
             });
 
             modelBuilder.Entity<Race>(entity =>

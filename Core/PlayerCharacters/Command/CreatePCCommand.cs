@@ -1,6 +1,6 @@
 ﻿using Infrastructure.CQRS;
 
-namespace Core.PlayerCharacter.Command
+namespace Core.PlayerCharacters.Command
 {
     public class CreatePCCommand : ICommand
     {
@@ -8,7 +8,7 @@ namespace Core.PlayerCharacter.Command
 
         public int ClassId { get; set; }
 
-        public int SubClassId { get; set; }
+        public int ArchetypeId { get; set; }
 
         public int BackGroundId { get; set; }
 

@@ -1,10 +1,10 @@
-﻿using Core.Race.DTO;
-using Core.Race.Query;
+﻿using Core.Races.DTO;
+using Core.Races.Query;
 using DataModel;
 using Infrastructure.CQRS;
 using System.Linq;
 
-namespace Core.Race.QueryHandler
+namespace Core.Races.QueryHandler
 {
     public class GetSubRaceQueryHandler : IQueryHandler<GetSubRaceQuery, SubRaceDTO>
     {

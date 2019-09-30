@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TavernNoticeBoard.Models.Player
+namespace TavernNoticeBoard.Models.PlayerCharacters
 {
-    public class CreatePlayerModel
+    public class CreatePlayerCharacterModel
     {
         //Page 1 - Race
         [Display(Name="Character Name")]

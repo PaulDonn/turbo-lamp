@@ -9,6 +9,8 @@ namespace DataModel
     {
         public Skill()
         {
+            BgSkill = new HashSet<BgSkill>();
+            ClassSkill = new HashSet<ClassSkill>();
             PcSkill = new HashSet<PcSkill>();
         }
 
@@ -21,6 +23,10 @@ namespace DataModel
         [ForeignKey("AbilityId")]
         [InverseProperty("Skill")]
         public Ability Ability { get; set; }
+        [InverseProperty("Skill")]
+        public ICollection<BgSkill> BgSkill { get; set; }
+        [InverseProperty("Skill")]
+        public ICollection<ClassSkill> ClassSkill { get; set; }
         [InverseProperty("Skill")]
         public ICollection<PcSkill> PcSkill { get; set; }
     }

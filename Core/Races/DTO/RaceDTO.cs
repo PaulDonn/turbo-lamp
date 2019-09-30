@@ -1,7 +1,7 @@
 ﻿using Core.Language.DTO;
 using System.Collections.Generic;
 
-namespace Core.Race.DTO
+namespace Core.Races.DTO
 {
     public class RaceDTO
     {

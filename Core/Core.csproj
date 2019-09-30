@@ -17,21 +17,22 @@
     <Folder Include="Feature\DTO\" />
     <Folder Include="Feature\QueryHandler\" />
     <Folder Include="Feature\Query\" />
-    <Folder Include="Race\CommandHandler\" />
-    <Folder Include="Race\Command\" />
+    <Folder Include="Races\CommandHandler\" />
+    <Folder Include="Races\Command\" />
     <Folder Include="Skill\CommandHandler\" />
     <Folder Include="Skill\Command\" />
     <Folder Include="Skill\DTO\" />
     <Folder Include="Skill\QueryHandler\" />
     <Folder Include="Skill\Query\" />
-    <Folder Include="PlayerCharacter\DTO\" />
-    <Folder Include="PlayerCharacter\QueryHandler\" />
-    <Folder Include="PlayerCharacter\Query\" />
     <Folder Include="SubFeature\CommandHandler\" />
     <Folder Include="SubFeature\Command\" />
     <Folder Include="SubFeature\DTO\" />
     <Folder Include="SubFeature\QueryHandler\" />
     <Folder Include="SubFeature\Query\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -21,3 +21,6 @@ Post-Deployment Script Template
 :r .\"PopulateBgSkill.sql"
 :r .\"PopulateLanguage.sql"
 :r .\"PopulateRaceLanguage.sql"
+
+:r .\"PopulateTestPCs.sql"
+

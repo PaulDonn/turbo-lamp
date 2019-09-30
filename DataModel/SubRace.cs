@@ -7,6 +7,11 @@ namespace DataModel
 {
     public partial class SubRace
     {
+        public SubRace()
+        {
+            PlayerCharacter = new HashSet<PlayerCharacter>();
+        }
+
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
@@ -19,5 +24,7 @@ namespace DataModel
         [ForeignKey("RaceId")]
         [InverseProperty("SubRace")]
         public Race Race { get; set; }
+        [InverseProperty("SubRace")]
+        public ICollection<PlayerCharacter> PlayerCharacter { get; set; }
     }
 }

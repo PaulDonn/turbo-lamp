@@ -1,8 +1,8 @@
-﻿using Core.PlayerCharacter.Command;
+﻿using Core.PlayerCharacters.Command;
 using DataModel;
 using Infrastructure.CQRS;
 
-namespace Core.PlayerCharacter.CommandHandler
+namespace Core.PlayerCharacters.CommandHandler
 {
     public class CreatePCCommandHandler : ICommandHandler<CreatePCCommand>
     {
@@ -17,12 +17,12 @@ namespace Core.PlayerCharacter.CommandHandler
         {
             var result = new ExecutionResult();
 
-            var pc = new DataModel.PlayerCharacter
+            var pc = new PlayerCharacter
             {
                 CharacterName = command.CharacterName,
                 ClassId = command.ClassId,
-                //SubClassId = command.SubClassId,
-                //BackgroundId = command.BackGroundId,
+                ArchetypeId = command.ArchetypeId,
+                BackgroundId = command.BackGroundId,
                 RaceId = command.RaceId,
                 AlignmentId = command.AlignmentId
             };

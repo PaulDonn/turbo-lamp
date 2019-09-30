@@ -7,6 +7,11 @@ namespace DataModel
 {
     public partial class Archetype
     {
+        public Archetype()
+        {
+            PlayerCharacter = new HashSet<PlayerCharacter>();
+        }
+
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
@@ -21,5 +26,7 @@ namespace DataModel
         [ForeignKey("ClassId")]
         [InverseProperty("Archetype")]
         public Class Class { get; set; }
+        [InverseProperty("Archetype")]
+        public ICollection<PlayerCharacter> PlayerCharacter { get; set; }
     }
 }

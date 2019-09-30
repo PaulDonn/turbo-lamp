@@ -1,4 +1,4 @@
-﻿namespace Core.Race.DTO
+﻿namespace Core.Races.DTO
 {
     public class SubRaceDTO
     {

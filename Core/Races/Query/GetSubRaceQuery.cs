@@ -1,7 +1,7 @@
-﻿using Core.Race.DTO;
+﻿using Core.Races.DTO;
 using Infrastructure.CQRS;
 
-namespace Core.Race.Query
+namespace Core.Races.Query
 {
     public class GetSubRaceQuery : IQuery<SubRaceDTO>
     {

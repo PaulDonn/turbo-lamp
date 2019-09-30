@@ -20,11 +20,12 @@ namespace DataModel
         [StringLength(50)]
         public string CharacterName { get; set; }
         public int ClassId { get; set; }
-        public int? SubClassId { get; set; }
+        public int? ArchetypeId { get; set; }
         public int LevelId { get; set; }
         public int? BackgroundId { get; set; }
         public int PlayerId { get; set; }
         public int RaceId { get; set; }
+        public int? SubRaceId { get; set; }
         public int AlignmentId { get; set; }
         public int ExperiencePoints { get; set; }
         public int? PartyId { get; set; }
@@ -32,6 +33,9 @@ namespace DataModel
         [ForeignKey("AlignmentId")]
         [InverseProperty("PlayerCharacter")]
         public Alignment Alignment { get; set; }
+        [ForeignKey("ArchetypeId")]
+        [InverseProperty("PlayerCharacter")]
+        public Archetype Archetype { get; set; }
         [ForeignKey("BackgroundId")]
         [InverseProperty("PlayerCharacter")]
         public Background Background { get; set; }
@@ -44,6 +48,9 @@ namespace DataModel
         [ForeignKey("RaceId")]
         [InverseProperty("PlayerCharacter")]
         public Race Race { get; set; }
+        [ForeignKey("SubRaceId")]
+        [InverseProperty("PlayerCharacter")]
+        public SubRace SubRace { get; set; }
         [InverseProperty("Pc")]
         public ICollection<PcAbilityScore> PcAbilityScore { get; set; }
         [InverseProperty("Pc")]

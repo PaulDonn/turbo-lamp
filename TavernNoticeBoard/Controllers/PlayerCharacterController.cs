@@ -6,16 +6,18 @@ using Core.Class.DTO;
 using Core.Class.Query;
 using Core.Language.DTO;
 using Core.Language.Query;
-using Core.PlayerCharacter.Command;
-using Core.Race.DTO;
-using Core.Race.Query;
+using Core.PlayerCharacters.Command;
+using Core.PlayerCharacters.DTO;
+using Core.PlayerCharacters.Query;
+using Core.Races.DTO;
+using Core.Races.Query;
 using DataModel;
 using Infrastructure.Mediator;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
-using TavernNoticeBoard.Models.Player;
+using TavernNoticeBoard.Models.PlayerCharacters;
 
 namespace TavernNoticeBoard.Controllers
 {
@@ -32,13 +34,13 @@ namespace TavernNoticeBoard.Controllers
 
         public IActionResult Create()
         {
-            var model = new CreatePlayerModel();
+            var model = new CreatePlayerCharacterModel();
 
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult Create(CreatePlayerModel model)
+        public IActionResult Create(CreatePlayerCharacterModel model)
         {
             var command = new CreatePCCommand
             {
@@ -46,7 +48,7 @@ namespace TavernNoticeBoard.Controllers
                 BackGroundId = model.BackgroundId,
                 RaceId = model.RaceId,
                 ClassId = model.ClassId,
-                SubClassId = model.ArchetypeId,
+                ArchetypeId = model.ArchetypeId,
                 AlignmentId = model.AlignmentId
             };
 
@@ -204,7 +206,11 @@ namespace TavernNoticeBoard.Controllers
 
         public IActionResult Details(int pcid)
         {
-            return View();
+            var query = new GetPCQuery { PcId = pcid };
+
+            var dto = SendQuery<GetPCQuery, PlayerCharacterDTO>(query);
+
+            return View(dto);
         }
     }
 }

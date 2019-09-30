@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Database.publish.xml" />
+    <None Include="dbo\Scripts\PopulateTestPCs.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Scripts\PopulateAbility.sql" />

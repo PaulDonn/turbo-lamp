@@ -1,35 +1,33 @@
-﻿using Core.Race.DTO;
-using Core.Race.Query;
+﻿using AutoMapper;
+using Core.Races.DTO;
+using Core.Races.Query;
 using DataModel;
 using Infrastructure.CQRS;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Core.Race.QueryHandler
+namespace Core.Races.QueryHandler
 {
     public class GetRacesQueryHandler : IQueryHandler<GetRacesQuery, IEnumerable<RaceDTO>>
     {
-        private NoticeBoardContext context;
+        private NoticeBoardContext _context;
+        private IMapper _mapper;
 
-        public GetRacesQueryHandler(NoticeBoardContext _context)
+        public GetRacesQueryHandler(NoticeBoardContext context, IMapper mapper)
         {
-            context = _context;
+            _context = context;
+            _mapper = mapper;
         }
         
         IEnumerable<RaceDTO> IQueryHandler<GetRacesQuery, IEnumerable<RaceDTO>>.Handle(GetRacesQuery query)
         {
             var result = new List<RaceDTO>();
 
-            var races = context.Race.ToList();
+            var races = _context.Race.ToList();
 
             foreach(var race in races)
             {
-                result.Add(new RaceDTO
-                {
-                    Id = race.Id,
-                    Name = race.Name,
-                    Description = race.Description
-                });
+                result.Add(_mapper.Map<Race, RaceDTO>(race));
             }
 
             return result;

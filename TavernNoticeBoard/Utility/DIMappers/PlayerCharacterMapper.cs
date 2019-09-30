@@ -1,5 +1,8 @@
-﻿using Core.PlayerCharacter.Command;
-using Core.PlayerCharacter.CommandHandler;
+﻿using Core.PlayerCharacters.Command;
+using Core.PlayerCharacters.CommandHandler;
+using Core.PlayerCharacters.DTO;
+using Core.PlayerCharacters.Query;
+using Core.PlayerCharacters.QueryHandler;
 using Infrastructure.CQRS;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,6 +16,7 @@ namespace TavernNoticeBoard.Utility.DIMappers
             services.AddTransient<ICommandHandler<CreatePCCommand>, CreatePCCommandHandler>();
 
             //Query Handlers
+            services.AddTransient<IQueryHandler<GetPCQuery, PlayerCharacterDTO>, GetPCQueryHandler>();
         }
     }
 }
