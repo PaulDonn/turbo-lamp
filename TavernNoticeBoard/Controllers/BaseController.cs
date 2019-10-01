@@ -1,4 +1,5 @@
-﻿using DataModel;
+﻿using AutoMapper;
+using DataModel;
 using Infrastructure.CQRS;
 using Infrastructure.Mediator;
 using Microsoft.AspNetCore.Mvc;
@@ -9,15 +10,17 @@ namespace TavernNoticeBoard.Controllers
 {
     public abstract class BaseController : Controller
     {
-        public NoticeBoardContext DatabaseContext { get; }
-        public IConfiguration Configuration;
-        private IMediator Mediator { get; }
+        protected NoticeBoardContext _databaseContext { get; }
+        protected IConfiguration _configuration;
+        protected IMapper _mapper;
+        private IMediator _mediator { get; }
 
-        public BaseController(IMediator mediator, NoticeBoardContext databaseContext, IConfiguration configuration)
+        public BaseController(IMediator mediator, NoticeBoardContext databaseContext, IConfiguration configuration, IMapper mapper)
         {
-            Configuration = configuration;
-            Mediator = mediator;
-            DatabaseContext = databaseContext;
+            _configuration = configuration;
+            _mediator = mediator;
+            _databaseContext = databaseContext;
+            _mapper = mapper;
         }
 
         public override void OnActionExecuting(ActionExecutingContext context)
@@ -28,7 +31,7 @@ namespace TavernNoticeBoard.Controllers
         internal TResponse SendQuery<TQuery, TResponse>(TQuery query)
             where TQuery : IQuery<TResponse>
         {
-            var response = Mediator.Request<TQuery, TResponse>(query);
+            var response = _mediator.Request<TQuery, TResponse>(query);
 
             return response;
         }
@@ -36,7 +39,7 @@ namespace TavernNoticeBoard.Controllers
         internal ExecutionResult SendCommand<T>(T command)
              where T : ICommand
         {
-            var result = Mediator.Send(command);
+            var result = _mediator.Send(command);
 
             if (result.Success == false)
             {
@@ -49,7 +52,7 @@ namespace TavernNoticeBoard.Controllers
         internal ExecutionResult<U> SendCommand<T, U>(T command)
             where T : ICommand
         {
-            ExecutionResult<U> result = Mediator.Send<T, U>(command);
+            ExecutionResult<U> result = _mediator.Send<T, U>(command);
 
             if (result.Success == false)
             {

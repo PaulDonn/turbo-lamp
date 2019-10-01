@@ -1,4 +1,5 @@
-﻿using Core.Alignment.DTO;
+﻿using AutoMapper;
+using Core.Alignment.DTO;
 using Core.Alignment.Query;
 using Core.Background.DTO;
 using Core.Background.Query;
@@ -23,7 +24,7 @@ namespace TavernNoticeBoard.Controllers
 {
     public class PlayerCharacterController : BaseController
     {
-        public PlayerCharacterController(IMediator mediator, NoticeBoardContext databaseContext, IConfiguration configuration) : base(mediator, databaseContext, configuration)
+        public PlayerCharacterController(IMediator mediator, NoticeBoardContext databaseContext, IConfiguration configuration, IMapper mapper) : base(mediator, databaseContext, configuration, mapper)
         {
         }
 
@@ -210,7 +211,9 @@ namespace TavernNoticeBoard.Controllers
 
             var dto = SendQuery<GetPCQuery, PlayerCharacterDTO>(query);
 
-            return View(dto);
+            var model = _mapper.Map<PlayerCharacterDTO, PlayerCharacterModel>(dto);
+
+            return View(model);
         }
     }
 }

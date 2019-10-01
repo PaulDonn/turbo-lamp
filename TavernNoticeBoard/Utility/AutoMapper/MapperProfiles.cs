@@ -10,6 +10,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TavernNoticeBoard.Models.Alignments;
+using TavernNoticeBoard.Models.Backgrounds;
+using TavernNoticeBoard.Models.Classes;
+using TavernNoticeBoard.Models.PlayerCharacters;
+using TavernNoticeBoard.Models.Races;
 
 namespace TavernNoticeBoard.Utility.AutoMapper
 {
@@ -37,17 +42,21 @@ namespace TavernNoticeBoard.Utility.AutoMapper
         private void AlignmentMaps()
         {
             CreateMap<Alignment, AlignmentDTO>().ReverseMap();
+            CreateMap<AlignmentDTO, AlignmentModel>().ReverseMap();
         }
 
         private void BackgroundMaps()
         {
             CreateMap<Background, BackgroundDTO>().ReverseMap();
+            CreateMap<BackgroundDTO, BackgroundModel>().ReverseMap();
         }
 
         private void ClassMaps()
         {
             CreateMap<Class, ClassDTO>().ReverseMap();
+            CreateMap<ClassDTO, ClassModel>().ReverseMap();
             CreateMap<Archetype, ArchetypeDTO>().ReverseMap();
+            CreateMap<ArchetypeDTO, ArchetypeModel>().ReverseMap();
         }
 
         //TODO: FeatureMaps
@@ -66,6 +75,7 @@ namespace TavernNoticeBoard.Utility.AutoMapper
             CreateMap<PlayerCharacter, PlayerCharacterDTO>()
                 .ForMember(dest => dest.PlayerClass, opts => opts.MapFrom(src => src.Class))
                 .ReverseMap();
+            CreateMap<PlayerCharacterDTO, PlayerCharacterModel>().ReverseMap();
         }
 
         private void RaceMaps()
@@ -74,7 +84,9 @@ namespace TavernNoticeBoard.Utility.AutoMapper
                 .ForMember(dest => dest.HasSubRace, opts => opts.MapFrom(src => src.SubRace.Any()))
                 .ForMember(dest => dest.Languages, opts => opts.MapFrom(src => src.RaceLanguage.Select(n => n.LanguageId).ToList()))
                 .ReverseMap();
+            CreateMap<RaceDTO, RaceModel>().ReverseMap();
             CreateMap<SubRace, SubRaceDTO>().ReverseMap();
+            CreateMap<SubRaceDTO, SubRaceModel>().ReverseMap();
         }
 
         //TODO: SkillMaps
