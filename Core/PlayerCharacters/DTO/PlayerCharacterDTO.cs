@@ -1,7 +1,9 @@
-﻿using Core.Alignment.DTO;
+﻿using Core.Ability.DTO;
+using Core.Alignment.DTO;
 using Core.Background.DTO;
 using Core.Class.DTO;
 using Core.Races.DTO;
+using System.Collections.Generic;
 
 namespace Core.PlayerCharacters.DTO
 {
@@ -14,11 +16,14 @@ namespace Core.PlayerCharacters.DTO
             Background = new BackgroundDTO();
             Race = new RaceDTO();
             Alignment = new AlignmentDTO();
+            PcAbilityScores = new List<PcAbilityScoreDTO>();
         }
 
         public int Id { get; set; }
 
         public string CharacterName { get; set; }
+
+        public List<PcAbilityScoreDTO> PcAbilityScores { get; set; }
 
         public ClassDTO PlayerClass { get; set; }
 

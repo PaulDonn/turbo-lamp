@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Ability.DTO;
 using Core.Alignment.DTO;
 using Core.Background.DTO;
 using Core.Class.DTO;
@@ -10,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TavernNoticeBoard.Models.Abilities;
 using TavernNoticeBoard.Models.Alignments;
 using TavernNoticeBoard.Models.Backgrounds;
 using TavernNoticeBoard.Models.Classes;
@@ -22,7 +24,8 @@ namespace TavernNoticeBoard.Utility.AutoMapper
     {
         public MapperProfiles()
         {
-            //AbilityMaps();
+
+            AbilityMaps();
             AlignmentMaps();
             BackgroundMaps();
             ClassMaps();
@@ -33,11 +36,13 @@ namespace TavernNoticeBoard.Utility.AutoMapper
             //SkillMaps();
         }
 
-        //TODO: AbilityMaps
-        //private void AbilityMaps()
-        //{
-        //    CreateMap<Ability, AbilityDTO>();
-        //}
+        private void AbilityMaps()
+        {
+            CreateMap<Ability, AbilityDTO>().ReverseMap();
+            CreateMap<AbilityDTO, AbilityModel>().ReverseMap();
+            CreateMap<PcAbilityScore, PcAbilityScoreDTO>().ReverseMap();
+            CreateMap<PcAbilityScoreDTO, PcAbilityScoreModel>().ReverseMap();
+        }
 
         private void AlignmentMaps()
         {
@@ -74,6 +79,7 @@ namespace TavernNoticeBoard.Utility.AutoMapper
         {
             CreateMap<PlayerCharacter, PlayerCharacterDTO>()
                 .ForMember(dest => dest.PlayerClass, opts => opts.MapFrom(src => src.Class))
+                .ForMember(dest => dest.PcAbilityScores, opts => opts.MapFrom(src => src.PcAbilityScore))
                 .ReverseMap();
             CreateMap<PlayerCharacterDTO, PlayerCharacterModel>().ReverseMap();
         }

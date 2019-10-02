@@ -118,7 +118,6 @@ namespace TavernNoticeBoard.Controllers
         {
             var langagesQuery = new GetLanguagesQuery { Filter = filter, IsExotic = isExotic };
             var languagesDto = SendQuery<GetLanguagesQuery, IEnumerable<LanguageDTO>>(langagesQuery);
-            //var languages = new SelectList(languagesDto, nameof(LanguageDTO.Id), nameof(LanguageDTO.Name));
 
             return Json(languagesDto);
         }

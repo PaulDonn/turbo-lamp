@@ -7,7 +7,6 @@
   <ItemGroup>
     <Folder Include="Ability\CommandHandler\" />
     <Folder Include="Ability\Command\" />
-    <Folder Include="Ability\DTO\" />
     <Folder Include="Ability\QueryHandler\" />
     <Folder Include="Ability\Query\" />
     <Folder Include="Class\CommandHandler\" />

@@ -28,7 +28,9 @@ namespace Core.PlayerCharacters.QueryHandler
         {
             var dto = new PlayerCharacterDTO();
 
-            var pc = _context.PlayerCharacter.Include(n => n.Class)
+            var pc = _context.PlayerCharacter.Include(n => n.PcAbilityScore)
+                                             .ThenInclude(n => n.Ability)
+                                             .Include(n => n.Class)
                                              .ThenInclude(n => n.Archetype)
                                              .Include(n => n.Alignment)
                                              .Include(n => n.Background)

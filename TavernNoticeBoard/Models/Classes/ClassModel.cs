@@ -1,13 +1,17 @@
-﻿namespace TavernNoticeBoard.Models.Classes
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace TavernNoticeBoard.Models.Classes
 {
     public class ClassModel
     {
         public int Id { get; set; }
 
+        [Display(Name = "Class")]
         public string Name { get; set; }
 
         public string Description { get; set; }
 
+        [Display(Name = "Hit Die")]
         public string HitDie { get; set; }
 
         public string ArchetypeTypeName { get; set; }

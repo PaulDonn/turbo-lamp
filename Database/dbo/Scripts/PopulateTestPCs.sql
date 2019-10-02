@@ -42,3 +42,61 @@ INSERT INTO [dbo].[PlayerCharacter]
            ,1  --PartyId
 		   )
 GO
+
+INSERT INTO [dbo].[PcAbilityScore]
+           ([PcId]
+           ,[AbilityId]
+           ,[Score])
+     VALUES
+	 --Level 1 PC
+           (1--PcId
+		   ,1--AbilityId
+           ,8--Score
+		   ),
+		   (1--PcId
+		   ,2--AbilityId
+           ,10--Score
+		   ),
+		   (1--PcId
+		   ,3--AbilityId
+           ,12--Score
+		   ),
+		   (1--PcId
+		   ,4--AbilityId
+           ,13--Score
+		   ),
+		   (1--PcId
+		   ,5--AbilityId
+           ,14--Score
+		   ),
+		   (1--PcId
+		   ,6--AbilityId
+           ,15--Score
+		   ),
+
+		--Level 3 PC
+		   (2--PcId
+		   ,1--AbilityId
+           ,15--Score
+		   ),
+		   (2--PcId
+		   ,2--AbilityId
+           ,13--Score
+		   ),
+		   (2--PcId
+		   ,3--AbilityId
+           ,14--Score
+		   ),
+		   (2--PcId
+		   ,4--AbilityId
+           ,8--Score
+		   ),
+		   (2--PcId
+		   ,5--AbilityId
+           ,10--Score
+		   ),
+		   (2--PcId
+		   ,6--AbilityId
+           ,12--Score
+		   )
+GO

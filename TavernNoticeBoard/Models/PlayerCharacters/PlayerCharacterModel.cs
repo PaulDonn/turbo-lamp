@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using TavernNoticeBoard.Models.Alignments;
@@ -22,10 +23,13 @@ namespace TavernNoticeBoard.Models.PlayerCharacters
 
         public int Id { get; set; }
 
+        [Display(Name = "Name")]
         public string CharacterName { get; set; }
 
+        [Display(Name = "Level")]
         public int LevelId { get; set; }
 
+        [Display(Name = "Experience Points")]
         public int ExperiencePoints { get; set; }
 
         public ClassModel PlayerClass { get; set; }
