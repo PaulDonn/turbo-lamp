@@ -42,6 +42,11 @@ namespace TavernNoticeBoard.Utility.AutoMapper
             CreateMap<AbilityDTO, AbilityModel>().ReverseMap();
             CreateMap<PcAbilityScore, PcAbilityScoreDTO>().ReverseMap();
             CreateMap<PcAbilityScoreDTO, PcAbilityScoreModel>().ReverseMap();
+            CreateMap<PcSavingThrow, PcSavingThrowDTO>().ReverseMap();
+            CreateMap<Skill, SkillDTO>().ReverseMap();
+            CreateMap<SkillDTO, SkillModel>().ReverseMap();
+            CreateMap<PcSkill, PcSkillDTO>().ReverseMap();
+            CreateMap<PcSkillDTO, PcSkillModel>().ReverseMap();
         }
 
         private void AlignmentMaps()
@@ -79,9 +84,16 @@ namespace TavernNoticeBoard.Utility.AutoMapper
         {
             CreateMap<PlayerCharacter, PlayerCharacterDTO>()
                 .ForMember(dest => dest.PlayerClass, opts => opts.MapFrom(src => src.Class))
-                .ForMember(dest => dest.PcAbilityScores, opts => opts.MapFrom(src => src.PcAbilityScore))
+                .ForMember(dest => dest.AbilityScores, opts => opts.MapFrom(src => src.PcAbilityScore))
+                .ForMember(dest => dest.SavingThrows, opts => opts.MapFrom(src => src.PcSavingThrow))
+                .ForMember(dest => dest.Skills, opts => opts.MapFrom(src => src.PcSkill))
                 .ReverseMap();
-            CreateMap<PlayerCharacterDTO, PlayerCharacterModel>().ReverseMap();
+            CreateMap<PlayerCharacterDTO, PlayerCharacterModel>()
+                .ForMember(dest => dest.SavingThrows, opts => opts.MapFrom(src => src.SavingThrows.Select(n => n.AbilityId)))
+                .ForMember(dest => dest.PlayerSkills, opts => opts.MapFrom(src => src.Skills.Select(n => n.SkillId)))
+                .ForMember(dest => dest.Abilities, opts => opts.Ignore())
+                .ForMember(dest => dest.Skills, opts => opts.Ignore())
+                .ReverseMap();
         }
 
         private void RaceMaps()
@@ -94,11 +106,5 @@ namespace TavernNoticeBoard.Utility.AutoMapper
             CreateMap<SubRace, SubRaceDTO>().ReverseMap();
             CreateMap<SubRaceDTO, SubRaceModel>().ReverseMap();
         }
-
-        //TODO: SkillMaps
-        //private void SkillMaps()
-        //{
-        //    CreateMap<Skill, SkillDTO>().ReverseMap();
-        //}
     }
 }

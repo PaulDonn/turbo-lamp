@@ -18,6 +18,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
+using System.Linq;
+using TavernNoticeBoard.Models.Abilities;
 using TavernNoticeBoard.Models.PlayerCharacters;
 
 namespace TavernNoticeBoard.Controllers
@@ -211,6 +213,9 @@ namespace TavernNoticeBoard.Controllers
             var dto = SendQuery<GetPCQuery, PlayerCharacterDTO>(query);
 
             var model = _mapper.Map<PlayerCharacterDTO, PlayerCharacterModel>(dto);
+
+            model.Abilities = _databaseContext.Ability.OrderBy(n => n.Id).ToList();
+            model.Skills = _databaseContext.Skill.OrderBy(n => n.Id).ToList();
 
             return View(model);
         }

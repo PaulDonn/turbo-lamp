@@ -28,6 +28,7 @@ namespace DataModel
         public virtual DbSet<PcAbilityScore> PcAbilityScore { get; set; }
         public virtual DbSet<PcFeature> PcFeature { get; set; }
         public virtual DbSet<PcLanguage> PcLanguage { get; set; }
+        public virtual DbSet<PcSavingThrow> PcSavingThrow { get; set; }
         public virtual DbSet<PcSkill> PcSkill { get; set; }
         public virtual DbSet<PlayerCharacter> PlayerCharacter { get; set; }
         public virtual DbSet<Race> Race { get; set; }
@@ -165,6 +166,21 @@ namespace DataModel
                     .HasForeignKey(d => d.PcId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PcLanguage_PlayerCharacter");
+            });
+
+            modelBuilder.Entity<PcSavingThrow>(entity =>
+            {
+                entity.HasOne(d => d.Ability)
+                    .WithMany(p => p.PcSavingThrow)
+                    .HasForeignKey(d => d.AbilityId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PcSavingThrow_Ability");
+
+                entity.HasOne(d => d.Pc)
+                    .WithMany(p => p.PcSavingThrow)
+                    .HasForeignKey(d => d.PcId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PcSavingThrow_PlayerCharacter");
             });
 
             modelBuilder.Entity<PcSkill>(entity =>

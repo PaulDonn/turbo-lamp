@@ -12,6 +12,7 @@ namespace DataModel
             PcAbilityScore = new HashSet<PcAbilityScore>();
             PcFeature = new HashSet<PcFeature>();
             PcLanguage = new HashSet<PcLanguage>();
+            PcSavingThrow = new HashSet<PcSavingThrow>();
             PcSkill = new HashSet<PcSkill>();
         }
 
@@ -57,6 +58,8 @@ namespace DataModel
         public ICollection<PcFeature> PcFeature { get; set; }
         [InverseProperty("Pc")]
         public ICollection<PcLanguage> PcLanguage { get; set; }
+        [InverseProperty("Pc")]
+        public ICollection<PcSavingThrow> PcSavingThrow { get; set; }
         [InverseProperty("Pc")]
         public ICollection<PcSkill> PcSkill { get; set; }
     }

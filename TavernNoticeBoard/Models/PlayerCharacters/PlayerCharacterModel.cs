@@ -1,8 +1,10 @@
-﻿using System;
+﻿using DataModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using TavernNoticeBoard.Models.Abilities;
 using TavernNoticeBoard.Models.Alignments;
 using TavernNoticeBoard.Models.Backgrounds;
 using TavernNoticeBoard.Models.Classes;
@@ -19,9 +21,23 @@ namespace TavernNoticeBoard.Models.PlayerCharacters
             Background = new BackgroundModel();
             Race = new RaceModel();
             Alignment = new AlignmentModel();
+            AbilityScores = new List<PcAbilityScoreModel>();
+            SavingThrows = new List<int>();
+            PlayerSkills = new List<int>();
         }
 
         public int Id { get; set; }
+
+        public int ProficiencyBonus { get
+            {
+                if (LevelId >= 17) return 6;
+                if (LevelId >= 13) return 5;
+                if (LevelId >= 9) return 4;
+                if (LevelId >= 5) return 3;
+                if (LevelId >= 1) return 2;
+                return 0;
+            }
+        }
 
         [Display(Name = "Name")]
         public string CharacterName { get; set; }
@@ -43,5 +59,15 @@ namespace TavernNoticeBoard.Models.PlayerCharacters
         public SubRaceModel SubRace { get; set; }
 
         public AlignmentModel Alignment { get; set; }
+
+        public List<PcAbilityScoreModel> AbilityScores { get; set; }
+
+        public List<int> SavingThrows { get; set; }
+
+        public List<int> PlayerSkills { get; set; }
+
+        public List<Ability> Abilities { get; set; }
+
+        public List<Skill> Skills { get; set; }
     }
 }
