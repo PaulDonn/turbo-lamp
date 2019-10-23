@@ -1,0 +1,24 @@
+﻿CREATE TABLE [dbo].[PcSpell](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PcId] [int] NOT NULL,
+	[SpellId] [int] NOT NULL,
+ CONSTRAINT [PK_PcSpell] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[PcSpell]  WITH CHECK ADD  CONSTRAINT [FK_PcSpell_PlayerCharacter] FOREIGN KEY([PcId])
+REFERENCES [dbo].[PlayerCharacter] ([Id])
+GO
+
+ALTER TABLE [dbo].[PcSpell] CHECK CONSTRAINT [FK_PcSpell_PlayerCharacter]
+GO
+
+ALTER TABLE [dbo].[PcSpell]  WITH CHECK ADD  CONSTRAINT [FK_PcSpell_Spell] FOREIGN KEY([SpellId])
+REFERENCES [dbo].[Spell] ([Id])
+GO
+
+ALTER TABLE [dbo].[PcSpell] CHECK CONSTRAINT [FK_PcSpell_Spell]
+GO

@@ -13,6 +13,7 @@ namespace DataModel
             RaceLanguage = new HashSet<RaceLanguage>();
         }
 
+        [Key]
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
@@ -26,8 +27,8 @@ namespace DataModel
         public bool IsExotic { get; set; }
 
         [InverseProperty("Language")]
-        public ICollection<PcLanguage> PcLanguage { get; set; }
+        public virtual ICollection<PcLanguage> PcLanguage { get; set; }
         [InverseProperty("Language")]
-        public ICollection<RaceLanguage> RaceLanguage { get; set; }
+        public virtual ICollection<RaceLanguage> RaceLanguage { get; set; }
     }
 }

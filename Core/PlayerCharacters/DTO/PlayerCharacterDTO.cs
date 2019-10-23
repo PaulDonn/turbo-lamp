@@ -2,6 +2,7 @@
 using Core.Alignment.DTO;
 using Core.Background.DTO;
 using Core.Class.DTO;
+using Core.Player.DTO;
 using Core.Races.DTO;
 using System.Collections.Generic;
 
@@ -19,6 +20,7 @@ namespace Core.PlayerCharacters.DTO
             AbilityScores = new List<PcAbilityScoreDTO>();
             SavingThrows = new List<PcSavingThrowDTO>();
             Skills = new List<PcSkillDTO>();
+            Player = new PlayerDTO();
         }
 
         public int Id { get; set; }
@@ -49,6 +51,8 @@ namespace Core.PlayerCharacters.DTO
         public List<PcSavingThrowDTO> SavingThrows { get; set; }
 
         public List<PcSkillDTO> Skills { get; set; }
+
+        public PlayerDTO Player { get; set; }
 
         //TODO: Add PartyDTO 
         //public PartyDTO Party { get; set; }

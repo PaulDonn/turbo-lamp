@@ -37,6 +37,7 @@ namespace Core.PlayerCharacters.QueryHandler
                                              .Include(n => n.Background)
                                              .Include(n => n.Race)
                                              .Include(n => n.SubRace)
+                                             .Include(n => n.Player)
                                              .Include(n => n.Party)
                                              .Include(n => n.PcSkill)
                                             .SingleOrDefault(n => n.Id == query.PcId);

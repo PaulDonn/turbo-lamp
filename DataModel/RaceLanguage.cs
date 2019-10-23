@@ -7,15 +7,16 @@ namespace DataModel
 {
     public partial class RaceLanguage
     {
+        [Key]
         public int Id { get; set; }
         public int RaceId { get; set; }
         public int LanguageId { get; set; }
 
-        [ForeignKey("LanguageId")]
+        [ForeignKey(nameof(LanguageId))]
         [InverseProperty("RaceLanguage")]
-        public Language Language { get; set; }
-        [ForeignKey("RaceId")]
+        public virtual Language Language { get; set; }
+        [ForeignKey(nameof(RaceId))]
         [InverseProperty("RaceLanguage")]
-        public Race Race { get; set; }
+        public virtual Race Race { get; set; }
     }
 }

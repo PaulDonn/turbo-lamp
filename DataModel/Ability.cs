@@ -14,6 +14,7 @@ namespace DataModel
             Skill = new HashSet<Skill>();
         }
 
+        [Key]
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
@@ -23,10 +24,10 @@ namespace DataModel
         public string Code { get; set; }
 
         [InverseProperty("Ability")]
-        public ICollection<PcAbilityScore> PcAbilityScore { get; set; }
+        public virtual ICollection<PcAbilityScore> PcAbilityScore { get; set; }
         [InverseProperty("Ability")]
-        public ICollection<PcSavingThrow> PcSavingThrow { get; set; }
+        public virtual ICollection<PcSavingThrow> PcSavingThrow { get; set; }
         [InverseProperty("Ability")]
-        public ICollection<Skill> Skill { get; set; }
+        public virtual ICollection<Skill> Skill { get; set; }
     }
 }

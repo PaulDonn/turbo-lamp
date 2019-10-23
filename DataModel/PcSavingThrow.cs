@@ -7,15 +7,16 @@ namespace DataModel
 {
     public partial class PcSavingThrow
     {
+        [Key]
         public int Id { get; set; }
         public int PcId { get; set; }
         public int AbilityId { get; set; }
 
-        [ForeignKey("AbilityId")]
+        [ForeignKey(nameof(AbilityId))]
         [InverseProperty("PcSavingThrow")]
-        public Ability Ability { get; set; }
-        [ForeignKey("PcId")]
-        [InverseProperty("PcSavingThrow")]
-        public PlayerCharacter Pc { get; set; }
+        public virtual Ability Ability { get; set; }
+        [ForeignKey(nameof(PcId))]
+        [InverseProperty(nameof(PlayerCharacter.PcSavingThrow))]
+        public virtual PlayerCharacter Pc { get; set; }
     }
 }

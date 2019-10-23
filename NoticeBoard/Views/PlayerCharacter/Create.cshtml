@@ -1,0 +1,205 @@
+﻿@model NoticeBoard.Models.PlayerCharacters.CreatePlayerCharacterModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+<hr />
+<div class="row" id="createCharacter">
+    <div class="col-md-4">
+        @*buttons*@
+        <div class="btn btn-primary" v-if="pageNo > 1" v-on:click="previous">Previous</div>
+        <div class="btn btn-primary pull-right" v-if="pageNo < 14" v-on:click="next">Next</div>
+        <div class="btn btn-primary pull-right" v-if="pageNo === 14" v-on:click="finish">Finish</div>
+        @*page 1 - Race*@
+        <div v-if="pageNo==1">
+            <label asp-for="RaceId" class="control-label"></label><span class="requiredFieldMarker">*</span>
+            <span asp-validation-for="RaceId" class="text-danger"></span>
+            <div v-for="race in races">
+                <input type="radio" name="race" :value="race.value" v-model="raceId" v-on:change="updateRaceInfo(true)">
+                <label>{{race.text}}</label>
+            </div>
+        </div>
+        @*page 2 - SubRace*@
+        <div v-if="pageNo==2">
+            <div class="form-group">
+                <label asp-for="SubRaceId" class="control-label"></label><span class="requiredFieldMarker">*</span>
+                <span asp-validation-for="SubRaceId" class="text-danger"></span>
+                <div v-for="subRace in subRaces">
+                    <input type="radio" name="subRace" :value="subRace.value" v-model="subRaceId" v-on:change="updateSubRaceInfo(true)">
+                    <label>{{subRace.text}}</label>
+                </div>
+            </div>
+        </div>
+        @*page 3 - Class*@
+        <div v-if="pageNo==3">
+            <div class="form-group">
+                <label asp-for="ClassId" class="control-label"></label><span class="requiredFieldMarker">*</span>
+                <span asp-validation-for="ClassId" class="text-danger"></span>
+                <div v-for="playerClass in classes">
+                    <input type="radio" name="playerClass" :value="playerClass.value" v-model="classId" v-on:change="updateClassInfo(true)">
+                    <label>{{playerClass.text}}</label>
+                </div>
+            </div>
+        </div>
+        @*page 4 - Archetype*@
+        <div v-if="pageNo==4">
+            <div v-if="archetypeStartingLevel == 1" class="form-group">
+                <label class="control-label">{{archetypeTypeName}}</label><span class="requiredFieldMarker">*</span>
+                <div>{{archetypeTypeDescription}}</div>
+                <span asp-validation-for="ArchetypeId" class="text-danger"></span>
+                <div v-for="archetype in archetypes">
+                    <input type="radio" name="archetype" :value="archetype.value" v-model="archetypeId" v-on:change="updateArchetypeInfo(true)">
+                    <label>{{archetype.text}}</label>
+                </div>
+            </div>
+        </div>
+        @*page 5 - Background*@
+        <div v-if="pageNo==5">
+            <div class="form-group">
+                <label asp-for="BackgroundId" class="control-label"></label><span class="requiredFieldMarker">*</span>
+                <span asp-validation-for="BackgroundId" class="text-danger"></span>
+                <div v-for="background in backgrounds">
+                    <input type="radio" name="background" :value="background.value" v-model="backgroundId" v-on:change="updateBackgroundInfo(true)">
+                    <label>{{background.text}}</label>
+                </div>
+            </div>
+        </div>
+        @*page 6 - Alignment*@
+        <div v-if="pageNo==6">
+            <div class="form-group">
+                <label asp-for="AlignmentId" class="control-label"></label><span class="requiredFieldMarker">*</span>
+                <span asp-validation-for="AlignmentId" class="text-danger"></span>
+                <div v-for="alignment in alignments">
+                    <input type="radio" name="alignment" :value="alignment.value" v-model="alignmentId" v-on:change="updateAlignmentInfo(true)">
+                    <label>{{alignment.text}}</label>
+                </div>
+            </div>
+        </div>
+        @*page 7 - Languages*@
+        <div v-if="pageNo==7">
+            <div v-if="maxLanguages - selectedLanguages.length > 0"><strong>Select {{maxLanguages - selectedLanguages.length}} more languages</strong></div>
+            <div v-if="maxLanguages - selectedLanguages.length <= 0"><strong>All languages selected</strong></div>
+            <div class="form-group">
+                <label class="control-label">Standard Langauges</label>
+                <div v-for="language in standardLanguages">
+                    <input type="checkbox" :value="language.id" v-model="selectedLanguages" :disabled="mandatoryLanguages.includes(language.id) || (selectedLanguages.length >= maxLanguages && !selectedLanguages.includes(language.id))">
+                    <label>{{language.name}}</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Exotic Langauges</label>
+                <div v-for="language in exoticLanguages">
+                    <input type="checkbox" :value="language.id" v-model="selectedLanguages" :disabled="mandatoryLanguages.includes(language.id) || (selectedLanguages.length >= maxLanguages && !selectedLanguages.includes(language.id))">
+                    <label>{{language.name}}</label>
+                </div>
+            </div>
+        </div>
+        @*page 8 - Skills*@
+        <div v-if="pageNo==8"></div>
+        @*page 9 - Features*@
+        <div v-if="pageNo==9"></div>
+        @*page 10 - Cantrips*@
+        <div v-if="pageNo==10"></div>
+        @*page 11 - Spells*@
+        <div v-if="pageNo==11"></div>
+        @*page 12 - Personality*@
+        <div v-if="pageNo==12">
+            <div class="form-group">
+                <label asp-for="PersonalityTraits" class="control-label"></label>
+                <input v-model="personalityTraits" asp-for="PersonalityTraits" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Ideals" class="control-label"></label>
+                <input v-model="ideals" asp-for="Ideals" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Bonds" class="control-label"></label>
+                <input v-model="bonds" asp-for="Bonds" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Flaws" class="control-label"></label>
+                <input v-model="flaws" asp-for="Flaws" class="form-control" />
+            </div>
+        </div>
+        @*page 13 - Appearance*@
+        <div v-if="pageNo==13">
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input v-model="age" asp-for="Age" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input v-model="gender" asp-for="Gender" class="form-control" />
+            </div>
+            <div class="form-group">
+                <div>
+                    <label class="control-label">Height</label>
+                </div>
+                <div class="col-md-5">
+                    <input v-model="heightFt" asp-for="HeightFt" class="form-control" />
+                </div>
+                <div class="col-md-1">
+                    <label asp-for="HeightFt" class="control-label"></label>
+                </div>
+                <div class="col-md-5">
+                    <input v-model="heightIn" asp-for="HeightIn" class="form-control" />
+                </div>
+                <div class="col-md-1">
+                    <label asp-for="HeightIn" class="control-label"></label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weight" class="control-label"></label>
+                <input v-model="weight" asp-for="Weight" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="SkinColour" class="control-label"></label>
+                <input v-model="skinColour" asp-for="SkinColour" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="HairColour" class="control-label"></label>
+                <input v-model="hairColour" asp-for="HairColour" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="EyeColour" class="control-label"></label>
+                <input v-model="eyeColour" asp-for="EyeColour" class="form-control" />
+            </div>
+        </div>
+        @*page 14 - Confirmation*@
+        <div v-if="pageNo==14">
+            <div class="form-group">
+                <label asp-for="CharacterName" class="control-label"></label><span class="requiredFieldMarker">*</span>
+                <input v-model="name" asp-for="CharacterName" class="form-control" />
+                <span asp-validation-for="CharacterName" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="col-md-6">
+            <img v-if="pageNo == 1 && raceName" class="resize" :src="'/images/race/' + raceName + '.png'" />
+            <img v-if="pageNo == 2 && subRaceName" class="resize" :src="'/images/race/' + subRaceName + '.png'" />
+            <img v-if="pageNo == 3 && className" class="resize" :src="'/images/class/' + className + '.png'" />
+            <img v-if="pageNo == 4 && archetypeName" class="resize" :src="'/images/class/' + archetypeName + '.png'" />
+            <img v-if="pageNo == 5 && backgroundName" class="resize" :src="'/images/background/' + backgroundName + '.png'" />
+            <img v-if="pageNo == 6" class="resize" :src="'/images/alignment/cosmology.png'" />
+        </div>
+        <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-heading">
+                    <strong>{{panelHeading}}</strong>
+                </div>
+                <div class="panel-body">
+                    <div v-html="panelDescription"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="application/javascript" asp-append-version="true" src="~/js/vue.js"></script>
+    <script type="application/javascript" asp-append-version="true" src="~/js/CreatePC.js"></script>
+}

@@ -14,6 +14,7 @@ namespace DataModel
             SubRace = new HashSet<SubRace>();
         }
 
+        [Key]
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
@@ -24,10 +25,10 @@ namespace DataModel
         public int? AdditionalSkills { get; set; }
 
         [InverseProperty("Race")]
-        public ICollection<PlayerCharacter> PlayerCharacter { get; set; }
+        public virtual ICollection<PlayerCharacter> PlayerCharacter { get; set; }
         [InverseProperty("Race")]
-        public ICollection<RaceLanguage> RaceLanguage { get; set; }
+        public virtual ICollection<RaceLanguage> RaceLanguage { get; set; }
         [InverseProperty("Race")]
-        public ICollection<SubRace> SubRace { get; set; }
+        public virtual ICollection<SubRace> SubRace { get; set; }
     }
 }

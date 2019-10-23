@@ -9,6 +9,8 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
+:r .\"PopulateSpellSchool.sql"
+:r .\"PopulateSpell_0.sql"
 :r .\"PopulateAbility.sql"
 :r .\"PopulateSkill.sql"
 :r .\"PopulateAlignment.sql"

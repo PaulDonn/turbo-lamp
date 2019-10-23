@@ -4,6 +4,14 @@
            ('Test Party 1')
 GO
 
+INSERT INTO [dbo].[Player]
+           ([Name])
+     VALUES
+           ('Player 1')
+          ,('Player 2')
+          ,('Player 3')
+GO
+
 INSERT INTO [dbo].[PlayerCharacter]
            ([CharacterName]
            ,[ClassId]

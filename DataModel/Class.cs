@@ -14,6 +14,7 @@ namespace DataModel
             PlayerCharacter = new HashSet<PlayerCharacter>();
         }
 
+        [Key]
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
@@ -30,10 +31,10 @@ namespace DataModel
         public int NumberOfStartingSkills { get; set; }
 
         [InverseProperty("Class")]
-        public ICollection<Archetype> Archetype { get; set; }
+        public virtual ICollection<Archetype> Archetype { get; set; }
         [InverseProperty("Class")]
-        public ICollection<ClassSkill> ClassSkill { get; set; }
+        public virtual ICollection<ClassSkill> ClassSkill { get; set; }
         [InverseProperty("Class")]
-        public ICollection<PlayerCharacter> PlayerCharacter { get; set; }
+        public virtual ICollection<PlayerCharacter> PlayerCharacter { get; set; }
     }
 }

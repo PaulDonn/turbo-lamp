@@ -30,6 +30,7 @@ namespace DataModel
         public virtual DbSet<PcLanguage> PcLanguage { get; set; }
         public virtual DbSet<PcSavingThrow> PcSavingThrow { get; set; }
         public virtual DbSet<PcSkill> PcSkill { get; set; }
+        public virtual DbSet<Player> Player { get; set; }
         public virtual DbSet<PlayerCharacter> PlayerCharacter { get; set; }
         public virtual DbSet<Race> Race { get; set; }
         public virtual DbSet<RaceLanguage> RaceLanguage { get; set; }
@@ -227,6 +228,12 @@ namespace DataModel
                     .HasForeignKey(d => d.PartyId)
                     .HasConstraintName("FK_PlayerCharacter_Party");
 
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PlayerCharacter)
+                    .HasForeignKey(d => d.PlayerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PlayerCharacter_Player");
+
                 entity.HasOne(d => d.Race)
                     .WithMany(p => p.PlayerCharacter)
                     .HasForeignKey(d => d.RaceId)
@@ -293,6 +300,10 @@ namespace DataModel
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_SubRace_Race");
             });
+
+            OnModelCreatingPartial(modelBuilder);
         }
+
+        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
