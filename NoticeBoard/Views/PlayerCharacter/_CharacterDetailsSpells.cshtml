@@ -33,12 +33,23 @@
                         <div class="row">
                             <div class="col-2">
                                 @if (i == 0)
-                                {<strong>Cantrips</strong>}
+                                {
+                                    <strong>Cantrips</strong>
+                                }
                                 else
-                                {<strong>Level @i</strong>}
+                                {
+                                    <strong>Level @i</strong>
+                                }
                             </div>
                             <div class="col-2">
-                                <strong>Spell Slots: ∞</strong>
+                                @if (i == 0)
+                                {
+                                    <strong>Spell Slots: ∞</strong>
+                                }
+                                else
+                                {
+                                    <strong>Spell Slots: @Model.SpellSlots[i]</strong>
+                                }
                             </div>
                             <div class="col-8">
                                 <strong>Slots Remaining: ∞</strong>

@@ -104,6 +104,18 @@ namespace NoticeBoard.Utility.AutoMapper
             CreateMap<PlayerCharacterDTO, PlayerCharacterModel>()
                 .ForMember(dest => dest.SavingThrows, opts => opts.MapFrom(src => src.SavingThrows.Select(n => n.AbilityId)))
                 .ForMember(dest => dest.PlayerSkills, opts => opts.MapFrom(src => src.Skills.Select(n => n.SkillId)))
+                .ForMember(dest => dest.SpellSlots, opts => opts.MapFrom(src => new Dictionary<int, int>()
+                    {
+                        { 1, src.Level1Slots },
+                        { 2, src.Level2Slots },
+                        { 3, src.Level3Slots },
+                        { 4, src.Level4Slots },
+                        { 5, src.Level5Slots },
+                        { 6, src.Level6Slots },
+                        { 7, src.Level7Slots },
+                        { 8, src.Level8Slots },
+                        { 9, src.Level9Slots },
+                    }))
                 .ForMember(dest => dest.Abilities, opts => opts.Ignore())
                 .ForMember(dest => dest.Skills, opts => opts.Ignore())
                 .ReverseMap();

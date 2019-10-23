@@ -34,6 +34,15 @@ namespace DataModel
         public int? PartyId { get; set; }
         public int HitPointMaximum { get; set; }
         public int HitPointCurrent { get; set; }
+        public int Level1Slots { get; set; }
+        public int Level2Slots { get; set; }
+        public int Level3Slots { get; set; }
+        public int Level4Slots { get; set; }
+        public int Level5Slots { get; set; }
+        public int Level6Slots { get; set; }
+        public int Level7Slots { get; set; }
+        public int Level8Slots { get; set; }
+        public int Level9Slots { get; set; }
 
         [ForeignKey(nameof(AlignmentId))]
         [InverseProperty("PlayerCharacter")]

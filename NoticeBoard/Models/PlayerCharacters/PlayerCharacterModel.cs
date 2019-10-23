@@ -90,6 +90,6 @@ namespace NoticeBoard.Models.PlayerCharacters
 
         public int HitDieCurrent { get; set; }
 
-
+        public Dictionary<int, int> SpellSlots { get; set; }
     }
 }
