@@ -13,6 +13,7 @@ namespace DataModel
             SubFeature = new HashSet<SubFeature>();
         }
 
+        [Key]
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
@@ -24,8 +25,8 @@ namespace DataModel
         public string Code { get; set; }
 
         [InverseProperty("Feature")]
-        public ICollection<PcFeature> PcFeature { get; set; }
+        public virtual ICollection<PcFeature> PcFeature { get; set; }
         [InverseProperty("Feature")]
-        public ICollection<SubFeature> SubFeature { get; set; }
+        public virtual ICollection<SubFeature> SubFeature { get; set; }
     }
 }

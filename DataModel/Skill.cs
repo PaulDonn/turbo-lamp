@@ -14,20 +14,21 @@ namespace DataModel
             PcSkill = new HashSet<PcSkill>();
         }
 
+        [Key]
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
         public int AbilityId { get; set; }
 
-        [ForeignKey("AbilityId")]
+        [ForeignKey(nameof(AbilityId))]
         [InverseProperty("Skill")]
-        public Ability Ability { get; set; }
+        public virtual Ability Ability { get; set; }
         [InverseProperty("Skill")]
-        public ICollection<BgSkill> BgSkill { get; set; }
+        public virtual ICollection<BgSkill> BgSkill { get; set; }
         [InverseProperty("Skill")]
-        public ICollection<ClassSkill> ClassSkill { get; set; }
+        public virtual ICollection<ClassSkill> ClassSkill { get; set; }
         [InverseProperty("Skill")]
-        public ICollection<PcSkill> PcSkill { get; set; }
+        public virtual ICollection<PcSkill> PcSkill { get; set; }
     }
 }

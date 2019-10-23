@@ -12,9 +12,11 @@ namespace DataModel
             PcAbilityScore = new HashSet<PcAbilityScore>();
             PcFeature = new HashSet<PcFeature>();
             PcLanguage = new HashSet<PcLanguage>();
+            PcSavingThrow = new HashSet<PcSavingThrow>();
             PcSkill = new HashSet<PcSkill>();
         }
 
+        [Key]
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
@@ -29,35 +31,42 @@ namespace DataModel
         public int AlignmentId { get; set; }
         public int ExperiencePoints { get; set; }
         public int? PartyId { get; set; }
+        public int HitPointMaximum { get; set; }
+        public int HitPointCurrent { get; set; }
 
-        [ForeignKey("AlignmentId")]
+        [ForeignKey(nameof(AlignmentId))]
         [InverseProperty("PlayerCharacter")]
-        public Alignment Alignment { get; set; }
-        [ForeignKey("ArchetypeId")]
+        public virtual Alignment Alignment { get; set; }
+        [ForeignKey(nameof(ArchetypeId))]
         [InverseProperty("PlayerCharacter")]
-        public Archetype Archetype { get; set; }
-        [ForeignKey("BackgroundId")]
+        public virtual Archetype Archetype { get; set; }
+        [ForeignKey(nameof(BackgroundId))]
         [InverseProperty("PlayerCharacter")]
-        public Background Background { get; set; }
-        [ForeignKey("ClassId")]
+        public virtual Background Background { get; set; }
+        [ForeignKey(nameof(ClassId))]
         [InverseProperty("PlayerCharacter")]
-        public Class Class { get; set; }
-        [ForeignKey("PartyId")]
+        public virtual Class Class { get; set; }
+        [ForeignKey(nameof(PartyId))]
         [InverseProperty("PlayerCharacter")]
-        public Party Party { get; set; }
-        [ForeignKey("RaceId")]
+        public virtual Party Party { get; set; }
+        [ForeignKey(nameof(PlayerId))]
         [InverseProperty("PlayerCharacter")]
-        public Race Race { get; set; }
-        [ForeignKey("SubRaceId")]
+        public virtual Player Player { get; set; }
+        [ForeignKey(nameof(RaceId))]
         [InverseProperty("PlayerCharacter")]
-        public SubRace SubRace { get; set; }
+        public virtual Race Race { get; set; }
+        [ForeignKey(nameof(SubRaceId))]
+        [InverseProperty("PlayerCharacter")]
+        public virtual SubRace SubRace { get; set; }
         [InverseProperty("Pc")]
-        public ICollection<PcAbilityScore> PcAbilityScore { get; set; }
+        public virtual ICollection<PcAbilityScore> PcAbilityScore { get; set; }
         [InverseProperty("Pc")]
-        public ICollection<PcFeature> PcFeature { get; set; }
+        public virtual ICollection<PcFeature> PcFeature { get; set; }
         [InverseProperty("Pc")]
-        public ICollection<PcLanguage> PcLanguage { get; set; }
+        public virtual ICollection<PcLanguage> PcLanguage { get; set; }
         [InverseProperty("Pc")]
-        public ICollection<PcSkill> PcSkill { get; set; }
+        public virtual ICollection<PcSavingThrow> PcSavingThrow { get; set; }
+        [InverseProperty("Pc")]
+        public virtual ICollection<PcSkill> PcSkill { get; set; }
     }
 }

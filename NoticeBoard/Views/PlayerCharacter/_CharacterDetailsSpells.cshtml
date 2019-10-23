@@ -1,0 +1,94 @@
+﻿@model NoticeBoard.Models.PlayerCharacters.PlayerCharacterModel
+
+<div>
+    <div class="row" style="padding-bottom:10px">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="col-12">Spellcasting Ability</div>
+                            <label class="col-12"><strong>Intelligence</strong></label>
+                        </div>
+                        <div class="col-4">
+                            <div class="col-12">Spell Save DC</div>
+                            <label class="col-12"><strong>15</strong></label>
+                        </div>
+                        <div class="col-4">
+                            <div class="col-12">Spell Attack Bonus</div>
+                            <label class="col-12"><strong>+7</strong></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        @*Cantrips and Spells*@
+        <div class="col-12" style="padding-bottom:10px">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    Spell Level<br />
+                                    Cantrips
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    Spell Slots<br />
+                                    ∞
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="card bg-light mb-3">
+                                <div class="card-body">
+                                    Slots Remaining<br />
+                                    ∞
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th width="5%">Prepared</th>
+                                <th width="20%">Name</th>
+                                <th width="15%">School</th>
+                                <th width="15%">Casting Time</th>
+                                <th width="15%">Range</th>
+                                <th width="15%">Components</th>
+                                <th width="15%">Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center"><input type="radio" disabled checked/></td>
+                                <td>Eldritch Blast</td>
+                                <td>Evocation</td>
+                                <td>1 Action</td>
+                                <td>120 Feet</td>
+                                <td>V,S</td>
+                                <td>Instantaneous</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center"><input type="radio" disabled /></td>
+                                <td>Fire Bolt</td>
+                                <td>Evocation</td>
+                                <td>1 Action</td>
+                                <td>120 Feet</td>
+                                <td>V,S</td>
+                                <td>Instantaneous</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

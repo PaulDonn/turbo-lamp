@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TavernNoticeBoard.Models.Abilities
 {
@@ -14,5 +11,7 @@ namespace TavernNoticeBoard.Models.Abilities
         public int PcId { get; set; }
 
         public int Score { get; set; }
+
+        public int Bonus { get { return (int)Math.Floor((Score - 10m) / 2); } }
     }
 }

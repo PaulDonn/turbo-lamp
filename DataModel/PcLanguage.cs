@@ -7,15 +7,16 @@ namespace DataModel
 {
     public partial class PcLanguage
     {
+        [Key]
         public int Id { get; set; }
         public int PcId { get; set; }
         public int LanguageId { get; set; }
 
-        [ForeignKey("LanguageId")]
+        [ForeignKey(nameof(LanguageId))]
         [InverseProperty("PcLanguage")]
-        public Language Language { get; set; }
-        [ForeignKey("PcId")]
-        [InverseProperty("PcLanguage")]
-        public PlayerCharacter Pc { get; set; }
+        public virtual Language Language { get; set; }
+        [ForeignKey(nameof(PcId))]
+        [InverseProperty(nameof(PlayerCharacter.PcLanguage))]
+        public virtual PlayerCharacter Pc { get; set; }
     }
 }

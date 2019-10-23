@@ -12,6 +12,7 @@ namespace DataModel
             PlayerCharacter = new HashSet<PlayerCharacter>();
         }
 
+        [Key]
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
@@ -21,10 +22,10 @@ namespace DataModel
         public int RaceId { get; set; }
         public int? AdditionalLanguages { get; set; }
 
-        [ForeignKey("RaceId")]
+        [ForeignKey(nameof(RaceId))]
         [InverseProperty("SubRace")]
-        public Race Race { get; set; }
+        public virtual Race Race { get; set; }
         [InverseProperty("SubRace")]
-        public ICollection<PlayerCharacter> PlayerCharacter { get; set; }
+        public virtual ICollection<PlayerCharacter> PlayerCharacter { get; set; }
     }
 }

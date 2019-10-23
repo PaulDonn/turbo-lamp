@@ -7,6 +7,7 @@ namespace DataModel
 {
     public partial class SubFeature
     {
+        [Key]
         public int Id { get; set; }
         public int FeatureId { get; set; }
         [Required]
@@ -18,8 +19,8 @@ namespace DataModel
         [StringLength(50)]
         public string Code { get; set; }
 
-        [ForeignKey("FeatureId")]
+        [ForeignKey(nameof(FeatureId))]
         [InverseProperty("SubFeature")]
-        public Feature Feature { get; set; }
+        public virtual Feature Feature { get; set; }
     }
 }

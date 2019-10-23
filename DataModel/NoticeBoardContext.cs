@@ -28,7 +28,9 @@ namespace DataModel
         public virtual DbSet<PcAbilityScore> PcAbilityScore { get; set; }
         public virtual DbSet<PcFeature> PcFeature { get; set; }
         public virtual DbSet<PcLanguage> PcLanguage { get; set; }
+        public virtual DbSet<PcSavingThrow> PcSavingThrow { get; set; }
         public virtual DbSet<PcSkill> PcSkill { get; set; }
+        public virtual DbSet<Player> Player { get; set; }
         public virtual DbSet<PlayerCharacter> PlayerCharacter { get; set; }
         public virtual DbSet<Race> Race { get; set; }
         public virtual DbSet<RaceLanguage> RaceLanguage { get; set; }
@@ -167,6 +169,21 @@ namespace DataModel
                     .HasConstraintName("FK_PcLanguage_PlayerCharacter");
             });
 
+            modelBuilder.Entity<PcSavingThrow>(entity =>
+            {
+                entity.HasOne(d => d.Ability)
+                    .WithMany(p => p.PcSavingThrow)
+                    .HasForeignKey(d => d.AbilityId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PcSavingThrow_Ability");
+
+                entity.HasOne(d => d.Pc)
+                    .WithMany(p => p.PcSavingThrow)
+                    .HasForeignKey(d => d.PcId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PcSavingThrow_PlayerCharacter");
+            });
+
             modelBuilder.Entity<PcSkill>(entity =>
             {
                 entity.HasOne(d => d.Pc)
@@ -210,6 +227,12 @@ namespace DataModel
                     .WithMany(p => p.PlayerCharacter)
                     .HasForeignKey(d => d.PartyId)
                     .HasConstraintName("FK_PlayerCharacter_Party");
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PlayerCharacter)
+                    .HasForeignKey(d => d.PlayerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PlayerCharacter_Player");
 
                 entity.HasOne(d => d.Race)
                     .WithMany(p => p.PlayerCharacter)
@@ -277,6 +300,10 @@ namespace DataModel
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_SubRace_Race");
             });
+
+            OnModelCreatingPartial(modelBuilder);
         }
+
+        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

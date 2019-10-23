@@ -4,6 +4,14 @@
            ('Test Party 1')
 GO
 
+INSERT INTO [dbo].[Player]
+           ([Name])
+     VALUES
+           ('Player 1')
+          ,('Player 2')
+          ,('Player 3')
+GO
+
 INSERT INTO [dbo].[PlayerCharacter]
            ([CharacterName]
            ,[ClassId]
@@ -99,4 +107,33 @@ INSERT INTO [dbo].[PcAbilityScore]
 		   ,6--AbilityId
            ,12--Score
 		   )
+GO
+
+INSERT INTO [dbo].[PcSavingThrow]
+           ([PcId]
+           ,[AbilityId])
+     VALUES
+           (1
+           ,1),
+		   (1
+           ,2),
+		   (2
+           ,1),
+		   (2
+           ,3)
+GO
+
+INSERT INTO [dbo].[PcSkill]
+           ([PcId]
+           ,[SkillId])
+     VALUES
+           (1,1),
+           (1,10),
+           (1,11),
+           (1,17),
+           (1,18),
+           (2,4),
+           (2,6),
+           (2,8),
+           (2,15)
 GO

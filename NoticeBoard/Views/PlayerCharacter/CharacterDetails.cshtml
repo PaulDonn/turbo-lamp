@@ -1,0 +1,41 @@
+﻿@model NoticeBoard.Models.PlayerCharacters.PlayerCharacterModel
+
+@{
+    ViewData["Title"] = "Character Details";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-4">
+                <h2>@Model.CharacterName</h2>
+            </div>
+            <div class="col-8">
+                <div class="float-right">
+                    <button id="statsBtn" type="button" class="btn btn-secondary" onclick="setPage('stats')" disabled>Stats</button>
+                    <button id="characterBtn" type="button" class="btn btn-secondary"  onclick="setPage('character')" >Character</button>
+                    <button id="equipmentBtn" type="button" class="btn btn-secondary"  onclick="setPage('equipment')" >Equipment</button>
+                    <button id="spellsBtn" type="button" class="btn btn-secondary"  onclick="setPage('spells')" >Spells</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="statsPage">
+    @{await Html.RenderPartialAsync("_CharacterDetailsStats", Model);}
+</div>
+<div  id="characterPage" hidden>
+    @{await Html.RenderPartialAsync("_CharacterDetailsCharacter", Model);}
+</div>
+<div  id="equipmentPage" hidden>
+    @{await Html.RenderPartialAsync("_CharacterDetailsEquipment", Model);}
+</div>
+<div  id="spellsPage" hidden>
+    @{await Html.RenderPartialAsync("_CharacterDetailsSpells", Model);}
+</div>
+
+@section scripts{ 
+    <script src="~/js/CharacterDetails.js"></script>
+}

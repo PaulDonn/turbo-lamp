@@ -4,27 +4,229 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h2>@Model.CharacterName</h2>
 
 <div>
-    <h4>@Model.CharacterName</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.LevelId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LevelId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ExperiencePoints)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ExperiencePoints)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label class="col-sm-12">Lv @Model.LevelId @(Model.Archetype?.ShortName ?? @Model.PlayerClass.Name)</label>
+                        <div class="col-sm-12">
+                            <div>Class & Level</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="col-sm-12">@Model.Background.Name</label>
+                        <div class="col-sm-12">
+                            <div>Background</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="col-sm-12">Player Name</label>
+                        <div class="col-sm-12">
+                            <div>Player Name</div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label class="col-sm-12">@(Model.SubRace?.Name ?? @Model.Race.Name)</label>
+                        <div class="col-sm-12">
+                            <div>Race</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="col-sm-12">@Model.Alignment.Name</label>
+                        <div class="col-sm-12">
+                            <div>Alignment</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="col-sm-12">@Model.ExperiencePoints</label>
+                        <div class="col-sm-12">
+                            <div>Experience Points</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Ability Scores*@
+    <div class="col-sm-1">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @foreach (var ability in Model.Abilities)
+                {
+                    <div class="well well-sm">
+                        <div align="center">
+                            @ability.Name
+                            <br />
+                            <br />
+                            @Model.AbilityScores.Single(n => n.AbilityId == ability.Id).Score
+                            <br />
+                            <strong>(@(Model.AbilityScores.Single(n => n.AbilityId == ability.Id).Bonus >= 0 ? "+" : "")@Model.AbilityScores.Single(n => n.AbilityId == ability.Id).Bonus.ToString())</strong>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    @*Saving Throws and Skills*@
+    <div class="col-sm-3">
+
+        @*Proficiency Bonus*@
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div style="margin-bottom:0px" class="well well-sm col-sm-4">
+                    <div align="center">
+                        <strong>@Model.ProficiencyBonus</strong>
+                    </div>
+                </div>
+                <div style="text-align:center">Proficiency Bonus</div>
+            </div>
+        </div>
+
+        @*Saving Throws*@
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @foreach (var ability in Model.Abilities)
+                {
+                    <input class="col-sm-2" type="radio" disabled checked="@Model.SavingThrows.Contains(ability.Id)" />
+                    <div class="col-sm-2 text-center">@(Model.AbilityScores.Single(n => n.AbilityId == ability.Id).Bonus + (@Model.SavingThrows.Contains(ability.Id) ? Model.ProficiencyBonus : 0))</div>
+                    <div class="col-sm-8">@ability.Name</div>
+                }
+            </div>
+            <div class="panel-footer">
+                <div class="text-center">Saving Throws</div>
+            </div>
+        </div>
+
+        @*Skills*@
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @foreach (var skill in Model.Skills)
+                {
+                    <input class="col-sm-2" type="radio" disabled checked="@Model.PlayerSkills.Contains(skill.Id)" />
+                    <div class="col-sm-2 text-center">@(Model.AbilityScores.Single(n => n.AbilityId == skill.AbilityId).Bonus + (@Model.PlayerSkills.Contains(skill.Id) ? Model.ProficiencyBonus : 0))</div>
+                    <div class="col-sm-8">@skill.Name</div>
+                }
+            </div>
+            <div class="panel-footer">
+                <div class="text-center">Skills</div>
+            </div>
+        </div>
+    </div>
+
+    @*Status and Equipment*@
+    <div class="col-sm-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="well col-sm-4">
+                    <div align="center">
+                        Armour Class
+                    </div>
+                </div>
+                <div class="well col-sm-4">
+                    <div align="center">
+                        Initiative
+                    </div>
+                </div>
+                <div class="well col-sm-4">
+                    <div align="center">
+                        Speed
+                    </div>
+                </div>
+                <div class="col-sm-12 col-no-padding">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            Hit Point Maximum: @*@Model.MaxHitPoints*@
+                            <br />
+                            <br />
+                        </div>
+                        <div class="panel-footer">
+                            <div class="text-center">Current Hit Points</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-no-padding">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <br />
+                        </div>
+                        <div class="panel-footer">
+                            <div class="text-center">Temporary Hit Points</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-sm-6 col-no-padding-left">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <br />
+                            </div>
+                            <div class="panel-footer">
+                                <div class="text-center">Hit Dice</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-no-padding-right">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <br />
+                            </div>
+                            <div class="panel-footer">
+                                <div class="text-center">Death Saves</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-no-padding">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th width="50%">Name</th>
+                                        <th width="15%">Bonus</th>
+                                        <th width="15%">Damage</th>
+                                        <th width="20%">Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Shortsword</td>
+                                        <td>+2</td>
+                                        <td>1d6</td>
+                                        <td>Slashing</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shortbow</td>
+                                        <td>+2</td>
+                                        <td>1d6</td>
+                                        <td>Piercing</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="text-center">Attacks & Spellcasting</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Traits and Features*@
+    <div class="col-sm-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+            </div>
+        </div>
+    </div>
 </div>

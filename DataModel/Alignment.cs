@@ -12,6 +12,7 @@ namespace DataModel
             PlayerCharacter = new HashSet<PlayerCharacter>();
         }
 
+        [Key]
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
@@ -23,6 +24,6 @@ namespace DataModel
         public string Code { get; set; }
 
         [InverseProperty("Alignment")]
-        public ICollection<PlayerCharacter> PlayerCharacter { get; set; }
+        public virtual ICollection<PlayerCharacter> PlayerCharacter { get; set; }
     }
 }

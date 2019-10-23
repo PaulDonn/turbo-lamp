@@ -13,6 +13,7 @@ namespace DataModel
             PlayerCharacter = new HashSet<PlayerCharacter>();
         }
 
+        [Key]
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
@@ -22,8 +23,8 @@ namespace DataModel
         public int? AdditionalLanguages { get; set; }
 
         [InverseProperty("Background")]
-        public ICollection<BgSkill> BgSkill { get; set; }
+        public virtual ICollection<BgSkill> BgSkill { get; set; }
         [InverseProperty("Background")]
-        public ICollection<PlayerCharacter> PlayerCharacter { get; set; }
+        public virtual ICollection<PlayerCharacter> PlayerCharacter { get; set; }
     }
 }

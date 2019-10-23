@@ -1,0 +1,315 @@
+﻿@model NoticeBoard.Models.PlayerCharacters.PlayerCharacterModel
+
+<div>
+    <div class="row" style="padding-bottom:10px">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="col-12">Class & Level</div>
+                            <label class="col-12"><strong>Lv @Model.LevelId @(Model.Archetype?.ShortName ?? @Model.PlayerClass.Name)</strong></label>
+                        </div>
+                        <div class="col-4">
+                            <div class="col-12">Background</div>
+                            <label class="col-12"><strong>@Model.Background.Name</strong></label>
+                        </div>
+                        <div class="col-4">
+                            <div class="col-12">Player Name</div>
+                            <label class="col-12"><strong>@Model.Player.Name</strong></label>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="col-12">Race</div>
+                            <label class="col-12"><strong>@(Model.SubRace?.Name ?? @Model.Race.Name)</strong></label>
+                        </div>
+                        <div class="col-4">
+                            <div class="col-12">Alignment</div>
+                            <label class="col-12"><strong>@Model.Alignment.Name</strong></label>
+                        </div>
+                        <div class="col-4">
+                            <div class="col-12">Experience Points</div>
+                            <label class="col-12"><strong>@Model.ExperiencePoints</strong></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-4 col-lg-12">
+            <div class="row">
+                @*Ability Scores*@
+                <div class="col-4" style="margin-bottom:10px">
+                    <div class="card">
+                        <div class="card-body">
+                            @foreach (var ability in Model.Abilities)
+                            {
+                                <div class="card bg-light mb-3">
+                                    <div class="card-body" align="center">
+                                        @ability.Name
+                                        <br />
+                                        @Model.AbilityScores.Single(n => n.AbilityId == ability.Id).Score
+                                    </div>
+                                    <div class="card-footer" align="center">
+                                        <strong>(@(Model.AbilityScores.Single(n => n.AbilityId == ability.Id).Bonus >= 0 ? "+" : "")@Model.AbilityScores.Single(n => n.AbilityId == ability.Id).Bonus.ToString())</strong>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                @*Saving Throws and Skills*@
+                <div class="col-8" style="margin-bottom:10px">
+
+                    @*Proficiency Bonus*@
+                    <div class="card" style="margin-bottom:10px">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="card bg-light mb-3 col-4">
+                                    <div align="center">
+                                        <strong>@Model.ProficiencyBonus</strong>
+                                    </div>
+                                </div>
+                                <div class="col-8 text-center">Proficiency Bonus</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*Saving Throws*@
+                    <div class="card" style="margin-bottom:10px">
+                        <div class="card-body">
+                            @foreach (var ability in Model.Abilities)
+                            {
+                                <div class="row" style="padding-bottom:5px">
+                                    <input class="col-2" type="radio" disabled checked="@Model.SavingThrows.Contains(ability.Id)" />
+                                    <div class="col-2 text-center">@(Model.AbilityScores.Single(n => n.AbilityId == ability.Id).Bonus + (@Model.SavingThrows.Contains(ability.Id) ? Model.ProficiencyBonus : 0))</div>
+                                    <div class="col-8">@ability.Name</div>
+                                </div>
+                            }
+                        </div>
+                        <div class="card-footer">
+                            <div class="text-center">Saving Throws</div>
+                        </div>
+                    </div>
+
+                    @*Skills*@
+                    <div class="card" style="margin-bottom:10px">
+                        <div class="card-body">
+                            @foreach (var skill in Model.Skills)
+                            {
+                                <div class="row" style="padding-bottom:5px">
+                                    <input class="col-2" type="radio" disabled checked="@Model.PlayerSkills.Contains(skill.Id)" />
+                                    <div class="col-2 text-center">@(Model.AbilityScores.Single(n => n.AbilityId == skill.AbilityId).Bonus + (@Model.PlayerSkills.Contains(skill.Id) ? Model.ProficiencyBonus : 0))</div>
+                                    <div class="col-8">@skill.Name</div>
+                                </div>
+                            }
+                        </div>
+                        <div class="card-footer">
+                            <div class="text-center">Skills</div>
+                        </div>
+                    </div>
+                </div>
+                @*Passive Perception*@
+                <div class="col-12" style="padding-bottom:10px">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="card bg-light mb-3 col-4">
+                                    <div align="center">
+                                        <strong>10</strong>
+                                    </div>
+                                </div>
+                                <div class="col-8 text-center">Passive Perception</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-12">
+            <div class="row">
+                @*Status and Equipment*@
+                <div class="col-12">
+                    <div class="card" style="margin-bottom:10px">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="card bg-light mb-3">
+                                        <div align="center">
+                                            <strong>14</strong>
+                                            <br />
+                                            Armour Class
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="card bg-light mb-3">
+                                        <div align="center">
+                                            <strong>-</strong>
+                                            <br />
+                                            Initiative
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="card bg-light mb-3">
+                                        <div align="center">
+                                            <strong>30</strong>
+                                            <br />
+                                            Speed
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="margin-bottom:10px">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            Maximum: @Model.HitDieMaximum
+                                        </div>
+                                        <div class="col-6">
+                                            Current: @Model.HitDieCurrent
+                                        </div>
+                                    </div>                                    
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-center">Hit Points</div>
+                                </div>
+                            </div>
+                            <div class="card" style="margin-bottom:10px">
+                                <div class="card-body">
+                                    @Model.HitPointTemporary
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-center">Temporary Hit Points</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="card" style="margin-bottom:10px">
+                                        <div class="card-body">
+                                            Maximum: @Model.LevelId d@(Model.PlayerClass.HitDie)
+                                            <br />
+                                            Current:
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="text-center">Hit Dice</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="card" style="margin-bottom:10px">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-5">
+                                                    Success
+                                                </div>
+                                                <div class="col-2">
+                                                    <input type="radio" disabled />
+                                                </div>
+                                                <div class="col-2">
+                                                    <input type="radio" disabled />
+                                                </div>
+                                                <div class="col-3">
+                                                    <input type="radio" disabled />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-5">
+                                                    Failure
+                                                </div>
+                                                <div class="col-2">
+                                                    <input type="radio" disabled />
+                                                </div>
+                                                <div class="col-2">
+                                                    <input type="radio" disabled />
+                                                </div>
+                                                <div class="col-3">
+                                                    <input type="radio" disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="text-center">Death Saves</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-bottom:10px">
+                        <div class="card-body">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th width="50%">Name</th>
+                                        <th width="15%">Bonus</th>
+                                        <th width="15%">Damage</th>
+                                        <th width="20%">Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Shortsword</td>
+                                        <td>+2</td>
+                                        <td>1d6</td>
+                                        <td>Slashing</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shortbow</td>
+                                        <td>+2</td>
+                                        <td>1d6</td>
+                                        <td>Piercing</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer">
+                            <div class="text-center">Attacks & Spellcasting</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 co-lg-12">
+            @*Features*@
+            <div class="row">
+                <div class="col-12">
+                    <div class="card" style="margin-bottom:10px">
+                        <div class="card-body">
+
+                        </div>
+                        <div class="card-footer">
+                            <div class="text-center">
+                                Features
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*Proficiencies and Languages*@
+            <div class="row" style="padding-bottom:10px">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            Language: Common, Infernal, Elvish, Dwarvish<br />
+                            <br />
+                            Combat: Quarterstaff, Dagger, Dart, Light Crossbow<br />
+                            <br />
+                            Exploration:<br />
+                            <br />
+                            Roleplay:
+                        </div>
+                        <div class="card-footer">
+                            <div class="text-center">Other Proficiencies and Languages</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

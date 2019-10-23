@@ -12,6 +12,7 @@ namespace DataModel
             PlayerCharacter = new HashSet<PlayerCharacter>();
         }
 
+        [Key]
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
@@ -23,10 +24,10 @@ namespace DataModel
         public string Description { get; set; }
         public int ClassId { get; set; }
 
-        [ForeignKey("ClassId")]
+        [ForeignKey(nameof(ClassId))]
         [InverseProperty("Archetype")]
-        public Class Class { get; set; }
+        public virtual Class Class { get; set; }
         [InverseProperty("Archetype")]
-        public ICollection<PlayerCharacter> PlayerCharacter { get; set; }
+        public virtual ICollection<PlayerCharacter> PlayerCharacter { get; set; }
     }
 }

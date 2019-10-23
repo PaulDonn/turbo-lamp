@@ -7,15 +7,16 @@ namespace DataModel
 {
     public partial class PcSkill
     {
+        [Key]
         public int Id { get; set; }
         public int PcId { get; set; }
         public int SkillId { get; set; }
 
-        [ForeignKey("PcId")]
+        [ForeignKey(nameof(PcId))]
+        [InverseProperty(nameof(PlayerCharacter.PcSkill))]
+        public virtual PlayerCharacter Pc { get; set; }
+        [ForeignKey(nameof(SkillId))]
         [InverseProperty("PcSkill")]
-        public PlayerCharacter Pc { get; set; }
-        [ForeignKey("SkillId")]
-        [InverseProperty("PcSkill")]
-        public Skill Skill { get; set; }
+        public virtual Skill Skill { get; set; }
     }
 }
