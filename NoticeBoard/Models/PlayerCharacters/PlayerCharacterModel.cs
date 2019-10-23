@@ -27,6 +27,7 @@ namespace NoticeBoard.Models.PlayerCharacters
             AbilityScores = new List<PcAbilityScoreModel>();
             SavingThrows = new List<int>();
             PlayerSkills = new List<int>();
+            Spells = new List<PcSpellModel>();
         }
 
         public int Id { get; set; }
@@ -91,7 +92,7 @@ namespace NoticeBoard.Models.PlayerCharacters
 
         public int HitDieCurrent { get; set; }
 
-        public List<SpellModel> Spells { get; set; }
+        public List<PcSpellModel> Spells { get; set; }
 
         public Dictionary<int, Tuple<int,int>> SpellSlots { get; set; }
     }

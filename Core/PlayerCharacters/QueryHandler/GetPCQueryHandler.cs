@@ -29,7 +29,7 @@ namespace Core.PlayerCharacters.QueryHandler
             var dto = new PlayerCharacterDTO();
 
             var pc = _context.PlayerCharacter.Include(n => n.PcAbilityScore)
-                                             .ThenInclude(n => n.Ability)
+                                                .ThenInclude(n => n.Ability)
                                              .Include(n => n.PcSavingThrow)
                                              .Include(n => n.Class.Archetype)
                                              .Include(n => n.Class.SpellcastingAbility)
@@ -41,7 +41,7 @@ namespace Core.PlayerCharacters.QueryHandler
                                              .Include(n => n.Party)
                                              .Include(n => n.PcSkill)
                                              .Include(n => n.PcSpell)
-                                                .ThenInclude(n => n.Spell)
+                                                .ThenInclude(n => n.Spell.SpellSchool)
                                             .SingleOrDefault(n => n.Id == query.PcId);
 
             if(pc != null)

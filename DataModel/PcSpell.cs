@@ -11,6 +11,7 @@ namespace DataModel
         public int Id { get; set; }
         public int PcId { get; set; }
         public int SpellId { get; set; }
+        public bool IsPrepared { get; set; }
 
         [ForeignKey(nameof(PcId))]
         [InverseProperty(nameof(PlayerCharacter.PcSpell))]

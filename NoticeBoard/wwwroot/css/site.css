@@ -93,3 +93,11 @@ img.resize {
     padding-right: 0 !important;
 }
 
+.card-header:before {
+    content: "\f107"; /* angle-down */
+}
+
+.card-header.collapsed:before {
+    content: "\f106"; /* angle-up */
+}
+

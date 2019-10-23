@@ -31,12 +31,12 @@
             <div class="row">
                 <div class="col-12" style="padding-bottom:10px">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header" data-toggle="collapse" href="#spellLevel@(i)" role="button" aria-expanded="true" aria-controls="spellLevel@(i)">
                             <div class="row">
                                 <div class="col-2">
                                     @if (i == 0)
                                     {
-                                        <strong>Cantrips</strong>
+                                        <div><strong>Cantrips</strong></div>
                                     }
                                     else
                                     {
@@ -65,12 +65,23 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body collapse show" id="spellLevel@(i)">
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th width="5%">Prepared</th>
-                                        <th width="20%">Name</th>
+                                        @if (i > 0 
+                                            &&(Model.PlayerClass.Id == 3
+                                            || Model.PlayerClass.Id == 4
+                                            || Model.PlayerClass.Id == 7
+                                            || Model.PlayerClass.Id == 12))
+                                        {
+                                            <th width="5%">Prepared</th>
+                                            <th width="20%">Name</th>
+                                        }
+                                        else
+                                        {
+                                            <th width="25%">Name</th>
+                                        }
                                         <th width="15%">School</th>
                                         <th width="15%">Casting Time</th>
                                         <th width="15%">Range</th>
@@ -79,16 +90,51 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var spell in Model.Spells.Where(n => n.SpellLevel == i))
+                                    @foreach (var pcSpell in Model.Spells.Where(n => n.Spell.SpellLevel == i))
                                     {
                                         <tr>
-                                            <td class="text-center"><input type="radio" disabled checked /></td>
-                                            <td>@spell.Name</td>
-                                            <td>@spell.SpellSchool</td>
-                                            <td>@spell.CastingTime</td>
-                                            <td>@spell.Range</td>
-                                            <td>V,S</td>
-                                            <td>@spell.Duration</td>
+                                            @if (i > 0 
+                                            && (Model.PlayerClass.Id == 3
+                                            || Model.PlayerClass.Id == 4
+                                            || Model.PlayerClass.Id == 7
+                                            || Model.PlayerClass.Id == 12))
+                                            {
+                                                <td class="text-center">
+                                                    <input type="radio" disabled @if (pcSpell.IsPrepared) { @: checked
+                                                           } />
+                                                </td>
+                                            }
+                                            <td>@pcSpell.Spell.Name</td>
+                                            <td>@pcSpell.Spell.SpellSchool</td>
+                                            <td>
+                                                @pcSpell.Spell.CastingTime@if (pcSpell.Spell.IsRitual)
+                                                {
+                                                    @: (Ritual)
+                                                }
+                                            </td>
+                                            <td>@pcSpell.Spell.Range</td>
+                                            <td>
+                                                @if (pcSpell.Spell.RequiresVerbal)
+                                                {
+                                                    @:V
+                                                }
+                                                @if (pcSpell.Spell.RequiresVerbal)
+                                                {
+                                                    @:S
+                                                }
+                                                @if (pcSpell.Spell.RequiresMaterial)
+                                                {
+                                                    @:M
+                                                }
+                                                @if (!string.IsNullOrEmpty(pcSpell.Spell.MaterialDescription))
+                                                {
+                                                    @:(@pcSpell.Spell.MaterialDescription)
+                                                }
+                                            </td>
+                                            <td>@if (pcSpell.Spell.RequiresConcentration)
+                                            {
+                                                @:Concentration: 
+                                            }@pcSpell.Spell.Duration</td>
                                         </tr>
                                     }
                                 </tbody>

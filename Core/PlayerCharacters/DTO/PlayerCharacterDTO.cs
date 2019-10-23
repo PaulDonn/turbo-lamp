@@ -22,7 +22,7 @@ namespace Core.PlayerCharacters.DTO
             SavingThrows = new List<PcSavingThrowDTO>();
             Skills = new List<PcSkillDTO>();
             Player = new PlayerDTO();
-            Spells = new List<SpellDTO>();
+            Spells = new List<PcSpellDTO>();
         }
 
         public int Id { get; set; }
@@ -69,7 +69,7 @@ namespace Core.PlayerCharacters.DTO
 
         public int HitDieCurrent { get; set; }
 
-        public List<SpellDTO> Spells { get; set; }
+        public List<PcSpellDTO> Spells { get; set; }
 
         public int Level1SlotsMaximum { get; set; }
 

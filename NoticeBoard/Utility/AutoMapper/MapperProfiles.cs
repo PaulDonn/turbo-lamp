@@ -103,7 +103,7 @@ namespace NoticeBoard.Utility.AutoMapper
                 .ForMember(dest => dest.AbilityScores, opts => opts.MapFrom(src => src.PcAbilityScore))
                 .ForMember(dest => dest.SavingThrows, opts => opts.MapFrom(src => src.PcSavingThrow))
                 .ForMember(dest => dest.Skills, opts => opts.MapFrom(src => src.PcSkill))
-                .ForMember(dest => dest.Spells, opts => opts.MapFrom(src => src.PcSpell.Select(n => n.Spell).ToList()))
+                .ForMember(dest => dest.Spells, opts => opts.MapFrom(src => src.PcSpell.ToList()))
                 .ReverseMap();
             CreateMap<PlayerCharacterDTO, PlayerCharacterModel>()
                 .ForMember(dest => dest.SavingThrows, opts => opts.MapFrom(src => src.SavingThrows.Select(n => n.AbilityId)))
@@ -122,6 +122,7 @@ namespace NoticeBoard.Utility.AutoMapper
                     }))
                 .ForMember(dest => dest.Abilities, opts => opts.Ignore())
                 .ForMember(dest => dest.Skills, opts => opts.Ignore())
+                .ForMember(dest => dest.Spells, opts => opts.MapFrom(src => src.Spells.OrderBy(n => n.Spell.Name)))
                 .ReverseMap();
         }
 
@@ -141,6 +142,9 @@ namespace NoticeBoard.Utility.AutoMapper
             CreateMap<Spell, SpellDTO>()
                 .ForMember(dest => dest.SpellSchool, opts => opts.MapFrom(src => src.SpellSchool.Name)).ReverseMap();
             CreateMap<SpellDTO, SpellModel>().ReverseMap();
+
+            CreateMap<PcSpell, PcSpellDTO>().ReverseMap();
+            CreateMap<PcSpellDTO, PcSpellModel>().ReverseMap();
         }
     }
 }
