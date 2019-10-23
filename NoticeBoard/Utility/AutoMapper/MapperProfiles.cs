@@ -19,6 +19,8 @@ using NoticeBoard.Models.PlayerCharacters;
 using NoticeBoard.Models.Races;
 using Core.Player.DTO;
 using NoticeBoard.Models.Player;
+using Core.Spell.DTO;
+using NoticeBoard.Models.Spells;
 
 namespace NoticeBoard.Utility.AutoMapper
 {
@@ -37,6 +39,7 @@ namespace NoticeBoard.Utility.AutoMapper
             PlayerCharacterMaps();
             RaceMaps();
             //SkillMaps();
+            SpellMaps();
         }
 
         private void AbilityMaps()
@@ -100,21 +103,22 @@ namespace NoticeBoard.Utility.AutoMapper
                 .ForMember(dest => dest.AbilityScores, opts => opts.MapFrom(src => src.PcAbilityScore))
                 .ForMember(dest => dest.SavingThrows, opts => opts.MapFrom(src => src.PcSavingThrow))
                 .ForMember(dest => dest.Skills, opts => opts.MapFrom(src => src.PcSkill))
+                .ForMember(dest => dest.Spells, opts => opts.MapFrom(src => src.PcSpell.Select(n => n.Spell).ToList()))
                 .ReverseMap();
             CreateMap<PlayerCharacterDTO, PlayerCharacterModel>()
                 .ForMember(dest => dest.SavingThrows, opts => opts.MapFrom(src => src.SavingThrows.Select(n => n.AbilityId)))
                 .ForMember(dest => dest.PlayerSkills, opts => opts.MapFrom(src => src.Skills.Select(n => n.SkillId)))
-                .ForMember(dest => dest.SpellSlots, opts => opts.MapFrom(src => new Dictionary<int, int>()
+                .ForMember(dest => dest.SpellSlots, opts => opts.MapFrom(src => new Dictionary<int, Tuple<int,int>>()
                     {
-                        { 1, src.Level1Slots },
-                        { 2, src.Level2Slots },
-                        { 3, src.Level3Slots },
-                        { 4, src.Level4Slots },
-                        { 5, src.Level5Slots },
-                        { 6, src.Level6Slots },
-                        { 7, src.Level7Slots },
-                        { 8, src.Level8Slots },
-                        { 9, src.Level9Slots },
+                        { 1, new Tuple<int,int>(src.Level1SlotsMaximum, src.Level1SlotsCurrent) },
+                        { 2, new Tuple<int,int>(src.Level2SlotsMaximum, src.Level2SlotsCurrent) },
+                        { 3, new Tuple<int,int>(src.Level3SlotsMaximum, src.Level3SlotsCurrent) },
+                        { 4, new Tuple<int,int>(src.Level4SlotsMaximum, src.Level4SlotsCurrent) },
+                        { 5, new Tuple<int,int>(src.Level5SlotsMaximum, src.Level5SlotsCurrent) },
+                        { 6, new Tuple<int,int>(src.Level6SlotsMaximum, src.Level6SlotsCurrent) },
+                        { 7, new Tuple<int,int>(src.Level7SlotsMaximum, src.Level7SlotsCurrent) },
+                        { 8, new Tuple<int,int>(src.Level8SlotsMaximum, src.Level8SlotsCurrent) },
+                        { 9, new Tuple<int,int>(src.Level9SlotsMaximum, src.Level9SlotsCurrent) },
                     }))
                 .ForMember(dest => dest.Abilities, opts => opts.Ignore())
                 .ForMember(dest => dest.Skills, opts => opts.Ignore())
@@ -130,6 +134,13 @@ namespace NoticeBoard.Utility.AutoMapper
             CreateMap<RaceDTO, RaceModel>().ReverseMap();
             CreateMap<SubRace, SubRaceDTO>().ReverseMap();
             CreateMap<SubRaceDTO, SubRaceModel>().ReverseMap();
+        }
+
+        private void SpellMaps()
+        {
+            CreateMap<Spell, SpellDTO>()
+                .ForMember(dest => dest.SpellSchool, opts => opts.MapFrom(src => src.SpellSchool.Name)).ReverseMap();
+            CreateMap<SpellDTO, SpellModel>().ReverseMap();
         }
     }
 }

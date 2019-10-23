@@ -26,73 +26,77 @@
     @*Cantrips and Spells*@
     @for (int i = 0; i <= 9; i++)
     {
-        <div class="row">
-            <div class="col-12" style="padding-bottom:10px">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="row">
-                            <div class="col-2">
-                                @if (i == 0)
-                                {
-                                    <strong>Cantrips</strong>
-                                }
-                                else
-                                {
-                                    <strong>Level @i</strong>
-                                }
-                            </div>
-                            <div class="col-2">
-                                @if (i == 0)
-                                {
-                                    <strong>Spell Slots: ∞</strong>
-                                }
-                                else
-                                {
-                                    <strong>Spell Slots: @Model.SpellSlots[i]</strong>
-                                }
-                            </div>
-                            <div class="col-8">
-                                <strong>Slots Remaining: ∞</strong>
+        if (i == 0 || Model.SpellSlots[i].Item1 > 0)
+        {
+            <div class="row">
+                <div class="col-12" style="padding-bottom:10px">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-2">
+                                    @if (i == 0)
+                                    {
+                                        <strong>Cantrips</strong>
+                                    }
+                                    else
+                                    {
+                                        <strong>Level @i</strong>
+                                    }
+                                </div>
+                                <div class="col-2">
+                                    @if (i == 0)
+                                    {
+                                        <strong>Spell Slots: ∞</strong>
+                                    }
+                                    else
+                                    {
+                                        <strong>Spell Slots: @Model.SpellSlots[i].Item1</strong>
+                                    }
+                                </div>
+                                <div class="col-8">
+                                    @if (i == 0)
+                                    {
+                                        <strong>Slots Remaining: ∞</strong>
+                                    }
+                                    else
+                                    {
+                                        <strong>Slots Remaining: @Model.SpellSlots[i].Item2</strong>
+                                    }
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th width="5%">Prepared</th>
-                                    <th width="20%">Name</th>
-                                    <th width="15%">School</th>
-                                    <th width="15%">Casting Time</th>
-                                    <th width="15%">Range</th>
-                                    <th width="15%">Components</th>
-                                    <th width="15%">Duration</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-center"><input type="radio" disabled checked /></td>
-                                    <td>Eldritch Blast</td>
-                                    <td>Evocation</td>
-                                    <td>1 Action</td>
-                                    <td>120 Feet</td>
-                                    <td>V,S</td>
-                                    <td>Instantaneous</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center"><input type="radio" disabled /></td>
-                                    <td>Fire Bolt</td>
-                                    <td>Evocation</td>
-                                    <td>1 Action</td>
-                                    <td>120 Feet</td>
-                                    <td>V,S</td>
-                                    <td>Instantaneous</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="card-body">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th width="5%">Prepared</th>
+                                        <th width="20%">Name</th>
+                                        <th width="15%">School</th>
+                                        <th width="15%">Casting Time</th>
+                                        <th width="15%">Range</th>
+                                        <th width="15%">Components</th>
+                                        <th width="15%">Duration</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var spell in Model.Spells.Where(n => n.SpellLevel == i))
+                                    {
+                                        <tr>
+                                            <td class="text-center"><input type="radio" disabled checked /></td>
+                                            <td>@spell.Name</td>
+                                            <td>@spell.SpellSchool</td>
+                                            <td>@spell.CastingTime</td>
+                                            <td>@spell.Range</td>
+                                            <td>V,S</td>
+                                            <td>@spell.Duration</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
     }
 </div>

@@ -10,6 +10,7 @@ using NoticeBoard.Models.Backgrounds;
 using NoticeBoard.Models.Classes;
 using NoticeBoard.Models.Races;
 using NoticeBoard.Models.Player;
+using NoticeBoard.Models.Spells;
 
 namespace NoticeBoard.Models.PlayerCharacters
 {
@@ -90,6 +91,8 @@ namespace NoticeBoard.Models.PlayerCharacters
 
         public int HitDieCurrent { get; set; }
 
-        public Dictionary<int, int> SpellSlots { get; set; }
+        public List<SpellModel> Spells { get; set; }
+
+        public Dictionary<int, Tuple<int,int>> SpellSlots { get; set; }
     }
 }

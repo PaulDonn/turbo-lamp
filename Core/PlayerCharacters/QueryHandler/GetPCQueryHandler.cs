@@ -31,8 +31,7 @@ namespace Core.PlayerCharacters.QueryHandler
             var pc = _context.PlayerCharacter.Include(n => n.PcAbilityScore)
                                              .ThenInclude(n => n.Ability)
                                              .Include(n => n.PcSavingThrow)
-                                             .Include(n => n.Class)
-                                                .ThenInclude(n => n.Archetype)
+                                             .Include(n => n.Class.Archetype)
                                              .Include(n => n.Class.SpellcastingAbility)
                                              .Include(n => n.Alignment)
                                              .Include(n => n.Background)
@@ -41,6 +40,8 @@ namespace Core.PlayerCharacters.QueryHandler
                                              .Include(n => n.Player)
                                              .Include(n => n.Party)
                                              .Include(n => n.PcSkill)
+                                             .Include(n => n.PcSpell)
+                                                .ThenInclude(n => n.Spell)
                                             .SingleOrDefault(n => n.Id == query.PcId);
 
             if(pc != null)

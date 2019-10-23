@@ -4,6 +4,7 @@ using Core.Background.DTO;
 using Core.Class.DTO;
 using Core.Player.DTO;
 using Core.Races.DTO;
+using Core.Spell.DTO;
 using System.Collections.Generic;
 
 namespace Core.PlayerCharacters.DTO
@@ -21,6 +22,7 @@ namespace Core.PlayerCharacters.DTO
             SavingThrows = new List<PcSavingThrowDTO>();
             Skills = new List<PcSkillDTO>();
             Player = new PlayerDTO();
+            Spells = new List<SpellDTO>();
         }
 
         public int Id { get; set; }
@@ -67,22 +69,44 @@ namespace Core.PlayerCharacters.DTO
 
         public int HitDieCurrent { get; set; }
 
-        public int Level1Slots { get; set; }
+        public List<SpellDTO> Spells { get; set; }
 
-        public int Level2Slots { get; set; }
+        public int Level1SlotsMaximum { get; set; }
 
-        public int Level3Slots { get; set; }
+        public int Level1SlotsCurrent { get; set; }
 
-        public int Level4Slots { get; set; }
+        public int Level2SlotsMaximum { get; set; }
 
-        public int Level5Slots { get; set; }
+        public int Level2SlotsCurrent { get; set; }
 
-        public int Level6Slots { get; set; }
+        public int Level3SlotsMaximum { get; set; }
 
-        public int Level7Slots { get; set; }
+        public int Level3SlotsCurrent { get; set; }
 
-        public int Level8Slots { get; set; }
+        public int Level4SlotsMaximum { get; set; }
 
-        public int Level9Slots { get; set; }
+        public int Level4SlotsCurrent { get; set; }
+
+        public int Level5SlotsMaximum { get; set; }
+
+        public int Level5SlotsCurrent { get; set; }
+
+        public int Level6SlotsMaximum { get; set; }
+
+        public int Level6SlotsCurrent { get; set; }
+
+        public int Level7SlotsMaximum { get; set; }
+
+        public int Level7SlotsCurrent { get; set; }
+
+        public int Level8SlotsMaximum { get; set; }
+
+        public int Level8SlotsCurrent { get; set; }
+
+        public int Level9SlotsMaximum { get; set; }
+
+        public int Level9SlotsCurrent { get; set; }
+
+
     }
 }
