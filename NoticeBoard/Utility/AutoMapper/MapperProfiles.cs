@@ -66,8 +66,12 @@ namespace NoticeBoard.Utility.AutoMapper
 
         private void ClassMaps()
         {
-            CreateMap<Class, ClassDTO>().ReverseMap();
-            CreateMap<ClassDTO, ClassModel>().ReverseMap();
+            CreateMap<Class, ClassDTO>()
+                .ForMember(dest => dest.SpellcastingAbility, opts => opts.MapFrom(src => src.SpellcastingAbility))
+                .ReverseMap();
+            CreateMap<ClassDTO, ClassModel>()
+                .ForMember(dest => dest.SpellcastingAbility, opts => opts.MapFrom(src => src.SpellcastingAbility))
+                .ReverseMap();
             CreateMap<Archetype, ArchetypeDTO>().ReverseMap();
             CreateMap<ArchetypeDTO, ArchetypeModel>().ReverseMap();
         }

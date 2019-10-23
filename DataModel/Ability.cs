@@ -9,6 +9,7 @@ namespace DataModel
     {
         public Ability()
         {
+            Class = new HashSet<Class>();
             PcAbilityScore = new HashSet<PcAbilityScore>();
             PcSavingThrow = new HashSet<PcSavingThrow>();
             Skill = new HashSet<Skill>();
@@ -23,6 +24,8 @@ namespace DataModel
         [StringLength(3)]
         public string Code { get; set; }
 
+        [InverseProperty("SpellcastingAbility")]
+        public virtual ICollection<Class> Class { get; set; }
         [InverseProperty("Ability")]
         public virtual ICollection<PcAbilityScore> PcAbilityScore { get; set; }
         [InverseProperty("Ability")]

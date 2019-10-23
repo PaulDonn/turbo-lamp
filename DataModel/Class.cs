@@ -29,7 +29,11 @@ namespace DataModel
         public string ArchetypeTypeDescription { get; set; }
         public int ArchetypeStartingLevel { get; set; }
         public int NumberOfStartingSkills { get; set; }
+        public int SpellcastingAbilityId { get; set; }
 
+        [ForeignKey(nameof(SpellcastingAbilityId))]
+        [InverseProperty(nameof(Ability.Class))]
+        public virtual Ability SpellcastingAbility { get; set; }
         [InverseProperty("Class")]
         public virtual ICollection<Archetype> Archetype { get; set; }
         [InverseProperty("Class")]

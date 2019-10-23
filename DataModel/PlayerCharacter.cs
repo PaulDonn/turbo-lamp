@@ -14,6 +14,7 @@ namespace DataModel
             PcLanguage = new HashSet<PcLanguage>();
             PcSavingThrow = new HashSet<PcSavingThrow>();
             PcSkill = new HashSet<PcSkill>();
+            PcSpell = new HashSet<PcSpell>();
         }
 
         [Key]
@@ -68,5 +69,7 @@ namespace DataModel
         public virtual ICollection<PcSavingThrow> PcSavingThrow { get; set; }
         [InverseProperty("Pc")]
         public virtual ICollection<PcSkill> PcSkill { get; set; }
+        [InverseProperty("Pc")]
+        public virtual ICollection<PcSpell> PcSpell { get; set; }
     }
 }

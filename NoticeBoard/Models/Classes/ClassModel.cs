@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using NoticeBoard.Models.Abilities;
+using System.ComponentModel.DataAnnotations;
 
 namespace NoticeBoard.Models.Classes
 {
@@ -21,5 +22,7 @@ namespace NoticeBoard.Models.Classes
         public int ArchetypeStartingLevel { get; set; }
 
         public int NumberOfStartingSkills { get; set; }
+
+        public AbilityModel SpellcastingAbility { get; set; }
     }
 }

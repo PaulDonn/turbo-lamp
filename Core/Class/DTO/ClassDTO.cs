@@ -1,4 +1,6 @@
-﻿namespace Core.Class.DTO
+﻿using Core.Ability.DTO;
+
+namespace Core.Class.DTO
 {
     public class ClassDTO
     {
@@ -17,5 +19,7 @@
         public int ArchetypeStartingLevel { get; set; }
 
         public int NumberOfStartingSkills { get; set; }
+
+        public AbilityDTO SpellcastingAbility { get; set; }
     }
 }
