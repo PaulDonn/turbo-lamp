@@ -104,6 +104,12 @@ namespace NoticeBoard.Utility.AutoMapper
                 .ForMember(dest => dest.SavingThrows, opts => opts.MapFrom(src => src.PcSavingThrow))
                 .ForMember(dest => dest.Skills, opts => opts.MapFrom(src => src.PcSkill))
                 .ForMember(dest => dest.Spells, opts => opts.MapFrom(src => src.PcSpell.ToList()))
+                .ForMember(dest => dest.Traits, opts => opts.MapFrom(src => src.PcTrait.Select(n => new TraitDTO 
+                    { 
+                        TraitTypeId = n.TraitTypeId,
+                        TraitType = n.TraitType.Name,
+                        Description = n.Description
+                    })))
                 .ReverseMap();
             CreateMap<PlayerCharacterDTO, PlayerCharacterModel>()
                 .ForMember(dest => dest.SavingThrows, opts => opts.MapFrom(src => src.SavingThrows.Select(n => n.AbilityId)))
@@ -120,10 +126,13 @@ namespace NoticeBoard.Utility.AutoMapper
                         { 8, new Tuple<int,int>(src.Level8SlotsMaximum, src.Level8SlotsCurrent) },
                         { 9, new Tuple<int,int>(src.Level9SlotsMaximum, src.Level9SlotsCurrent) },
                     }))
+                .ForMember(dest => dest.TotalGold, opts => opts.MapFrom(src => src.Copper/100 ))
                 .ForMember(dest => dest.Abilities, opts => opts.Ignore())
                 .ForMember(dest => dest.Skills, opts => opts.Ignore())
                 .ForMember(dest => dest.Spells, opts => opts.MapFrom(src => src.Spells.OrderBy(n => n.Spell.Name)))
                 .ReverseMap();
+
+            CreateMap<TraitDTO, TraitModel>().ReverseMap();
         }
 
         private void RaceMaps()

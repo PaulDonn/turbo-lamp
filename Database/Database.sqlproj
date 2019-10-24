@@ -133,5 +133,18 @@
     <None Include="dbo\Scripts\PopulateSpell_7.sql" />
     <None Include="dbo\Scripts\PopulateSpell_8.sql" />
     <None Include="dbo\Scripts\PopulateSpell_9.sql" />
+    <Build Include="dbo\Tables\dbo.TraitType.Table.sql" />
+    <Build Include="dbo\Tables\dbo.PcTrait.Table.sql" />
+    <None Include="dbo\Scripts\PopulateTraitType.sql" />
+    <Build Include="dbo\Tables\dbo.DamageType.Table.sql" />
+    <None Include="dbo\Scripts\PopulateDamageType.sql" />
+    <Build Include="dbo\Tables\dbo.EquipmentType.Table.sql" />
+    <None Include="dbo\Scripts\PopulateEquipmentType.sql" />
+    <Build Include="dbo\Tables\dbo.WeaponType.Table.sql" />
+    <None Include="dbo\Scripts\PopulateWeaponType.sql" />
+    <Build Include="dbo\Tables\dbo.Equipment.Table.sql" />
+    <Build Include="dbo\Tables\dbo.PcEquipment.Table.sql" />
+    <Build Include="dbo\Tables\dbo.ArmorType.Table.sql" />
+    <None Include="dbo\Scripts\PopulateArmorType.sql" />
   </ItemGroup>
 </Project>

@@ -28,6 +28,7 @@ namespace NoticeBoard.Models.PlayerCharacters
             SavingThrows = new List<int>();
             PlayerSkills = new List<int>();
             Spells = new List<PcSpellModel>();
+            Traits = new List<TraitModel>();
         }
 
         public int Id { get; set; }
@@ -63,6 +64,8 @@ namespace NoticeBoard.Models.PlayerCharacters
 
         public AlignmentModel Alignment { get; set; }
 
+        public List<TraitModel> Traits { get; set; }
+
         [Display(Name = "Experience Points")]
         public int ExperiencePoints { get; set; }
 
@@ -95,5 +98,39 @@ namespace NoticeBoard.Models.PlayerCharacters
         public List<PcSpellModel> Spells { get; set; }
 
         public Dictionary<int, Tuple<int,int>> SpellSlots { get; set; }
+
+        public string Age { get; set; }
+
+        public string Height { get; set; }
+
+        public string Weight { get; set; }
+
+        public string Eyes { get; set; }
+
+        public string Skin { get; set; }
+
+        public string Hair { get; set; }
+
+        public string Appearance { get; set; }
+
+        public string Backstory { get; set; }
+
+        public string AlliesAndOrganisations { get; set; }
+
+        public int Copper { get; set; }
+
+        public int Silver { get; set; }
+
+        public int Electrum { get; set; }
+
+        public int Gold { get; set; }
+
+        public int Platinum { get; set; }
+
+        public int TotalGold { get { return (int)Math.Floor(Convert.ToDecimal(Copper) / 100m)
+                                          + (int)Math.Floor(Convert.ToDecimal(Silver) / 10m)
+                                          + (int)Math.Floor(Convert.ToDecimal(Electrum) / 2m)
+                                          + Gold
+                                          + (Platinum * 10); } }
     }
 }

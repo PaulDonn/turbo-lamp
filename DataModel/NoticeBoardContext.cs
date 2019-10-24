@@ -31,6 +31,7 @@ namespace DataModel
         public virtual DbSet<PcSavingThrow> PcSavingThrow { get; set; }
         public virtual DbSet<PcSkill> PcSkill { get; set; }
         public virtual DbSet<PcSpell> PcSpell { get; set; }
+        public virtual DbSet<PcTrait> PcTrait { get; set; }
         public virtual DbSet<Player> Player { get; set; }
         public virtual DbSet<PlayerCharacter> PlayerCharacter { get; set; }
         public virtual DbSet<Race> Race { get; set; }
@@ -40,6 +41,7 @@ namespace DataModel
         public virtual DbSet<SpellSchool> SpellSchool { get; set; }
         public virtual DbSet<SubFeature> SubFeature { get; set; }
         public virtual DbSet<SubRace> SubRace { get; set; }
+        public virtual DbSet<TraitType> TraitType { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -223,6 +225,21 @@ namespace DataModel
                     .HasConstraintName("FK_PcSpell_Spell");
             });
 
+            modelBuilder.Entity<PcTrait>(entity =>
+            {
+                entity.HasOne(d => d.Pc)
+                    .WithMany(p => p.PcTrait)
+                    .HasForeignKey(d => d.PcId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PcTrait_PlayerCharacter");
+
+                entity.HasOne(d => d.TraitType)
+                    .WithMany(p => p.PcTrait)
+                    .HasForeignKey(d => d.TraitTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PcTrait_TraitType");
+            });
+
             modelBuilder.Entity<PlayerCharacter>(entity =>
             {
                 entity.HasOne(d => d.Alignment)
@@ -332,6 +349,11 @@ namespace DataModel
                     .HasForeignKey(d => d.RaceId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_SubRace_Race");
+            });
+
+            modelBuilder.Entity<TraitType>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
             });
 
             OnModelCreatingPartial(modelBuilder);

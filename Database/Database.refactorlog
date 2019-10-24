@@ -14,4 +14,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ArchetypeId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="228c8dbf-c816-4ccd-9986-d845691b6477" ChangeDateTime="10/24/2019 22:42:59">
+    <Property Name="ElementName" Value="[dbo].[WeaponType].[ThrowRangeLow]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[WeaponType]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RangeLow" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e9bc9a2b-d5c2-4323-96c3-8628fe4bd146" ChangeDateTime="10/24/2019 22:43:03">
+    <Property Name="ElementName" Value="[dbo].[WeaponType].[ThrowRangeHigh]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[WeaponType]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RangeHigh" />
+  </Operation>
 </Operations>

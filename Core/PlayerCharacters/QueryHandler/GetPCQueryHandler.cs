@@ -34,6 +34,8 @@ namespace Core.PlayerCharacters.QueryHandler
                                              .Include(n => n.Class.Archetype)
                                              .Include(n => n.Class.SpellcastingAbility)
                                              .Include(n => n.Alignment)
+                                             .Include(n => n.PcTrait)
+                                                .ThenInclude(n => n.TraitType)
                                              .Include(n => n.Background)
                                              .Include(n => n.Race)
                                              .Include(n => n.SubRace)

@@ -8,30 +8,30 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="col-12">Age</div>
-                            <label class="col-12"><strong></strong></label>
+                            <label class="col-12"><strong>@Model.Age</strong></label>
                         </div>
                         <div class="col-4">
                             <div class="col-12">Height</div>
-                            <label class="col-12"><strong></strong></label>
+                            <label class="col-12"><strong>@Model.Height</strong></label>
                         </div>
                         <div class="col-4">
                             <div class="col-12">Weight</div>
-                            <label class="col-12"><strong></strong></label>
+                            <label class="col-12"><strong>@Model.Weight</strong></label>
                         </div>
                     </div>
                     <hr />
                     <div class="row">
                         <div class="col-4">
                             <div class="col-12">Eyes</div>
-                            <label class="col-12"><strong></strong></label>
+                            <label class="col-12"><strong>@Model.Eyes</strong></label>
                         </div>
                         <div class="col-4">
                             <div class="col-12">Skin</div>
-                            <label class="col-12"><strong></strong></label>
+                            <label class="col-12"><strong>@Model.Skin</strong></label>
                         </div>
                         <div class="col-4">
                             <div class="col-12">Hair</div>
-                            <label class="col-12"><strong></strong></label>
+                            <label class="col-12"><strong>@Model.Hair</strong></label>
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                 <div class="col-12" style="margin-bottom:10px">
                     <div class="card">
                         <div class="card-body">
-
+                            @Model.Appearance
                         </div>
                         <div class="card-footer">
                             <div class="text-center">
@@ -59,7 +59,7 @@
                 <div class="col-12" style="margin-bottom:10px">
                     <div class="card">
                         <div class="card-body">
-
+                            @Model.Backstory
                         </div>
                         <div class="card-footer">
                             <div class="text-center">
@@ -79,7 +79,10 @@
                             <div style="padding-bottom:10px">
                                 <div class="card">
                                     <div class="card-body">
-                                        There's nothing I love more than a good mystery
+                                        @foreach (var trait in Model.Traits.Where(n => n.TraitTypeId == 1))
+                                        {
+                                            <div>@trait.Description</div>
+                                        }
                                     </div>
                                     <div class="card-footer">
                                         <div class="text-center">
@@ -91,7 +94,10 @@
                             <div style="padding-bottom:10px">
                                 <div class="card">
                                     <div class="card-body">
-                                        No Limits
+                                        @foreach (var trait in Model.Traits.Where(n => n.TraitTypeId == 2))
+                                        {
+                                            <div>@trait.Description</div>
+                                        }
                                     </div>
                                     <div class="card-footer">
                                         <div class="text-center">
@@ -103,7 +109,10 @@
                             <div style="padding-bottom:10px">
                                 <div class="card">
                                     <div class="card-body">
-                                        Something
+                                        @foreach (var trait in Model.Traits.Where(n => n.TraitTypeId == 3))
+                                        {
+                                            <div>@trait.Description</div>
+                                        }
                                     </div>
                                     <div class="card-footer">
                                         <div class="text-center">
@@ -115,7 +124,10 @@
                             <div style="padding-bottom:10px">
                                 <div class="card">
                                     <div class="card-body">
-                                        Something else
+                                        @foreach (var trait in Model.Traits.Where(n => n.TraitTypeId == 4))
+                                        {
+                                            <div>@trait.Description</div>
+                                        }
                                     </div>
                                     <div class="card-footer">
                                         <div class="text-center">
@@ -135,7 +147,7 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="text-center">
-                                            Harpers
+                                            Faction
                                         </div>
                                     </div>
                                     <div class="card-body">

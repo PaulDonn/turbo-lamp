@@ -23,6 +23,7 @@ namespace Core.PlayerCharacters.DTO
             Skills = new List<PcSkillDTO>();
             Player = new PlayerDTO();
             Spells = new List<PcSpellDTO>();
+            Traits = new List<TraitDTO>();
         }
 
         public int Id { get; set; }
@@ -45,6 +46,8 @@ namespace Core.PlayerCharacters.DTO
         public SubRaceDTO SubRace { get; set; }
 
         public AlignmentDTO Alignment { get; set; }
+
+        public List<TraitDTO> Traits { get; set; }
 
         public int ExperiencePoints { get; set; }
 
@@ -107,6 +110,33 @@ namespace Core.PlayerCharacters.DTO
 
         public int Level9SlotsCurrent { get; set; }
 
+        public string Age { get; set; }
+
+        public string Height { get; set; }
+
+        public string Weight { get; set; }
+
+        public string Eyes { get; set; }
+
+        public string Skin { get; set; }
+
+        public string Hair { get; set; }
+
+        public string Appearance { get; set; }
+
+        public string Backstory { get; set; }
+
+        public string AlliesAndOrganisations { get; set; }
+
+        public int Copper { get; set; }
+
+        public int Silver { get; set; }
+
+        public int Electrum { get; set; }
+
+        public int Gold { get; set; }
+
+        public int Platinum { get; set; }
 
     }
 }

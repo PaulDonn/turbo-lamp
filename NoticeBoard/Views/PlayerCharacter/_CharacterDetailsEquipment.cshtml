@@ -9,7 +9,7 @@
                         <div class="col-4">
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
-                                    <strong>95</strong>
+                                    <strong>@Model.Copper</strong>
                                 </div>
                                 <div class="card-footer" align="center">
                                     Copper (CP)
@@ -19,7 +19,7 @@
                         <div class="col-4">
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
-                                    <strong>221</strong>
+                                    <strong>@Model.Silver</strong>
                                 </div>
                                 <div class="card-footer" align="center">
                                     Silver (SP)
@@ -29,7 +29,7 @@
                         <div class="col-4">
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
-                                    <strong>0</strong>
+                                    <strong>@Model.Electrum</strong>
                                 </div>
                                 <div class="card-footer" align="center">
                                     Electrum (EP)
@@ -40,7 +40,7 @@
                         <div class="col-4">
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
-                                    <strong>3898</strong>
+                                    <strong>@Model.Gold</strong>
                                 </div>
                                 <div class="card-footer" align="center">
                                     Gold (GP)
@@ -50,7 +50,7 @@
                         <div class="col-4">
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
-                                    <strong>81</strong>
+                                    <strong>@Model.Platinum</strong>
                                 </div>
                                 <div class="card-footer" align="center">
                                     Platinum (PP)
@@ -60,7 +60,7 @@
                         <div class="col-4">
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
-                                    <strong>4731</strong>
+                                    <strong>@Model.TotalGold</strong>
                                 </div>
                                 <div class="card-footer" align="center">
                                     Total (GP)
@@ -76,9 +76,102 @@
         <div class="col-xl-4 col-lg-12">
             <div class="card" style="margin-bottom:10px">
                 <div class="card-body">
-                    Robes<br />
-                    Arcane Focus<br />
-                    Spell Book<br />
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="card bg-light mb-3">
+                                <div class="card-body" align="center">
+                                    <img class="img-fluid" src="~/img/parchment-background-0.png" />
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-center">Cloak</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card bg-light mb-3">
+                                <div class="card-body" align="center">
+                                    <img class="img-fluid" src="~/img/parchment-background-0.png" />
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-center">Helmet</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card bg-light mb-3">
+                                <div class="card-body" align="center">
+                                    <img class="img-fluid" src="~/img/parchment-background-0.png" />
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-center">Amulet</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="card bg-light mb-3">
+                                <div class="card-body" align="center">
+                                    <img class="img-fluid" src="~/img/parchment-background-0.png" />
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-center">Main-Hand Weapon</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card bg-light mb-3">
+                                <div class="card-body" align="center">
+                                    <img class="img-fluid" src="~/img/parchment-background-0.png" />
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-center">Armor</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card bg-light mb-3">
+                                <div class="card-body" align="center">
+                                    <img class="img-fluid" src="~/img/parchment-background-0.png" />
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-center">Off-Hand Weapon</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="card bg-light mb-3">
+                                <div class="card-body" align="center">
+                                    <img class="img-fluid" src="~/img/parchment-background-0.png" />
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-center">Ring 1</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card bg-light mb-3">
+                                <div class="card-body" align="center">
+                                    <img class="img-fluid" src="~/img/parchment-background-0.png" />
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-center">Boots</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card bg-light mb-3">
+                                <div class="card-body" align="center">
+                                    <img class="img-fluid" style="width:auto; height:auto;" src="~/img/parchment-background-0.png" />
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-center">Ring 2</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <div class="text-center">Equipment</div>

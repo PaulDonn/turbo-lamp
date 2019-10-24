@@ -43,7 +43,22 @@ INSERT INTO [dbo].[PlayerCharacter]
 ,[Level8SlotsMaximum]
 ,[Level8SlotsCurrent]
 ,[Level9SlotsMaximum]
-,[Level9SlotsCurrent])
+,[Level9SlotsCurrent]
+,[Age]
+,[Height]
+,[Weight]
+,[Eyes] 
+,[Skin] 
+,[Hair] 
+,[Appearance]
+,[Backstory] 
+,[AlliesAndOrganisations]
+,[Copper]
+,[Silver]
+,[Electrum]
+,[Gold] 
+,[Platinum]
+)
      VALUES
            ('Varg' --<CharacterName, nvarchar(50),>
            ,12 --<ClassId, int,>
@@ -75,7 +90,41 @@ INSERT INTO [dbo].[PlayerCharacter]
            ,0 --<Level8SlotsMaximum, int,>
            ,0 --<Level8SlotsCurrent, int,>
            ,0 --<Level9SlotsMaximum, int,>
-           ,0) --<Level9SlotsCurrent, int,>
+           ,0 --<Level9SlotsCurrent, int,>
+		   ,'Old' --[Age]
+		   ,null --[Height]
+		   ,null --[Weight]
+		   ,null --[Eyes] 
+		   ,'Purple' --[Skin] 
+		   ,null --[Hair] 
+		   ,null --[Appearance]
+		   ,'Favourite Quote: "Huh? What? Where am I?"' --[Backstory] 
+		   ,'Harpers - Rank 1 - Watcher' --[AlliesAndOrganisations]
+		   ,95 --[Copper]
+		   ,221 --[Silver]
+		   ,0 --[Electrum]
+		   ,3898 --[Gold] 
+		   ,81 --[Platinum]
+		   )
+GO
+
+INSERT INTO [dbo].[PcTrait]
+           ([PcId]
+		   ,[TraitTypeId]
+           ,[Description])
+     VALUES
+           (1
+		   ,1
+           ,'There''s nothing I like more than a good mystery.'),
+           (1
+		   ,2
+           ,'Nothing should fetter the infinite possibility inherent in all existence.'),
+           (1
+		   ,3
+           ,'I have an ancient text that holds terrible secrets that must not fall into the wrong hands.'),
+           (1
+		   ,4
+           ,'Unlocking an ancient mystery is worth the price of a civilisation')
 GO
 
 INSERT INTO [dbo].[PcAbilityScore]

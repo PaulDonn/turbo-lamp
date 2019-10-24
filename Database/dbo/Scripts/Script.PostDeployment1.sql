@@ -9,6 +9,8 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
+
+--Standing Data
 :r .\"PopulateSpellSchool.sql"
 :r .\"PopulateSpell_0.sql"
 :r .\"PopulateSpell_1.sql"
@@ -27,6 +29,12 @@ Post-Deployment Script Template
 :r .\"PopulateBgSkill.sql"
 :r .\"PopulateLanguage.sql"
 :r .\"PopulateRaceLanguage.sql"
+:r .\"PopulateTraitType.sql"
+:r .\"PopulateDamageType.sql"
+:r .\"PopulateWeaponType.sql"
+:r .\"PopulateArmorType.sql"
+:r .\"PopulateEquipmentType.sql"
 
+--Test Data
 :r .\"PopulateTestPCs.sql"
 

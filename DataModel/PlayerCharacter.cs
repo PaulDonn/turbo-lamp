@@ -15,6 +15,7 @@ namespace DataModel
             PcSavingThrow = new HashSet<PcSavingThrow>();
             PcSkill = new HashSet<PcSkill>();
             PcSpell = new HashSet<PcSpell>();
+            PcTrait = new HashSet<PcTrait>();
         }
 
         [Key]
@@ -52,6 +53,26 @@ namespace DataModel
         public int Level8SlotsCurrent { get; set; }
         public int Level9SlotsMaximum { get; set; }
         public int Level9SlotsCurrent { get; set; }
+        [StringLength(50)]
+        public string Age { get; set; }
+        [StringLength(50)]
+        public string Height { get; set; }
+        [StringLength(50)]
+        public string Weight { get; set; }
+        [StringLength(50)]
+        public string Eyes { get; set; }
+        [StringLength(50)]
+        public string Skin { get; set; }
+        [StringLength(50)]
+        public string Hair { get; set; }
+        public string Appearance { get; set; }
+        public string Backstory { get; set; }
+        public string AlliesAndOrganisations { get; set; }
+        public int Copper { get; set; }
+        public int Silver { get; set; }
+        public int Electrum { get; set; }
+        public int Gold { get; set; }
+        public int Platinum { get; set; }
 
         [ForeignKey(nameof(AlignmentId))]
         [InverseProperty("PlayerCharacter")]
@@ -89,5 +110,7 @@ namespace DataModel
         public virtual ICollection<PcSkill> PcSkill { get; set; }
         [InverseProperty("Pc")]
         public virtual ICollection<PcSpell> PcSpell { get; set; }
+        [InverseProperty("Pc")]
+        public virtual ICollection<PcTrait> PcTrait { get; set; }
     }
 }
