@@ -31,7 +31,10 @@
             <div class="row">
                 <div class="col-12" style="padding-bottom:10px">
                     <div class="card">
-                        <div class="card-header" data-toggle="collapse" href="#spellLevel@(i)" role="button" aria-expanded="true" aria-controls="spellLevel@(i)">
+                        <div class="card-header collapsed" data-toggle="collapse" href="#spellLevel@(i)" role="button" aria-expanded="true" aria-controls="spellLevel@(i)">
+                            <span class="float-left">
+                                <i class="accord-arrow"></i>
+                            </span>
                             <div class="row">
                                 <div class="col-2">
                                     @if (i == 0)
@@ -65,7 +68,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body collapse show" id="spellLevel@(i)">
+                        <div class="card-body collapse" id="spellLevel@(i)">
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -116,15 +119,15 @@
                                             <td>
                                                 @if (pcSpell.Spell.RequiresVerbal)
                                                 {
-                                                    @:V
+                                                    @:<span data-toggle="tooltip" data-placement="top" title="This spell requires a verbal component">V </span>
                                                 }
                                                 @if (pcSpell.Spell.RequiresVerbal)
                                                 {
-                                                    @:S
+                                                    @:<span data-toggle="tooltip" data-placement="top" title="This spell requires a somatic component">S </span>
                                                 }
                                                 @if (pcSpell.Spell.RequiresMaterial)
                                                 {
-                                                    @:M
+                                                    @:<span data-toggle="tooltip" data-placement="top" title="This spell requires a material component">M </span>
                                                 }
                                                 @if (!string.IsNullOrEmpty(pcSpell.Spell.MaterialDescription))
                                                 {

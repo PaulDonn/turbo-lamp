@@ -93,11 +93,17 @@ img.resize {
     padding-right: 0 !important;
 }
 
-.card-header:before {
-    content: "\f107"; /* angle-down */
+@import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
+
+.card-header i.accord-arrow:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f107";
+    font-weight: 600;
 }
 
-.card-header.collapsed:before {
-    content: "\f106"; /* angle-up */
+.card-header.collapsed i.accord-arrow:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f105";
+    font-weight: 600;
 }
 
