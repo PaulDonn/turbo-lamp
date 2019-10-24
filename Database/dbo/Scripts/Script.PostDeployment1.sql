@@ -11,6 +11,10 @@ Post-Deployment Script Template
 */
 :r .\"PopulateSpellSchool.sql"
 :r .\"PopulateSpell_0.sql"
+:r .\"PopulateSpell_1.sql"
+:r .\"PopulateSpell_2.sql"
+:r .\"PopulateSpell_3.sql"
+:r .\"PopulateSpell_4.sql"
 :r .\"PopulateAbility.sql"
 :r .\"PopulateSkill.sql"
 :r .\"PopulateAlignment.sql"

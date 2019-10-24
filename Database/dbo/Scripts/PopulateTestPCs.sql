@@ -136,5 +136,27 @@ VALUES
 	(1,(SELECT Id FROM Spell WHERE Name = 'Fire Bolt')),
 	(1,(SELECT Id FROM Spell WHERE Name = 'Light')),
 	(1,(SELECT Id FROM Spell WHERE Name = 'Mage Hand')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Prestidigitation'))
+	(1,(SELECT Id FROM Spell WHERE Name = 'Thaumaturgy')),
+	
+	(1,(SELECT Id FROM Spell WHERE Name = 'Burning Hands')),
+	(1,(SELECT Id FROM Spell WHERE Name = 'Charm Person')),
+	(1,(SELECT Id FROM Spell WHERE Name = 'Find Familiar')),
+	(1,(SELECT Id FROM Spell WHERE Name = 'Mage Armor')),
+	(1,(SELECT Id FROM Spell WHERE Name = 'Magic Missile')),
+	(1,(SELECT Id FROM Spell WHERE Name = 'Thunderwave')),
+	
+	(1,(SELECT Id FROM Spell WHERE Name = 'Darkvision')),
+	(1,(SELECT Id FROM Spell WHERE Name = 'Invisibility')),
+	(1,(SELECT Id FROM Spell WHERE Name = 'Misty Step')),
+	(1,(SELECT Id FROM Spell WHERE Name = 'Scorching Ray')),
+
+	(1,(SELECT Id FROM Spell WHERE Name = 'Counterspell')),
+	(1,(SELECT Id FROM Spell WHERE Name = 'Fireball')),
+	(1,(SELECT Id FROM Spell WHERE Name = 'Fly')),
+	(1,(SELECT Id FROM Spell WHERE Name = 'Haste')),
+	(1,(SELECT Id FROM Spell WHERE Name = 'Vampiric Touch')),
+
+	(1,(SELECT Id FROM Spell WHERE Name = 'Dimension Door')),
+	(1,(SELECT Id FROM Spell WHERE Name = 'Evard''s Black Tentacles')),
+	(1,(SELECT Id FROM Spell WHERE Name = 'Polymorph'))
 GO

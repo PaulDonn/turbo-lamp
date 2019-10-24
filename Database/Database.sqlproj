@@ -124,5 +124,14 @@
     <Build Include="dbo\Tables\dbo.SpellSchool.Table.sql" />
     <Build Include="dbo\Tables\dbo.Spell.Table.sql" />
     <Build Include="dbo\Tables\dbo.PcSpell.Table.sql" />
+    <None Include="dbo\Scripts\PopulateSpell_1.sql" />
+    <None Include="dbo\Scripts\PopulateSpell_2.sql" />
+    <None Include="dbo\Scripts\PopulateSpell_3.sql" />
+    <None Include="dbo\Scripts\PopulateSpell_4.sql" />
+    <None Include="dbo\Scripts\PopulateSpell_5.sql" />
+    <None Include="dbo\Scripts\PopulateSpell_6.sql" />
+    <None Include="dbo\Scripts\PopulateSpell_7.sql" />
+    <None Include="dbo\Scripts\PopulateSpell_8.sql" />
+    <None Include="dbo\Scripts\PopulateSpell_9.sql" />
   </ItemGroup>
 </Project>
