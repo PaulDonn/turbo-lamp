@@ -18,14 +18,19 @@ namespace DataModel
         public virtual DbSet<Ability> Ability { get; set; }
         public virtual DbSet<Alignment> Alignment { get; set; }
         public virtual DbSet<Archetype> Archetype { get; set; }
+        public virtual DbSet<ArmorType> ArmorType { get; set; }
         public virtual DbSet<Background> Background { get; set; }
         public virtual DbSet<BgSkill> BgSkill { get; set; }
         public virtual DbSet<Class> Class { get; set; }
         public virtual DbSet<ClassSkill> ClassSkill { get; set; }
+        public virtual DbSet<DamageType> DamageType { get; set; }
+        public virtual DbSet<Equipment> Equipment { get; set; }
+        public virtual DbSet<EquipmentType> EquipmentType { get; set; }
         public virtual DbSet<Feature> Feature { get; set; }
         public virtual DbSet<Language> Language { get; set; }
         public virtual DbSet<Party> Party { get; set; }
         public virtual DbSet<PcAbilityScore> PcAbilityScore { get; set; }
+        public virtual DbSet<PcEquipment> PcEquipment { get; set; }
         public virtual DbSet<PcFeature> PcFeature { get; set; }
         public virtual DbSet<PcLanguage> PcLanguage { get; set; }
         public virtual DbSet<PcSavingThrow> PcSavingThrow { get; set; }
@@ -42,6 +47,7 @@ namespace DataModel
         public virtual DbSet<SubFeature> SubFeature { get; set; }
         public virtual DbSet<SubRace> SubRace { get; set; }
         public virtual DbSet<TraitType> TraitType { get; set; }
+        public virtual DbSet<WeaponType> WeaponType { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -73,6 +79,11 @@ namespace DataModel
                     .HasForeignKey(d => d.ClassId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Archetype_Class");
+            });
+
+            modelBuilder.Entity<ArmorType>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
             });
 
             modelBuilder.Entity<Background>(entity =>
@@ -125,6 +136,40 @@ namespace DataModel
                     .HasConstraintName("FK_ClassSkill_Skill");
             });
 
+            modelBuilder.Entity<DamageType>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<Equipment>(entity =>
+            {
+                entity.HasOne(d => d.ArmorType)
+                    .WithMany(p => p.Equipment)
+                    .HasForeignKey(d => d.ArmorTypeId)
+                    .HasConstraintName("FK_Equipment_ArmorType");
+
+                entity.HasOne(d => d.EquipmentType)
+                    .WithMany(p => p.Equipment)
+                    .HasForeignKey(d => d.EquipmentTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Equipment_EquipmentType");
+
+                entity.HasOne(d => d.PreRequisiteAbility)
+                    .WithMany(p => p.Equipment)
+                    .HasForeignKey(d => d.PreRequisiteAbilityId)
+                    .HasConstraintName("FK_Equipment_Ability");
+
+                entity.HasOne(d => d.WeaponType)
+                    .WithMany(p => p.Equipment)
+                    .HasForeignKey(d => d.WeaponTypeId)
+                    .HasConstraintName("FK_Equipment_WeaponType");
+            });
+
+            modelBuilder.Entity<EquipmentType>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+            });
+
             modelBuilder.Entity<Feature>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
@@ -148,6 +193,20 @@ namespace DataModel
                     .HasForeignKey(d => d.PcId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PcAbilityScore_PlayerCharacter");
+            });
+
+            modelBuilder.Entity<PcEquipment>(entity =>
+            {
+                entity.HasOne(d => d.Equipment)
+                    .WithMany(p => p.PcEquipment)
+                    .HasForeignKey(d => d.EquipmentId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PcEquipment_Equipment");
+
+                entity.HasOne(d => d.Pc)
+                    .WithMany(p => p.PcEquipment)
+                    .HasForeignKey(d => d.PcId)
+                    .HasConstraintName("FK_PcEquipment_PlayerCharacter");
             });
 
             modelBuilder.Entity<PcFeature>(entity =>
@@ -354,6 +413,17 @@ namespace DataModel
             modelBuilder.Entity<TraitType>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<WeaponType>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(d => d.DamageType)
+                    .WithMany(p => p.WeaponType)
+                    .HasForeignKey(d => d.DamageTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_WeaponType_DamageType");
             });
 
             OnModelCreatingPartial(modelBuilder);

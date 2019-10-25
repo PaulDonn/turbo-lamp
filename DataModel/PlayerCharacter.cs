@@ -10,6 +10,7 @@ namespace DataModel
         public PlayerCharacter()
         {
             PcAbilityScore = new HashSet<PcAbilityScore>();
+            PcEquipment = new HashSet<PcEquipment>();
             PcFeature = new HashSet<PcFeature>();
             PcLanguage = new HashSet<PcLanguage>();
             PcSavingThrow = new HashSet<PcSavingThrow>();
@@ -100,6 +101,8 @@ namespace DataModel
         public virtual SubRace SubRace { get; set; }
         [InverseProperty("Pc")]
         public virtual ICollection<PcAbilityScore> PcAbilityScore { get; set; }
+        [InverseProperty("Pc")]
+        public virtual ICollection<PcEquipment> PcEquipment { get; set; }
         [InverseProperty("Pc")]
         public virtual ICollection<PcFeature> PcFeature { get; set; }
         [InverseProperty("Pc")]

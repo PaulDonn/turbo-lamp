@@ -34,6 +34,14 @@ Post-Deployment Script Template
 :r .\"PopulateWeaponType.sql"
 :r .\"PopulateArmorType.sql"
 :r .\"PopulateEquipmentType.sql"
+:r .\"PopulateEquipment_Weapons.sql"
+:r .\"PopulateEquipment_WeaponsPlus1.sql"
+:r .\"PopulateEquipment_WeaponsPlus2.sql"
+:r .\"PopulateEquipment_WeaponsPlus3.sql"
+:r .\"PopulateEquipment_Armor.sql"
+:r .\"PopulateEquipment_ArmorPlus1.sql"
+:r .\"PopulateEquipment_ArmorPlus2.sql"
+:r .\"PopulateEquipment_ArmorPlus3.sql"
 
 --Test Data
 :r .\"PopulateTestPCs.sql"

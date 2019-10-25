@@ -14,5 +14,6 @@
           ,(10, 'Potion')
           ,(11, 'Scroll')
           ,(12, 'Ammunition')
-          ,(13, 'Other')
+          ,(13, 'Tool')
+          ,(14, 'Other')
 GO

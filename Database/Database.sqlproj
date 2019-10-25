@@ -65,6 +65,7 @@
     <None Include="dbo\Scripts\PopulateTestPCs.sql" />
     <None Include="dbo\Scripts\PopulateSpellSchool.sql" />
     <None Include="dbo\Scripts\PopulateSpell_0.sql" />
+    <None Include="dbo\Scripts\PopulateEquipment_Weapons.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Scripts\PopulateAbility.sql" />
@@ -146,5 +147,12 @@
     <Build Include="dbo\Tables\dbo.PcEquipment.Table.sql" />
     <Build Include="dbo\Tables\dbo.ArmorType.Table.sql" />
     <None Include="dbo\Scripts\PopulateArmorType.sql" />
+    <None Include="dbo\Scripts\PopulateEquipment_WeaponsPlus1.sql" />
+    <None Include="dbo\Scripts\PopulateEquipment_WeaponsPlus3.sql" />
+    <None Include="dbo\Scripts\PopulateEquipment_WeaponsPlus2.sql" />
+    <None Include="dbo\Scripts\PopulateEquipment_Armor.sql" />
+    <None Include="dbo\Scripts\PopulateEquipment_ArmorPlus1.sql" />
+    <None Include="dbo\Scripts\PopulateEquipment_ArmorPlus3.sql" />
+    <None Include="dbo\Scripts\PopulateEquipment_ArmorPlus2.sql" />
   </ItemGroup>
 </Project>

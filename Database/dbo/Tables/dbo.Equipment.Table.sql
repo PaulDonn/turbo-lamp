@@ -2,20 +2,16 @@
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](150) NOT NULL,
 	[EquipmentTypeId] [int] NOT NULL,
-	[Description] [nvarchar](max) NOT NULL,
+	[Description] [nvarchar](max) NULL,
 	[IsCursed] [bit] NOT NULL,
 	[CurseDescription] [nvarchar](max) NULL,
 	[Weight] [int] NOT NULL,
 	[Value] [int] NOT NULL,
 	[PreRequisiteAbilityId] [int] NULL,
-	[PreRequisiteAbilityScore] [int] NULL,
-	[ArmorClassBase] [int] NULL,
-	[ArmorClassAddDex] [bit] NOT NULL,
-	[ArmorClassMaxDex] [int] NULL,
-	[StealthDisadvantage] [bit] NOT NULL,	
+	[PreRequisiteAbilityScore] [int] NULL,	
 	[WeaponTypeId] [int] NULL,
-	[ToHitBonus] [int] NOT NULL DEFAULT 0,
-	[DamageBonus] [int] NOT NULL DEFAULT 0,
+	[ArmorTypeId] [int] NULL,
+	[Bonus] [int] NOT NULL DEFAULT 0,
 	[IsMagical] [bit] NOT NULL,
  CONSTRAINT [PK_Equipment] PRIMARY KEY CLUSTERED 
 (
@@ -43,4 +39,11 @@ REFERENCES [dbo].[WeaponType] ([Id])
 GO
 
 ALTER TABLE [dbo].[Equipment] CHECK CONSTRAINT [FK_Equipment_WeaponType]
+GO
+
+ALTER TABLE [dbo].[Equipment]  WITH CHECK ADD  CONSTRAINT [FK_Equipment_ArmorType] FOREIGN KEY([ArmorTypeId])
+REFERENCES [dbo].[ArmorType] ([Id])
+GO
+
+ALTER TABLE [dbo].[Equipment] CHECK CONSTRAINT [FK_Equipment_ArmorType]
 GO
