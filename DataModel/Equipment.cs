@@ -29,6 +29,8 @@ namespace DataModel
         public int? ArmorTypeId { get; set; }
         public int Bonus { get; set; }
         public bool IsMagical { get; set; }
+        [StringLength(150)]
+        public string ImagePath { get; set; }
 
         [ForeignKey(nameof(ArmorTypeId))]
         [InverseProperty("Equipment")]

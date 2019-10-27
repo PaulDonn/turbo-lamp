@@ -11,7 +11,8 @@
            ,[WeaponTypeId]
            ,[ArmorTypeId]
            ,[Bonus]
-           ,[IsMagical])
+           ,[IsMagical]
+		   ,[ImagePath])
      VALUES
            ('Robes'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Clothing')--<EquipmentTypeId, int,>
@@ -26,6 +27,7 @@
            ,null--<ArmorTypeId, int,>
            ,0--<Bonus, int,>
            ,0--<IsMagical, bit,>
+		   ,'robes'--<ImagePath, nvarchar(150)>
 		   ), 
            ('Ragged clothing'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Clothing')--<EquipmentTypeId, int,>
@@ -40,6 +42,7 @@
            ,null--<ArmorTypeId, int,>
            ,0--<Bonus, int,>
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Modest Clothing'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Clothing')--<EquipmentTypeId, int,>
@@ -54,6 +57,7 @@
            ,null--<ArmorTypeId, int,>
            ,0--<Bonus, int,>
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),           
            ('Expensive Clothing'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Clothing')--<EquipmentTypeId, int,>
@@ -68,5 +72,6 @@
            ,null--<ArmorTypeId, int,>
            ,0--<Bonus, int,>
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ) 
 GO

@@ -80,12 +80,20 @@
                         <div class="col-4">
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
-                                    <img class="img-fluid" src="~/img/parchment-background-0.png" />
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="text-center">@Model.Equipment.FirstOrDefault(n => n.EquippedSlot == "Cloak")?.DisplayName()</div>
+                                    @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Cloak") != null)
+                                    {
+                                        var mainHand = @Model.Equipment.Single(n => n.EquippedSlot == "Cloak");
+                                        <img class="img-fluid" src="~/img/Equipment/@(mainHand.Equipment.ImagePath ?? "unknown").png" />
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="text-center">@mainHand.DisplayName()</div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
+                                    else
+                                    {
+                                        <img class="img-fluid" src="~/img/Equipment/nothing.png" />
+                                    }
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Cloak</div>
@@ -95,12 +103,20 @@
                         <div class="col-4">
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
-                                    <img class="img-fluid" src="~/img/parchment-background-0.png" />
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="text-center">@Model.Equipment.FirstOrDefault(n => n.EquippedSlot == "Helmet")?.DisplayName()</div>
+                                    @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Helmet") != null)
+                                    {
+                                        var mainHand = @Model.Equipment.Single(n => n.EquippedSlot == "Helmet");
+                                        <img class="img-fluid" src="~/img/Equipment/@(mainHand.Equipment.ImagePath ?? "unknown").png" />
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="text-center">@mainHand.DisplayName()</div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
+                                    else
+                                    {
+                                        <img class="img-fluid" src="~/img/Equipment/nothing.png" />
+                                    }
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Helmet</div>
@@ -110,12 +126,20 @@
                         <div class="col-4">
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
-                                    <img class="img-fluid" src="~/img/parchment-background-0.png" />
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="text-center">@Model.Equipment.FirstOrDefault(n => n.EquippedSlot == "Amulet")?.DisplayName()</div>
+                                    @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Amulet") != null)
+                                    {
+                                        var mainHand = @Model.Equipment.Single(n => n.EquippedSlot == "Amulet");
+                                        <img class="img-fluid" src="~/img/Equipment/@(mainHand.Equipment.ImagePath ?? "unknown").png" />
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="text-center">@mainHand.DisplayName()</div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
+                                    else
+                                    {
+                                        <img class="img-fluid" src="~/img/Equipment/nothing.png" />
+                                    }
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Amulet</div>
@@ -127,12 +151,20 @@
                         <div class="col-4">
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
-                                    <img class="img-fluid" src="~/img/parchment-background-0.png" />
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="text-center">@Model.Equipment.FirstOrDefault(n => n.EquippedSlot == "MainHand" || n.EquippedSlot == "BothHands")?.DisplayName()</div>
+                                    @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "MainHand" || n.EquippedSlot == "BothHands") != null)
+                                    {
+                                        var mainHand = @Model.Equipment.Single(n => n.EquippedSlot == "MainHand" || n.EquippedSlot == "BothHands");
+                                        <img class="img-fluid" src="~/img/Equipment/@(mainHand.Equipment.ImagePath ?? "unknown").png" />
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="text-center">@mainHand.DisplayName()</div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
+                                    else
+                                    {
+                                        <img class="img-fluid" src="~/img/Equipment/nothing.png" />
+                                    }
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Main-Hand Weapon</div>
@@ -142,12 +174,20 @@
                         <div class="col-4">
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
-                                    <img class="img-fluid" src="~/img/parchment-background-0.png" />
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="text-center">@Model.Equipment.FirstOrDefault(n => n.EquippedSlot == "Armor")?.DisplayName()</div>
+                                    @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Armor") != null)
+                                    {
+                                        var mainHand = @Model.Equipment.Single(n => n.EquippedSlot == "Armor");
+                                        <img class="img-fluid" src="~/img/Equipment/@(mainHand.Equipment.ImagePath ?? "unknown").png" />
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="text-center">@mainHand.DisplayName()</div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
+                                    else
+                                    {
+                                        <img class="img-fluid" src="~/img/Equipment/nothing.png" />
+                                    }
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Armor</div>
@@ -157,12 +197,20 @@
                         <div class="col-4">
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
-                                    <img class="img-fluid" src="~/img/parchment-background-0.png" />
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="text-center">@Model.Equipment.FirstOrDefault(n => n.EquippedSlot == "OffHand" || n.EquippedSlot == "BothHands")?.DisplayName()</div>
+                                    @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "OffHand" || n.EquippedSlot == "BothHands") != null)
+                                    {
+                                        var mainHand = @Model.Equipment.Single(n => n.EquippedSlot == "OffHand" || n.EquippedSlot == "BothHands");
+                                        <img class="img-fluid" src="~/img/Equipment/@(mainHand.Equipment.ImagePath ?? "unknown").png" />
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="text-center">@mainHand.DisplayName()</div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
+                                    else
+                                    {
+                                        <img class="img-fluid" src="~/img/Equipment/nothing.png" />
+                                    }
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Off-Hand Weapon</div>
@@ -174,12 +222,20 @@
                         <div class="col-4">
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
-                                    <img class="img-fluid" src="~/img/parchment-background-0.png" />
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="text-center">@Model.Equipment.FirstOrDefault(n => n.EquippedSlot == "Ring1")?.DisplayName()</div>
+                                    @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Ring1") != null)
+                                    {
+                                        var mainHand = @Model.Equipment.Single(n => n.EquippedSlot == "Ring1");
+                                        <img class="img-fluid" src="~/img/Equipment/@(mainHand.Equipment.ImagePath ?? "unknown").png" />
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="text-center">@mainHand.DisplayName()</div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
+                                    else
+                                    {
+                                        <img class="img-fluid" src="~/img/Equipment/nothing.png" />
+                                    }
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Ring 1</div>
@@ -189,12 +245,20 @@
                         <div class="col-4">
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
-                                    <img class="img-fluid" src="~/img/parchment-background-0.png" />
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="text-center">@Model.Equipment.FirstOrDefault(n => n.EquippedSlot == "Boots")?.DisplayName()</div>
+                                    @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Boots") != null)
+                                    {
+                                        var mainHand = @Model.Equipment.Single(n => n.EquippedSlot == "Boots");
+                                        <img class="img-fluid" src="~/img/Equipment/@(mainHand.Equipment.ImagePath ?? "unknown").png" />
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="text-center">@mainHand.DisplayName()</div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
+                                    else
+                                    {
+                                        <img class="img-fluid" src="~/img/Equipment/nothing.png" />
+                                    }
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Boots</div>
@@ -204,12 +268,20 @@
                         <div class="col-4">
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
-                                    <img class="img-fluid" style="width:auto; height:auto;" src="~/img/parchment-background-0.png" />
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="text-center">@Model.Equipment.FirstOrDefault(n => n.EquippedSlot == "Ring2")?.DisplayName()</div>
+                                    @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Ring2") != null)
+                                    {
+                                        var mainHand = @Model.Equipment.Single(n => n.EquippedSlot == "Ring2");
+                                        <img class="img-fluid" src="~/img/Equipment/@(mainHand.Equipment.ImagePath ?? "unknown").png" />
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="text-center">@mainHand.DisplayName()</div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
+                                    else
+                                    {
+                                        <img class="img-fluid" src="~/img/Equipment/nothing.png" />
+                                    }
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Ring 2</div>

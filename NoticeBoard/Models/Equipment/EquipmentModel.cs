@@ -31,6 +31,8 @@ namespace NoticeBoard.Models.Equipment
 
         public bool IsMagical { get; set; }
 
+        public string ImagePath { get; set; }
+
         public ArmorTypeModel ArmorType { get; set; }
 
         public WeaponTypeModel WeaponType { get; set; }

@@ -11,7 +11,8 @@
            ,[WeaponTypeId]
            ,[ArmorTypeId]
            ,[Bonus]
-           ,[IsMagical])
+           ,[IsMagical]
+		   ,[ImagePath])
      VALUES
            ('Padded armor'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Armor')--<EquipmentTypeId, int,>
@@ -26,6 +27,7 @@
            ,(SELECT Id FROM ArmorType WHERE [Name] = 'Padded')--<ArmorTypeId, int,>
            ,0--<Bonus, int,>
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Leather armor'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Armor')--<EquipmentTypeId, int,>
@@ -40,6 +42,7 @@
            ,(SELECT Id FROM ArmorType WHERE [Name] = 'Leather')--<ArmorTypeId, int,>
            ,0--<Bonus, int,>
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Studded Leather armor'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Armor')--<EquipmentTypeId, int,>
@@ -54,6 +57,7 @@
            ,(SELECT Id FROM ArmorType WHERE [Name] = 'Studded Leather')--<ArmorTypeId, int,>
            ,0--<Bonus, int,>
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Hide armor'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Armor')--<EquipmentTypeId, int,>
@@ -68,6 +72,7 @@
            ,(SELECT Id FROM ArmorType WHERE [Name] = 'Hide')--<ArmorTypeId, int,>
            ,0--<Bonus, int,>
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Chain shirt'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Armor')--<EquipmentTypeId, int,>
@@ -82,6 +87,7 @@
            ,(SELECT Id FROM ArmorType WHERE [Name] = 'Chain shirt')--<ArmorTypeId, int,>
            ,0--<Bonus, int,>
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Scale mail'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Armor')--<EquipmentTypeId, int,>
@@ -96,6 +102,7 @@
            ,(SELECT Id FROM ArmorType WHERE [Name] = 'Scale mail')--<ArmorTypeId, int,>
            ,0--<Bonus, int,>
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Breastplate'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Armor')--<EquipmentTypeId, int,>
@@ -110,6 +117,7 @@
            ,(SELECT Id FROM ArmorType WHERE [Name] = 'Breastplate')--<ArmorTypeId, int,>
            ,0--<Bonus, int,>
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Half plate armor'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Armor')--<EquipmentTypeId, int,>
@@ -124,6 +132,7 @@
            ,(SELECT Id FROM ArmorType WHERE [Name] = 'Half plate')--<ArmorTypeId, int,>
            ,0--<Bonus, int,>
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Ring mail'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Armor')--<EquipmentTypeId, int,>
@@ -138,6 +147,7 @@
            ,(SELECT Id FROM ArmorType WHERE [Name] = 'Ring mail')--<ArmorTypeId, int,>
            ,0--<Bonus, int,>
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Chain mail'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Armor')--<EquipmentTypeId, int,>
@@ -152,6 +162,7 @@
            ,(SELECT Id FROM ArmorType WHERE [Name] = 'Chain mail')--<ArmorTypeId, int,>
            ,0--<Bonus, int,>
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Splint armor'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Armor')--<EquipmentTypeId, int,>
@@ -166,6 +177,7 @@
            ,(SELECT Id FROM ArmorType WHERE [Name] = 'Splint')--<ArmorTypeId, int,>
            ,0--<Bonus, int,>
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Plate armor'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Armor')--<EquipmentTypeId, int,>
@@ -180,5 +192,6 @@
            ,(SELECT Id FROM ArmorType WHERE [Name] = 'Plate')--<ArmorTypeId, int,>
            ,0--<Bonus, int,>
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   )
 GO

@@ -11,7 +11,8 @@
            ,[WeaponTypeId]
            ,[ArmorTypeId]
            ,[Bonus]
-           ,[IsMagical])
+           ,[IsMagical]
+		   ,[ImagePath])
      VALUES
            ('Club'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -27,6 +28,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Dagger'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -42,6 +44,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Greatclub'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -57,6 +60,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Handaxe'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -72,6 +76,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Javelin'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -87,6 +92,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Light hammer'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -102,6 +108,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Mace'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -117,6 +124,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Quarterstaff'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -132,6 +140,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,'quarterstaff'--<ImagePath, nvarchar(150)>
 		   ),
            ('Sickle'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -147,6 +156,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Spear'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -162,6 +172,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Light crossbow'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -177,6 +188,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Dart'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -192,6 +204,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Shortbow'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -207,6 +220,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Sling'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -222,6 +236,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Battleaxe'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -237,6 +252,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Flail'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -252,6 +268,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Glaive'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -267,6 +284,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Greataxe'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -282,6 +300,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Greatsword'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -297,6 +316,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>v
 		   ),
            ('Halberd'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -312,6 +332,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Lance'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -327,6 +348,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Longsword'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -342,6 +364,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Maul'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -357,6 +380,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Morningstar'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -372,6 +396,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Pike'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -387,6 +412,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Rapier'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -402,6 +428,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Scimitar'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -417,6 +444,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Shortsword'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -432,6 +460,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Trident'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -447,6 +476,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('War pick'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -462,6 +492,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Warhammer'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -477,6 +508,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Whip'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -492,6 +524,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Blowgun'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -507,6 +540,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Hand crossbow'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -522,6 +556,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Heavy crossbow'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -537,6 +572,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Longbow'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -552,6 +588,7 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   ),
            ('Net'--<Name, nvarchar(150),>
            ,(SELECT Id FROM EquipmentType WHERE [Name] = 'Weapon')--<EquipmentTypeId, int,>
@@ -567,5 +604,6 @@
            ,0--<ToHitBonus, int,>
            
            ,0--<IsMagical, bit,>
+		   ,null--<ImagePath, nvarchar(150)>
 		   )
 GO

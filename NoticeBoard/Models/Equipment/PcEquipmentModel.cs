@@ -17,6 +17,7 @@ namespace NoticeBoard.Models.Equipment
 
         public string EquippedSlot { get; set; }
 
+
         public string DisplayName()
         {
             if(String.IsNullOrWhiteSpace(Name))

@@ -30,6 +30,8 @@ namespace Core.Equipment.DTO
 
         public bool IsMagical { get; set; }
 
+        public string ImagePath { get; set; }
+
         public ArmorTypeDTO ArmorType { get; set; }
 
         public WeaponTypeDTO WeaponType { get; set; }
