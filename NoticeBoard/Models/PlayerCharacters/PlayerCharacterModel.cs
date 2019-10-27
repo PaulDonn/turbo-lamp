@@ -11,6 +11,7 @@ using NoticeBoard.Models.Classes;
 using NoticeBoard.Models.Races;
 using NoticeBoard.Models.Player;
 using NoticeBoard.Models.Spells;
+using NoticeBoard.Models.Equipment;
 
 namespace NoticeBoard.Models.PlayerCharacters
 {
@@ -29,6 +30,7 @@ namespace NoticeBoard.Models.PlayerCharacters
             PlayerSkills = new List<int>();
             Spells = new List<PcSpellModel>();
             Traits = new List<TraitModel>();
+            Equipment = new List<PcEquipmentModel>();
         }
 
         public int Id { get; set; }
@@ -98,6 +100,8 @@ namespace NoticeBoard.Models.PlayerCharacters
         public List<PcSpellModel> Spells { get; set; }
 
         public Dictionary<int, Tuple<int,int>> SpellSlots { get; set; }
+
+        public List<PcEquipmentModel> Equipment { get; set; }
 
         public string Age { get; set; }
 

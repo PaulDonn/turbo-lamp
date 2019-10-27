@@ -81,6 +81,11 @@
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
                                     <img class="img-fluid" src="~/img/parchment-background-0.png" />
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="text-center">@Model.Equipment.FirstOrDefault(n => n.EquippedSlot == "Cloak")?.DisplayName()</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Cloak</div>
@@ -91,6 +96,11 @@
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
                                     <img class="img-fluid" src="~/img/parchment-background-0.png" />
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="text-center">@Model.Equipment.FirstOrDefault(n => n.EquippedSlot == "Helmet")?.DisplayName()</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Helmet</div>
@@ -101,6 +111,11 @@
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
                                     <img class="img-fluid" src="~/img/parchment-background-0.png" />
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="text-center">@Model.Equipment.FirstOrDefault(n => n.EquippedSlot == "Amulet")?.DisplayName()</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Amulet</div>
@@ -113,6 +128,11 @@
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
                                     <img class="img-fluid" src="~/img/parchment-background-0.png" />
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="text-center">@Model.Equipment.FirstOrDefault(n => n.EquippedSlot == "MainHand" || n.EquippedSlot == "BothHands")?.DisplayName()</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Main-Hand Weapon</div>
@@ -123,6 +143,11 @@
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
                                     <img class="img-fluid" src="~/img/parchment-background-0.png" />
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="text-center">@Model.Equipment.FirstOrDefault(n => n.EquippedSlot == "Armor")?.DisplayName()</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Armor</div>
@@ -133,6 +158,11 @@
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
                                     <img class="img-fluid" src="~/img/parchment-background-0.png" />
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="text-center">@Model.Equipment.FirstOrDefault(n => n.EquippedSlot == "OffHand" || n.EquippedSlot == "BothHands")?.DisplayName()</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Off-Hand Weapon</div>
@@ -145,6 +175,11 @@
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
                                     <img class="img-fluid" src="~/img/parchment-background-0.png" />
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="text-center">@Model.Equipment.FirstOrDefault(n => n.EquippedSlot == "Ring1")?.DisplayName()</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Ring 1</div>
@@ -155,6 +190,11 @@
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
                                     <img class="img-fluid" src="~/img/parchment-background-0.png" />
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="text-center">@Model.Equipment.FirstOrDefault(n => n.EquippedSlot == "Boots")?.DisplayName()</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Boots</div>
@@ -165,6 +205,11 @@
                             <div class="card bg-light mb-3">
                                 <div class="card-body" align="center">
                                     <img class="img-fluid" style="width:auto; height:auto;" src="~/img/parchment-background-0.png" />
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="text-center">@Model.Equipment.FirstOrDefault(n => n.EquippedSlot == "Ring2")?.DisplayName()</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Ring 2</div>
@@ -181,9 +226,14 @@
         <div class="col-xl-4 col-lg-12">
             <div class="card" style="margin-bottom:10px">
                 <div class="card-body">
-                    Robes<br />
-                    Arcane Focus<br />
-                    Spell Book<br />
+                    @foreach(var equipment in Model.Equipment.Where(n => string.IsNullOrWhiteSpace(n.EquippedSlot)))
+                    {
+                        <div class="row">
+                            <div class="col-12">
+                                <div>@equipment.DisplayName()</div>
+                            </div>
+                        </div>
+                    }
                 </div>
                 <div class="card-footer">
                     <div class="text-center">Pack</div>

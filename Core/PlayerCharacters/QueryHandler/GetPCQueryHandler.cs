@@ -44,7 +44,13 @@ namespace Core.PlayerCharacters.QueryHandler
                                              .Include(n => n.PcSkill)
                                              .Include(n => n.PcSpell)
                                                 .ThenInclude(n => n.Spell.SpellSchool)
-                                            .SingleOrDefault(n => n.Id == query.PcId);
+                                             .Include(n => n.PcEquipment)
+                                                .ThenInclude(n => n.Equipment.WeaponType)
+                                             .Include(n => n.PcEquipment)
+                                                .ThenInclude(n => n.Equipment.ArmorType)
+                                             .Include(n => n.PcEquipment)
+                                                .ThenInclude(n => n.Equipment.EquipmentType)
+                                             .SingleOrDefault(n => n.Id == query.PcId);
 
             if(pc != null)
             {

@@ -2,6 +2,7 @@
 using Core.Alignment.DTO;
 using Core.Background.DTO;
 using Core.Class.DTO;
+using Core.Equipment.DTO;
 using Core.Player.DTO;
 using Core.Races.DTO;
 using Core.Spell.DTO;
@@ -24,6 +25,7 @@ namespace Core.PlayerCharacters.DTO
             Player = new PlayerDTO();
             Spells = new List<PcSpellDTO>();
             Traits = new List<TraitDTO>();
+            Equipment = new List<PcEquipmentDTO>();
         }
 
         public int Id { get; set; }
@@ -137,6 +139,8 @@ namespace Core.PlayerCharacters.DTO
         public int Gold { get; set; }
 
         public int Platinum { get; set; }
+
+        public List<PcEquipmentDTO> Equipment { get; set; }
 
     }
 }

@@ -154,5 +154,6 @@
     <None Include="dbo\Scripts\PopulateEquipment_ArmorPlus1.sql" />
     <None Include="dbo\Scripts\PopulateEquipment_ArmorPlus3.sql" />
     <None Include="dbo\Scripts\PopulateEquipment_ArmorPlus2.sql" />
+    <None Include="dbo\Scripts\PopulateEquipment_Clothing.sql" />
   </ItemGroup>
 </Project>

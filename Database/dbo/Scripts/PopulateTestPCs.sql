@@ -209,3 +209,36 @@ VALUES
 	(1,(SELECT Id FROM Spell WHERE Name = 'Evard''s Black Tentacles')),
 	(1,(SELECT Id FROM Spell WHERE Name = 'Polymorph'))
 GO
+
+INSERT INTO [dbo].[PcEquipment]
+           ([PcId]
+           ,[EquipmentId]
+           ,[Quantity]
+           ,[Name]
+           ,[EquippedSlot])
+     VALUES
+           (1--<PcId, int,>
+           ,(SELECT TOP(1) Id FROM Equipment WHERE [Name] = 'Quarterstaff')--<EquipmentId, int,>
+           ,null--<Quantity, int,>
+           ,null--<Name, nvarchar(150),>
+           ,'BothHands'--<EquippedSlot, nvarchar(50),>
+		   ),
+           (1--<PcId, int,>
+           ,(SELECT TOP(1) Id FROM Equipment WHERE [Name] = 'Robes')--<EquipmentId, int,>
+           ,null--<Quantity, int,>
+           ,'Wizard Robes'--<Name, nvarchar(150),>
+           ,'Armor'--<EquippedSlot, nvarchar(50),>
+		   ),
+           (1--<PcId, int,>
+           ,(SELECT TOP(1) Id FROM Equipment WHERE [Name] = 'Sling')--<EquipmentId, int,>
+           ,null--<Quantity, int,>
+           ,null--<Name, nvarchar(150),>
+           ,null--<EquippedSlot, nvarchar(50),>
+		   ),
+           (1--<PcId, int,>
+           ,(SELECT TOP(1) Id FROM Equipment WHERE [Name] = 'Dart')--<EquipmentId, int,>
+           ,20--<Quantity, int,>
+           ,null--<Name, nvarchar(150),>
+           ,null--<EquippedSlot, nvarchar(50),>
+		   )
+GO

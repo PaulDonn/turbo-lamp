@@ -15,5 +15,6 @@
           ,(11, 'Scroll')
           ,(12, 'Ammunition')
           ,(13, 'Tool')
-          ,(14, 'Other')
+          ,(14, 'Clothing')
+          ,(15, 'Other')
 GO

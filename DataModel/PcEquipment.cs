@@ -14,7 +14,8 @@ namespace DataModel
         public int? Quantity { get; set; }
         [StringLength(150)]
         public string Name { get; set; }
-        public int? EquippedSlot { get; set; }
+        [StringLength(50)]
+        public string EquippedSlot { get; set; }
 
         [ForeignKey(nameof(EquipmentId))]
         [InverseProperty("PcEquipment")]

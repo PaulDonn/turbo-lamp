@@ -4,7 +4,7 @@
 	[EquipmentId] [int] NOT NULL,
 	[Quantity] [int] NULL,
 	[Name] [nvarchar](150) NULL,
-	[EquippedSlot] [int] NULL,
+	[EquippedSlot] NVARCHAR(50) NULL,
  CONSTRAINT [PK_PcEquipment] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

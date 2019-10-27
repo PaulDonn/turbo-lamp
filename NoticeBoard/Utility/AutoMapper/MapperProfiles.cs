@@ -21,6 +21,8 @@ using Core.Player.DTO;
 using NoticeBoard.Models.Player;
 using Core.Spell.DTO;
 using NoticeBoard.Models.Spells;
+using Core.Equipment.DTO;
+using NoticeBoard.Models.Equipment;
 
 namespace NoticeBoard.Utility.AutoMapper
 {
@@ -33,6 +35,7 @@ namespace NoticeBoard.Utility.AutoMapper
             AlignmentMaps();
             BackgroundMaps();
             ClassMaps();
+            EquipmentMaps();
             //FeatureMaps();
             LanguageMaps();
             PlayerMaps();
@@ -79,6 +82,25 @@ namespace NoticeBoard.Utility.AutoMapper
             CreateMap<ArchetypeDTO, ArchetypeModel>().ReverseMap();
         }
 
+        private void EquipmentMaps()
+        {
+            CreateMap<WeaponType, WeaponTypeDTO>()
+                .ForMember(dest => dest.DamageType, opts => opts.MapFrom(src => src.DamageType.Name))
+                .ReverseMap();
+            CreateMap<WeaponTypeDTO, WeaponTypeModel>().ReverseMap();
+            CreateMap<ArmorType, ArmorTypeDTO>().ReverseMap();
+            CreateMap<ArmorTypeDTO, ArmorTypeModel>().ReverseMap();
+            CreateMap<Equipment, EquipmentDTO>()
+                .ForMember(dest => dest.EquipmentType, opts => opts.MapFrom(src => src.EquipmentType.Name))
+                .ReverseMap();
+            CreateMap<EquipmentDTO, EquipmentModel>().ReverseMap();
+            CreateMap<PcEquipment, PcEquipmentDTO>().ReverseMap();
+            CreateMap<PcEquipmentDTO, PcEquipmentModel>()
+                .ForMember(dest => dest.Equipment, opts => opts.MapFrom(src => src.Equipment))
+                .ReverseMap();
+
+        }
+
         //TODO: FeatureMaps
         //private void FeatureMaps()
         //{
@@ -110,6 +132,7 @@ namespace NoticeBoard.Utility.AutoMapper
                         TraitType = n.TraitType.Name,
                         Description = n.Description
                     })))
+                .ForMember(dest => dest.Equipment, opts => opts.MapFrom(src => src.PcEquipment))
                 .ReverseMap();
             CreateMap<PlayerCharacterDTO, PlayerCharacterModel>()
                 .ForMember(dest => dest.SavingThrows, opts => opts.MapFrom(src => src.SavingThrows.Select(n => n.AbilityId)))
@@ -126,7 +149,7 @@ namespace NoticeBoard.Utility.AutoMapper
                         { 8, new Tuple<int,int>(src.Level8SlotsMaximum, src.Level8SlotsCurrent) },
                         { 9, new Tuple<int,int>(src.Level9SlotsMaximum, src.Level9SlotsCurrent) },
                     }))
-                .ForMember(dest => dest.TotalGold, opts => opts.MapFrom(src => src.Copper/100 ))
+                .ForMember(dest => dest.Equipment, opts => opts.MapFrom(src => src.Equipment))
                 .ForMember(dest => dest.Abilities, opts => opts.Ignore())
                 .ForMember(dest => dest.Skills, opts => opts.Ignore())
                 .ForMember(dest => dest.Spells, opts => opts.MapFrom(src => src.Spells.OrderBy(n => n.Spell.Name)))

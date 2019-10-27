@@ -17,10 +17,9 @@ using Infrastructure.Mediator;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
+using NoticeBoard.Models.PlayerCharacters;
 using System.Collections.Generic;
 using System.Linq;
-using NoticeBoard.Models.Abilities;
-using NoticeBoard.Models.PlayerCharacters;
 
 namespace NoticeBoard.Controllers
 {
