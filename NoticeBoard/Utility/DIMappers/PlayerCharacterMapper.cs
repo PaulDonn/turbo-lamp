@@ -1,8 +1,6 @@
 ﻿using Core.PlayerCharacters.Command;
-using Core.PlayerCharacters.CommandHandler;
 using Core.PlayerCharacters.DTO;
 using Core.PlayerCharacters.Query;
-using Core.PlayerCharacters.QueryHandler;
 using Infrastructure.CQRS;
 using Microsoft.Extensions.DependencyInjection;
 

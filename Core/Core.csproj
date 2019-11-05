@@ -5,28 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Ability\CommandHandler\" />
     <Folder Include="Ability\Command\" />
-    <Folder Include="Ability\QueryHandler\" />
     <Folder Include="Ability\Query\" />
-    <Folder Include="Class\CommandHandler\" />
     <Folder Include="Class\Command\" />
-    <Folder Include="Feature\CommandHandler\" />
     <Folder Include="Feature\Command\" />
     <Folder Include="Feature\DTO\" />
-    <Folder Include="Feature\QueryHandler\" />
     <Folder Include="Feature\Query\" />
-    <Folder Include="Races\CommandHandler\" />
     <Folder Include="Races\Command\" />
-    <Folder Include="Skill\CommandHandler\" />
     <Folder Include="Skill\Command\" />
     <Folder Include="Skill\DTO\" />
-    <Folder Include="Skill\QueryHandler\" />
     <Folder Include="Skill\Query\" />
-    <Folder Include="SubFeature\CommandHandler\" />
     <Folder Include="SubFeature\Command\" />
     <Folder Include="SubFeature\DTO\" />
-    <Folder Include="SubFeature\QueryHandler\" />
     <Folder Include="SubFeature\Query\" />
   </ItemGroup>
 

@@ -1,6 +1,5 @@
 ﻿using Core.Races.DTO;
 using Core.Races.Query;
-using Core.Races.QueryHandler;
 using Infrastructure.CQRS;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
