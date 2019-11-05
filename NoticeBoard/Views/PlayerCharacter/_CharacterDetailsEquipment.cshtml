@@ -82,11 +82,11 @@
                                 <div class="card-body" align="center">
                                     @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Cloak") != null)
                                     {
-                                        var mainHand = @Model.Equipment.Single(n => n.EquippedSlot == "Cloak");
-                                        <img class="img-fluid" src="~/img/Equipment/@(mainHand.Equipment.ImagePath ?? "unknown").png" />
+                                        var clock = @Model.Equipment.Single(n => n.EquippedSlot == "Cloak");
+                                        <img class="img-fluid" src="~/img/Equipment/@(clock.Equipment.ImagePath ?? "unknown").png" />
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="text-center">@mainHand.DisplayName()</div>
+                                                <div class="text-center">@clock.DisplayName()</div>
                                             </div>
                                         </div>
                                     }
@@ -105,11 +105,11 @@
                                 <div class="card-body" align="center">
                                     @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Helmet") != null)
                                     {
-                                        var mainHand = @Model.Equipment.Single(n => n.EquippedSlot == "Helmet");
-                                        <img class="img-fluid" src="~/img/Equipment/@(mainHand.Equipment.ImagePath ?? "unknown").png" />
+                                        var helmet = @Model.Equipment.Single(n => n.EquippedSlot == "Helmet");
+                                        <img class="img-fluid" src="~/img/Equipment/@(helmet.Equipment.ImagePath ?? "unknown").png" />
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="text-center">@mainHand.DisplayName()</div>
+                                                <div class="text-center">@helmet.DisplayName()</div>
                                             </div>
                                         </div>
                                     }
@@ -128,11 +128,11 @@
                                 <div class="card-body" align="center">
                                     @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Amulet") != null)
                                     {
-                                        var mainHand = @Model.Equipment.Single(n => n.EquippedSlot == "Amulet");
-                                        <img class="img-fluid" src="~/img/Equipment/@(mainHand.Equipment.ImagePath ?? "unknown").png" />
+                                        var amulet = @Model.Equipment.Single(n => n.EquippedSlot == "Amulet");
+                                        <img class="img-fluid" src="~/img/Equipment/@(amulet.Equipment.ImagePath ?? "unknown").png" />
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="text-center">@mainHand.DisplayName()</div>
+                                                <div class="text-center">@amulet.DisplayName()</div>
                                             </div>
                                         </div>
                                     }
@@ -157,7 +157,12 @@
                                         <img class="img-fluid" src="~/img/Equipment/@(mainHand.Equipment.ImagePath ?? "unknown").png" />
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="text-center">@mainHand.DisplayName()</div>
+                                                <div class="text-center">
+                                                    @mainHand.DisplayName()@if (mainHand.Quantity > 1)
+                                                    {
+                                                        @:x@(mainHand.Quantity)
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
                                     }
@@ -176,11 +181,11 @@
                                 <div class="card-body" align="center">
                                     @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Armor") != null)
                                     {
-                                        var mainHand = @Model.Equipment.Single(n => n.EquippedSlot == "Armor");
-                                        <img class="img-fluid" src="~/img/Equipment/@(mainHand.Equipment.ImagePath ?? "unknown").png" />
+                                        var armor = @Model.Equipment.Single(n => n.EquippedSlot == "Armor");
+                                        <img class="img-fluid" src="~/img/Equipment/@(armor.Equipment.ImagePath ?? "unknown").png" />
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="text-center">@mainHand.DisplayName()</div>
+                                                <div class="text-center">@armor.DisplayName()</div>
                                             </div>
                                         </div>
                                     }
@@ -199,11 +204,16 @@
                                 <div class="card-body" align="center">
                                     @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "OffHand" || n.EquippedSlot == "BothHands") != null)
                                     {
-                                        var mainHand = @Model.Equipment.Single(n => n.EquippedSlot == "OffHand" || n.EquippedSlot == "BothHands");
-                                        <img class="img-fluid" src="~/img/Equipment/@(mainHand.Equipment.ImagePath ?? "unknown").png" />
+                                        var offHand = @Model.Equipment.Single(n => n.EquippedSlot == "OffHand" || n.EquippedSlot == "BothHands");
+                                        <img class="img-fluid" src="~/img/Equipment/@(offHand.Equipment.ImagePath ?? "unknown").png" />
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="text-center">@mainHand.DisplayName()</div>
+                                                <div class="text-center">
+                                                    @offHand.DisplayName()@if (offHand.Quantity > 1)
+                                                    {
+                                                        @:x@(offHand.Quantity)
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
                                     }
@@ -224,11 +234,11 @@
                                 <div class="card-body" align="center">
                                     @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Ring1") != null)
                                     {
-                                        var mainHand = @Model.Equipment.Single(n => n.EquippedSlot == "Ring1");
-                                        <img class="img-fluid" src="~/img/Equipment/@(mainHand.Equipment.ImagePath ?? "unknown").png" />
+                                        var ring1 = @Model.Equipment.Single(n => n.EquippedSlot == "Ring1");
+                                        <img class="img-fluid" src="~/img/Equipment/@(ring1.Equipment.ImagePath ?? "unknown").png" />
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="text-center">@mainHand.DisplayName()</div>
+                                                <div class="text-center">@ring1.DisplayName()</div>
                                             </div>
                                         </div>
                                     }
@@ -247,11 +257,11 @@
                                 <div class="card-body" align="center">
                                     @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Boots") != null)
                                     {
-                                        var mainHand = @Model.Equipment.Single(n => n.EquippedSlot == "Boots");
-                                        <img class="img-fluid" src="~/img/Equipment/@(mainHand.Equipment.ImagePath ?? "unknown").png" />
+                                        var boots = @Model.Equipment.Single(n => n.EquippedSlot == "Boots");
+                                        <img class="img-fluid" src="~/img/Equipment/@(boots.Equipment.ImagePath ?? "unknown").png" />
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="text-center">@mainHand.DisplayName()</div>
+                                                <div class="text-center">@boots.DisplayName()</div>
                                             </div>
                                         </div>
                                     }
@@ -270,11 +280,11 @@
                                 <div class="card-body" align="center">
                                     @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Ring2") != null)
                                     {
-                                        var mainHand = @Model.Equipment.Single(n => n.EquippedSlot == "Ring2");
-                                        <img class="img-fluid" src="~/img/Equipment/@(mainHand.Equipment.ImagePath ?? "unknown").png" />
+                                        var ring2 = @Model.Equipment.Single(n => n.EquippedSlot == "Ring2");
+                                        <img class="img-fluid" src="~/img/Equipment/@(ring2.Equipment.ImagePath ?? "unknown").png" />
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="text-center">@mainHand.DisplayName()</div>
+                                                <div class="text-center">@ring2.DisplayName()</div>
                                             </div>
                                         </div>
                                     }
@@ -298,11 +308,16 @@
         <div class="col-xl-4 col-lg-12">
             <div class="card" style="margin-bottom:10px">
                 <div class="card-body">
-                    @foreach(var equipment in Model.Equipment.Where(n => string.IsNullOrWhiteSpace(n.EquippedSlot)))
+                    @foreach (var equipment in Model.Equipment.Where(n => string.IsNullOrWhiteSpace(n.EquippedSlot)))
                     {
                         <div class="row">
                             <div class="col-12">
-                                <div>@equipment.DisplayName()</div>
+                                <div>
+                                    @equipment.DisplayName()@if (equipment.Quantity > 1)
+                                    {
+                                        @:x@(equipment.Quantity)
+                                    }
+                                </div>
                             </div>
                         </div>
                     }
@@ -315,9 +330,23 @@
         <div class="col-xl-4 col-lg-12">
             <div class="card" style="margin-bottom:10px">
                 <div class="card-body">
-                    Robes<br />
-                    Arcane Focus<br />
-                    Spell Book<br />
+                    @foreach (var treasure in Model.Treasure)
+                    {
+                        <div class="row">
+                            <div class="col-12">
+                                <div>
+                                    @treasure.DisplayName()@if (treasure.Quantity > 1)
+                                    {
+                                        @:x@(treasure.Quantity)
+                                    }
+                                    @if (!string.IsNullOrWhiteSpace(treasure.TotalValue))
+                                    {
+                                        @:(@(treasure.TotalValue))
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
                 <div class="card-footer">
                     <div class="text-center">Treasure</div>

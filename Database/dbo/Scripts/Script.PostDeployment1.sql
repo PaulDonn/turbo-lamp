@@ -43,6 +43,8 @@ Post-Deployment Script Template
 :r .\"PopulateEquipment_ArmorPlus2.sql"
 :r .\"PopulateEquipment_ArmorPlus3.sql"
 :r .\"PopulateEquipment_Clothing.sql"
+:r .\"PopulateTreasure.sql"
+
 
 --Test Data
 :r .\"PopulateTestPCs.sql"

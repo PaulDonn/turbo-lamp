@@ -37,6 +37,7 @@ namespace DataModel
         public virtual DbSet<PcSkill> PcSkill { get; set; }
         public virtual DbSet<PcSpell> PcSpell { get; set; }
         public virtual DbSet<PcTrait> PcTrait { get; set; }
+        public virtual DbSet<PcTreasure> PcTreasure { get; set; }
         public virtual DbSet<Player> Player { get; set; }
         public virtual DbSet<PlayerCharacter> PlayerCharacter { get; set; }
         public virtual DbSet<Race> Race { get; set; }
@@ -47,6 +48,7 @@ namespace DataModel
         public virtual DbSet<SubFeature> SubFeature { get; set; }
         public virtual DbSet<SubRace> SubRace { get; set; }
         public virtual DbSet<TraitType> TraitType { get; set; }
+        public virtual DbSet<Treasure> Treasure { get; set; }
         public virtual DbSet<WeaponType> WeaponType { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -297,6 +299,21 @@ namespace DataModel
                     .HasForeignKey(d => d.TraitTypeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PcTrait_TraitType");
+            });
+
+            modelBuilder.Entity<PcTreasure>(entity =>
+            {
+                entity.HasOne(d => d.Pc)
+                    .WithMany(p => p.PcTreasure)
+                    .HasForeignKey(d => d.PcId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PcTreasure_PlayerCharacter");
+
+                entity.HasOne(d => d.Treasure)
+                    .WithMany(p => p.PcTreasure)
+                    .HasForeignKey(d => d.TreasureId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PcTreasure_Treasure");
             });
 
             modelBuilder.Entity<PlayerCharacter>(entity =>

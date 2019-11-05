@@ -44,15 +44,18 @@ namespace Core.PlayerCharacters.QueryHandler
                                              .Include(n => n.PcSkill)
                                              .Include(n => n.PcSpell)
                                                 .ThenInclude(n => n.Spell.SpellSchool)
-                                             .Include(n => n.PcEquipment)
-                                                .ThenInclude(n => n.Equipment.WeaponType)
-                                             .Include(n => n.PcEquipment)
-                                                .ThenInclude(n => n.Equipment.ArmorType)
-                                             .Include(n => n.PcEquipment)
-                                                .ThenInclude(n => n.Equipment.EquipmentType)
+                                             
                                              .SingleOrDefault(n => n.Id == query.PcId);
 
-            if(pc != null)
+            pc.PcEquipment = _context.PcEquipment.Where(n => n.PcId == pc.Id)
+                                                 .Include(n => n.Equipment.WeaponType)
+                                                 .Include(n => n.Equipment.ArmorType)
+                                                 .Include(n => n.Equipment.EquipmentType).ToList();
+
+            pc.PcTreasure = _context.PcTreasure.Where(n => n.PcId == pc.Id)
+                                               .Include(n => n.Treasure).ToList();
+
+            if (pc != null)
             {
                 dto = _mapper.Map<PlayerCharacter, PlayerCharacterDTO>(pc);
             }

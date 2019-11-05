@@ -113,7 +113,7 @@ INSERT INTO [dbo].[PcTrait]
 		   ,[TraitTypeId]
            ,[Description])
      VALUES
-           (1
+           ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg')
 		   ,1
            ,'There''s nothing I like more than a good mystery.'),
            (1
@@ -133,27 +133,27 @@ INSERT INTO [dbo].[PcAbilityScore]
            ,[Score])
      VALUES
 	 --Level 1 PC
-           (1--PcId
+           ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg')--PcId
 		   ,1--AbilityId
            ,8--Score
 		   ),
-		   (1--PcId
+		   ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg')--PcId
 		   ,2--AbilityId
            ,15--Score
 		   ),
-		   (1--PcId
+		   ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg')--PcId
 		   ,3--AbilityId
            ,14--Score
 		   ),
-		   (1--PcId
+		   ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg')--PcId
 		   ,4--AbilityId
            ,18--Score
 		   ),
-		   (1--PcId
+		   ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg')--PcId
 		   ,5--AbilityId
            ,10--Score
 		   ),
-		   (1--PcId
+		   ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg')--PcId
 		   ,6--AbilityId
            ,14--Score
 		   )
@@ -163,9 +163,9 @@ INSERT INTO [dbo].[PcSavingThrow]
            ([PcId]
            ,[AbilityId])
      VALUES
-           (1
+           ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg')
            ,4),
-		   (1
+		   ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg')
            ,5)
 GO
 
@@ -173,41 +173,41 @@ INSERT INTO [dbo].[PcSkill]
            ([PcId]
            ,[SkillId])
      VALUES
-           (1,3),
-           (1,6),
-           (1,7),
-           (1,9)
+           ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),3),
+           ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),6),
+           ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),7),
+           ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),9)
 GO
 
 INSERT INTO [dbo].[PcSpell] (PcId, SpellId)
 VALUES 
-	(1,(SELECT Id FROM Spell WHERE Name = 'Eldritch Blast')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Fire Bolt')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Light')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Mage Hand')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Thaumaturgy')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Eldritch Blast')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Fire Bolt')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Light')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Mage Hand')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Thaumaturgy')),
 	
-	(1,(SELECT Id FROM Spell WHERE Name = 'Burning Hands')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Charm Person')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Find Familiar')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Mage Armor')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Magic Missile')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Thunderwave')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Burning Hands')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Charm Person')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Find Familiar')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Mage Armor')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Magic Missile')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Thunderwave')),
 	
-	(1,(SELECT Id FROM Spell WHERE Name = 'Darkvision')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Invisibility')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Misty Step')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Scorching Ray')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Darkvision')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Invisibility')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Misty Step')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Scorching Ray')),
 
-	(1,(SELECT Id FROM Spell WHERE Name = 'Counterspell')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Fireball')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Fly')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Haste')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Vampiric Touch')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Counterspell')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Fireball')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Fly')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Haste')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Vampiric Touch')),
 
-	(1,(SELECT Id FROM Spell WHERE Name = 'Dimension Door')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Evard''s Black Tentacles')),
-	(1,(SELECT Id FROM Spell WHERE Name = 'Polymorph'))
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Dimension Door')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Evard''s Black Tentacles')),
+	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Polymorph'))
 GO
 
 INSERT INTO [dbo].[PcEquipment]
@@ -217,28 +217,44 @@ INSERT INTO [dbo].[PcEquipment]
            ,[Name]
            ,[EquippedSlot])
      VALUES
-           (1--<PcId, int,>
+           ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg')--<PcId, int,>
            ,(SELECT TOP(1) Id FROM Equipment WHERE [Name] = 'Quarterstaff')--<EquipmentId, int,>
            ,null--<Quantity, int,>
            ,null--<Name, nvarchar(150),>
            ,'BothHands'--<EquippedSlot, nvarchar(50),>
 		   ),
-           (1--<PcId, int,>
+           ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg')--<PcId, int,>
            ,(SELECT TOP(1) Id FROM Equipment WHERE [Name] = 'Robes')--<EquipmentId, int,>
            ,null--<Quantity, int,>
            ,'Wizard Robes'--<Name, nvarchar(150),>
            ,'Armor'--<EquippedSlot, nvarchar(50),>
 		   ),
-           (1--<PcId, int,>
+           ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg')--<PcId, int,>
            ,(SELECT TOP(1) Id FROM Equipment WHERE [Name] = 'Sling')--<EquipmentId, int,>
            ,null--<Quantity, int,>
            ,null--<Name, nvarchar(150),>
            ,null--<EquippedSlot, nvarchar(50),>
 		   ),
-           (1--<PcId, int,>
+           ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg')--<PcId, int,>
            ,(SELECT TOP(1) Id FROM Equipment WHERE [Name] = 'Dart')--<EquipmentId, int,>
            ,20--<Quantity, int,>
            ,null--<Name, nvarchar(150),>
            ,null--<EquippedSlot, nvarchar(50),>
 		   )
+GO
+
+INSERT INTO [dbo].[PcTreasure]
+           ([PcId]
+           ,[TreasureId]
+           ,[Quantity]
+           ,[Name])
+     VALUES
+           ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg')
+           ,(SELECT TOP(1) Id FROM Treasure WHERE [Name] = 'Diamond')
+           ,5
+           ,NULL),
+		   ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg')
+           ,(SELECT TOP(1) Id FROM Treasure WHERE [Name] = 'Book')
+           ,NULL
+           ,'Ancient Tome')
 GO

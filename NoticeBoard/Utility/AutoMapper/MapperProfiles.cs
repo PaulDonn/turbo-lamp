@@ -23,6 +23,8 @@ using Core.Spell.DTO;
 using NoticeBoard.Models.Spells;
 using Core.Equipment.DTO;
 using NoticeBoard.Models.Equipment;
+using Core.Treasure.DTO;
+using NoticeBoard.Models.Treasure;
 
 namespace NoticeBoard.Utility.AutoMapper
 {
@@ -43,6 +45,7 @@ namespace NoticeBoard.Utility.AutoMapper
             RaceMaps();
             //SkillMaps();
             SpellMaps();
+            TreasureMaps();
         }
 
         private void AbilityMaps()
@@ -133,6 +136,7 @@ namespace NoticeBoard.Utility.AutoMapper
                         Description = n.Description
                     })))
                 .ForMember(dest => dest.Equipment, opts => opts.MapFrom(src => src.PcEquipment))
+                .ForMember(dest => dest.Treasure, opts => opts.MapFrom(src => src.PcTreasure))
                 .ReverseMap();
             CreateMap<PlayerCharacterDTO, PlayerCharacterModel>()
                 .ForMember(dest => dest.SavingThrows, opts => opts.MapFrom(src => src.SavingThrows.Select(n => n.AbilityId)))
@@ -150,6 +154,7 @@ namespace NoticeBoard.Utility.AutoMapper
                         { 9, new Tuple<int,int>(src.Level9SlotsMaximum, src.Level9SlotsCurrent) },
                     }))
                 .ForMember(dest => dest.Equipment, opts => opts.MapFrom(src => src.Equipment))
+                .ForMember(dest => dest.Treasure, opts => opts.MapFrom(src => src.Treasure))
                 .ForMember(dest => dest.Abilities, opts => opts.Ignore())
                 .ForMember(dest => dest.Skills, opts => opts.Ignore())
                 .ForMember(dest => dest.Spells, opts => opts.MapFrom(src => src.Spells.OrderBy(n => n.Spell.Name)))
@@ -177,6 +182,15 @@ namespace NoticeBoard.Utility.AutoMapper
 
             CreateMap<PcSpell, PcSpellDTO>().ReverseMap();
             CreateMap<PcSpellDTO, PcSpellModel>().ReverseMap();
+        }
+
+        private void TreasureMaps()
+        {
+            CreateMap<Treasure, TreasureDTO>().ReverseMap();
+            CreateMap<TreasureDTO, TreasureModel>().ReverseMap();
+
+            CreateMap<PcTreasure, PcTreasureDTO>().ReverseMap();
+            CreateMap<PcTreasureDTO, PcTreasureModel>().ReverseMap();
         }
     }
 }

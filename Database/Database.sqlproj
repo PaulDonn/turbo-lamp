@@ -66,6 +66,7 @@
     <None Include="dbo\Scripts\PopulateSpellSchool.sql" />
     <None Include="dbo\Scripts\PopulateSpell_0.sql" />
     <None Include="dbo\Scripts\PopulateEquipment_Weapons.sql" />
+    <None Include="dbo\Scripts\PopulateTreasure.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Scripts\PopulateAbility.sql" />
@@ -155,5 +156,7 @@
     <None Include="dbo\Scripts\PopulateEquipment_ArmorPlus3.sql" />
     <None Include="dbo\Scripts\PopulateEquipment_ArmorPlus2.sql" />
     <None Include="dbo\Scripts\PopulateEquipment_Clothing.sql" />
+    <Build Include="dbo\Tables\dbo.Treasure.Table.sql" />
+    <Build Include="dbo\Tables\dbo.PcTreasure.Table.sql" />
   </ItemGroup>
 </Project>
