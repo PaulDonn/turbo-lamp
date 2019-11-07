@@ -11,6 +11,8 @@ namespace DataModel
         public int Id { get; set; }
         public int PcId { get; set; }
         public int FeatureId { get; set; }
+        public int? QuantityMaximum { get; set; }
+        public int? QuantityCurrent { get; set; }
 
         [ForeignKey(nameof(FeatureId))]
         [InverseProperty("PcFeature")]

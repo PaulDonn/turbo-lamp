@@ -1,12 +1,12 @@
-﻿using Core.Ability.DTO;
-using Core.Alignment.DTO;
-using Core.Background.DTO;
-using Core.Class.DTO;
-using Core.Equipment.DTO;
-using Core.Player.DTO;
+﻿using Core.Abilities.DTO;
+using Core.Alignments.DTO;
+using Core.Backgrounds.DTO;
+using Core.Classes.DTO;
+using Core._Equipment.DTO;
+using Core.Players.DTO;
 using Core.Races.DTO;
-using Core.Spell.DTO;
-using Core.Treasure.DTO;
+using Core.Spells.DTO;
+using Core._Treasure.DTO;
 using System.Collections.Generic;
 
 namespace Core.PlayerCharacters.DTO

@@ -10,6 +10,7 @@ namespace DataModel
         public Race()
         {
             PlayerCharacter = new HashSet<PlayerCharacter>();
+            RaceFeature = new HashSet<RaceFeature>();
             RaceLanguage = new HashSet<RaceLanguage>();
             SubRace = new HashSet<SubRace>();
         }
@@ -26,6 +27,8 @@ namespace DataModel
 
         [InverseProperty("Race")]
         public virtual ICollection<PlayerCharacter> PlayerCharacter { get; set; }
+        [InverseProperty("Race")]
+        public virtual ICollection<RaceFeature> RaceFeature { get; set; }
         [InverseProperty("Race")]
         public virtual ICollection<RaceLanguage> RaceLanguage { get; set; }
         [InverseProperty("Race")]

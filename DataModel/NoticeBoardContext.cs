@@ -22,6 +22,7 @@ namespace DataModel
         public virtual DbSet<Background> Background { get; set; }
         public virtual DbSet<BgSkill> BgSkill { get; set; }
         public virtual DbSet<Class> Class { get; set; }
+        public virtual DbSet<ClassFeature> ClassFeature { get; set; }
         public virtual DbSet<ClassSkill> ClassSkill { get; set; }
         public virtual DbSet<DamageType> DamageType { get; set; }
         public virtual DbSet<Equipment> Equipment { get; set; }
@@ -41,9 +42,12 @@ namespace DataModel
         public virtual DbSet<Player> Player { get; set; }
         public virtual DbSet<PlayerCharacter> PlayerCharacter { get; set; }
         public virtual DbSet<Race> Race { get; set; }
+        public virtual DbSet<RaceFeature> RaceFeature { get; set; }
         public virtual DbSet<RaceLanguage> RaceLanguage { get; set; }
         public virtual DbSet<Skill> Skill { get; set; }
         public virtual DbSet<Spell> Spell { get; set; }
+        public virtual DbSet<SpellList> SpellList { get; set; }
+        public virtual DbSet<SpellListSpell> SpellListSpell { get; set; }
         public virtual DbSet<SpellSchool> SpellSchool { get; set; }
         public virtual DbSet<SubFeature> SubFeature { get; set; }
         public virtual DbSet<SubRace> SubRace { get; set; }
@@ -119,6 +123,26 @@ namespace DataModel
                     .HasForeignKey(d => d.SpellcastingAbilityId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Class_Ability");
+            });
+
+            modelBuilder.Entity<ClassFeature>(entity =>
+            {
+                entity.HasOne(d => d.Archetype)
+                    .WithMany(p => p.ClassFeature)
+                    .HasForeignKey(d => d.ArchetypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ClassFeature_Archetype");
+
+                entity.HasOne(d => d.Class)
+                    .WithMany(p => p.ClassFeature)
+                    .HasForeignKey(d => d.ClassId)
+                    .HasConstraintName("FK_ClassFeature_Class");
+
+                entity.HasOne(d => d.Feature)
+                    .WithMany(p => p.ClassFeature)
+                    .HasForeignKey(d => d.FeatureId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ClassFeature_Feature");
             });
 
             modelBuilder.Entity<ClassSkill>(entity =>
@@ -368,6 +392,25 @@ namespace DataModel
                 entity.Property(e => e.Id).ValueGeneratedNever();
             });
 
+            modelBuilder.Entity<RaceFeature>(entity =>
+            {
+                entity.HasOne(d => d.Feature)
+                    .WithMany(p => p.RaceFeature)
+                    .HasForeignKey(d => d.FeatureId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_RaceFeature_Feature");
+
+                entity.HasOne(d => d.Race)
+                    .WithMany(p => p.RaceFeature)
+                    .HasForeignKey(d => d.RaceId)
+                    .HasConstraintName("FK_RaceFeature_Race");
+
+                entity.HasOne(d => d.SubRace)
+                    .WithMany(p => p.RaceFeature)
+                    .HasForeignKey(d => d.SubRaceId)
+                    .HasConstraintName("FK_RaceFeature_SubRace");
+            });
+
             modelBuilder.Entity<RaceLanguage>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
@@ -403,6 +446,26 @@ namespace DataModel
                     .HasForeignKey(d => d.SpellSchoolId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Spell_SpellSchool");
+            });
+
+            modelBuilder.Entity<SpellList>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<SpellListSpell>(entity =>
+            {
+                entity.HasOne(d => d.Spell)
+                    .WithMany(p => p.SpellListSpell)
+                    .HasForeignKey(d => d.SpellId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_SpellListSpell_Spell");
+
+                entity.HasOne(d => d.SpellList)
+                    .WithMany(p => p.SpellListSpell)
+                    .HasForeignKey(d => d.SpellListId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_SpellListSpell_SpellList");
             });
 
             modelBuilder.Entity<SubFeature>(entity =>

@@ -10,6 +10,7 @@ namespace DataModel
         public Spell()
         {
             PcSpell = new HashSet<PcSpell>();
+            SpellListSpell = new HashSet<SpellListSpell>();
         }
 
         [Key]
@@ -43,5 +44,7 @@ namespace DataModel
         public virtual SpellSchool SpellSchool { get; set; }
         [InverseProperty("Spell")]
         public virtual ICollection<PcSpell> PcSpell { get; set; }
+        [InverseProperty("Spell")]
+        public virtual ICollection<SpellListSpell> SpellListSpell { get; set; }
     }
 }

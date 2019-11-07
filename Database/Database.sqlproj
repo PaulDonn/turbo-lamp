@@ -158,5 +158,9 @@
     <None Include="dbo\Scripts\PopulateEquipment_Clothing.sql" />
     <Build Include="dbo\Tables\dbo.Treasure.Table.sql" />
     <Build Include="dbo\Tables\dbo.PcTreasure.Table.sql" />
+    <Build Include="dbo\Tables\dbo.SpellList.Table.sql" />
+    <Build Include="dbo\Tables\dbo.SpellListSpell.Table.sql" />
+    <Build Include="dbo\Tables\dbo.ClassFeature.Table.sql" />
+    <Build Include="dbo\Tables\dob.RaceFeature.Table.sql" />
   </ItemGroup>
 </Project>

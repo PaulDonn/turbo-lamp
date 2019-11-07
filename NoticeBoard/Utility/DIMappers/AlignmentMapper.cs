@@ -1,5 +1,5 @@
-﻿using Core.Alignment.DTO;
-using Core.Alignment.Query;
+﻿using Core.Alignments.DTO;
+using Core.Alignments.Query;
 using Infrastructure.CQRS;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;

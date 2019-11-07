@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Core.Equipment.DTO
+namespace Core._Equipment.DTO
 {
     public class EquipmentDTO
     {

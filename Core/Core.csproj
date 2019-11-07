@@ -5,16 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Ability\Command\" />
-    <Folder Include="Ability\Query\" />
-    <Folder Include="Class\Command\" />
-    <Folder Include="Feature\Command\" />
-    <Folder Include="Feature\DTO\" />
-    <Folder Include="Feature\Query\" />
+    <Folder Include="Abilities\Command\" />
+    <Folder Include="Abilities\Query\" />
+    <Folder Include="Classes\Command\" />
+    <Folder Include="Features\Command\" />
+    <Folder Include="Features\DTO\" />
+    <Folder Include="Features\Query\" />
     <Folder Include="Races\Command\" />
-    <Folder Include="Skill\Command\" />
-    <Folder Include="Skill\DTO\" />
-    <Folder Include="Skill\Query\" />
+    <Folder Include="Skills\Command\" />
+    <Folder Include="Skills\DTO\" />
+    <Folder Include="Skills\Query\" />
     <Folder Include="SubFeature\Command\" />
     <Folder Include="SubFeature\DTO\" />
     <Folder Include="SubFeature\Query\" />

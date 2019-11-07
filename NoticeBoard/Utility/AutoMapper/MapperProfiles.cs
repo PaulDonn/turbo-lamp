@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using Core.Ability.DTO;
-using Core.Alignment.DTO;
-using Core.Background.DTO;
-using Core.Class.DTO;
-using Core.Language.DTO;
+using Core.Abilities.DTO;
+using Core.Alignments.DTO;
+using Core.Backgrounds.DTO;
+using Core.Classes.DTO;
+using Core.Languages.DTO;
 using Core.PlayerCharacters.DTO;
 using Core.Races.DTO;
 using DataModel;
@@ -17,13 +17,13 @@ using NoticeBoard.Models.Backgrounds;
 using NoticeBoard.Models.Classes;
 using NoticeBoard.Models.PlayerCharacters;
 using NoticeBoard.Models.Races;
-using Core.Player.DTO;
+using Core.Players.DTO;
 using NoticeBoard.Models.Player;
-using Core.Spell.DTO;
+using Core.Spells.DTO;
 using NoticeBoard.Models.Spells;
-using Core.Equipment.DTO;
+using Core._Equipment.DTO;
 using NoticeBoard.Models.Equipment;
-using Core.Treasure.DTO;
+using Core._Treasure.DTO;
 using NoticeBoard.Models.Treasure;
 
 namespace NoticeBoard.Utility.AutoMapper

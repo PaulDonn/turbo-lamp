@@ -1,5 +1,5 @@
-﻿using Core.Background.DTO;
-using Core.Background.Query;
+﻿using Core.Backgrounds.DTO;
+using Core.Backgrounds.Query;
 using Infrastructure.CQRS;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;

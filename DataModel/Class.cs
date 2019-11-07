@@ -10,6 +10,7 @@ namespace DataModel
         public Class()
         {
             Archetype = new HashSet<Archetype>();
+            ClassFeature = new HashSet<ClassFeature>();
             ClassSkill = new HashSet<ClassSkill>();
             PlayerCharacter = new HashSet<PlayerCharacter>();
         }
@@ -36,6 +37,8 @@ namespace DataModel
         public virtual Ability SpellcastingAbility { get; set; }
         [InverseProperty("Class")]
         public virtual ICollection<Archetype> Archetype { get; set; }
+        [InverseProperty("Class")]
+        public virtual ICollection<ClassFeature> ClassFeature { get; set; }
         [InverseProperty("Class")]
         public virtual ICollection<ClassSkill> ClassSkill { get; set; }
         [InverseProperty("Class")]

@@ -9,7 +9,9 @@ namespace DataModel
     {
         public Feature()
         {
+            ClassFeature = new HashSet<ClassFeature>();
             PcFeature = new HashSet<PcFeature>();
+            RaceFeature = new HashSet<RaceFeature>();
             SubFeature = new HashSet<SubFeature>();
         }
 
@@ -25,7 +27,11 @@ namespace DataModel
         public string Code { get; set; }
 
         [InverseProperty("Feature")]
+        public virtual ICollection<ClassFeature> ClassFeature { get; set; }
+        [InverseProperty("Feature")]
         public virtual ICollection<PcFeature> PcFeature { get; set; }
+        [InverseProperty("Feature")]
+        public virtual ICollection<RaceFeature> RaceFeature { get; set; }
         [InverseProperty("Feature")]
         public virtual ICollection<SubFeature> SubFeature { get; set; }
     }

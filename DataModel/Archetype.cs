@@ -9,6 +9,7 @@ namespace DataModel
     {
         public Archetype()
         {
+            ClassFeature = new HashSet<ClassFeature>();
             PlayerCharacter = new HashSet<PlayerCharacter>();
         }
 
@@ -27,6 +28,8 @@ namespace DataModel
         [ForeignKey(nameof(ClassId))]
         [InverseProperty("Archetype")]
         public virtual Class Class { get; set; }
+        [InverseProperty("Archetype")]
+        public virtual ICollection<ClassFeature> ClassFeature { get; set; }
         [InverseProperty("Archetype")]
         public virtual ICollection<PlayerCharacter> PlayerCharacter { get; set; }
     }

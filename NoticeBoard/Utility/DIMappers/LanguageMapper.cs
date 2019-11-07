@@ -1,5 +1,5 @@
-﻿using Core.Language.DTO;
-using Core.Language.Query;
+﻿using Core.Languages.DTO;
+using Core.Languages.Query;
 using Infrastructure.CQRS;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;

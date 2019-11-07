@@ -1,4 +1,4 @@
-﻿using Core.Language.DTO;
+﻿using Core.Languages.DTO;
 using System.Collections.Generic;
 
 namespace Core.Races.DTO

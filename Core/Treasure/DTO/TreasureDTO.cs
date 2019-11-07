@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Core.Treasure.DTO
+namespace Core._Treasure.DTO
 {
     public class TreasureDTO
     {
