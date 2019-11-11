@@ -44,6 +44,9 @@ Post-Deployment Script Template
 :r .\"PopulateEquipment_ArmorPlus3.sql"
 :r .\"PopulateEquipment_Clothing.sql"
 :r .\"PopulateTreasure.sql"
+:r .\"PopulateFeature.sql"
+:r .\"PopulateFeature_Tiefling.sql"
+:r .\"PopulateFeature_Wizard.sql"
 
 
 --Test Data

@@ -3,6 +3,8 @@
 	[RaceId] [int] NULL,
 	[SubRaceId] [int] NULL,
 	[FeatureId] [int] NOT NULL,
+	[Level] [int] NOT NULL DEFAULT 1,
+	[Description] NVARCHAR(MAX) NULL,
 	[Hidden] [bit] NOT NULL DEFAULT 0,
  CONSTRAINT [PK_RaceFeature] PRIMARY KEY CLUSTERED 
 (

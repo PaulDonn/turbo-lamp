@@ -1,8 +1,10 @@
 ﻿CREATE TABLE [dbo].[ClassFeature](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[ClassId] [int] NULL,
-	[ArchetypeId] [int] NOT NULL,
+	[ArchetypeId] [int] NULL,
 	[FeatureId] [int] NOT NULL,
+	[Level] [int] NOT NULL DEFAULT 1,
+	[Description] NVARCHAR(MAX) NULL,
 	[Hidden] [bit] NOT NULL DEFAULT 0,
  CONSTRAINT [PK_ClassFeature] PRIMARY KEY CLUSTERED 
 (

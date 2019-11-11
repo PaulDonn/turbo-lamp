@@ -179,6 +179,63 @@ INSERT INTO [dbo].[PcSkill]
            ((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),9)
 GO
 
+INSERT INTO [dbo].[PcFeature]
+           ([PcId]
+           ,[FeatureId]
+           ,[RaceFeatureId]
+           ,[ClassFeatureId]
+           ,[QuantityMaximum]
+           ,[QuantityCurrent])
+     SELECT
+           (SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg')--<PcId, int,>
+           ,null--<FeatureId, int,>
+           ,Id--<RaceFeatureId, int,>
+           ,null--<ClassFeatureId, int,>
+           ,null--<QuantityMaximum, int,>
+           ,null--<QuantityCurrent, int,>
+		   FROM RaceFeature
+		   WHERE RaceId = (SELECT TOP(1) Id FROM Race WHERE [Name] = 'Tiefling')
+		   AND [Level] <= 8
+GO
+
+INSERT INTO [dbo].[PcFeature]
+           ([PcId]
+           ,[FeatureId]
+           ,[RaceFeatureId]
+           ,[ClassFeatureId]
+           ,[QuantityMaximum]
+           ,[QuantityCurrent])
+     SELECT
+           (SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg')--<PcId, int,>
+           ,null--<FeatureId, int,>
+           ,null--<RaceFeatureId, int,>
+           ,Id--<ClassFeatureId, int,>
+           ,null--<QuantityMaximum, int,>
+           ,null--<QuantityCurrent, int,>
+		   FROM ClassFeature
+		   WHERE ClassId = (SELECT TOP(1) Id FROM Class WHERE [Name] = 'Wizard')
+		   AND [Level] <= 8
+GO
+
+INSERT INTO [dbo].[PcFeature]
+           ([PcId]
+           ,[FeatureId]
+           ,[RaceFeatureId]
+           ,[ClassFeatureId]
+           ,[QuantityMaximum]
+           ,[QuantityCurrent])
+     SELECT
+           (SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg')--<PcId, int,>
+           ,null--<FeatureId, int,>
+           ,null--<RaceFeatureId, int,>
+           ,Id--<ClassFeatureId, int,>
+           ,null--<QuantityMaximum, int,>
+           ,null--<QuantityCurrent, int,>
+		   FROM ClassFeature
+		   WHERE ArchetypeId = (SELECT TOP(1) Id FROM Archetype WHERE [ShortName] = 'Evoker')
+		   AND [Level] <= 8
+GO
+
 INSERT INTO [dbo].[PcSpell] (PcId, SpellId)
 VALUES 
 	((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),(SELECT Id FROM Spell WHERE Name = 'Eldritch Blast')),
