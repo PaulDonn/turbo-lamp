@@ -14,7 +14,7 @@
 	[IsRitual] [bit] NOT NULL,
 	[Description] [nvarchar](max) NULL,
 	[HigherLevelDescription] [nvarchar](max) NULL,
-	[Source] NVARCHAR(50) NOT NULL DEFAULT 'PHB', 
+	[SourceId] INT NOT NULL DEFAULT 1, 
  CONSTRAINT [PK_Spell] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -27,4 +27,11 @@ REFERENCES [dbo].[SpellSchool] ([Id])
 GO
 
 ALTER TABLE [dbo].[Spell] CHECK CONSTRAINT [FK_Spell_SpellSchool]
+GO
+
+ALTER TABLE [dbo].[Spell]  WITH CHECK ADD  CONSTRAINT [FK_Spell_Source] FOREIGN KEY([SourceId])
+REFERENCES [dbo].[Source] ([Id])
+GO
+
+ALTER TABLE [dbo].[Spell] CHECK CONSTRAINT [FK_Spell_Source]
 GO

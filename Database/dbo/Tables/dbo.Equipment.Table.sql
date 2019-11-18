@@ -14,7 +14,7 @@
 	[Bonus] [int] NOT NULL DEFAULT 0,
 	[IsMagical] [bit] NOT NULL,
 	[ImagePath] NVARCHAR(150) NULL, 
-	[Source] NVARCHAR(50) NOT NULL DEFAULT 'PHB', 
+	[SourceId] INT NOT NULL DEFAULT 1, 
     CONSTRAINT [PK_Equipment] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -48,4 +48,11 @@ REFERENCES [dbo].[ArmorType] ([Id])
 GO
 
 ALTER TABLE [dbo].[Equipment] CHECK CONSTRAINT [FK_Equipment_ArmorType]
+GO
+
+ALTER TABLE [dbo].[Equipment]  WITH CHECK ADD  CONSTRAINT [FK_Equipment_Source] FOREIGN KEY([SourceId])
+REFERENCES [dbo].[Source] ([Id])
+GO
+
+ALTER TABLE [dbo].[Equipment] CHECK CONSTRAINT [FK_Equipment_Source]
 GO

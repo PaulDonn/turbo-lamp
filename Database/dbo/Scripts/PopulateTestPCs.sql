@@ -4,6 +4,9 @@
            ('The Undateables')
 GO
 
+INSERT INTO [dbo].[PartySource] ([PartyId], [SourceId])
+VALUES ((SELECT TOP(1) Id FROM Party WHERE Name = 'The Undateables'), 1)
+
 INSERT INTO [dbo].[Player]
            ([Name])
      VALUES

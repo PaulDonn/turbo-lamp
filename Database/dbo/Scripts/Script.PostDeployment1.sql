@@ -11,6 +11,7 @@ Post-Deployment Script Template
 */
 
 --Standing Data
+:r .\"PopulateSource.sql"
 :r .\"PopulateSpellSchool.sql"
 :r .\"PopulateSpell_0.sql"
 :r .\"PopulateSpell_1.sql"

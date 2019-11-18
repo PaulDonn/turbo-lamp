@@ -28,4 +28,67 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="RangeHigh" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="9b57c030-d947-4bcb-85ef-e9d6714eab9c" ChangeDateTime="11/18/2019 14:42:45">
+    <Property Name="ElementName" Value="[dbo].[Archetype].[Source]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Archetype]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SourceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7778ea47-f36f-4261-806a-968c5be5d915" ChangeDateTime="11/18/2019 14:47:10">
+    <Property Name="ElementName" Value="[dbo].[Background].[Source]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Background]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SourceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="06d95b65-18be-41fa-9cc7-a7416e60bc7e" ChangeDateTime="11/18/2019 14:47:58">
+    <Property Name="ElementName" Value="[dbo].[Class].[Source]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Class]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SourceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="168dddd1-b572-487f-a888-78958ff04318" ChangeDateTime="11/18/2019 14:48:37">
+    <Property Name="ElementName" Value="[dbo].[Equipment].[Source]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Equipment]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SourceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="db603b30-6737-412a-ad70-cab128205da1" ChangeDateTime="11/18/2019 14:49:07">
+    <Property Name="ElementName" Value="[dbo].[Feature].[Source]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Feature]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SourceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="264ff4c6-c7ac-44ef-b3be-659a40061b31" ChangeDateTime="11/18/2019 14:50:39">
+    <Property Name="ElementName" Value="[dbo].[Race].[Source]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Race]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SourceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f494c813-4792-4353-a3ee-e91189fbd6cc" ChangeDateTime="11/18/2019 14:51:15">
+    <Property Name="ElementName" Value="[dbo].[Spell].[Source]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Spell]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SourceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a4410665-69b1-42dc-a1d9-f99a06ad4df7" ChangeDateTime="11/18/2019 14:51:56">
+    <Property Name="ElementName" Value="[dbo].[SubRace].[Source]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SubRace]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SourceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b5cb0673-2c39-4cbf-8513-b29c383fc545" ChangeDateTime="11/18/2019 14:52:25">
+    <Property Name="ElementName" Value="[dbo].[Treasure].[Source]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Treasure]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SourceId" />
+  </Operation>
 </Operations>
