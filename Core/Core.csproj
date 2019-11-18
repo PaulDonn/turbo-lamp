@@ -9,7 +9,6 @@
     <Folder Include="Abilities\Query\" />
     <Folder Include="Classes\Command\" />
     <Folder Include="Features\Command\" />
-    <Folder Include="Features\Query\" />
     <Folder Include="Races\Command\" />
     <Folder Include="Skills\Command\" />
     <Folder Include="Skills\DTO\" />

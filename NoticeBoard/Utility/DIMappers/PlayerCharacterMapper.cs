@@ -14,7 +14,7 @@ namespace NoticeBoard.Utility.DIMappers
             services.AddTransient<ICommandHandler<CreatePCCommand>, CreatePCCommandHandler>();
 
             //Query Handlers
-            services.AddTransient<IQueryHandler<GetPCQuery, PlayerCharacterDTO>, GetPCQueryHandler>();
+            services.AddTransient<IQueryHandler<GetPlayerCharacterQuery, PlayerCharacterDTO>, GetPlayerCharacterQueryHandler>();
         }
     }
 }

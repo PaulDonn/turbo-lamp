@@ -5,6 +5,7 @@
 	[Weight] [int] NOT NULL DEFAULT 0,
 	[Value] [int] NOT NULL DEFAULT 0,
 	[ImagePath] NVARCHAR(150) NULL, 
+	[Source] NVARCHAR(50) NOT NULL DEFAULT 'PHB', 
  CONSTRAINT [PK_Treasure] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

@@ -127,10 +127,11 @@ namespace DataModel
 
             modelBuilder.Entity<ClassFeature>(entity =>
             {
+                entity.Property(e => e.Level).HasDefaultValueSql("((1))");
+
                 entity.HasOne(d => d.Archetype)
                     .WithMany(p => p.ClassFeature)
                     .HasForeignKey(d => d.ArchetypeId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_ClassFeature_Archetype");
 
                 entity.HasOne(d => d.Class)
@@ -198,7 +199,9 @@ namespace DataModel
 
             modelBuilder.Entity<Feature>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.HasIndex(e => e.Code)
+                    .HasName("UQ__Feature__A25C5AA76BCAA43D")
+                    .IsUnique();
             });
 
             modelBuilder.Entity<Language>(entity =>
@@ -237,10 +240,14 @@ namespace DataModel
 
             modelBuilder.Entity<PcFeature>(entity =>
             {
+                entity.HasOne(d => d.ClassFeature)
+                    .WithMany(p => p.PcFeature)
+                    .HasForeignKey(d => d.ClassFeatureId)
+                    .HasConstraintName("FK_PcFeature_ClassFeature");
+
                 entity.HasOne(d => d.Feature)
                     .WithMany(p => p.PcFeature)
                     .HasForeignKey(d => d.FeatureId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PcFeature_Feature");
 
                 entity.HasOne(d => d.Pc)
@@ -248,6 +255,11 @@ namespace DataModel
                     .HasForeignKey(d => d.PcId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PcFeature_PlayerCharacter");
+
+                entity.HasOne(d => d.RaceFeature)
+                    .WithMany(p => p.PcFeature)
+                    .HasForeignKey(d => d.RaceFeatureId)
+                    .HasConstraintName("FK_PcFeature_RaceFeature");
             });
 
             modelBuilder.Entity<PcLanguage>(entity =>
@@ -394,6 +406,8 @@ namespace DataModel
 
             modelBuilder.Entity<RaceFeature>(entity =>
             {
+                entity.Property(e => e.Level).HasDefaultValueSql("((1))");
+
                 entity.HasOne(d => d.Feature)
                     .WithMany(p => p.RaceFeature)
                     .HasForeignKey(d => d.FeatureId)

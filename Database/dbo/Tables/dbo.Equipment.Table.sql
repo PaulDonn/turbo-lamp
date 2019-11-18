@@ -14,6 +14,7 @@
 	[Bonus] [int] NOT NULL DEFAULT 0,
 	[IsMagical] [bit] NOT NULL,
 	[ImagePath] NVARCHAR(150) NULL, 
+	[Source] NVARCHAR(50) NOT NULL DEFAULT 'PHB', 
     CONSTRAINT [PK_Equipment] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

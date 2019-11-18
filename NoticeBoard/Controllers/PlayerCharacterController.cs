@@ -207,9 +207,9 @@ namespace NoticeBoard.Controllers
 
         public IActionResult CharacterDetails(int pcid)
         {
-            var query = new GetPCQuery { PcId = pcid };
+            var query = new GetPlayerCharacterQuery { PcId = pcid };
 
-            var dto = SendQuery<GetPCQuery, PlayerCharacterDTO>(query);
+            var dto = SendQuery<GetPlayerCharacterQuery, PlayerCharacterDTO>(query);
 
             var model = _mapper.Map<PlayerCharacterDTO, PlayerCharacterModel>(dto);
 

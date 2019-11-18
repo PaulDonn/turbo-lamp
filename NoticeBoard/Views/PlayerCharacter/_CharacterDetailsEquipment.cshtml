@@ -313,9 +313,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div>
-                                    @equipment.DisplayName()@if (equipment.Quantity > 1)
-                                    {
-                                        @:x@(equipment.Quantity)
+                                    @equipment.DisplayName()@if(equipment.Quantity > 1){ @:x@(equipment.Quantity)
                                     }
                                 </div>
                             </div>
@@ -335,9 +333,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div>
-                                    @treasure.DisplayName()@if (treasure.Quantity > 1)
-                                    {
-                                        @:x@(treasure.Quantity)
+                                    @treasure.DisplayName()@if (treasure.Quantity > 1){ @:x@(treasure.Quantity)
                                     }
                                     @if (!string.IsNullOrWhiteSpace(treasure.TotalValue))
                                     {

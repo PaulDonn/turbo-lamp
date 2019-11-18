@@ -7,11 +7,18 @@ namespace DataModel
 {
     public partial class ClassFeature
     {
+        public ClassFeature()
+        {
+            PcFeature = new HashSet<PcFeature>();
+        }
+
         [Key]
         public int Id { get; set; }
         public int? ClassId { get; set; }
-        public int ArchetypeId { get; set; }
+        public int? ArchetypeId { get; set; }
         public int FeatureId { get; set; }
+        public int Level { get; set; }
+        public string Description { get; set; }
         public bool Hidden { get; set; }
 
         [ForeignKey(nameof(ArchetypeId))]
@@ -23,5 +30,7 @@ namespace DataModel
         [ForeignKey(nameof(FeatureId))]
         [InverseProperty("ClassFeature")]
         public virtual Feature Feature { get; set; }
+        [InverseProperty("ClassFeature")]
+        public virtual ICollection<PcFeature> PcFeature { get; set; }
     }
 }

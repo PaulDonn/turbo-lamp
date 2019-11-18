@@ -35,6 +35,18 @@ namespace NoticeBoard.Models.Spells
 
         public string Description { get; set; }
 
+        public string ShortDescription
+        {
+            get
+            {
+                if (Description.Length > 500)
+                {
+                    return Description.Substring(0, 500) + "...";
+                }
+                return Description;
+            }
+        }
+
         public string HigherLevelDescription { get; set; }
     }
 }

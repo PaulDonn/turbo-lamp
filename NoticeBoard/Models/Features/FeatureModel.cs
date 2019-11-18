@@ -2,15 +2,26 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Core.Features.DTO
+namespace NoticeBoard.Models.Features
 {
-    public class FeatureDTO
+    public class FeatureModel
     {
         public string Name { get; set; }
 
         public string Code { get; set; }
 
         public string Description { get; set; }
+
+        public string ShortDescription { 
+            get
+            {
+                if(Description.Length > 500)
+                {
+                    return Description.Substring(0, 500) + "...";
+                }
+                return Description;
+            }
+        }
 
         public int Level { get; set; }
 

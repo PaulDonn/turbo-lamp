@@ -10,23 +10,23 @@ using System.Text;
 
 namespace Core.PlayerCharacters.Query
 {
-    public class GetPCQuery : IQuery<PlayerCharacterDTO>
+    public class GetPlayerCharacterQuery : IQuery<PlayerCharacterDTO>
     {
         public int PcId { get; set; }
     }
 
-    public class GetPCQueryHandler : IQueryHandler<GetPCQuery, PlayerCharacterDTO>
+    public class GetPlayerCharacterQueryHandler : IQueryHandler<GetPlayerCharacterQuery, PlayerCharacterDTO>
     {
         private NoticeBoardContext _context;
         private IMapper _mapper;
 
-        public GetPCQueryHandler(NoticeBoardContext context, IMapper mapper)
+        public GetPlayerCharacterQueryHandler(NoticeBoardContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
 
-        public PlayerCharacterDTO Handle(GetPCQuery query)
+        public PlayerCharacterDTO Handle(GetPlayerCharacterQuery query)
         {
             var dto = new PlayerCharacterDTO();
 
@@ -56,6 +56,12 @@ namespace Core.PlayerCharacters.Query
 
             pc.PcTreasure = _context.PcTreasure.Where(n => n.PcId == pc.Id)
                                                .Include(n => n.Treasure).ToList();
+
+            pc.PcFeature = _context.PcFeature.Where(n => n.PcId == pc.Id)
+                                             .Include(n => n.Feature)
+                                             .Include(n => n.RaceFeature.Feature)
+                                             .Include(n => n.ClassFeature.Feature)
+                                             .ToList();
 
             if (pc != null)
             {

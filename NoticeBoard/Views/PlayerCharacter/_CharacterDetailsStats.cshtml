@@ -86,7 +86,7 @@
                             {
                                 <div class="row" style="padding-bottom:5px">
                                     <input class="col-2" type="radio" disabled checked="@Model.SavingThrows.Contains(ability.Id)" />
-                                    <div class="col-2 text-center">@(Model.AbilityScores.Single(n => n.AbilityId == ability.Id).Bonus + (@Model.SavingThrows.Contains(ability.Id) ? Model.ProficiencyBonus : 0))</div>
+                                    <div class="col-2 text-center">@Model.SavingThrowBonus(ability.Id)</div>
                                     <div class="col-8">@ability.Name</div>
                                 </div>
                             }
@@ -103,7 +103,7 @@
                             {
                                 <div class="row" style="padding-bottom:5px">
                                     <input class="col-2" type="radio" disabled checked="@Model.PlayerSkills.Contains(skill.Id)" />
-                                    <div class="col-2 text-center">@(Model.AbilityScores.Single(n => n.AbilityId == skill.AbilityId).Bonus + (@Model.PlayerSkills.Contains(skill.Id) ? Model.ProficiencyBonus : 0))</div>
+                                    <div class="col-2 text-center">@Model.SkillBonus(skill.Id)</div>
                                     <div class="col-8">@skill.Name</div>
                                 </div>
                             }
@@ -174,7 +174,7 @@
                                         <div class="col-6">
                                             Current: @Model.HitDieCurrent
                                         </div>
-                                    </div>                                    
+                                    </div>
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-center">Hit Points</div>
@@ -281,7 +281,68 @@
                 <div class="col-12">
                     <div class="card" style="margin-bottom:10px">
                         <div class="card-body">
-
+                            @if (Model.Features.Any(n => n.IsRaceFeature && !n.Hidden))
+                            {
+                                <div class="row">
+                                    <div class="col-12">
+                                        <strong>Race Features</strong>
+                                    </div>
+                                </div>
+                            }
+                            @foreach (var raceFeature in Model.Features.Where(n => n.IsRaceFeature && !n.Hidden).OrderBy(n => n.Level).ThenBy(n => n.Name))
+                            {
+                                <div class="row">
+                                    <div class="col-12" data-toggle="tooltip" data-placement="left" title="@raceFeature.ShortDescription">
+                                        @raceFeature.Name @if (raceFeature.QuantityCurrent.HasValue)
+                                        {@: x@(raceFeature.QuantityCurrent)
+                                    }
+                                    </div>
+                                </div>
+                            }
+                            @if (Model.Features.Any(n => n.IsRaceFeature && !n.Hidden))
+                            {
+                                <br />
+                            }
+                            @if (Model.Features.Any(n => n.IsClassFeature && !n.Hidden))
+                            {
+                                <div class="row">
+                                    <div class="col-12">
+                                        <strong>Class Features</strong>
+                                    </div>
+                                </div>
+                            }
+                            @foreach (var classFeature in Model.Features.Where(n => n.IsClassFeature && !n.Hidden).OrderBy(n => n.Level).ThenBy(n => n.Name))
+                            {
+                                <div class="row">
+                                    <div class="col-12" data-toggle="tooltip" data-placement="left" title="@classFeature.ShortDescription">
+                                        @classFeature.Name @if (classFeature.QuantityCurrent.HasValue)
+                                        {@: x@(classFeature.QuantityCurrent)
+                                    }
+                                    </div>
+                                </div>
+                            }
+                            @if (Model.Features.Any(n => n.IsClassFeature && !n.Hidden))
+                            {
+                                <br />
+                            }
+                            @if (Model.Features.Any(n => !n.IsRaceFeature && !n.IsClassFeature && !n.Hidden))
+                            {
+                                <div class="row">
+                                    <div class="col-12">
+                                        <strong>Other Features</strong>
+                                    </div>
+                                </div>
+                            }
+                            @foreach (var otherFeature in Model.Features.Where(n => !n.IsRaceFeature && !n.IsClassFeature && !n.Hidden).OrderBy(n => n.Level).ThenBy(n => n.Name))
+                            {
+                                <div class="row">
+                                    <div class="col-12" data-toggle="tooltip" data-placement="left" title="@otherFeature.ShortDescription">
+                                        @otherFeature.Name @if (otherFeature.QuantityCurrent.HasValue)
+                                        {@: x@(otherFeature.QuantityCurrent)
+                                    }
+                                    </div>
+                                </div>
+                            }
                         </div>
                         <div class="card-footer">
                             <div class="text-center">

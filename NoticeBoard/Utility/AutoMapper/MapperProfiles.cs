@@ -25,6 +25,8 @@ using Core._Equipment.DTO;
 using NoticeBoard.Models.Equipment;
 using Core._Treasure.DTO;
 using NoticeBoard.Models.Treasure;
+using Core.Features.DTO;
+using NoticeBoard.Models.Features;
 
 namespace NoticeBoard.Utility.AutoMapper
 {
@@ -38,12 +40,11 @@ namespace NoticeBoard.Utility.AutoMapper
             BackgroundMaps();
             ClassMaps();
             EquipmentMaps();
-            //FeatureMaps();
+            FeatureMaps();
             LanguageMaps();
             PlayerMaps();
             PlayerCharacterMaps();
             RaceMaps();
-            //SkillMaps();
             SpellMaps();
             TreasureMaps();
         }
@@ -104,11 +105,67 @@ namespace NoticeBoard.Utility.AutoMapper
 
         }
 
-        //TODO: FeatureMaps
-        //private void FeatureMaps()
-        //{
-        //    CreateMap<Feature, FeatureDTO>();
-        //}
+        private void FeatureMaps()
+        {
+            CreateMap<Feature, FeatureDTO>();
+            CreateMap<RaceFeature, FeatureDTO>()
+                .ForMember(dest => dest.Name, opts => opts.MapFrom(src => src.Feature.Name))
+                .ForMember(dest => dest.Description, opts => opts.MapFrom(src => src.Description ?? src.Feature.Description));
+            CreateMap<ClassFeature, FeatureDTO>()
+                .ForMember(dest => dest.Name, opts => opts.MapFrom(src => src.Feature.Name))
+                .ForMember(dest => dest.Description, opts => opts.MapFrom(src => src.Description ?? src.Feature.Description));
+            CreateMap<FeatureDTO, FeatureModel>();
+        }
+
+        private List<FeatureDTO> FeatureResolver(ICollection<PcFeature> pcFeatures)
+        {
+            var features = new List<FeatureDTO>();
+
+            foreach (var pcFeature in pcFeatures)
+            {
+                if (pcFeature.FeatureId.HasValue)
+                {
+                    features.Add(new FeatureDTO
+                    {
+                        Name = pcFeature.Feature.Name,
+                        Code = pcFeature.Feature.Code,
+                        Description = pcFeature.Feature.Description,
+                        QuantityMaximum = pcFeature.QuantityMaximum,
+                        QuantityCurrent = pcFeature.QuantityCurrent
+                    });
+                }
+                else if (pcFeature.RaceFeatureId.HasValue)
+                {
+                    features.Add(new FeatureDTO
+                    {
+                        Name = pcFeature.RaceFeature.Feature.Name,
+                        Code = pcFeature.RaceFeature.Feature.Code,
+                        Description = pcFeature.RaceFeature.Description ?? pcFeature.RaceFeature.Feature.Description,
+                        Level = pcFeature.RaceFeature.Level,
+                        Hidden = pcFeature.RaceFeature.Hidden,
+                        IsRaceFeature = true,
+                        QuantityMaximum = pcFeature.QuantityMaximum,
+                        QuantityCurrent = pcFeature.QuantityCurrent
+                    });
+                }
+                else if (pcFeature.ClassFeatureId.HasValue)
+                {
+                    features.Add(new FeatureDTO
+                    {
+                        Name = pcFeature.ClassFeature.Feature.Name,
+                        Code = pcFeature.ClassFeature.Feature.Code,
+                        Description = pcFeature.ClassFeature.Description ?? pcFeature.ClassFeature.Feature.Description,
+                        Level = pcFeature.ClassFeature.Level,
+                        Hidden = pcFeature.ClassFeature.Hidden,
+                        IsClassFeature = true,
+                        QuantityMaximum = pcFeature.QuantityMaximum,
+                        QuantityCurrent = pcFeature.QuantityCurrent
+                    });
+                }
+            }
+
+            return features;
+        }
 
         private void LanguageMaps()
         {
@@ -137,6 +194,7 @@ namespace NoticeBoard.Utility.AutoMapper
                     })))
                 .ForMember(dest => dest.Equipment, opts => opts.MapFrom(src => src.PcEquipment))
                 .ForMember(dest => dest.Treasure, opts => opts.MapFrom(src => src.PcTreasure))
+                .ForMember(dest => dest.Features, opts => opts.MapFrom(src => FeatureResolver(src.PcFeature)))
                 .ReverseMap();
             CreateMap<PlayerCharacterDTO, PlayerCharacterModel>()
                 .ForMember(dest => dest.SavingThrows, opts => opts.MapFrom(src => src.SavingThrows.Select(n => n.AbilityId)))
@@ -154,6 +212,7 @@ namespace NoticeBoard.Utility.AutoMapper
                         { 9, new Tuple<int,int>(src.Level9SlotsMaximum, src.Level9SlotsCurrent) },
                     }))
                 .ForMember(dest => dest.Equipment, opts => opts.MapFrom(src => src.Equipment))
+                .ForMember(dest => dest.Features, opts => opts.MapFrom(src => src.Features))
                 .ForMember(dest => dest.Treasure, opts => opts.MapFrom(src => src.Treasure))
                 .ForMember(dest => dest.Abilities, opts => opts.Ignore())
                 .ForMember(dest => dest.Skills, opts => opts.Ignore())

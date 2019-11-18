@@ -13,6 +13,7 @@ using NoticeBoard.Models.Player;
 using NoticeBoard.Models.Spells;
 using NoticeBoard.Models.Equipment;
 using NoticeBoard.Models.Treasure;
+using NoticeBoard.Models.Features;
 
 namespace NoticeBoard.Models.PlayerCharacters
 {
@@ -20,24 +21,27 @@ namespace NoticeBoard.Models.PlayerCharacters
     {
         public PlayerCharacterModel()
         {
-            PlayerClass = new ClassModel();
+            AbilityScores = new List<PcAbilityScoreModel>();
+            Alignment = new AlignmentModel();
             Archetype = new ArchetypeModel();
             Background = new BackgroundModel();
-            Race = new RaceModel();
+            PlayerClass = new ClassModel();
+            Equipment = new List<PcEquipmentModel>();
+            Features = new List<FeatureModel>();
             Player = new PlayerModel();
-            Alignment = new AlignmentModel();
-            AbilityScores = new List<PcAbilityScoreModel>();
+            Race = new RaceModel();
             SavingThrows = new List<int>();
             PlayerSkills = new List<int>();
             Spells = new List<PcSpellModel>();
             Traits = new List<TraitModel>();
-            Equipment = new List<PcEquipmentModel>();
             Treasure = new List<PcTreasureModel>();
         }
 
         public int Id { get; set; }
 
-        public int ProficiencyBonus { get
+        public int _ProficiencyBonus
+        {
+            get
             {
                 if (LevelId >= 17) return 6;
                 if (LevelId >= 13) return 5;
@@ -45,6 +49,50 @@ namespace NoticeBoard.Models.PlayerCharacters
                 if (LevelId >= 5) return 3;
                 if (LevelId >= 1) return 2;
                 return 0;
+            }
+        }
+
+        public string ProficiencyBonus
+        {
+            get
+            {
+                return (_ProficiencyBonus >= 0 ? "+" : null) + _ProficiencyBonus.ToString();
+            }
+        }
+
+        public string SavingThrowBonus(int abilityId)
+        {
+            var bonus = AbilityScores.Single(n => n.AbilityId == abilityId).Bonus;
+            var proficiencyBonus = SavingThrows.Contains(abilityId) ? _ProficiencyBonus : 0;
+            var total = bonus + proficiencyBonus;
+            return (total >= 0 ? "+" : null) + total.ToString();
+        }
+
+        public string SkillBonus(int skillId)
+        {
+            var skill = Skills.Single(n => n.Id == skillId);
+            var bonus = AbilityScores.Single(n => n.AbilityId == skill.AbilityId).Bonus;
+            var proficiencyBonus = PlayerSkills.Contains(skillId) ? _ProficiencyBonus : 0;
+            var total = bonus + proficiencyBonus;
+            return (total >= 0 ? "+" : null) + total.ToString();
+        }
+
+        public string SpellSaveDC
+        {
+            get
+            {
+                var spellBonus = AbilityScores.First(n => n.AbilityId == PlayerClass.SpellcastingAbility.Id).Bonus;
+                return (8 + _ProficiencyBonus + spellBonus).ToString();
+            }
+        }
+
+        public string SpellAttackBonus
+        {
+            get
+            {
+                var spellBonus = AbilityScores.First(n => n.AbilityId == PlayerClass.SpellcastingAbility.Id).Bonus;
+                var total = _ProficiencyBonus + spellBonus;
+                return (total >= 0 ? "+" : null) + total.ToString();
             }
         }
 
@@ -82,6 +130,8 @@ namespace NoticeBoard.Models.PlayerCharacters
         public List<Skill> Skills { get; set; }
 
         public List<int> PlayerSkills { get; set; }
+
+        public List<FeatureModel> Features { get; set; }
 
         public int ArmourClass { get; set; }
 

@@ -12,11 +12,11 @@
                         </div>
                         <div class="col-4">
                             <div class="col-12">Spell Save DC</div>
-                            <label class="col-12"><strong>@(8 + Model.ProficiencyBonus + Model.AbilityScores.First(n => n.AbilityId == Model.PlayerClass.SpellcastingAbility.Id).Bonus)</strong></label>
+                            <label class="col-12"><strong>@Model.SpellSaveDC</strong></label>
                         </div>
                         <div class="col-4">
                             <div class="col-12">Spell Attack Bonus</div>
-                            <label class="col-12"><strong>@(Model.ProficiencyBonus + Model.AbilityScores.First(n => n.AbilityId == Model.PlayerClass.SpellcastingAbility.Id).Bonus >= 0 ? "+" : "")@(Model.ProficiencyBonus + Model.AbilityScores.First(n => n.AbilityId == Model.PlayerClass.SpellcastingAbility.Id).Bonus)</strong></label>
+                            <label class="col-12"><strong>@Model.SpellAttackBonus</strong></label>
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                                                            } />
                                                 </td>
                                             }
-                                            <td>@pcSpell.Spell.Name</td>
+                                            <td data-toggle="tooltip" data-placement="left" title="@pcSpell.Spell.ShortDescription">@pcSpell.Spell.Name</td>
                                             <td>@pcSpell.Spell.SpellSchool</td>
                                             <td>
                                                 @pcSpell.Spell.CastingTime@if (pcSpell.Spell.IsRitual)

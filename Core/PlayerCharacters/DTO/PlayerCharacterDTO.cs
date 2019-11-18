@@ -8,6 +8,7 @@ using Core.Races.DTO;
 using Core.Spells.DTO;
 using Core._Treasure.DTO;
 using System.Collections.Generic;
+using Core.Features.DTO;
 
 namespace Core.PlayerCharacters.DTO
 {
@@ -28,6 +29,7 @@ namespace Core.PlayerCharacters.DTO
             Traits = new List<TraitDTO>();
             Equipment = new List<PcEquipmentDTO>();
             Treasure = new List<PcTreasureDTO>();
+            Features = new List<FeatureDTO>();
         }
 
         public int Id { get; set; }
@@ -60,6 +62,8 @@ namespace Core.PlayerCharacters.DTO
         public List<PcSavingThrowDTO> SavingThrows { get; set; }
 
         public List<PcSkillDTO> Skills { get; set; }
+
+        public List<FeatureDTO> Features { get; set; }
 
         public PlayerDTO Player { get; set; }
 

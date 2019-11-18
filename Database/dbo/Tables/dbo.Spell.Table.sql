@@ -14,6 +14,7 @@
 	[IsRitual] [bit] NOT NULL,
 	[Description] [nvarchar](max) NULL,
 	[HigherLevelDescription] [nvarchar](max) NULL,
+	[Source] NVARCHAR(50) NOT NULL DEFAULT 'PHB', 
  CONSTRAINT [PK_Spell] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
