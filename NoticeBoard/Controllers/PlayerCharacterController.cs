@@ -17,7 +17,11 @@ using Infrastructure.Mediator;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
+using NoticeBoard.Models.Backgrounds;
+using NoticeBoard.Models.Classes;
 using NoticeBoard.Models.PlayerCharacters;
+using NoticeBoard.Models.Races;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -27,6 +31,7 @@ namespace NoticeBoard.Controllers
     {
         public PlayerCharacterController(IMediator mediator, NoticeBoardContext databaseContext, IConfiguration configuration, IMapper mapper) : base(mediator, databaseContext, configuration, mapper)
         {
+
         }
 
         public IActionResult Index()
@@ -57,6 +62,140 @@ namespace NoticeBoard.Controllers
             var result = SendCommand(command);
 
             return RedirectToAction(nameof(CharacterDetails), new { pcid = result.NewRecordId });
+        }
+
+        public IActionResult NewCharacter()
+        {
+            //TODO: Command to create new player character
+
+            return RedirectToAction(nameof(SelectRace), new { pcId = 1, partyId = 1 }); //TODO: Replace with PartyId from Session/Page
+        }
+
+        public IActionResult SelectRace(int pcId, int partyId)
+        {
+            var model = new RaceSelectModel { PcId = pcId, PartyId = partyId };
+
+            var query = new GetRaceOptionsQuery { PartyId = partyId }; 
+
+            model.Races = _mapper.Map<List<RaceDTO>, List<RaceModel>>(SendQuery<GetRaceOptionsQuery, IEnumerable<RaceDTO>>(query).ToList());
+
+            return View(model);
+        }
+
+        public IActionResult SelectRace(RaceSelectModel model)
+        {
+            //TODO: Add Command to save Character Race
+
+            return RedirectToAction(nameof(SelectSubRace), new 
+            { 
+                pcId = model.PcId, 
+                partyId = model.PartyId,
+                raceId = model.SelectedRaceId 
+            });
+        }
+
+        public IActionResult SelectSubRace(int pcId, int partyId, int raceId)
+        {
+            var model = new SubRaceSelectModel { PcId = pcId, PartyId = partyId };
+
+            var query = new GetSubRaceOptionsQuery
+            {
+                PartyId = partyId,
+                RaceId = raceId
+            };
+
+            var subRaces = SendQuery<GetSubRaceOptionsQuery, IEnumerable<SubRaceDTO>>(query).ToList();
+            if (subRaces.Count() > 0)
+            {
+                model.SubRaces = _mapper.Map<List<SubRaceDTO>, List<SubRaceModel>>(subRaces);
+                return View(model);
+            }
+
+            return RedirectToAction(nameof(SelectClass), new { pcId, partyId });
+        }
+
+        public IActionResult SelectSubRace(SubRaceSelectModel model)
+        {
+            //TODO: Add Command to save Character SubRace
+
+            return RedirectToAction(nameof(SelectClass), new { model.PcId, model.PartyId });
+        }
+
+        public IActionResult SelectClass(int pcId, int partyId)
+        {
+            var model = new ClassSelectModel { PcId = pcId, PartyId = partyId };
+
+            var query = new GetClassOptionsQuery { PartyId = partyId };
+
+            model.Classes = _mapper.Map<List<ClassDTO>, List<ClassModel>>(SendQuery<GetClassOptionsQuery, IEnumerable<ClassDTO>>(query).ToList());
+
+            return View(model);
+        }
+
+        public IActionResult SelectClass(ClassSelectModel model)
+        {
+            //TODO: Add Command to save Character Class
+
+            if(model.HasLevel1Archetype)
+            {
+                return RedirectToAction(nameof(SelectArchetype), new
+                {
+                    pcId = model.PcId,
+                    partyId = model.PartyId,
+                    classId = model.SelectedClassId
+                });
+            }
+
+            return RedirectToAction(nameof(SelectBackground), new { model.PcId, model.PartyId });
+        }
+
+        public IActionResult SelectArchetype(int pcId, int partyId, int classId)
+        {
+            var model = new ArchetypeSelectModel { PcId = pcId, PartyId = partyId };
+
+            var query = new GetArchetypeOptionsQuery
+            {
+                PartyId = partyId,
+                ClassId = classId
+            };
+
+            var archetypes = SendQuery<GetArchetypeOptionsQuery, IEnumerable<ArchetypeDTO>>(query).ToList();
+            if (archetypes.Count() > 0)
+            {
+                var playerClass = SendQuery<GetClassQuery, ClassDTO>(new GetClassQuery { Id = classId });
+                model.ArchetypeName = playerClass.Name;
+                model.ArchetypeDescription = playerClass.ArchetypeTypeDescription;
+
+                model.Archetypes = _mapper.Map<List<ArchetypeDTO>, List<ArchetypeModel>>(archetypes);
+                return View(model);
+            }
+
+            return RedirectToAction(nameof(SelectBackground), new { pcId, partyId });
+        }
+
+        public IActionResult SelectArchetype(ArchetypeSelectModel model)
+        {
+            //TODO: Add Command to save Character Archetype
+
+            return RedirectToAction(nameof(SelectBackground), new { model.PcId, model.PartyId });
+        }
+
+        public IActionResult SelectBackground(int pcId, int partyId)
+        {
+            var model = new BackgroundSelectModel { PcId = pcId, PartyId = partyId };
+
+            var query = new GetBackgroundOptionsQuery { PartyId = partyId };
+
+            model.Backgrounds = _mapper.Map<List<BackgroundDTO>, List<BackgroundModel>>(SendQuery<GetBackgroundOptionsQuery, IEnumerable<BackgroundDTO>>(query).ToList());
+
+            return View(model);
+        }
+
+        public IActionResult SelectBackground(BackgroundSelectModel model)
+        {
+            //TODO: Add Command to save Character Background
+
+            throw new NotImplementedException();
         }
 
         #region Create Ajax calls

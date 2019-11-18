@@ -40,7 +40,7 @@ namespace Core.Classes.Query
             if (party != null)
             {
                 var archetypes = _context.Archetype.Where(n => n.ClassId == query.ClassId && 
-                                                            party.PartySource.Any(m => m.SourceId == n.SourceId))
+                                                               party.PartySource.Any(m => m.SourceId == n.SourceId))
                                                    .Include(n => n.ClassFeature);
 
                 foreach (var archetype in archetypes)

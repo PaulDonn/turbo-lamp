@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Backgrounds.DTO;
 using Core.Classes.DTO;
 using DataModel;
 using Infrastructure.CQRS;
@@ -8,28 +9,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Core.Classes.Query
+namespace Core.Backgrounds.Query
 {
-    public class GetClassOptionsQuery : IQuery<IEnumerable<ClassDTO>>
+    public class GetBackgroundOptionsQuery : IQuery<IEnumerable<BackgroundDTO>>
     {
         public int PartyId { get; set; }
     }
 
-    public class GetClassOptionsQueryHandler : IQueryHandler<GetClassOptionsQuery, IEnumerable<ClassDTO>>
+    public class GetBackgroundOptionsQueryHandler : IQueryHandler<GetBackgroundOptionsQuery, IEnumerable<BackgroundDTO>>
     {
         private NoticeBoardContext _context;
 
         private IMapper _mapper;
 
-        public GetClassOptionsQueryHandler(NoticeBoardContext context, IMapper mapper)
+        public GetBackgroundOptionsQueryHandler(NoticeBoardContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
 
-        public IEnumerable<ClassDTO> Handle(GetClassOptionsQuery query)
+        public IEnumerable<BackgroundDTO> Handle(GetBackgroundOptionsQuery query)
         {
-            var dto = new List<ClassDTO>();
+            var dto = new List<BackgroundDTO>();
 
             var party = _context.Party.Where(n => n.Id == query.PartyId)
                                       .Include(n => n.PartySource)
@@ -37,11 +38,11 @@ namespace Core.Classes.Query
 
             if (party != null)
             {
-                var classes = _context.Class.Where(n => party.PartySource.Any(m => m.SourceId == n.SourceId));
+                var backgrounds = _context.Background.Where(n => party.PartySource.Any(m => m.SourceId == n.SourceId));
 
-                foreach (var playerClass in classes)
+                foreach (var background in backgrounds)
                 {
-                    dto.Add(_mapper.Map<Class, ClassDTO>(playerClass));
+                    dto.Add(_mapper.Map<Background, BackgroundDTO>(background));
                 }
             }
 

@@ -15,8 +15,11 @@ namespace NoticeBoard.Utility.DIMappers
             //Query Handlers
             services.AddTransient<IQueryHandler<GetRaceQuery, RaceDTO>, GetRaceQueryHandler>();
             services.AddTransient<IQueryHandler<GetRacesQuery, IEnumerable<RaceDTO>>, GetRacesQueryHandler>();
+            services.AddTransient<IQueryHandler<GetRaceOptionsQuery, IEnumerable<RaceDTO>>, GetRaceOptionsQueryHandler>();
+
             services.AddTransient<IQueryHandler<GetSubRaceQuery, SubRaceDTO>, GetSubRaceQueryHandler>();
             services.AddTransient<IQueryHandler<GetSubRacesQuery, IEnumerable<SubRaceDTO>>, GetSubRacesQueryHandler>();
+            services.AddTransient<IQueryHandler<GetSubRaceOptionsQuery, IEnumerable<SubRaceDTO>>, GetSubRaceOptionsQueryHandler>();
         }
     }
 }
