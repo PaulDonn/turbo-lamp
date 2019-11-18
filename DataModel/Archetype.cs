@@ -24,10 +24,14 @@ namespace DataModel
         [Required]
         public string Description { get; set; }
         public int ClassId { get; set; }
+        public int SourceId { get; set; }
 
         [ForeignKey(nameof(ClassId))]
         [InverseProperty("Archetype")]
         public virtual Class Class { get; set; }
+        [ForeignKey(nameof(SourceId))]
+        [InverseProperty("Archetype")]
+        public virtual Source Source { get; set; }
         [InverseProperty("Archetype")]
         public virtual ICollection<ClassFeature> ClassFeature { get; set; }
         [InverseProperty("Archetype")]

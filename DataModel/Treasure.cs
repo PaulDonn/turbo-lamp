@@ -22,7 +22,11 @@ namespace DataModel
         public int Value { get; set; }
         [StringLength(150)]
         public string ImagePath { get; set; }
+        public int SourceId { get; set; }
 
+        [ForeignKey(nameof(SourceId))]
+        [InverseProperty("Treasure")]
+        public virtual Source Source { get; set; }
         [InverseProperty("Treasure")]
         public virtual ICollection<PcTreasure> PcTreasure { get; set; }
     }

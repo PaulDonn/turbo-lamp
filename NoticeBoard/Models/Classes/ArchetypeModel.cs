@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NoticeBoard.Models.Features;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,6 +9,11 @@ namespace NoticeBoard.Models.Classes
 {
     public class ArchetypeModel
     {
+        public ArchetypeModel()
+        {
+            Features = new List<FeatureModel>();
+        }
+
         public int Id { get; set; }
 
         [Display(Name = "Archetype")]
@@ -19,5 +25,7 @@ namespace NoticeBoard.Models.Classes
         public string Description { get; set; }
 
         public int ClassId { get; set; }
+
+        public List<FeatureModel> Features { get; set; }
     }
 }

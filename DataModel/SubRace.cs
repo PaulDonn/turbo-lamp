@@ -22,10 +22,14 @@ namespace DataModel
         public string Description { get; set; }
         public int RaceId { get; set; }
         public int? AdditionalLanguages { get; set; }
+        public int SourceId { get; set; }
 
         [ForeignKey(nameof(RaceId))]
         [InverseProperty("SubRace")]
         public virtual Race Race { get; set; }
+        [ForeignKey(nameof(SourceId))]
+        [InverseProperty("SubRace")]
+        public virtual Source Source { get; set; }
         [InverseProperty("SubRace")]
         public virtual ICollection<PlayerCharacter> PlayerCharacter { get; set; }
         [InverseProperty("SubRace")]

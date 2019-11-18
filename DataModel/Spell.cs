@@ -38,7 +38,11 @@ namespace DataModel
         public bool IsRitual { get; set; }
         public string Description { get; set; }
         public string HigherLevelDescription { get; set; }
+        public int SourceId { get; set; }
 
+        [ForeignKey(nameof(SourceId))]
+        [InverseProperty("Spell")]
+        public virtual Source Source { get; set; }
         [ForeignKey(nameof(SpellSchoolId))]
         [InverseProperty("Spell")]
         public virtual SpellSchool SpellSchool { get; set; }

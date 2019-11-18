@@ -30,6 +30,7 @@ namespace DataModel
         public virtual DbSet<Feature> Feature { get; set; }
         public virtual DbSet<Language> Language { get; set; }
         public virtual DbSet<Party> Party { get; set; }
+        public virtual DbSet<PartySource> PartySource { get; set; }
         public virtual DbSet<PcAbilityScore> PcAbilityScore { get; set; }
         public virtual DbSet<PcEquipment> PcEquipment { get; set; }
         public virtual DbSet<PcFeature> PcFeature { get; set; }
@@ -45,6 +46,7 @@ namespace DataModel
         public virtual DbSet<RaceFeature> RaceFeature { get; set; }
         public virtual DbSet<RaceLanguage> RaceLanguage { get; set; }
         public virtual DbSet<Skill> Skill { get; set; }
+        public virtual DbSet<Source> Source { get; set; }
         public virtual DbSet<Spell> Spell { get; set; }
         public virtual DbSet<SpellList> SpellList { get; set; }
         public virtual DbSet<SpellListSpell> SpellListSpell { get; set; }
@@ -80,11 +82,19 @@ namespace DataModel
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
+                entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
+
                 entity.HasOne(d => d.Class)
                     .WithMany(p => p.Archetype)
                     .HasForeignKey(d => d.ClassId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Archetype_Class");
+
+                entity.HasOne(d => d.Source)
+                    .WithMany(p => p.Archetype)
+                    .HasForeignKey(d => d.SourceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Archetype_Source");
             });
 
             modelBuilder.Entity<ArmorType>(entity =>
@@ -95,6 +105,14 @@ namespace DataModel
             modelBuilder.Entity<Background>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
+
+                entity.HasOne(d => d.Source)
+                    .WithMany(p => p.Background)
+                    .HasForeignKey(d => d.SourceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Background_Source");
             });
 
             modelBuilder.Entity<BgSkill>(entity =>
@@ -117,6 +135,14 @@ namespace DataModel
             modelBuilder.Entity<Class>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
+
+                entity.HasOne(d => d.Source)
+                    .WithMany(p => p.Class)
+                    .HasForeignKey(d => d.SourceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Class_Source");
 
                 entity.HasOne(d => d.SpellcastingAbility)
                     .WithMany(p => p.Class)
@@ -170,6 +196,8 @@ namespace DataModel
 
             modelBuilder.Entity<Equipment>(entity =>
             {
+                entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
+
                 entity.HasOne(d => d.ArmorType)
                     .WithMany(p => p.Equipment)
                     .HasForeignKey(d => d.ArmorTypeId)
@@ -186,6 +214,12 @@ namespace DataModel
                     .HasForeignKey(d => d.PreRequisiteAbilityId)
                     .HasConstraintName("FK_Equipment_Ability");
 
+                entity.HasOne(d => d.Source)
+                    .WithMany(p => p.Equipment)
+                    .HasForeignKey(d => d.SourceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Equipment_Source");
+
                 entity.HasOne(d => d.WeaponType)
                     .WithMany(p => p.Equipment)
                     .HasForeignKey(d => d.WeaponTypeId)
@@ -200,13 +234,36 @@ namespace DataModel
             modelBuilder.Entity<Feature>(entity =>
             {
                 entity.HasIndex(e => e.Code)
-                    .HasName("UQ__Feature__A25C5AA76BCAA43D")
+                    .HasName("UQ__Feature__A25C5AA726DFADDE")
                     .IsUnique();
+
+                entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
+
+                entity.HasOne(d => d.Source)
+                    .WithMany(p => p.Feature)
+                    .HasForeignKey(d => d.SourceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Feature_Source");
             });
 
             modelBuilder.Entity<Language>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<PartySource>(entity =>
+            {
+                entity.HasOne(d => d.Party)
+                    .WithMany(p => p.PartySource)
+                    .HasForeignKey(d => d.PartyId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PartySource_Party");
+
+                entity.HasOne(d => d.Source)
+                    .WithMany(p => p.PartySource)
+                    .HasForeignKey(d => d.SourceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PartySource_Source");
             });
 
             modelBuilder.Entity<PcAbilityScore>(entity =>
@@ -402,6 +459,14 @@ namespace DataModel
             modelBuilder.Entity<Race>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
+
+                entity.HasOne(d => d.Source)
+                    .WithMany(p => p.Race)
+                    .HasForeignKey(d => d.SourceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Race_Source");
             });
 
             modelBuilder.Entity<RaceFeature>(entity =>
@@ -453,8 +518,25 @@ namespace DataModel
                     .HasConstraintName("FK_Skill_Ability");
             });
 
+            modelBuilder.Entity<Source>(entity =>
+            {
+                entity.HasIndex(e => e.Code)
+                    .HasName("UQ__Source__A25C5AA71EF554B7")
+                    .IsUnique();
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+            });
+
             modelBuilder.Entity<Spell>(entity =>
             {
+                entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
+
+                entity.HasOne(d => d.Source)
+                    .WithMany(p => p.Spell)
+                    .HasForeignKey(d => d.SourceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Spell_Source");
+
                 entity.HasOne(d => d.SpellSchool)
                     .WithMany(p => p.Spell)
                     .HasForeignKey(d => d.SpellSchoolId)
@@ -497,16 +579,35 @@ namespace DataModel
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
+                entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
+
                 entity.HasOne(d => d.Race)
                     .WithMany(p => p.SubRace)
                     .HasForeignKey(d => d.RaceId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_SubRace_Race");
+
+                entity.HasOne(d => d.Source)
+                    .WithMany(p => p.SubRace)
+                    .HasForeignKey(d => d.SourceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_SubRace_Source");
             });
 
             modelBuilder.Entity<TraitType>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<Treasure>(entity =>
+            {
+                entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
+
+                entity.HasOne(d => d.Source)
+                    .WithMany(p => p.Treasure)
+                    .HasForeignKey(d => d.SourceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Treasure_Source");
             });
 
             modelBuilder.Entity<WeaponType>(entity =>

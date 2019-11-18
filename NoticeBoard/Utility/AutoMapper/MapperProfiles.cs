@@ -34,7 +34,6 @@ namespace NoticeBoard.Utility.AutoMapper
     {
         public MapperProfiles()
         {
-
             AbilityMaps();
             AlignmentMaps();
             BackgroundMaps();
@@ -51,73 +50,99 @@ namespace NoticeBoard.Utility.AutoMapper
 
         private void AbilityMaps()
         {
-            CreateMap<Ability, AbilityDTO>().ReverseMap();
-            CreateMap<AbilityDTO, AbilityModel>().ReverseMap();
-            CreateMap<PcAbilityScore, PcAbilityScoreDTO>().ReverseMap();
-            CreateMap<PcAbilityScoreDTO, PcAbilityScoreModel>().ReverseMap();
-            CreateMap<PcSavingThrow, PcSavingThrowDTO>().ReverseMap();
-            CreateMap<Skill, SkillDTO>().ReverseMap();
-            CreateMap<SkillDTO, SkillModel>().ReverseMap();
-            CreateMap<PcSkill, PcSkillDTO>().ReverseMap();
-            CreateMap<PcSkillDTO, PcSkillModel>().ReverseMap();
+            CreateMap<Ability, AbilityDTO>();
+
+            CreateMap<AbilityDTO, AbilityModel>();
+
+            CreateMap<PcAbilityScore, PcAbilityScoreDTO>();
+
+            CreateMap<PcAbilityScoreDTO, PcAbilityScoreModel>();
+
+            CreateMap<PcSavingThrow, PcSavingThrowDTO>();
+
+            CreateMap<Skill, SkillDTO>();
+
+            CreateMap<SkillDTO, SkillModel>();
+
+            CreateMap<PcSkill, PcSkillDTO>();
+
+            CreateMap<PcSkillDTO, PcSkillModel>();
         }
 
         private void AlignmentMaps()
         {
-            CreateMap<Alignment, AlignmentDTO>().ReverseMap();
-            CreateMap<AlignmentDTO, AlignmentModel>().ReverseMap();
+            CreateMap<Alignment, AlignmentDTO>();
+
+            CreateMap<AlignmentDTO, AlignmentModel>();
         }
 
         private void BackgroundMaps()
         {
-            CreateMap<Background, BackgroundDTO>().ReverseMap();
-            CreateMap<BackgroundDTO, BackgroundModel>().ReverseMap();
+            CreateMap<Background, BackgroundDTO>();
+
+            CreateMap<BackgroundDTO, BackgroundModel>();
         }
 
         private void ClassMaps()
         {
             CreateMap<Class, ClassDTO>()
                 .ForMember(dest => dest.SpellcastingAbility, opts => opts.MapFrom(src => src.SpellcastingAbility))
-                .ReverseMap();
+                .ForMember(dest => dest.Features, opts => opts.MapFrom(src => src.ClassFeature));
+
             CreateMap<ClassDTO, ClassModel>()
-                .ForMember(dest => dest.SpellcastingAbility, opts => opts.MapFrom(src => src.SpellcastingAbility))
-                .ReverseMap();
-            CreateMap<Archetype, ArchetypeDTO>().ReverseMap();
-            CreateMap<ArchetypeDTO, ArchetypeModel>().ReverseMap();
+                .ForMember(dest => dest.SpellcastingAbility, opts => opts.MapFrom(src => src.SpellcastingAbility));
+
+            CreateMap<Archetype, ArchetypeDTO>()
+                .ForMember(dest => dest.Features, opts => opts.MapFrom(src => src.ClassFeature));
+
+            CreateMap<ArchetypeDTO, ArchetypeModel>();
         }
 
         private void EquipmentMaps()
         {
             CreateMap<WeaponType, WeaponTypeDTO>()
-                .ForMember(dest => dest.DamageType, opts => opts.MapFrom(src => src.DamageType.Name))
-                .ReverseMap();
-            CreateMap<WeaponTypeDTO, WeaponTypeModel>().ReverseMap();
-            CreateMap<ArmorType, ArmorTypeDTO>().ReverseMap();
-            CreateMap<ArmorTypeDTO, ArmorTypeModel>().ReverseMap();
+                .ForMember(dest => dest.DamageType, opts => opts.MapFrom(src => src.DamageType.Name));
+
+            CreateMap<WeaponTypeDTO, WeaponTypeModel>();
+
+            CreateMap<ArmorType, ArmorTypeDTO>();
+
+            CreateMap<ArmorTypeDTO, ArmorTypeModel>();
+
             CreateMap<Equipment, EquipmentDTO>()
-                .ForMember(dest => dest.EquipmentType, opts => opts.MapFrom(src => src.EquipmentType.Name))
-                .ReverseMap();
-            CreateMap<EquipmentDTO, EquipmentModel>().ReverseMap();
-            CreateMap<PcEquipment, PcEquipmentDTO>().ReverseMap();
+                .ForMember(dest => dest.EquipmentType, opts => opts.MapFrom(src => src.EquipmentType.Name));
+
+            CreateMap<EquipmentDTO, EquipmentModel>();
+
+            CreateMap<PcEquipment, PcEquipmentDTO>();
+
             CreateMap<PcEquipmentDTO, PcEquipmentModel>()
-                .ForMember(dest => dest.Equipment, opts => opts.MapFrom(src => src.Equipment))
-                .ReverseMap();
+                .ForMember(dest => dest.Equipment, opts => opts.MapFrom(src => src.Equipment));
 
         }
 
         private void FeatureMaps()
         {
             CreateMap<Feature, FeatureDTO>();
+
             CreateMap<RaceFeature, FeatureDTO>()
                 .ForMember(dest => dest.Name, opts => opts.MapFrom(src => src.Feature.Name))
-                .ForMember(dest => dest.Description, opts => opts.MapFrom(src => src.Description ?? src.Feature.Description));
+                .ForMember(dest => dest.Code, opts => opts.MapFrom(src => src.Feature.Code))
+                .ForMember(dest => dest.QuantityMaximum, opts => opts.MapFrom(src => src.Feature.Quantity))
+                .ForMember(dest => dest.Description, opts => opts.MapFrom(src => src.Description ?? src.Feature.Description))
+                .ForMember(dest => dest.IsRaceFeature, opts => opts.MapFrom(src => true));
+
             CreateMap<ClassFeature, FeatureDTO>()
                 .ForMember(dest => dest.Name, opts => opts.MapFrom(src => src.Feature.Name))
-                .ForMember(dest => dest.Description, opts => opts.MapFrom(src => src.Description ?? src.Feature.Description));
+                .ForMember(dest => dest.Code, opts => opts.MapFrom(src => src.Feature.Code))
+                .ForMember(dest => dest.QuantityMaximum, opts => opts.MapFrom(src => src.Feature.Quantity))
+                .ForMember(dest => dest.Description, opts => opts.MapFrom(src => src.Description ?? src.Feature.Description))
+                .ForMember(dest => dest.IsClassFeature, opts => opts.MapFrom(src => true));
+
             CreateMap<FeatureDTO, FeatureModel>();
         }
 
-        private List<FeatureDTO> FeatureResolver(ICollection<PcFeature> pcFeatures)
+        private List<FeatureDTO> PcFeatureResolver(ICollection<PcFeature> pcFeatures)
         {
             var features = new List<FeatureDTO>();
 
@@ -169,13 +194,14 @@ namespace NoticeBoard.Utility.AutoMapper
 
         private void LanguageMaps()
         {
-            CreateMap<Language, LanguageDTO>().ReverseMap();
+            CreateMap<Language, LanguageDTO>();
         }
 
         private void PlayerMaps()
         {
-            CreateMap<Player, PlayerDTO>().ReverseMap();
-            CreateMap<PlayerDTO, PlayerModel>().ReverseMap();
+            CreateMap<Player, PlayerDTO>();
+
+            CreateMap<PlayerDTO, PlayerModel>();
         }
 
         private void PlayerCharacterMaps()
@@ -194,8 +220,8 @@ namespace NoticeBoard.Utility.AutoMapper
                     })))
                 .ForMember(dest => dest.Equipment, opts => opts.MapFrom(src => src.PcEquipment))
                 .ForMember(dest => dest.Treasure, opts => opts.MapFrom(src => src.PcTreasure))
-                .ForMember(dest => dest.Features, opts => opts.MapFrom(src => FeatureResolver(src.PcFeature)))
-                .ReverseMap();
+                .ForMember(dest => dest.Features, opts => opts.MapFrom(src => PcFeatureResolver(src.PcFeature)));
+
             CreateMap<PlayerCharacterDTO, PlayerCharacterModel>()
                 .ForMember(dest => dest.SavingThrows, opts => opts.MapFrom(src => src.SavingThrows.Select(n => n.AbilityId)))
                 .ForMember(dest => dest.PlayerSkills, opts => opts.MapFrom(src => src.Skills.Select(n => n.SkillId)))
@@ -216,40 +242,45 @@ namespace NoticeBoard.Utility.AutoMapper
                 .ForMember(dest => dest.Treasure, opts => opts.MapFrom(src => src.Treasure))
                 .ForMember(dest => dest.Abilities, opts => opts.Ignore())
                 .ForMember(dest => dest.Skills, opts => opts.Ignore())
-                .ForMember(dest => dest.Spells, opts => opts.MapFrom(src => src.Spells.OrderBy(n => n.Spell.Name)))
-                .ReverseMap();
+                .ForMember(dest => dest.Spells, opts => opts.MapFrom(src => src.Spells.OrderBy(n => n.Spell.Name)));
 
-            CreateMap<TraitDTO, TraitModel>().ReverseMap();
+            CreateMap<TraitDTO, TraitModel>();
         }
 
         private void RaceMaps()
         {
             CreateMap<Race, RaceDTO>()
                 .ForMember(dest => dest.HasSubRace, opts => opts.MapFrom(src => src.SubRace.Any()))
-                .ForMember(dest => dest.Languages, opts => opts.MapFrom(src => src.RaceLanguage.Select(n => n.LanguageId).ToList()))
-                .ReverseMap();
-            CreateMap<RaceDTO, RaceModel>().ReverseMap();
-            CreateMap<SubRace, SubRaceDTO>().ReverseMap();
-            CreateMap<SubRaceDTO, SubRaceModel>().ReverseMap();
+                .ForMember(dest => dest.Languages, opts => opts.MapFrom(src => src.RaceLanguage.Select(n => n.LanguageId).ToList()));
+
+            CreateMap<RaceDTO, RaceModel>();
+
+            CreateMap<SubRace, SubRaceDTO>();
+
+            CreateMap<SubRaceDTO, SubRaceModel>();
         }
 
         private void SpellMaps()
         {
             CreateMap<Spell, SpellDTO>()
-                .ForMember(dest => dest.SpellSchool, opts => opts.MapFrom(src => src.SpellSchool.Name)).ReverseMap();
-            CreateMap<SpellDTO, SpellModel>().ReverseMap();
+                .ForMember(dest => dest.SpellSchool, opts => opts.MapFrom(src => src.SpellSchool.Name));
 
-            CreateMap<PcSpell, PcSpellDTO>().ReverseMap();
-            CreateMap<PcSpellDTO, PcSpellModel>().ReverseMap();
+            CreateMap<SpellDTO, SpellModel>();
+
+            CreateMap<PcSpell, PcSpellDTO>();
+
+            CreateMap<PcSpellDTO, PcSpellModel>();
         }
 
         private void TreasureMaps()
         {
-            CreateMap<Treasure, TreasureDTO>().ReverseMap();
-            CreateMap<TreasureDTO, TreasureModel>().ReverseMap();
+            CreateMap<Treasure, TreasureDTO>();
 
-            CreateMap<PcTreasure, PcTreasureDTO>().ReverseMap();
-            CreateMap<PcTreasureDTO, PcTreasureModel>().ReverseMap();
+            CreateMap<TreasureDTO, TreasureModel>();
+
+            CreateMap<PcTreasure, PcTreasureDTO>();
+
+            CreateMap<PcTreasureDTO, PcTreasureModel>();
         }
     }
 }

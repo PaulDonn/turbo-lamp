@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NoticeBoard.Models.Features;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,6 +9,11 @@ namespace NoticeBoard.Models.Races
 {
     public class SubRaceModel
     {
+        public SubRaceModel()
+        {
+            Features = new List<FeatureModel>();
+        }
+
         public int Id { get; set; }
 
         [Display(Name = "SubRace")]
@@ -16,5 +22,7 @@ namespace NoticeBoard.Models.Races
         public string Description { get; set; }
 
         public int RaceId { get; set; }
+
+        public List<FeatureModel> Features { get; set; }
     }
 }

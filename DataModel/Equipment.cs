@@ -31,6 +31,7 @@ namespace DataModel
         public bool IsMagical { get; set; }
         [StringLength(150)]
         public string ImagePath { get; set; }
+        public int SourceId { get; set; }
 
         [ForeignKey(nameof(ArmorTypeId))]
         [InverseProperty("Equipment")]
@@ -41,6 +42,9 @@ namespace DataModel
         [ForeignKey(nameof(PreRequisiteAbilityId))]
         [InverseProperty(nameof(Ability.Equipment))]
         public virtual Ability PreRequisiteAbility { get; set; }
+        [ForeignKey(nameof(SourceId))]
+        [InverseProperty("Equipment")]
+        public virtual Source Source { get; set; }
         [ForeignKey(nameof(WeaponTypeId))]
         [InverseProperty("Equipment")]
         public virtual WeaponType WeaponType { get; set; }

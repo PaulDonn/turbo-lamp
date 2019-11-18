@@ -1,4 +1,5 @@
-﻿using Core.Languages.DTO;
+﻿using Core.Features.DTO;
+using Core.Languages.DTO;
 using System.Collections.Generic;
 
 namespace Core.Races.DTO
@@ -8,6 +9,7 @@ namespace Core.Races.DTO
         public RaceDTO()
         {
             Languages = new List<int>();
+            Features = new List<FeatureDTO>();
         }
 
         public int Id { get; set; }
@@ -19,5 +21,7 @@ namespace Core.Races.DTO
         public bool HasSubRace { get; set; }
 
         public List<int> Languages { get; set; }
+
+        public List<FeatureDTO> Features { get; set; }
     }
 }

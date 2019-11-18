@@ -9,6 +9,7 @@ namespace DataModel
     {
         public Party()
         {
+            PartySource = new HashSet<PartySource>();
             PlayerCharacter = new HashSet<PlayerCharacter>();
         }
 
@@ -18,6 +19,8 @@ namespace DataModel
         [StringLength(50)]
         public string Name { get; set; }
 
+        [InverseProperty("Party")]
+        public virtual ICollection<PartySource> PartySource { get; set; }
         [InverseProperty("Party")]
         public virtual ICollection<PlayerCharacter> PlayerCharacter { get; set; }
     }

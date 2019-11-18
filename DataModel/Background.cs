@@ -21,7 +21,11 @@ namespace DataModel
         [Required]
         public string Description { get; set; }
         public int? AdditionalLanguages { get; set; }
+        public int SourceId { get; set; }
 
+        [ForeignKey(nameof(SourceId))]
+        [InverseProperty("Background")]
+        public virtual Source Source { get; set; }
         [InverseProperty("Background")]
         public virtual ICollection<BgSkill> BgSkill { get; set; }
         [InverseProperty("Background")]

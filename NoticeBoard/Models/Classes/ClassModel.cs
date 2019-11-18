@@ -1,10 +1,17 @@
 ﻿using NoticeBoard.Models.Abilities;
+using NoticeBoard.Models.Features;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace NoticeBoard.Models.Classes
 {
     public class ClassModel
     {
+        public ClassModel()
+        {
+            Features = new List<FeatureModel>();
+        }
+
         public int Id { get; set; }
 
         [Display(Name = "Class")]
@@ -24,5 +31,7 @@ namespace NoticeBoard.Models.Classes
         public int NumberOfStartingSkills { get; set; }
 
         public AbilityModel SpellcastingAbility { get; set; }
+
+        public List<FeatureModel> Features { get; set; }
     }
 }
