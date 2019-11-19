@@ -33,15 +33,14 @@ namespace Core.Classes.Query
         {
             var dto = new List<ArchetypeDTO>();
 
-            var party = _context.Party.Where(n => n.Id == query.PartyId)
-                                      .Include(n => n.PartySource)
-                                      .SingleOrDefault();
+            var partySources = _context.PartySource.Where(n => n.PartyId == query.PartyId).Select(n => n.SourceId);
 
-            if (party != null)
+            if (partySources.Count() > 0)
             {
-                var archetypes = _context.Archetype.Where(n => n.ClassId == query.ClassId && 
-                                                               party.PartySource.Any(m => m.SourceId == n.SourceId))
-                                                   .Include(n => n.ClassFeature);
+                var archetypes = _context.Archetype.Where(n => n.ClassId == query.ClassId &&
+                                                               partySources.Contains(n.SourceId))
+                                                   .Include(n => n.ClassFeature)
+                                                   .OrderBy(n => n.Name);
 
                 foreach (var archetype in archetypes)
                 {

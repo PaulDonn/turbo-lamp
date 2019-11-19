@@ -4,7 +4,7 @@
            ,[Code])
      VALUES
            ('Ability Score Increase'--<Name, nvarchar(50),>
-           ,''--<Description, nvarchar(max),>
+           ,'N/A'--<Description, nvarchar(max),>
            ,'AbilityScoreIncrease'--<Code, nvarchar(50),>
 		   ),
            ('Ability Score Improvement'--<Name, nvarchar(50),>
@@ -12,59 +12,67 @@
            ,'AbilityScoreImprovement'--<Code, nvarchar(50),>
 		   ),
            ('Age'--<Name, nvarchar(50),>
-           ,''--<Description, nvarchar(max),>
+           ,'N/A'--<Description, nvarchar(max),>
            ,'Age'--<Code, nvarchar(50),>
 		   ),
            ('Alignment'--<Name, nvarchar(50),>
-           ,''--<Description, nvarchar(max),>
+           ,'N/A'--<Description, nvarchar(max),>
            ,'Alignment'--<Code, nvarchar(50),>
 		   ),
            ('Size'--<Name, nvarchar(50),>
-           ,''--<Description, nvarchar(max),>
+           ,'Your size is Medium.'--<Description, nvarchar(max),>
            ,'Size'--<Code, nvarchar(50),>
 		   ),
            ('Speed'--<Name, nvarchar(50),>
-           ,''--<Description, nvarchar(max),>
+           ,'Your base walking speed is 30 feet.'--<Description, nvarchar(max),>
            ,'Speed'--<Code, nvarchar(50),>
 		   ),
            ('Darkvision'--<Name, nvarchar(50),>
-           ,''--<Description, nvarchar(max),>
+           ,'You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.'--<Description, nvarchar(max),>
            ,'Darkvision'--<Code, nvarchar(50),>
 		   ),
            ('Languages'--<Name, nvarchar(50),>
-           ,''--<Description, nvarchar(max),>
+           ,'You can speak, read, and write Common.'--<Description, nvarchar(max),>
            ,'Languages'--<Code, nvarchar(50),>
 		   ),
            ('Spellcasting'--<Name, nvarchar(50),>
-           ,''--<Description, nvarchar(max),>
+           ,'N/A'--<Description, nvarchar(max),>
            ,'Spellcasting'--<Code, nvarchar(50),>
 		   ),
            ('Cantrips'--<Name, nvarchar(50),>
-           ,''--<Description, nvarchar(max),>
+           ,'N/A'--<Description, nvarchar(max),>
            ,'Cantrips'--<Code, nvarchar(50),>
 		   ),
            ('Preparing and Casting Spells'--<Name, nvarchar(50),>
-           ,''--<Description, nvarchar(max),>
+           ,'N/A'--<Description, nvarchar(max),>
            ,'PreparingSpells'--<Code, nvarchar(50),>
 		   ),
            ('Spellcasting Ability'--<Name, nvarchar(50),>
-           ,''--<Description, nvarchar(max),>
+           ,'N/A'--<Description, nvarchar(max),>
            ,'SpellcastingAbility'--<Code, nvarchar(50),>
 		   ),
            ('Ritual Casting'--<Name, nvarchar(50),>
-           ,''--<Description, nvarchar(max),>
+           ,'N/A'--<Description, nvarchar(max),>
            ,'RitualCasting'--<Code, nvarchar(50),>
 		   ),
            ('Spellcasting Focus'--<Name, nvarchar(50),>
-           ,''--<Description, nvarchar(max),>
+           ,'N/A'--<Description, nvarchar(max),>
            ,'SpellcastingFocus'--<Code, nvarchar(50),>
 		   ),
            ('Learning Spells of 1st Level and Higher'--<Name, nvarchar(50),>
-           ,''--<Description, nvarchar(max),>
+           ,'N/A'--<Description, nvarchar(max),>
            ,'LearningSpells'--<Code, nvarchar(50),>
 		   ),
            ('Spells Known of 1st Level and Higher'--<Name, nvarchar(50),>
-           ,''--<Description, nvarchar(max),>
+           ,'N/A'--<Description, nvarchar(max),>
            ,'SpellsKnown'--<Code, nvarchar(50),>
+		   ),
+           ('Tool Proficiency'--<Name, nvarchar(50),>
+           ,'You gain proficiency with the tool of your choice'--<Description, nvarchar(max),>
+           ,'ToolProficiency'--<Code, nvarchar(50),>
+		   ),
+           ('Extra Attack'--<Name, nvarchar(50),>
+           ,'You can attack twice, instead of once, whenever you take the Attack action on your turn.'--<Description, nvarchar(max),>
+           ,'ExtraAttack'--<Code, nvarchar(50),>
 		   )
 GO

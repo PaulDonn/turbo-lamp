@@ -234,7 +234,7 @@ namespace DataModel
             modelBuilder.Entity<Feature>(entity =>
             {
                 entity.HasIndex(e => e.Code)
-                    .HasName("UQ__Feature__A25C5AA726DFADDE")
+                    .HasName("UQ__Feature__A25C5AA7A97937CB")
                     .IsUnique();
 
                 entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
@@ -414,7 +414,6 @@ namespace DataModel
                 entity.HasOne(d => d.Alignment)
                     .WithMany(p => p.PlayerCharacter)
                     .HasForeignKey(d => d.AlignmentId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PlayerCharacter_Alignment");
 
                 entity.HasOne(d => d.Archetype)
@@ -430,7 +429,6 @@ namespace DataModel
                 entity.HasOne(d => d.Class)
                     .WithMany(p => p.PlayerCharacter)
                     .HasForeignKey(d => d.ClassId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PlayerCharacter_Class");
 
                 entity.HasOne(d => d.Party)
@@ -447,7 +445,6 @@ namespace DataModel
                 entity.HasOne(d => d.Race)
                     .WithMany(p => p.PlayerCharacter)
                     .HasForeignKey(d => d.RaceId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PlayerCharacter_Race");
 
                 entity.HasOne(d => d.SubRace)
@@ -521,7 +518,7 @@ namespace DataModel
             modelBuilder.Entity<Source>(entity =>
             {
                 entity.HasIndex(e => e.Code)
-                    .HasName("UQ__Source__A25C5AA71EF554B7")
+                    .HasName("UQ__Source__A25C5AA722B32C43")
                     .IsUnique();
 
                 entity.Property(e => e.Id).ValueGeneratedNever();

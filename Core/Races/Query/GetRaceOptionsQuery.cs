@@ -28,14 +28,14 @@ namespace Core.Races.Query
         {
             var dto = new List<RaceDTO>();
 
-            var party = _context.Party.Where(n => n.Id == query.PartyId)
-                                      .Include(n => n.PartySource)
-                                      .SingleOrDefault();
+            var partySources = _context.PartySource.Where(n => n.PartyId == query.PartyId).Select(n => n.SourceId);
 
-            if (party != null)
+            if (partySources.Count() > 0)
             {
-                var races = _context.Race.Where(n => party.PartySource.Any(m => m.SourceId == n.SourceId))
-                                                   .Include(n => n.RaceFeature);
+                var races = _context.Race.Where(n => partySources.Contains(n.SourceId))
+                                         .Include(n => n.RaceFeature)
+                                         .OrderBy(n => n.Name)
+                                         .ToList();
 
                 foreach (var race in races)
                 {

@@ -33,42 +33,16 @@ namespace NoticeBoard.Controllers
         {
 
         }
-
-        public IActionResult Index()
+        
+        public IActionResult NewCharacter(int partyId)
         {
-            return View();
-        }
-
-        public IActionResult Create()
-        {
-            var model = new CreatePlayerCharacterModel();
-
-            return View(model);
-        }
-
-        [HttpPost]
-        public IActionResult Create(CreatePlayerCharacterModel model)
-        {
-            var command = new CreatePCCommand
+            var command = SendCommand(new CreatePCCommand
             {
-                CharacterName = model.CharacterName,
-                BackGroundId = model.BackgroundId,
-                RaceId = model.RaceId,
-                ClassId = model.ClassId,
-                ArchetypeId = model.ArchetypeId,
-                AlignmentId = model.AlignmentId
-            };
+                PartyId = partyId,
+                PlayerId = 1 //TODO Replace with PlayerId from Session
+            });
 
-            var result = SendCommand(command);
-
-            return RedirectToAction(nameof(CharacterDetails), new { pcid = result.NewRecordId });
-        }
-
-        public IActionResult NewCharacter()
-        {
-            //TODO: Command to create new player character
-
-            return RedirectToAction(nameof(SelectRace), new { pcId = 1, partyId = 1 }); //TODO: Replace with PartyId from Session/Page
+            return RedirectToAction(nameof(SelectRace), new { pcId = command.NewRecordId, partyId }); //TODO: Replace with PlayerId from Session
         }
 
         public IActionResult SelectRace(int pcId, int partyId)
@@ -78,13 +52,14 @@ namespace NoticeBoard.Controllers
             var query = new GetRaceOptionsQuery { PartyId = partyId }; 
 
             model.Races = _mapper.Map<List<RaceDTO>, List<RaceModel>>(SendQuery<GetRaceOptionsQuery, IEnumerable<RaceDTO>>(query).ToList());
-
+            
             return View(model);
         }
 
+        [HttpPost]
         public IActionResult SelectRace(RaceSelectModel model)
         {
-            //TODO: Add Command to save Character Race
+            SendCommand(new SetPCRaceCommand { PcId = model.PcId, RaceId = model.SelectedRaceId });
 
             return RedirectToAction(nameof(SelectSubRace), new 
             { 
@@ -114,9 +89,10 @@ namespace NoticeBoard.Controllers
             return RedirectToAction(nameof(SelectClass), new { pcId, partyId });
         }
 
+        [HttpPost]
         public IActionResult SelectSubRace(SubRaceSelectModel model)
         {
-            //TODO: Add Command to save Character SubRace
+            SendCommand(new SetPCSubRaceCommand { PcId = model.PcId, SubRaceId = model.SelectedSubRaceId });
 
             return RedirectToAction(nameof(SelectClass), new { model.PcId, model.PartyId });
         }
@@ -132,11 +108,12 @@ namespace NoticeBoard.Controllers
             return View(model);
         }
 
+        [HttpPost]
         public IActionResult SelectClass(ClassSelectModel model)
         {
-            //TODO: Add Command to save Character Class
+            SendCommand(new SetPCClassCommand { PcId = model.PcId, ClassId = model.SelectedClassId });
 
-            if(model.HasLevel1Archetype)
+            if (model.HasLevel1Archetype)
             {
                 return RedirectToAction(nameof(SelectArchetype), new
                 {
@@ -173,9 +150,10 @@ namespace NoticeBoard.Controllers
             return RedirectToAction(nameof(SelectBackground), new { pcId, partyId });
         }
 
+        [HttpPost]
         public IActionResult SelectArchetype(ArchetypeSelectModel model)
         {
-            //TODO: Add Command to save Character Archetype
+            SendCommand(new SetPCArchetypeCommand { PcId = model.PcId, ArchetypeId = model.SelectedArchetypeId });
 
             return RedirectToAction(nameof(SelectBackground), new { model.PcId, model.PartyId });
         }
@@ -191,9 +169,10 @@ namespace NoticeBoard.Controllers
             return View(model);
         }
 
+        [HttpPost]
         public IActionResult SelectBackground(BackgroundSelectModel model)
         {
-            //TODO: Add Command to save Character Background
+            SendCommand(new SetPCBackgroundCommand { PcId = model.PcId, BackgroundId = model.SelectedBackgroundId });
 
             throw new NotImplementedException();
         }

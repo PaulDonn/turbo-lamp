@@ -22,17 +22,16 @@ namespace DataModel
 
         [Key]
         public int Id { get; set; }
-        [Required]
         [StringLength(50)]
         public string CharacterName { get; set; }
-        public int ClassId { get; set; }
+        public int? ClassId { get; set; }
         public int? ArchetypeId { get; set; }
-        public int LevelId { get; set; }
+        public int? Level { get; set; }
         public int? BackgroundId { get; set; }
         public int PlayerId { get; set; }
-        public int RaceId { get; set; }
+        public int? RaceId { get; set; }
         public int? SubRaceId { get; set; }
-        public int AlignmentId { get; set; }
+        public int? AlignmentId { get; set; }
         public int ExperiencePoints { get; set; }
         public int? PartyId { get; set; }
         public int HitPointMaximum { get; set; }

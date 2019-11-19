@@ -46,7 +46,13 @@ Post-Deployment Script Template
 :r .\"PopulateEquipment_Clothing.sql"
 :r .\"PopulateTreasure.sql"
 :r .\"PopulateFeature.sql"
+
+
+:r .\"PopulateFeature_Dwarf.sql"
 :r .\"PopulateFeature_Tiefling.sql"
+
+
+:r .\"PopulateFeature_Fighter.sql"
 :r .\"PopulateFeature_Wizard.sql"
 
 

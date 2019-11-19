@@ -30,7 +30,7 @@
            ,'Wizard_ArcaneRecovery'--<Code, nvarchar(50),>
 		   ),
            ('Arcane Tradition'--<Name, nvarchar(50),>
-           ,'When you reach 2nd level, you choose an arcane tradition, shaping your practice of magic through one of eight schools, such as Evocation. Your choice grants you features at 2nd level and again at 6th, 10th, and 14th level.'--<Description, nvarchar(max),>
+           ,'When you reach 2nd level, you choose an arcane tradition, shaping your practice of magic through one of many schools, such as Evocation. Your choice grants you features at 2nd level and again at 6th, 10th, and 14th level.'--<Description, nvarchar(max),>
            ,'Wizard_ArcaneTradition'--<Code, nvarchar(50),>
 		   ),
            ('Spell Mastery'--<Name, nvarchar(50),>

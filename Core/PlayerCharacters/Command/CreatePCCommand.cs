@@ -5,26 +5,18 @@ namespace Core.PlayerCharacters.Command
 {
     public class CreatePCCommand : ICommand
     {
-        public string CharacterName { get; set; }
+        public int PartyId { get; set; }
 
-        public int ClassId { get; set; }
-
-        public int ArchetypeId { get; set; }
-
-        public int BackGroundId { get; set; }
-
-        public int RaceId { get; set; }
-
-        public int AlignmentId { get; set; }
+        public int PlayerId { get; set; }
     }
 
     public class CreatePCCommandHandler : ICommandHandler<CreatePCCommand>
     {
-        private NoticeBoardContext context;
+        private NoticeBoardContext _context;
 
-        public CreatePCCommandHandler(NoticeBoardContext _context)
+        public CreatePCCommandHandler(NoticeBoardContext context)
         {
-            context = _context;
+            _context = context;
         }
 
         public ExecutionResult Handle(CreatePCCommand command)
@@ -33,16 +25,12 @@ namespace Core.PlayerCharacters.Command
 
             var pc = new PlayerCharacter
             {
-                CharacterName = command.CharacterName,
-                ClassId = command.ClassId,
-                ArchetypeId = command.ArchetypeId,
-                BackgroundId = command.BackGroundId,
-                RaceId = command.RaceId,
-                AlignmentId = command.AlignmentId
+                PartyId = command.PartyId,
+                PlayerId = command.PlayerId
             };
 
-            context.PlayerCharacter.Add(pc);
-            context.SaveChanges();
+            _context.PlayerCharacter.Add(pc);
+            _context.SaveChanges();
 
             result.Success = true;
             result.NewRecordId = pc.Id;

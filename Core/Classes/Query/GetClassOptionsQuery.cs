@@ -31,13 +31,12 @@ namespace Core.Classes.Query
         {
             var dto = new List<ClassDTO>();
 
-            var party = _context.Party.Where(n => n.Id == query.PartyId)
-                                      .Include(n => n.PartySource)
-                                      .SingleOrDefault();
+            var partySources = _context.PartySource.Where(n => n.PartyId == query.PartyId).Select(n => n.SourceId);
 
-            if (party != null)
+            if (partySources.Count() > 0)
             {
-                var classes = _context.Class.Where(n => party.PartySource.Any(m => m.SourceId == n.SourceId));
+                var classes = _context.Class.Where(n => partySources.Contains(n.SourceId))
+                                            .OrderBy(n => n.Name);
 
                 foreach (var playerClass in classes)
                 {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace NoticeBoard.Models.Races
@@ -13,6 +14,14 @@ namespace NoticeBoard.Models.Races
         }
 
         public List<RaceModel> Races { get; set; }
+
+        public string RacesJson
+        {
+            get
+            {
+                return JsonSerializer.Serialize(Races);
+            }
+        }
 
         public int PcId { get; set; }
 

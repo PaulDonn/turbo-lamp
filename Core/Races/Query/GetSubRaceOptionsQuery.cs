@@ -29,15 +29,14 @@ namespace Core.Races.Query
         {
             var dto = new List<SubRaceDTO>();
 
-            var party = _context.Party.Where(n => n.Id == query.PartyId)
-                                      .Include(n => n.PartySource)
-                                      .SingleOrDefault();
+            var partySources = _context.PartySource.Where(n => n.PartyId == query.PartyId).Select(n => n.SourceId);
 
-            if (party != null)
+            if (partySources.Count() > 0)
             {
                 var subRaces = _context.SubRace.Where(n => n.RaceId == query.RaceId &&
-                                                           party.PartySource.Any(m => m.SourceId == n.SourceId))
-                                                   .Include(n => n.RaceFeature);
+                                                           partySources.Contains(n.SourceId))
+                                               .Include(n => n.RaceFeature)
+                                               .OrderBy(n => n.Name);
 
                 foreach (var subRace in subRaces)
                 {
