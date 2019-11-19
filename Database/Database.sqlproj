@@ -170,5 +170,6 @@
     <Build Include="dbo\Tables\dbo.PartySource.Table.sql" />
     <None Include="dbo\Scripts\PopulateFeature_Dwarf.sql" />
     <None Include="dbo\Scripts\PopulateFeature_Fighter.sql" />
+    <None Include="dbo\Scripts\PopulateFeature_Dragonborn.sql" />
   </ItemGroup>
 </Project>

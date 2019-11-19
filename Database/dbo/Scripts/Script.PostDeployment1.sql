@@ -49,6 +49,7 @@ Post-Deployment Script Template
 
 
 :r .\"PopulateFeature_Dwarf.sql"
+:r .\"PopulateFeature_Dragonborn.sql"
 :r .\"PopulateFeature_Tiefling.sql"
 
 

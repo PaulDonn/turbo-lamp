@@ -74,5 +74,13 @@
            ('Extra Attack'--<Name, nvarchar(50),>
            ,'You can attack twice, instead of once, whenever you take the Attack action on your turn.'--<Description, nvarchar(max),>
            ,'ExtraAttack'--<Code, nvarchar(50),>
+		   ),
+           ('Damage Resistance'--<Name, nvarchar(50),>
+           ,'N/A'--<Description, nvarchar(max),>
+           ,'DamageResistance'--<Code, nvarchar(50),>
+		   ),
+           ('Breath Weapon'--<Name, nvarchar(50),>
+           ,'N/A'--<Description, nvarchar(max),>
+           ,'BreathWeapon'--<Code, nvarchar(50),>
 		   )
 GO
