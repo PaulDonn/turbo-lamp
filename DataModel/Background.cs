@@ -21,6 +21,8 @@ namespace DataModel
         [Required]
         public string Description { get; set; }
         public int? AdditionalLanguages { get; set; }
+        [StringLength(150)]
+        public string ImagePath { get; set; }
         public int SourceId { get; set; }
 
         [ForeignKey(nameof(SourceId))]

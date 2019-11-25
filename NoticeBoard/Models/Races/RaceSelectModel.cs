@@ -15,7 +15,7 @@ namespace NoticeBoard.Models.Races
 
         public List<RaceModel> Races { get; set; }
 
-        public string RacesJson
+        public string Options
         {
             get
             {

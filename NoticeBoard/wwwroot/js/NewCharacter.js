@@ -1,10 +1,28 @@
 ﻿$(document).ready(function () {
 
-    var _races = $('#RacesJson').val();
-    var races = JSON.parse(_races);
+    characterCreate = new Vue({
+        el: '#NewCharacterVue',
+        data: {
+            options: JSON.parse($('#Options').val()),
+            selectionId: null,
+            selectionName: null,
+            selectionDescription: null,
+            selectionImagePath: null
+        },
+        methods: {
+            OnSelection: function () {
+                var selectedOption = null;
 
-    function UpdateRaceDetails() {
+                for (i = 0; i < this.options.length; i++) {
+                    if (this.options[i].Id == this.selectionId) {
+                        this.selectionName = this.options[i].Name;
+                        this.selectionDescription = this.options[i].Description;
+                        this.selectionImagePath = this.options[i].ImagePath;
+                    }
+                }
+            }
+        }
 
-    }
+    });
 
 });

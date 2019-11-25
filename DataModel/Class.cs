@@ -31,6 +31,8 @@ namespace DataModel
         public int ArchetypeStartingLevel { get; set; }
         public int NumberOfStartingSkills { get; set; }
         public int SpellcastingAbilityId { get; set; }
+        [StringLength(150)]
+        public string ImagePath { get; set; }
         public int SourceId { get; set; }
 
         [ForeignKey(nameof(SourceId))]

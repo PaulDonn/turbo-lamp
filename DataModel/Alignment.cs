@@ -22,6 +22,8 @@ namespace DataModel
         [Required]
         [StringLength(2)]
         public string Code { get; set; }
+        [StringLength(150)]
+        public string ImagePath { get; set; }
 
         [InverseProperty("Alignment")]
         public virtual ICollection<PlayerCharacter> PlayerCharacter { get; set; }

@@ -24,6 +24,8 @@ namespace DataModel
         [Required]
         public string Description { get; set; }
         public int ClassId { get; set; }
+        [StringLength(150)]
+        public string ImagePath { get; set; }
         public int SourceId { get; set; }
 
         [ForeignKey(nameof(ClassId))]

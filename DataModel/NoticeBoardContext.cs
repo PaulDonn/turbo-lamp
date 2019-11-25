@@ -234,7 +234,7 @@ namespace DataModel
             modelBuilder.Entity<Feature>(entity =>
             {
                 entity.HasIndex(e => e.Code)
-                    .HasName("UQ__Feature__A25C5AA7A97937CB")
+                    .HasName("UQ__Feature__A25C5AA713759696")
                     .IsUnique();
 
                 entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
@@ -518,7 +518,7 @@ namespace DataModel
             modelBuilder.Entity<Source>(entity =>
             {
                 entity.HasIndex(e => e.Code)
-                    .HasName("UQ__Source__A25C5AA722B32C43")
+                    .HasName("UQ__Source__A25C5AA78645E5C9")
                     .IsUnique();
 
                 entity.Property(e => e.Id).ValueGeneratedNever();

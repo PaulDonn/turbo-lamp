@@ -14,6 +14,7 @@
 	[IsRitual] [bit] NOT NULL,
 	[Description] [nvarchar](max) NULL,
 	[HigherLevelDescription] [nvarchar](max) NULL,
+	[ImagePath] NVARCHAR(150) NULL, 
 	[SourceId] INT NOT NULL DEFAULT 1, 
  CONSTRAINT [PK_Spell] PRIMARY KEY CLUSTERED 
 (

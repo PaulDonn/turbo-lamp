@@ -4,37 +4,44 @@
     ViewData["Title"] = "New Character - Race";
 }
 
-
-@Html.HiddenFor(model => model.RacesJson)
-<div class="row">
-    <div class="col-xl-4">
-        <div class="card">
-            <div class="card-body">
-                <span asp-validation-for="@Model.SelectedRaceId" class="text-danger"></span>
-                @foreach (var race in Model.Races)
-                {
-                    <div>
-                        <input asp-for="SelectedRaceId" type="radio" name="race" value="@race.Id">
-                        <label>@race.Name</label>
+<div id="NewCharacterVue">
+    @Html.HiddenFor(model => model.Options)
+    <div class="row h-100">
+        <div class="col-xl-4">
+            <div class="card">
+                <div class="card-body">
+                    <span asp-validation-for="@Model.SelectedRaceId" class="text-danger"></span>
+                    @foreach (var race in Model.Races)
+                    {
+                        <div>
+                            <input asp-for="SelectedRaceId" v-model="selectionId" v-on:change="OnSelection()" type="radio" name="race" value="@race.Id">
+                            <label>@race.Name</label>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="text-center">{{ selectionName }}</div>
                     </div>
-                }
+                    <div class="row">
+                        <div>{{ selectionDescription }}</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-xl-4">
-        <div class="card">
-            <div class="card-body">
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-4">
-        <div class="card">
-            <div class="card-body">
+        <div class="col-xl-4">
+            <div class="card">
+                <div class="card-body">
+                    <img class="resize" :src="'/img/race/' + selectionImagePath" />
+                </div>
             </div>
         </div>
     </div>
 </div>
-
 @section Scripts {
     <script src="~/js/NewCharacter.js" type="text/javascript"></script>
 }

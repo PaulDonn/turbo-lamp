@@ -23,5 +23,7 @@ namespace Core.Races.DTO
         public List<int> Languages { get; set; }
 
         public List<FeatureDTO> Features { get; set; }
+
+        public string ImagePath { get; set; }
     }
 }

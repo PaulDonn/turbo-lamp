@@ -38,6 +38,8 @@ namespace DataModel
         public bool IsRitual { get; set; }
         public string Description { get; set; }
         public string HigherLevelDescription { get; set; }
+        [StringLength(150)]
+        public string ImagePath { get; set; }
         public int SourceId { get; set; }
 
         [ForeignKey(nameof(SourceId))]
