@@ -1,12 +1,12 @@
-﻿@model NoticeBoard.Models.Shared.RadioSelectModel<NoticeBoard.Models.Races.RaceModel>
+﻿@model NoticeBoard.Models.Classes.ClassSelectModel
 
 @{
-    ViewData["Title"] = "New Character - Race";
+    ViewData["Title"] = "New Character - Class";
 }
 
 <div id="NewCharacterVue">
     @Html.HiddenFor(model => model.Options)
-    @using (Html.BeginForm("SelectRace", "PlayerCharacter", "POST"))
+    @using (Html.BeginForm("SelectClass", "PlayerCharacter", "POST"))
     {
         @Html.HiddenFor(model => model.PcId)
         @Html.HiddenFor(model => model.SelectedOptionId)
@@ -14,11 +14,11 @@
             <div class="col-xl-4">
                 <div class="card">
                     <div class="card-body">
-                        @foreach (var race in Model.OptionModels)
+                        @foreach (var playerClass in Model.OptionModels)
                         {
                             <div>
-                                <input id="Race" v-model="selectionId" v-on:change="OnSelection()" type="radio" name="race" value="@race.Id">
-                                <label>@race.Name</label>
+                                <input id="PlayerClass" v-model="selectionId" v-on:change="OnSelection()" type="radio" name="playerClass" value="@playerClass.Id">
+                                <label>@playerClass.Name</label>
                             </div>
                         }
                         <input class="btn btn-primary" type="submit" :disabled="selectionId <= 0" />
@@ -40,7 +40,7 @@
             <div class="col-xl-4">
                 <div class="card">
                     <div class="card-body">
-                        <img class="resize" :src="'/img/race/' + selectionImagePath" />
+                        <img class="resize" :src="'/img/class/' + selectionImagePath" />
                     </div>
                 </div>
             </div>

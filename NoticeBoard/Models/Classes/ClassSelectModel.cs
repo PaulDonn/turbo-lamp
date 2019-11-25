@@ -1,24 +1,18 @@
-﻿using System;
+﻿using NoticeBoard.Models.Races;
+using NoticeBoard.Models.Shared;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace NoticeBoard.Models.Classes
 {
-    public class ClassSelectModel
+    public class ClassSelectModel: RadioSelectModel<ClassModel>
     {
-        public ClassSelectModel()
+        public ClassSelectModel() : base()
         {
-            Classes = new List<ClassModel>();
         }
-
-        public List<ClassModel> Classes { get; set; }
-
-        public int PcId { get; set; }
-
-        public int PartyId { get; set; }
-
-        public int SelectedClassId { get; set; }
 
         public bool HasLevel1Archetype { get; set; }
     }

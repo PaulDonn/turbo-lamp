@@ -1,28 +1,21 @@
 ﻿using NoticeBoard.Models.Classes;
+using NoticeBoard.Models.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace NoticeBoard.Models.Races
+namespace NoticeBoard.Models.Classes
 {
-    public class ArchetypeSelectModel
+    public class ArchetypeSelectModel : RadioSelectModel<ArchetypeModel>
     {
-        public ArchetypeSelectModel()
+        public ArchetypeSelectModel(): base()
         {
-            Archetypes = new List<ArchetypeModel>();
         }
-
-        public List<ArchetypeModel> Archetypes { get; set; }
-
-        public int PcId { get; set; }
-
-        public int PartyId { get; set; }
 
         public string ArchetypeName { get; set; }
 
         public string ArchetypeDescription { get; set; }
-
-        public int SelectedArchetypeId { get; set; }
     }
 }

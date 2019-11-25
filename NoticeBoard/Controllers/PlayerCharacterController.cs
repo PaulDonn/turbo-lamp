@@ -14,6 +14,7 @@ using Core.Races.DTO;
 using Core.Races.Query;
 using DataModel;
 using Infrastructure.Mediator;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +22,7 @@ using NoticeBoard.Models.Backgrounds;
 using NoticeBoard.Models.Classes;
 using NoticeBoard.Models.PlayerCharacters;
 using NoticeBoard.Models.Races;
+using NoticeBoard.Models.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +31,7 @@ namespace NoticeBoard.Controllers
 {
     public class PlayerCharacterController : BaseController
     {
-        public PlayerCharacterController(IMediator mediator, NoticeBoardContext databaseContext, IConfiguration configuration, IMapper mapper) : base(mediator, databaseContext, configuration, mapper)
+        public PlayerCharacterController(IMediator mediator, NoticeBoardContext databaseContext, IConfiguration configuration, IMapper mapper, IDataProtectionProvider dataProtectionProvider) : base(mediator, databaseContext, configuration, mapper, dataProtectionProvider)
         {
 
         }
@@ -42,36 +44,40 @@ namespace NoticeBoard.Controllers
                 PlayerId = 1 //TODO Replace with PlayerId from Session
             });
 
-            return RedirectToAction(nameof(SelectRace), new { pcId = command.NewRecordId, partyId }); //TODO: Replace with PlayerId from Session
+            var pcId = Encrypt(command.NewRecordId.ToString());
+
+            return RedirectToAction(nameof(SelectRace), new { pcId, partyId }); //TODO: Replace with PlayerId from Session
         }
 
-        public IActionResult SelectRace(int pcId, int partyId)
+        public IActionResult SelectRace(string pcId, int partyId)
         {
-            var model = new RaceSelectModel { PcId = pcId, PartyId = partyId };
+            var model = new RadioSelectModel<RaceModel> { PcId = pcId, PartyId = partyId };
 
             var query = new GetRaceOptionsQuery { PartyId = partyId }; 
 
-            model.Races = _mapper.Map<List<RaceDTO>, List<RaceModel>>(SendQuery<GetRaceOptionsQuery, IEnumerable<RaceDTO>>(query).ToList());
+            model.OptionModels = _mapper.Map<List<RaceDTO>, List<RaceModel>>(SendQuery<GetRaceOptionsQuery, IEnumerable<RaceDTO>>(query).ToList());
             
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult SelectRace(RaceSelectModel model)
+        public IActionResult SelectRace(RadioSelectModel<RaceModel> model)
         {
-            SendCommand(new SetPCRaceCommand { PcId = model.PcId, RaceId = model.SelectedRaceId });
+            var pcId = Convert.ToInt32(Decrypt(model.PcId));
+
+            SendCommand(new SetPCRaceCommand { PcId = pcId, RaceId = model.SelectedOptionId });
 
             return RedirectToAction(nameof(SelectSubRace), new 
             { 
                 pcId = model.PcId, 
                 partyId = model.PartyId,
-                raceId = model.SelectedRaceId 
+                raceId = model.SelectedOptionId 
             });
         }
 
-        public IActionResult SelectSubRace(int pcId, int partyId, int raceId)
+        public IActionResult SelectSubRace(string pcId, int partyId, int raceId)
         {
-            var model = new SubRaceSelectModel { PcId = pcId, PartyId = partyId };
+            var model = new RadioSelectModel<SubRaceModel> { PcId = pcId, PartyId = partyId };
 
             var query = new GetSubRaceOptionsQuery
             {
@@ -82,7 +88,7 @@ namespace NoticeBoard.Controllers
             var subRaces = SendQuery<GetSubRaceOptionsQuery, IEnumerable<SubRaceDTO>>(query).ToList();
             if (subRaces.Count() > 0)
             {
-                model.SubRaces = _mapper.Map<List<SubRaceDTO>, List<SubRaceModel>>(subRaces);
+                model.OptionModels = _mapper.Map<List<SubRaceDTO>, List<SubRaceModel>>(subRaces);
                 return View(model);
             }
 
@@ -90,20 +96,22 @@ namespace NoticeBoard.Controllers
         }
 
         [HttpPost]
-        public IActionResult SelectSubRace(SubRaceSelectModel model)
+        public IActionResult SelectSubRace(RadioSelectModel<SubRaceModel> model)
         {
-            SendCommand(new SetPCSubRaceCommand { PcId = model.PcId, SubRaceId = model.SelectedSubRaceId });
+            var pcId = Convert.ToInt32(Decrypt(model.PcId));
+
+            SendCommand(new SetPCSubRaceCommand { PcId = pcId, SubRaceId = model.SelectedOptionId });
 
             return RedirectToAction(nameof(SelectClass), new { model.PcId, model.PartyId });
         }
 
-        public IActionResult SelectClass(int pcId, int partyId)
+        public IActionResult SelectClass(string pcId, int partyId)
         {
             var model = new ClassSelectModel { PcId = pcId, PartyId = partyId };
 
             var query = new GetClassOptionsQuery { PartyId = partyId };
 
-            model.Classes = _mapper.Map<List<ClassDTO>, List<ClassModel>>(SendQuery<GetClassOptionsQuery, IEnumerable<ClassDTO>>(query).ToList());
+            model.OptionModels = _mapper.Map<List<ClassDTO>, List<ClassModel>>(SendQuery<GetClassOptionsQuery, IEnumerable<ClassDTO>>(query).ToList());
 
             return View(model);
         }
@@ -111,7 +119,9 @@ namespace NoticeBoard.Controllers
         [HttpPost]
         public IActionResult SelectClass(ClassSelectModel model)
         {
-            SendCommand(new SetPCClassCommand { PcId = model.PcId, ClassId = model.SelectedClassId });
+            var pcId = Convert.ToInt32(Decrypt(model.PcId));
+
+            SendCommand(new SetPCClassCommand { PcId = pcId, ClassId = model.SelectedOptionId });
 
             if (model.HasLevel1Archetype)
             {
@@ -119,14 +129,14 @@ namespace NoticeBoard.Controllers
                 {
                     pcId = model.PcId,
                     partyId = model.PartyId,
-                    classId = model.SelectedClassId
+                    classId = model.SelectedOptionId
                 });
             }
 
             return RedirectToAction(nameof(SelectBackground), new { model.PcId, model.PartyId });
         }
 
-        public IActionResult SelectArchetype(int pcId, int partyId, int classId)
+        public IActionResult SelectArchetype(string pcId, int partyId, int classId)
         {
             var model = new ArchetypeSelectModel { PcId = pcId, PartyId = partyId };
 
@@ -143,7 +153,7 @@ namespace NoticeBoard.Controllers
                 model.ArchetypeName = playerClass.Name;
                 model.ArchetypeDescription = playerClass.ArchetypeTypeDescription;
 
-                model.Archetypes = _mapper.Map<List<ArchetypeDTO>, List<ArchetypeModel>>(archetypes);
+                model.OptionModels = _mapper.Map<List<ArchetypeDTO>, List<ArchetypeModel>>(archetypes);
                 return View(model);
             }
 
@@ -153,26 +163,30 @@ namespace NoticeBoard.Controllers
         [HttpPost]
         public IActionResult SelectArchetype(ArchetypeSelectModel model)
         {
-            SendCommand(new SetPCArchetypeCommand { PcId = model.PcId, ArchetypeId = model.SelectedArchetypeId });
+            var pcId = Convert.ToInt32(Decrypt(model.PcId));
+
+            SendCommand(new SetPCArchetypeCommand { PcId = pcId, ArchetypeId = model.SelectedOptionId });
 
             return RedirectToAction(nameof(SelectBackground), new { model.PcId, model.PartyId });
         }
 
-        public IActionResult SelectBackground(int pcId, int partyId)
+        public IActionResult SelectBackground(string pcId, int partyId)
         {
-            var model = new BackgroundSelectModel { PcId = pcId, PartyId = partyId };
+            var model = new RadioSelectModel<BackgroundModel> { PcId = pcId, PartyId = partyId };
 
             var query = new GetBackgroundOptionsQuery { PartyId = partyId };
 
-            model.Backgrounds = _mapper.Map<List<BackgroundDTO>, List<BackgroundModel>>(SendQuery<GetBackgroundOptionsQuery, IEnumerable<BackgroundDTO>>(query).ToList());
+            model.OptionModels = _mapper.Map<List<BackgroundDTO>, List<BackgroundModel>>(SendQuery<GetBackgroundOptionsQuery, IEnumerable<BackgroundDTO>>(query).ToList());
 
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult SelectBackground(BackgroundSelectModel model)
+        public IActionResult SelectBackground(RadioSelectModel<BackgroundModel> model)
         {
-            SendCommand(new SetPCBackgroundCommand { PcId = model.PcId, BackgroundId = model.SelectedBackgroundId });
+            var pcId = Convert.ToInt32(Decrypt(model.PcId));
+
+            SendCommand(new SetPCBackgroundCommand { PcId = pcId, BackgroundId = model.SelectedOptionId });
 
             throw new NotImplementedException();
         }

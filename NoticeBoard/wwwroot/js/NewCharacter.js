@@ -4,7 +4,7 @@
         el: '#NewCharacterVue',
         data: {
             options: JSON.parse($('#Options').val()),
-            selectionId: null,
+            selectionId: 0,
             selectionName: null,
             selectionDescription: null,
             selectionImagePath: null
@@ -18,6 +18,7 @@
                         this.selectionName = this.options[i].Name;
                         this.selectionDescription = this.options[i].Description;
                         this.selectionImagePath = this.options[i].ImagePath;
+                        $('#SelectedOptionId').val(this.selectionId);
                     }
                 }
             }
