@@ -17,6 +17,7 @@ namespace NoticeBoard.Utility.DIMappers
             services.AddTransient<ICommandHandler<SetPCClassCommand>, SetPCClassCommandHandler>();
             services.AddTransient<ICommandHandler<SetPCArchetypeCommand>, SetPCArchetypeCommandHandler>();
             services.AddTransient<ICommandHandler<SetPCBackgroundCommand>, SetPCBackgroundCommandHandler>();
+            services.AddTransient<ICommandHandler<SetPCAlignmentCommand>, SetPCAlignmentCommandHandler>();
 
             //Query Handlers
             services.AddTransient<IQueryHandler<GetPlayerCharacterQuery, PlayerCharacterDTO>, GetPlayerCharacterQueryHandler>();

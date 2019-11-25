@@ -15,6 +15,7 @@ namespace NoticeBoard.Utility.DIMappers
             //Query Handlers
             services.AddTransient<IQueryHandler<GetBackgroundQuery, BackgroundDTO>, GetBackgroundQueryHandler>();
             services.AddTransient<IQueryHandler<GetBackgroundsQuery, IEnumerable<BackgroundDTO>>, GetBackgroundsQueryHandler>();
+            services.AddTransient<IQueryHandler<GetBackgroundOptionsQuery, IEnumerable<BackgroundDTO>>, GetBackgroundOptionsQueryHandler>();
         }
     }
 }

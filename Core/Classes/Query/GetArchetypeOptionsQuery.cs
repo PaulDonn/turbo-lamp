@@ -15,6 +15,8 @@ namespace Core.Classes.Query
         public int PartyId { get; set; }
 
         public int ClassId { get; set; }
+
+        public int Level { get; set; }
     }
 
     public class GetArchetypeOptionsQueryHandler : IQueryHandler<GetArchetypeOptionsQuery, IEnumerable<ArchetypeDTO>>
@@ -38,6 +40,7 @@ namespace Core.Classes.Query
             if (partySources.Count() > 0)
             {
                 var archetypes = _context.Archetype.Where(n => n.ClassId == query.ClassId &&
+                                                               n.Class.ArchetypeStartingLevel == query.Level &&
                                                                partySources.Contains(n.SourceId))
                                                    .Include(n => n.ClassFeature)
                                                    .OrderBy(n => n.Name);

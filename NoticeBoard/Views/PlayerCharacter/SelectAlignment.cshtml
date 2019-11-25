@@ -1,25 +1,25 @@
-﻿@model NoticeBoard.Models.Shared.RadioSelectModel<NoticeBoard.Models.Backgrounds.BackgroundModel>
+﻿@model NoticeBoard.Models.Shared.RadioSelectModel<NoticeBoard.Models.Alignments.AlignmentModel>
 
 @{
-    ViewData["Title"] = "New Character - Background";
+    ViewData["Title"] = "New Character - Alignment";
 }
 
 <div id="NewCharacterVue">
     @Html.HiddenFor(model => model.Options)
-    @Html.HiddenFor(model => model.PartyId)
-    @using (Html.BeginForm("SelectBackground", "PlayerCharacter", "POST"))
+    @using (Html.BeginForm("SelectAlignment", "PlayerCharacter", "POST"))
     {
         @Html.HiddenFor(model => model.PcId)
+        @Html.HiddenFor(model => model.PartyId)
         @Html.HiddenFor(model => model.SelectedOptionId)
         <div class="row h-100">
             <div class="col-xl-4">
                 <div class="card">
                     <div class="card-body">
-                        @foreach (var background in Model.OptionModels)
+                        @foreach (var alignment in Model.OptionModels)
                         {
                             <div>
-                                <input id="Background" v-model="selectionId" v-on:change="OnSelection()" type="radio" name="background" value="@background.Id">
-                                <label>@background.Name</label>
+                                <input id="Alignment" v-model="selectionId" v-on:change="OnSelection()" type="radio" name="alignment" value="@alignment.Id">
+                                <label>@alignment.Name</label>
                             </div>
                         }
                         <input class="btn btn-primary" type="submit" :disabled="selectionId <= 0" />
@@ -41,7 +41,7 @@
             <div class="col-xl-4">
                 <div class="card">
                     <div class="card-body">
-                        <img class="resize" :src="'/img/background/' + selectionImagePath" />
+                        <img class="resize" :src="'/img/alignment/' + selectionImagePath" />
                     </div>
                 </div>
             </div>

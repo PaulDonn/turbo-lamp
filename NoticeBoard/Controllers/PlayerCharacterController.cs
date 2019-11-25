@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
+using NoticeBoard.Models.Alignments;
 using NoticeBoard.Models.Backgrounds;
 using NoticeBoard.Models.Classes;
 using NoticeBoard.Models.PlayerCharacters;
@@ -35,7 +36,7 @@ namespace NoticeBoard.Controllers
         {
 
         }
-        
+
         public IActionResult NewCharacter(int partyId)
         {
             var command = SendCommand(new CreatePCCommand
@@ -53,10 +54,10 @@ namespace NoticeBoard.Controllers
         {
             var model = new RadioSelectModel<RaceModel> { PcId = pcId, PartyId = partyId };
 
-            var query = new GetRaceOptionsQuery { PartyId = partyId }; 
+            var query = new GetRaceOptionsQuery { PartyId = partyId };
 
             model.OptionModels = _mapper.Map<List<RaceDTO>, List<RaceModel>>(SendQuery<GetRaceOptionsQuery, IEnumerable<RaceDTO>>(query).ToList());
-            
+
             return View(model);
         }
 
@@ -67,11 +68,11 @@ namespace NoticeBoard.Controllers
 
             SendCommand(new SetPCRaceCommand { PcId = pcId, RaceId = model.SelectedOptionId });
 
-            return RedirectToAction(nameof(SelectSubRace), new 
-            { 
-                pcId = model.PcId, 
+            return RedirectToAction(nameof(SelectSubRace), new
+            {
+                pcId = model.PcId,
                 partyId = model.PartyId,
-                raceId = model.SelectedOptionId 
+                raceId = model.SelectedOptionId
             });
         }
 
@@ -107,7 +108,7 @@ namespace NoticeBoard.Controllers
 
         public IActionResult SelectClass(string pcId, int partyId)
         {
-            var model = new ClassSelectModel { PcId = pcId, PartyId = partyId };
+            var model = new RadioSelectModel<ClassModel> { PcId = pcId, PartyId = partyId };
 
             var query = new GetClassOptionsQuery { PartyId = partyId };
 
@@ -117,23 +118,18 @@ namespace NoticeBoard.Controllers
         }
 
         [HttpPost]
-        public IActionResult SelectClass(ClassSelectModel model)
+        public IActionResult SelectClass(RadioSelectModel<ClassModel> model)
         {
             var pcId = Convert.ToInt32(Decrypt(model.PcId));
 
             SendCommand(new SetPCClassCommand { PcId = pcId, ClassId = model.SelectedOptionId });
 
-            if (model.HasLevel1Archetype)
+            return RedirectToAction(nameof(SelectArchetype), new
             {
-                return RedirectToAction(nameof(SelectArchetype), new
-                {
-                    pcId = model.PcId,
-                    partyId = model.PartyId,
-                    classId = model.SelectedOptionId
-                });
-            }
-
-            return RedirectToAction(nameof(SelectBackground), new { model.PcId, model.PartyId });
+                pcId = model.PcId,
+                partyId = model.PartyId,
+                classId = model.SelectedOptionId
+            });
         }
 
         public IActionResult SelectArchetype(string pcId, int partyId, int classId)
@@ -143,7 +139,8 @@ namespace NoticeBoard.Controllers
             var query = new GetArchetypeOptionsQuery
             {
                 PartyId = partyId,
-                ClassId = classId
+                ClassId = classId,
+                Level = 1
             };
 
             var archetypes = SendQuery<GetArchetypeOptionsQuery, IEnumerable<ArchetypeDTO>>(query).ToList();
@@ -187,6 +184,27 @@ namespace NoticeBoard.Controllers
             var pcId = Convert.ToInt32(Decrypt(model.PcId));
 
             SendCommand(new SetPCBackgroundCommand { PcId = pcId, BackgroundId = model.SelectedOptionId });
+
+            return RedirectToAction(nameof(SelectAlignment), new { model.PcId, model.PartyId });
+        }
+
+        public IActionResult SelectAlignment(string pcId, int partyId)
+        {
+            var model = new RadioSelectModel<AlignmentModel> { PcId = pcId, PartyId = partyId };
+
+            var query = new GetAlignmentsQuery();
+
+            model.OptionModels = _mapper.Map<List<AlignmentDTO>, List<AlignmentModel>>(SendQuery<GetAlignmentsQuery, IEnumerable<AlignmentDTO>>(query).ToList());
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult SelectAlignment(RadioSelectModel<AlignmentModel> model)
+        {
+            var pcId = Convert.ToInt32(Decrypt(model.PcId));
+
+            SendCommand(new SetPCAlignmentCommand { PcId = pcId, AlignmentId = model.SelectedOptionId });
 
             throw new NotImplementedException();
         }

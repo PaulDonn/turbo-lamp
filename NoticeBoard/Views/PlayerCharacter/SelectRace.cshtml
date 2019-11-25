@@ -9,6 +9,7 @@
     @using (Html.BeginForm("SelectRace", "PlayerCharacter", "POST"))
     {
         @Html.HiddenFor(model => model.PcId)
+        @Html.HiddenFor(model => model.PartyId)
         @Html.HiddenFor(model => model.SelectedOptionId)
         <div class="row h-100">
             <div class="col-xl-4">

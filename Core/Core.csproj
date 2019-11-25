@@ -7,6 +7,7 @@
   <ItemGroup>
     <Folder Include="Abilities\Command\" />
     <Folder Include="Abilities\Query\" />
+    <Folder Include="Alignments\Command\" />
     <Folder Include="Classes\Command\" />
     <Folder Include="Features\Command\" />
     <Folder Include="Races\Command\" />

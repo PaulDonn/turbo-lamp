@@ -14,7 +14,7 @@
                 var selectedOption = null;
 
                 for (i = 0; i < this.options.length; i++) {
-                    if (this.options[i].Id == this.selectionId) {
+                    if (this.options[i].Id === Number(this.selectionId)) {
                         this.selectionName = this.options[i].Name;
                         this.selectionDescription = this.options[i].Description;
                         this.selectionImagePath = this.options[i].ImagePath;
