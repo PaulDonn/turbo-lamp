@@ -59,6 +59,7 @@
     <Folder Include="dbo" />
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\Scripts" />
+    <Folder Include="dbo\Scripts\Features" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Database.publish.xml" />
@@ -67,8 +68,6 @@
     <None Include="dbo\Scripts\PopulateSpell_0.sql" />
     <None Include="dbo\Scripts\PopulateEquipment_Weapons.sql" />
     <None Include="dbo\Scripts\PopulateTreasure.sql" />
-    <None Include="dbo\Scripts\PopulateFeature.sql" />
-    <None Include="dbo\Scripts\PopulateFeature_Tiefling.sql" />
     <None Include="dbo\Scripts\PopulateSource.sql" />
   </ItemGroup>
   <ItemGroup>
@@ -165,11 +164,14 @@
     <Build Include="dbo\Tables\dbo.SpellListSpell.Table.sql" />
     <Build Include="dbo\Tables\dbo.ClassFeature.Table.sql" />
     <Build Include="dbo\Tables\dbo.RaceFeature.Table.sql" />
-    <None Include="dbo\Scripts\PopulateFeature_Wizard.sql" />
     <Build Include="dbo\Tables\dbo.Source,Table.sql" />
     <Build Include="dbo\Tables\dbo.PartySource.Table.sql" />
-    <None Include="dbo\Scripts\PopulateFeature_Dwarf.sql" />
-    <None Include="dbo\Scripts\PopulateFeature_Fighter.sql" />
-    <None Include="dbo\Scripts\PopulateFeature_Dragonborn.sql" />
+    <None Include="dbo\Scripts\Features\PopulateFeature.sql" />
+    <None Include="dbo\Scripts\Features\PopulateFeature_Wizard.sql" />
+    <None Include="dbo\Scripts\Features\PopulateFeature_Tiefling.sql" />
+    <None Include="dbo\Scripts\Features\PopulateFeature_Fighter.sql" />
+    <None Include="dbo\Scripts\Features\PopulateFeature_Dwarf.sql" />
+    <None Include="dbo\Scripts\Features\PopulateFeature_Dragonborn.sql" />
+    <None Include="dbo\Scripts\Features\PopulateFeature_Elf.sql" />
   </ItemGroup>
 </Project>

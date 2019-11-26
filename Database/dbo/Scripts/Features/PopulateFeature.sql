@@ -31,9 +31,17 @@
            ,'You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.'--<Description, nvarchar(max),>
            ,'Darkvision'--<Code, nvarchar(50),>
 		   ),
+           ('Superior Darkvision'--<Name, nvarchar(50),>
+           ,'Your darkvision has a radius of 120 feet.'--<Description, nvarchar(max),>
+           ,'SuperiorDarkvision'--<Code, nvarchar(50),>
+		   ),
            ('Languages'--<Name, nvarchar(50),>
            ,'You can speak, read, and write Common.'--<Description, nvarchar(max),>
            ,'Languages'--<Code, nvarchar(50),>
+		   ),
+           ('Extra Language'--<Name, nvarchar(50),>
+           ,'You can speak, read, and write one extra language of your choice.'--<Description, nvarchar(max),>
+           ,'ExtraLanguage'--<Code, nvarchar(50),>
 		   ),
            ('Spellcasting'--<Name, nvarchar(50),>
            ,'N/A'--<Description, nvarchar(max),>
@@ -82,5 +90,9 @@
            ('Breath Weapon'--<Name, nvarchar(50),>
            ,'N/A'--<Description, nvarchar(max),>
            ,'BreathWeapon'--<Code, nvarchar(50),>
+		   ),
+           ('Fey Ancestry'--<Name, nvarchar(50),>
+           ,'You have advantge on saving throws against being charmed, and magic can''t put you to sleep.'--<Description, nvarchar(max),>
+           ,'FeyAncestry'--<Code, nvarchar(50),>
 		   )
 GO

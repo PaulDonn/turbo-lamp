@@ -107,7 +107,7 @@ INSERT INTO [dbo].[RaceFeature]
            ,null--<SubRaceId, int,>
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'Languages')--<FeatureId, int,>
 		   ,1--<Level, int>
-           ,'You can speak, read, and write Common and Infernal.'--<Description, int,>
+           ,'You can speak, read, and write Common and Dwarvish. Dwarvish is full of hard consonants and guttural sounds, and those characteristics spill over into whatever other language a dwarf might speak.'--<Description, int,>
            ,1--<Hidden, bit,>
 		   ),
 

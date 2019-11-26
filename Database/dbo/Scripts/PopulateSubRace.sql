@@ -1,10 +1,12 @@
-﻿INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 1, 'Hill Dwarf', '', 1)
-INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 2, 'Mountain Dwarf', '', 1)
-INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId],[AdditionalLanguages]) VALUES ( 3, 'High Elf', '', 2, 1)
-INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 4, 'Wood Elf', '', 2)
-INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 5, 'Drow', '', 2)
-INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 6, 'Lightfoot', '', 3)
-INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 7, 'Stout', '', 3)
+﻿INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 1, 'Hill Dwarf', 'Hill dwarves have keen senses, deep intuition, and remarkable resilience.', 1)
+INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 2, 'Mountain Dwarf', 'Mountain dwarves arestrong and hardy, accustomed to a difficult life in rugged terrain. They are on the tall side (for a dwarf), and tend toward lighter coloration.', 1)
+INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId],[AdditionalLanguages]) VALUES ( 3, 'High Elf', 'High elves have a keen mind and a mastery of at least the basics of magic. They often have hair of silver-white, black, or blue, but various shades of blond, brown, and red are not uncommon. Their eyes are blue or green and flecked with gold.', 2, 1)
+INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 4, 'Wood Elf', 'Wood elves have keen senses and intuition, and your fleet feet carry you quickly and stealthily through your native forests. Wood elves'' skin tends to be copperish in hue, sometimes with traces of green. Their hair tends toward browns and blacks, but it is occasionally blond or copper-colored. Their eyes are green, brown, or hazel.', 2)
+INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 5, 'Drow', 'Descended from an earlier subrace of dark-skinned elves, the drow were banished from the surface world for following the goddess Lolth down the path to evil and corruption. Now they have built their own civilization in the depths of the Underdark, patterned after the Way of Lolth. Also called dark elves. the drow have black skin that resembles polished obsidian and stark white or pale yellow hair. They commonly have very pale eyes (so pale as to be mislaken for white) in shades of lilac, silver, pink, red, and blue. They tend to be smaller and thinner than most elves.', 2)
+INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 6, 'Lightfoot', 'Lightfoot halflings can easily hide from notice, even using other people as cover. They are inclined to be affable and get along well with others.
+
+Lightfoots are more prone to wanderlust than other halflings, and often dwell alongside other races or take up a nomadic life.', 3)
+INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 7, 'Stout', 'Stout halflings are hardier than average and have some resistance to poison. Some say that stouts have dwarven blood.', 3)
 INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 8, 'Black Dragonborn', '', 5)
 INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 9, 'Blue Dragonborn', '', 5)
 INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 10, 'Brass Dragonborn', '', 5)
@@ -15,6 +17,6 @@ INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 14, 'G
 INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 15, 'Red Dragonborn', '', 5)
 INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 16, 'Silver Dragonborn', '', 5)
 INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 17, 'White Dragonborn', '', 5)
-INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 18, 'Forest Gnome', '', 6)
-INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 19, 'Rock Gnome', '', 6)
+INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 18, 'Forest Gnome', 'Forest gnomes have a natural knack for illusion and inherent quickness and stealth. Forest gnomes are rare and secretive. They gather in hidden communities in sylvan forests, using illusions and trickery to conceal themselves from threats or to mask their escape should they be detected. Forest gnomes tend to be friendly with other good-spirited woodland folk, and they regard elves and good fey as their most important allies. These gnomes also befriend small forest animais and rely on them for information about threats that might prowl their lands.', 6)
+INSERT INTO [dbo].[SubRace] ([Id],[Name],[Description],[RaceId]) VALUES ( 19, 'Rock Gnome', 'The most common variety of gnomes, rock gnomes have a natural inventiveness and hardiness beyond that of other gnomes.', 6)
 GO
