@@ -60,6 +60,8 @@
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\Scripts" />
     <Folder Include="dbo\Scripts\Features" />
+    <Folder Include="dbo\Scripts\Features\Race" />
+    <Folder Include="dbo\Scripts\Features\Class" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Database.publish.xml" />
@@ -69,6 +71,7 @@
     <None Include="dbo\Scripts\PopulateEquipment_Weapons.sql" />
     <None Include="dbo\Scripts\PopulateTreasure.sql" />
     <None Include="dbo\Scripts\PopulateSource.sql" />
+    <None Include="dbo\Scripts\Features\Class\PopulateFeature_Rogue.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Scripts\PopulateAbility.sql" />
@@ -167,11 +170,16 @@
     <Build Include="dbo\Tables\dbo.Source,Table.sql" />
     <Build Include="dbo\Tables\dbo.PartySource.Table.sql" />
     <None Include="dbo\Scripts\Features\PopulateFeature.sql" />
-    <None Include="dbo\Scripts\Features\PopulateFeature_Wizard.sql" />
-    <None Include="dbo\Scripts\Features\PopulateFeature_Tiefling.sql" />
-    <None Include="dbo\Scripts\Features\PopulateFeature_Fighter.sql" />
-    <None Include="dbo\Scripts\Features\PopulateFeature_Dwarf.sql" />
-    <None Include="dbo\Scripts\Features\PopulateFeature_Dragonborn.sql" />
-    <None Include="dbo\Scripts\Features\PopulateFeature_Elf.sql" />
+    <None Include="dbo\Scripts\Features\Race\PopulateFeature_Tiefling.sql" />
+    <None Include="dbo\Scripts\Features\Race\PopulateFeature_Human.sql" />
+    <None Include="dbo\Scripts\Features\Race\PopulateFeature_HalfOrc.sql" />
+    <None Include="dbo\Scripts\Features\Race\PopulateFeature_Halfling.sql" />
+    <None Include="dbo\Scripts\Features\Race\PopulateFeature_HalfElf.sql" />
+    <None Include="dbo\Scripts\Features\Race\PopulateFeature_Gnome.sql" />
+    <None Include="dbo\Scripts\Features\Race\PopulateFeature_Elf.sql" />
+    <None Include="dbo\Scripts\Features\Race\PopulateFeature_Dwarf.sql" />
+    <None Include="dbo\Scripts\Features\Race\PopulateFeature_Dragonborn.sql" />
+    <None Include="dbo\Scripts\Features\Class\PopulateFeature_Fighter.sql" />
+    <None Include="dbo\Scripts\Features\Class\PopulateFeature_Wizard.sql" />
   </ItemGroup>
 </Project>

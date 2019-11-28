@@ -404,7 +404,7 @@ INSERT INTO [dbo].[ClassFeature]
 		   
 		   -Spell Slots. To cast spells, you must expend a slot of the spell''s levei or higher. You regain all expended spell slots when you finish a long rest. For example, if you know the 1st.level spell shield and have a 1st level and a 2nd level spell slot available, you can cast shieId using either slot.
 		   
-		   -Spells Known of 1st-LeveI and Higher. You know three 1st level wizard spells of your choice, two of which you must choose from the abjuration and evocation spells on the wizard spelllist. Spells learned later must be abjuration or evocation spells of your choice, and must be of a leveI for which you have spell slots. For instance, when you reach 7th levei in this c1ass, you can learn one new spell of 1st or 2nd level. 
+		   -Spells Known of 1st Level and Higher. You know three 1st level wizard spells of your choice, two of which you must choose from the abjuration and evocation spells on the wizard spelllist. Spells learned later must be abjuration or evocation spells of your choice, and must be of a leveI for which you have spell slots. For instance, when you reach 7th levei in this c1ass, you can learn one new spell of 1st or 2nd level. 
 		   
 		   The spells you learn at 8th, 14th, and 20th leveI can come from any school of magic.
 		   

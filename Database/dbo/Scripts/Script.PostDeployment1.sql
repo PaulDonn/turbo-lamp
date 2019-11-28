@@ -48,13 +48,20 @@ Post-Deployment Script Template
 :r .\Features\"PopulateFeature.sql"
 
 
-:r .\Features\"PopulateFeature_Dragonborn.sql"
-:r .\Features\"PopulateFeature_Dwarf.sql"
-:r .\Features\"PopulateFeature_Tiefling.sql"
+:r .\Features\Race\"PopulateFeature_Dragonborn.sql"
+:r .\Features\Race\"PopulateFeature_Dwarf.sql"
+:r .\Features\Race\"PopulateFeature_Elf.sql"
+:r .\Features\Race\"PopulateFeature_Halfling.sql"
+:r .\Features\Race\"PopulateFeature_HalfElf.sql"
+:r .\Features\Race\"PopulateFeature_HalfOrc.sql"
+:r .\Features\Race\"PopulateFeature_Human.sql"
+:r .\Features\Race\"PopulateFeature_Gnome.sql"
+:r .\Features\Race\"PopulateFeature_Tiefling.sql"
 
 
-:r .\Features\"PopulateFeature_Fighter.sql"
-:r .\Features\"PopulateFeature_Wizard.sql"
+:r .\Features\Class\"PopulateFeature_Fighter.sql"
+:r .\Features\Class\"PopulateFeature_Rogue.sql"
+:r .\Features\Class\"PopulateFeature_Wizard.sql"
 
 
 --Test Data

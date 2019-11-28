@@ -75,6 +75,10 @@
            ,'N/A'--<Description, nvarchar(max),>
            ,'SpellsKnown'--<Code, nvarchar(50),>
 		   ),
+           ('Skill Proficiency'--<Name, nvarchar(50),>
+           ,'You gain proficiency with the skill of your choice'--<Description, nvarchar(max),>
+           ,'SkillProficiency'--<Code, nvarchar(50),>
+		   ),
            ('Tool Proficiency'--<Name, nvarchar(50),>
            ,'You gain proficiency with the tool of your choice'--<Description, nvarchar(max),>
            ,'ToolProficiency'--<Code, nvarchar(50),>
