@@ -380,7 +380,7 @@ INSERT INTO [dbo].[ClassFeature]
 		   -Spell save DC = 8 + your proficiency bonus + your Intelligence modifier
 		   
 		   -Spell attack modifier = your proficiency bonus + your Intelligence modifier'--<Description, int,>
-           ,0--<Hidden, bit,>
+           ,1--<Hidden, bit,>
 		   ),
            (null--<ClassId, int,>
            ,(SELECT TOP(1) Id FROM Archetype WHERE [ShortName] = 'Arcane Trickster')--<ArchetypeId, int,>

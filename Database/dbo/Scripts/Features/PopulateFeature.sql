@@ -47,6 +47,10 @@
            ,'N/A'--<Description, nvarchar(max),>
            ,'Spellcasting'--<Code, nvarchar(50),>
 		   ),
+           ('Spell Slots'--<Name, nvarchar(50),>
+           ,'N/A'--<Description, nvarchar(max),>
+           ,'SpellSlots'--<Code, nvarchar(50),>
+		   ),
            ('Cantrips'--<Name, nvarchar(50),>
            ,'N/A'--<Description, nvarchar(max),>
            ,'Cantrips'--<Code, nvarchar(50),>
