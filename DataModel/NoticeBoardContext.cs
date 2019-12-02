@@ -21,6 +21,7 @@ namespace DataModel
         public virtual DbSet<ArmorType> ArmorType { get; set; }
         public virtual DbSet<Background> Background { get; set; }
         public virtual DbSet<BgSkill> BgSkill { get; set; }
+        public virtual DbSet<CharacterGenerationMethod> CharacterGenerationMethod { get; set; }
         public virtual DbSet<Class> Class { get; set; }
         public virtual DbSet<ClassFeature> ClassFeature { get; set; }
         public virtual DbSet<ClassSkill> ClassSkill { get; set; }
@@ -42,6 +43,7 @@ namespace DataModel
         public virtual DbSet<PcTreasure> PcTreasure { get; set; }
         public virtual DbSet<Player> Player { get; set; }
         public virtual DbSet<PlayerCharacter> PlayerCharacter { get; set; }
+        public virtual DbSet<PlayerParty> PlayerParty { get; set; }
         public virtual DbSet<Race> Race { get; set; }
         public virtual DbSet<RaceFeature> RaceFeature { get; set; }
         public virtual DbSet<RaceLanguage> RaceLanguage { get; set; }
@@ -130,6 +132,11 @@ namespace DataModel
                     .HasForeignKey(d => d.SkillId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_BgSkill_Skill");
+            });
+
+            modelBuilder.Entity<CharacterGenerationMethod>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
             });
 
             modelBuilder.Entity<Class>(entity =>
@@ -234,7 +241,7 @@ namespace DataModel
             modelBuilder.Entity<Feature>(entity =>
             {
                 entity.HasIndex(e => e.Code)
-                    .HasName("UQ__Feature__A25C5AA713759696")
+                    .HasName("UQ__Feature__A25C5AA713800978")
                     .IsUnique();
 
                 entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
@@ -249,6 +256,15 @@ namespace DataModel
             modelBuilder.Entity<Language>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<Party>(entity =>
+            {
+                entity.HasOne(d => d.CharacterGenerationMethod)
+                    .WithMany(p => p.Party)
+                    .HasForeignKey(d => d.CharacterGenerationMethodId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Party_CharacterGenerationMethod");
             });
 
             modelBuilder.Entity<PartySource>(entity =>
@@ -409,6 +425,13 @@ namespace DataModel
                     .HasConstraintName("FK_PcTreasure_Treasure");
             });
 
+            modelBuilder.Entity<Player>(entity =>
+            {
+                entity.HasIndex(e => e.UserId)
+                    .HasName("UQ__Player__1788CC4D659FD22A")
+                    .IsUnique();
+            });
+
             modelBuilder.Entity<PlayerCharacter>(entity =>
             {
                 entity.HasOne(d => d.Alignment)
@@ -451,6 +474,21 @@ namespace DataModel
                     .WithMany(p => p.PlayerCharacter)
                     .HasForeignKey(d => d.SubRaceId)
                     .HasConstraintName("FK_PlayerCharacter_SubRace");
+            });
+
+            modelBuilder.Entity<PlayerParty>(entity =>
+            {
+                entity.HasOne(d => d.Party)
+                    .WithMany(p => p.PlayerParty)
+                    .HasForeignKey(d => d.PartyId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PlayerParty_Party");
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PlayerParty)
+                    .HasForeignKey(d => d.PlayerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PlayerParty_Player");
             });
 
             modelBuilder.Entity<Race>(entity =>
@@ -518,7 +556,7 @@ namespace DataModel
             modelBuilder.Entity<Source>(entity =>
             {
                 entity.HasIndex(e => e.Code)
-                    .HasName("UQ__Source__A25C5AA78645E5C9")
+                    .HasName("UQ__Source__A25C5AA760D55742")
                     .IsUnique();
 
                 entity.Property(e => e.Id).ValueGeneratedNever();

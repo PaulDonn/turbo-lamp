@@ -11,6 +11,7 @@ namespace NoticeBoard.Utility.DIMappers
             ClassMapper.Setup(services);
             EquipmentMapper.Setup(services);
             LanguageMapper.Setup(services);
+            PartyMapper.Setup(services);
             PlayerCharacterMapper.Setup(services);
             RaceMapper.Setup(services);
             SpellMapper.Setup(services);

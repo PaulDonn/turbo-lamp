@@ -1,0 +1,30 @@
+﻿@model IEnumerable<NoticeBoard.Models.Party.PartyModel>
+@{
+    ViewData["Title"] = "My Parties";
+}
+
+<div class="row" style="padding-bottom:10px">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th width="50%">Name</th>
+                            <th width="50%">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var party in Model)
+                        {
+                        <tr>
+                            <td>@party.Name</td>
+                            <td>@party.Description</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

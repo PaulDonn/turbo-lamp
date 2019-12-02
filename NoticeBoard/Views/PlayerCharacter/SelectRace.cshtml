@@ -4,50 +4,50 @@
     ViewData["Title"] = "New Character - Race";
 }
 
-<div id="NewCharacterVue">
-    @Html.HiddenFor(model => model.Options)
-    @using (Html.BeginForm("SelectRace", "PlayerCharacter", "POST"))
-    {
-        @Html.HiddenFor(model => model.PcId)
-        @Html.HiddenFor(model => model.PartyId)
-        @Html.HiddenFor(model => model.SelectedOptionId)
-        <div class="row h-100">
-            <div class="col-xl-4">
-                <div class="card">
-                    <div class="card-body">
-                        @foreach (var race in Model.OptionModels)
-                        {
-                            <div>
-                                <input id="Race" v-model="selectionId" v-on:change="OnSelection()" type="radio" name="race" value="@race.Id">
-                                <label>@race.Name</label>
+    <div id="NewCharacterVue">
+        @Html.HiddenFor(model => model.Options)
+        @using (Html.BeginForm("SelectRace", "PlayerCharacter", "POST"))
+        {
+            @Html.HiddenFor(model => model.PcId)
+            @Html.HiddenFor(model => model.PartyId)
+            @Html.HiddenFor(model => model.SelectedOptionId)
+            <div class="row h-100">
+                <div class="col-xl-4">
+                    <div class="card">
+                        <div class="card-body">
+                            @foreach (var race in Model.OptionModels)
+                            {
+                                <div>
+                                    <input id="Race" v-model="selectionId" v-on:change="OnSelection()" type="radio" name="race" value="@race.Id">
+                                    <label>@race.Name</label>
+                                </div>
+                            }
+                            <input class="btn btn-primary" type="submit" :disabled="selectionId <= 0" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="text-center">{{ selectionName }}</div>
                             </div>
-                        }
-                        <input class="btn btn-primary" type="submit" :disabled="selectionId <= 0" />
+                            <div class="row">
+                                <div>{{ selectionDescription }}</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="text-center">{{ selectionName }}</div>
-                        </div>
-                        <div class="row">
-                            <div>{{ selectionDescription }}</div>
+                <div class="col-xl-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <img class="resize" :src="'/img/race/' + selectionImagePath" />
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4">
-                <div class="card">
-                    <div class="card-body">
-                        <img class="resize" :src="'/img/race/' + selectionImagePath" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
-</div>
+        }
+    </div>
 @section Scripts {
     <script src="~/js/NewCharacter.js" type="text/javascript"></script>
 }

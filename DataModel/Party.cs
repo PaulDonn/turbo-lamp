@@ -11,6 +11,7 @@ namespace DataModel
         {
             PartySource = new HashSet<PartySource>();
             PlayerCharacter = new HashSet<PlayerCharacter>();
+            PlayerParty = new HashSet<PlayerParty>();
         }
 
         [Key]
@@ -18,10 +19,19 @@ namespace DataModel
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
+        public string Description { get; set; }
+        public int OwningDmId { get; set; }
+        public int CharacterGenerationMethodId { get; set; }
+        public int NewCharacterStartingLevel { get; set; }
 
+        [ForeignKey(nameof(CharacterGenerationMethodId))]
+        [InverseProperty("Party")]
+        public virtual CharacterGenerationMethod CharacterGenerationMethod { get; set; }
         [InverseProperty("Party")]
         public virtual ICollection<PartySource> PartySource { get; set; }
         [InverseProperty("Party")]
         public virtual ICollection<PlayerCharacter> PlayerCharacter { get; set; }
+        [InverseProperty("Party")]
+        public virtual ICollection<PlayerParty> PlayerParty { get; set; }
     }
 }

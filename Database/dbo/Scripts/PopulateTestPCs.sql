@@ -1,18 +1,40 @@
-﻿INSERT INTO [dbo].[Party]
-           ([Name])
+﻿INSERT INTO [dbo].[Player]
+           ([UserId], [Name], [EmailAddress], [IsDM], [IsEnabled])
      VALUES
-           ('The Undateables')
+           ('1', 'Paul', 'paul.donnelly.91@gmail.com', 1, 1)
+          ,('2', 'Stephen', 'stephen.mcguire@dndmail.com', 0, 1)
+          ,('3', 'Amy', 'amy.reynolds@dndmail.com', 0, 1)
+          ,('4', 'Chrissy', 'chrissy.donnelly@dndmail.com', 0, 1)
+          ,('5', 'Terry', 'terry.reynolds@dndmail.com', 0, 1)
+GO
+
+INSERT INTO [dbo].[Party]
+           ([Name],[Description],[OwningDmId], [CharacterGenerationMethodId], [NewCharacterStartingLevel])
+     VALUES
+           ('The Undateables',
+		    'A band of misfits leaving either salvation or devestation their wake.
+			
+			These daring advernturers have saved the mining town of Phandalin from a villainous sorceror, freed the city of Waterdeep from the clutches of a coven of Hags, and defeated the mighty Remorhaz in the ancestral home of a great Dwarven clan. They have also banished a shopkeeper to oblivion, helped in the revival of a crime lord and unleashed two demonic princes upon the material plane.',
+		    (SELECT TOP(1) Id FROM Player WHERE [Name] = 'Paul'),
+			1,
+			1)
 GO
 
 INSERT INTO [dbo].[PartySource] ([PartyId], [SourceId])
 VALUES ((SELECT TOP(1) Id FROM Party WHERE Name = 'The Undateables'), 1)
 
-INSERT INTO [dbo].[Player]
-           ([Name])
-     VALUES
-           ('Stephen')
-          ,('Player 2')
-          ,('Player 3')
+INSERT INTO [dbo].[PlayerParty] ([PlayerId], [PartyId])
+VALUES
+	((SELECT TOP(1) Id FROM Player WHERE [Name] = 'Paul'),
+	 (SELECT TOP(1) Id FROM Party WHERE [Name] = 'The Undateables')), 
+	((SELECT TOP(1) Id FROM Player WHERE [Name] = 'Stephen'),
+	 (SELECT TOP(1) Id FROM Party WHERE [Name] = 'The Undateables')), 
+	((SELECT TOP(1) Id FROM Player WHERE [Name] = 'Amy'),
+	 (SELECT TOP(1) Id FROM Party WHERE [Name] = 'The Undateables')), 
+	((SELECT TOP(1) Id FROM Player WHERE [Name] = 'Chrissy'),
+	 (SELECT TOP(1) Id FROM Party WHERE [Name] = 'The Undateables')), 
+	((SELECT TOP(1) Id FROM Player WHERE [Name] = 'Terry'),
+	 (SELECT TOP(1) Id FROM Party WHERE [Name] = 'The Undateables'))
 GO
 
 INSERT INTO [dbo].[PlayerCharacter]

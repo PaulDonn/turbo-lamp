@@ -45,6 +45,7 @@ Post-Deployment Script Template
 :r .\Equipment\"PopulateEquipment_ArmorPlus3.sql"
 :r .\Equipment\"PopulateEquipment_Clothing.sql"
 :r .\Equipment\"PopulateTreasure.sql"
+:r .\"PopulateCharacterGenerationMethod.sql"
 
 :r .\Features\"PopulateFeature.sql"
 

@@ -1,39 +1,47 @@
 ﻿using DataModel;
 using Infrastructure.CQRS;
+using Infrastructure.Session;
+using System.Linq;
 
 namespace Core.PlayerCharacters.Command
 {
     public class CreatePCCommand : ICommand
     {
         public int PartyId { get; set; }
-
-        public int PlayerId { get; set; }
     }
 
     public class CreatePCCommandHandler : ICommandHandler<CreatePCCommand>
     {
         private NoticeBoardContext _context;
 
-        public CreatePCCommandHandler(NoticeBoardContext context)
+        private ISessionInformation _sessionInformation;
+
+        public CreatePCCommandHandler(NoticeBoardContext context, ISessionInformation sessionInformation)
         {
             _context = context;
+            _sessionInformation = sessionInformation;
         }
 
         public ExecutionResult Handle(CreatePCCommand command)
         {
             var result = new ExecutionResult();
 
-            var pc = new PlayerCharacter
+            var player = _context.Player.SingleOrDefault(n => n.UserId == _sessionInformation.UserId && n.IsEnabled);
+
+            if (player != null)
             {
-                PartyId = command.PartyId,
-                PlayerId = command.PlayerId
-            };
+                var pc = new PlayerCharacter
+                {
+                    PartyId = command.PartyId,
+                    PlayerId = player.Id
+                };
 
-            _context.PlayerCharacter.Add(pc);
-            _context.SaveChanges();
+                _context.PlayerCharacter.Add(pc);
+                _context.SaveChanges();
 
-            result.Success = true;
-            result.NewRecordId = pc.Id;
+                result.Success = true;
+                result.NewRecordId = pc.Id;
+            }
 
             return result;
         }

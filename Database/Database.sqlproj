@@ -70,6 +70,7 @@
     <None Include="dbo\Scripts\PopulateTestPCs.sql" />
     <None Include="dbo\Scripts\PopulateSource.sql" />
     <None Include="dbo\Scripts\Features\Class\PopulateFeature_Rogue.sql" />
+    <None Include="dbo\Scripts\PopulateCharacterGenerationMethod.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Scripts\PopulateAbility.sql" />
@@ -184,5 +185,7 @@
     <None Include="dbo\Scripts\Spells\PopulateSpell_8.sql" />
     <None Include="dbo\Scripts\Spells\PopulateSpell_9.sql" />
     <None Include="dbo\Scripts\Spells\PopulateSpellSchool.sql" />
+    <Build Include="dbo\Tables\dbo.CharacterGenrationMethod.sql" />
+    <Build Include="dbo\Tables\dbo.PlayerParty.Table.sql" />
   </ItemGroup>
 </Project>

@@ -18,6 +18,7 @@ using NoticeBoard.Models.Backgrounds;
 using NoticeBoard.Models.Classes;
 using NoticeBoard.Models.Equipment;
 using NoticeBoard.Models.Features;
+using NoticeBoard.Models.Party;
 using NoticeBoard.Models.Player;
 using NoticeBoard.Models.PlayerCharacters;
 using NoticeBoard.Models.Races;
@@ -40,6 +41,7 @@ namespace NoticeBoard.Utility.AutoMapper
             EquipmentMaps();
             FeatureMaps();
             LanguageMaps();
+            PartyMaps();
             PlayerMaps();
             PlayerCharacterMaps();
             RaceMaps();
@@ -194,6 +196,13 @@ namespace NoticeBoard.Utility.AutoMapper
         private void LanguageMaps()
         {
             CreateMap<Language, LanguageDTO>();
+        }
+
+        private void PartyMaps()
+        {
+            CreateMap<Source, SourceModel>();
+
+            CreateMap<CharacterGenerationMethod, CharacterGenerationMethodModel>();
         }
 
         private void PlayerMaps()

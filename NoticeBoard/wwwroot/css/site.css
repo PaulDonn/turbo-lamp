@@ -107,3 +107,7 @@ img.resize {
     font-weight: 600;
 }
 
+.textarea-no-resize {
+    resize: none;
+}
+

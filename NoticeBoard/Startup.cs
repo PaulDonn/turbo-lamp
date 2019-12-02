@@ -1,14 +1,18 @@
 using AutoMapper;
 using DataModel;
 using Infrastructure.Mediator;
+using Infrastructure.Session;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NoticeBoard.Utility.AutoMapper;
 using NoticeBoard.Utility.DIMappers;
+using System;
+using System.Linq;
 
 namespace NoticeBoard
 {
@@ -40,6 +44,36 @@ namespace NoticeBoard
                 var context = new NoticeBoardContext(options.Options);
 
                 return context;
+            });
+
+            services.AddScoped<ISessionInformation>(serviceProvider =>
+            {
+                DbContextOptionsBuilder<NoticeBoardContext> options = new DbContextOptionsBuilder<NoticeBoardContext>();
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+
+                var context = new NoticeBoardContext(options.Options);
+
+                SessionInformation sessionInformation = new SessionInformation();
+
+                var contextAccessor = serviceProvider.GetService<IHttpContextAccessor>();
+                if (true) //contextAccessor.HttpContext != null) //TODO: Get HttpContext
+                {
+                    var claims = contextAccessor?.HttpContext?.User?.Claims;
+
+                    var userid = "1"; //TODO: Replace with Id from user claim
+                    //var userid = Convert.ToInt32(claims?.FirstOrDefault(n => n.Type == "objectid")?.Value);
+
+                    var user = context.Player.SingleOrDefault(n => n.UserId == userid && n.IsEnabled);
+
+                    if (user != null)
+                    {
+                        sessionInformation.Name = user.Name;
+                        sessionInformation.UserId = userid;
+                        sessionInformation.IsDM = user.IsDm;
+                        sessionInformation.IsEnabled = user.IsEnabled;
+                    }
+                }
+                return sessionInformation;
             });
 
             var mappingConfig = new MapperConfiguration(mc =>

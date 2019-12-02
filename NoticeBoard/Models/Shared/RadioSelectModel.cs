@@ -23,6 +23,8 @@ namespace NoticeBoard.Models.Shared
             }
         }
 
+        public string PlayerId { get; set; }
+
         public string PcId { get; set; }
 
         public int PartyId { get; set; }

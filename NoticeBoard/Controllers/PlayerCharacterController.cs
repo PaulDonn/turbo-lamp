@@ -14,6 +14,7 @@ using Core.Races.DTO;
 using Core.Races.Query;
 using DataModel;
 using Infrastructure.Mediator;
+using Infrastructure.Session;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -32,22 +33,22 @@ namespace NoticeBoard.Controllers
 {
     public class PlayerCharacterController : BaseController
     {
-        public PlayerCharacterController(IMediator mediator, NoticeBoardContext databaseContext, IConfiguration configuration, IMapper mapper, IDataProtectionProvider dataProtectionProvider) : base(mediator, databaseContext, configuration, mapper, dataProtectionProvider)
+        public PlayerCharacterController(IMediator mediator, NoticeBoardContext databaseContext, IConfiguration configuration, IMapper mapper, ISessionInformation sessionInformation, IDataProtectionProvider dataProtectionProvider) : 
+            base(mediator, databaseContext, configuration, mapper, sessionInformation, dataProtectionProvider)
         {
 
         }
 
-        public IActionResult NewCharacter(int partyId)
+        public IActionResult Create(int partyId)
         {
             var command = SendCommand(new CreatePCCommand
             {
-                PartyId = partyId,
-                PlayerId = 1 //TODO Replace with PlayerId from Session
+                PartyId = partyId
             });
 
             var pcId = Encrypt(command.NewRecordId.ToString());
 
-            return RedirectToAction(nameof(SelectRace), new { pcId, partyId }); //TODO: Replace with PlayerId from Session
+            return RedirectToAction(nameof(SelectRace), new { pcId, partyId });
         }
 
         public IActionResult SelectRace(string pcId, int partyId)
@@ -355,7 +356,7 @@ namespace NoticeBoard.Controllers
 
         #endregion
 
-        public IActionResult CharacterDetails(int pcid)
+        public IActionResult Details(int pcid)
         {
             var query = new GetPlayerCharacterQuery { PcId = pcid };
 
@@ -363,8 +364,8 @@ namespace NoticeBoard.Controllers
 
             var model = _mapper.Map<PlayerCharacterDTO, PlayerCharacterModel>(dto);
 
-            model.Abilities = _databaseContext.Ability.OrderBy(n => n.Id).ToList();
-            model.Skills = _databaseContext.Skill.OrderBy(n => n.Id).ToList();
+            model.Abilities = _context.Ability.OrderBy(n => n.Id).ToList();
+            model.Skills = _context.Skill.OrderBy(n => n.Id).ToList();
 
             return View(model);
         }

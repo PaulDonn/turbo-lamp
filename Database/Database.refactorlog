@@ -91,4 +91,32 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="SourceId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="89779214-8ebb-4c89-a274-b9121db65688" ChangeDateTime="11/29/2019 12:02:32">
+    <Property Name="ElementName" Value="[dbo].[Party].[CharacterGnerationMethod]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Party]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CharacterGenerationMethod" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2583db75-3eae-4b0d-a587-a1c1d2ce4454" ChangeDateTime="11/29/2019 12:47:17">
+    <Property Name="ElementName" Value="[dbo].[Party].[CharacterGenerationMethod]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Party]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CharacterGenerationMethodId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="621ddacc-cb0a-4dfc-b3cc-5078ffff9596" ChangeDateTime="12/01/2019 15:32:38">
+    <Property Name="ElementName" Value="[dbo].[Party].[OwningDM]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Party]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="OwningDMId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bced3a3c-ecfd-47ed-92ad-c03c9da3b4d5" ChangeDateTime="12/01/2019 15:32:47">
+    <Property Name="ElementName" Value="[dbo].[Party].[OwningDMId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Party]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="OwningDmId" />
+  </Operation>
 </Operations>

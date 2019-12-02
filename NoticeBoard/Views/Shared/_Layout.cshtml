@@ -23,10 +23,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="PlayerCharacter" asp-action="NewCharacter" asp-route-partyId="1">Create Character</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Party" asp-action="Create">Create Party</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="PlayerCharacter" asp-action="CharacterDetails" asp-route-pcid="1">Get Player</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Party" asp-action="Index">View Parties</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="PlayerCharacter" asp-action="Create" asp-route-partyId="1">Create Character</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="PlayerCharacter" asp-action="Details" asp-route-pcid="1">View Characters</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
