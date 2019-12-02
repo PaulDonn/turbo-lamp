@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Core._Equipment.DTO;
+using Core._Party.DTO;
 using Core._Treasure.DTO;
 using Core.Abilities.DTO;
 using Core.Alignments.DTO;
@@ -200,9 +201,20 @@ namespace NoticeBoard.Utility.AutoMapper
 
         private void PartyMaps()
         {
-            CreateMap<Source, SourceModel>();
+            CreateMap<Party, PartyDTO>()
+                .ForMember(dest => dest.Sources, opts => opts.MapFrom(src => src.PartySource.Select(n => n.Source).ToList()))
+                .ForMember(dest => dest.CharacterGenerationMethod, opts => opts.MapFrom(src => src.CharacterGenerationMethod));
 
-            CreateMap<CharacterGenerationMethod, CharacterGenerationMethodModel>();
+            CreateMap<PartyDTO, PartyModel>();
+
+            CreateMap<Source, SourceDTO>();
+
+            CreateMap<SourceDTO, SourceModel>();
+               // .ForMember(dest => dest.IsSelected, opts => opts.MapFrom(src => true));
+
+            CreateMap<CharacterGenerationMethod, CharacterGenerationMethodDTO>();
+
+            CreateMap<CharacterGenerationMethodDTO, CharacterGenerationMethodModel>();
         }
 
         private void PlayerMaps()

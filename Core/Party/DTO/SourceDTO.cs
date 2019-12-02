@@ -10,6 +10,6 @@ namespace Core._Party.DTO
 
         public string Name { get; set; }
 
-        public bool IsSelected { get; set; }
+        public string Code { get; set; }
     }
 }

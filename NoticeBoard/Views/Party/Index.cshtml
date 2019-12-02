@@ -10,8 +10,9 @@
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th width="50%">Name</th>
-                            <th width="50%">Description</th>
+                            <th width="20%">Name</th>
+                            <th width="70%">Description</th>
+                            <th width="10%">Next Session</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -19,7 +20,8 @@
                         {
                         <tr>
                             <td>@party.Name</td>
-                            <td>@party.Description</td>
+                            <td>@Html.Raw(party.Description.Replace("\r\n", "<br/>"))</td>
+                            <td>Schedule</td>
                         </tr>
                         }
                     </tbody>

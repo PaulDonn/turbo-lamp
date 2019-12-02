@@ -45,7 +45,7 @@ namespace NoticeBoard.Controllers
 
         public IActionResult Index()
         {
-            var model = SendQuery<GetPlayerPartiesQuery, IEnumerable<PartyDTO>>(new GetPlayerPartiesQuery());
+            var model = _mapper.Map<List<PartyDTO>,List<PartyModel>>(SendQuery<GetPlayerPartiesQuery, IEnumerable<PartyDTO>>(new GetPlayerPartiesQuery()).ToList());
 
             return View(model);
         }
@@ -54,11 +54,9 @@ namespace NoticeBoard.Controllers
         {
             var model = new CreatePartyModel
             {
+                Sources = _mapper.Map<List<SourceDTO>, List<SourceModel>>(SendQuery<GetSourcesQuery, IEnumerable<SourceDTO>>(new GetSourcesQuery()).ToList()),
+                CharacterGenOptionModels = _mapper.Map<List<CharacterGenerationMethodDTO>, List<CharacterGenerationMethodModel>>(SendQuery<GetCharacterGenerationOptionsQuery, IEnumerable<CharacterGenerationMethodDTO>>(new GetCharacterGenerationOptionsQuery()).ToList())
             };
-
-            model.CharacterGenOptionModels = _mapper.Map<List<CharacterGenerationMethod>, List<CharacterGenerationMethodModel>>(_context.CharacterGenerationMethod.ToList());
-
-            model.Sources = _mapper.Map<List<Source>, List<SourceModel>>(_context.Source.ToList()); 
 
             return View(model);
         }

@@ -18,6 +18,8 @@ namespace NoticeBoard.Utility.DIMappers
 
             //Query Handlers
             services.AddTransient<IQueryHandler<GetPlayerPartiesQuery, IEnumerable<PartyDTO>>, GetPlayerPartiesQueryHandler>();
+            services.AddTransient<IQueryHandler<GetSourcesQuery, IEnumerable<SourceDTO>>, GetSourcesQueryHandler>();
+            services.AddTransient<IQueryHandler<GetCharacterGenerationOptionsQuery, IEnumerable<CharacterGenerationMethodDTO>>, GetCharacterGenerationOptionsQueryHandler>();
         }
     }
 }

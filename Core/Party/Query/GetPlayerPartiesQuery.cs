@@ -38,7 +38,11 @@ namespace Core._Party.Query
 
             if(player != null)
             {
-                dto = _context.PlayerParty.Where(n => n.PlayerId == player.Id).Select(n => _mapper.Map<Party, PartyDTO>(n.Party)).ToList();
+                dto = _context.PlayerParty.Where(n => n.PlayerId == player.Id)
+                                          .Include(n => n.Party.CharacterGenerationMethod)
+                                          .Include(n => n.Party)
+                                          .ThenInclude(n => n.PartySource)
+                                          .ThenInclude(n => n.Source).Select(n => _mapper.Map<Party, PartyDTO>(n.Party)).ToList();
             }
 
             return dto;

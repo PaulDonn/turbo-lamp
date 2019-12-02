@@ -54,6 +54,11 @@ namespace Core._Party.Command
 
                     _context.Party.Add(party);
 
+                    party.PlayerParty.Add(new PlayerParty
+                    {
+                        PlayerId = dm.Id
+                    });
+
                     foreach (var source in command.Sources)
                     {
                         party.PartySource.Add(new PartySource
