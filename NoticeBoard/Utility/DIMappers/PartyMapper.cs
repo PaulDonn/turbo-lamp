@@ -17,6 +17,7 @@ namespace NoticeBoard.Utility.DIMappers
             services.AddTransient<ICommandHandler<CreatePartyCommand>, CreatePartyCommandHandler>();
 
             //Query Handlers
+            services.AddTransient<IQueryHandler<GetPartyQuery, PartyDTO>, GetPartyQueryHandler>();
             services.AddTransient<IQueryHandler<GetPlayerPartiesQuery, IEnumerable<PartyDTO>>, GetPlayerPartiesQueryHandler>();
             services.AddTransient<IQueryHandler<GetSourcesQuery, IEnumerable<SourceDTO>>, GetSourcesQueryHandler>();
             services.AddTransient<IQueryHandler<GetCharacterGenerationOptionsQuery, IEnumerable<CharacterGenerationMethodDTO>>, GetCharacterGenerationOptionsQueryHandler>();

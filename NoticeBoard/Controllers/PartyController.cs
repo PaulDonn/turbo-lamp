@@ -47,6 +47,11 @@ namespace NoticeBoard.Controllers
         {
             var model = _mapper.Map<List<PartyDTO>,List<PartyModel>>(SendQuery<GetPlayerPartiesQuery, IEnumerable<PartyDTO>>(new GetPlayerPartiesQuery()).ToList());
 
+            foreach(var party in model)
+            {
+                party.PartyId = Encrypt(party.Id.ToString());
+            }
+
             return View(model);
         }
 
@@ -76,11 +81,13 @@ namespace NoticeBoard.Controllers
             return RedirectToAction(nameof(Details));
         }
 
-        public IActionResult Details()
+        public IActionResult Details(string partyId)
         {
+            var id = Convert.ToInt32(Decrypt(partyId));
 
+            var model = _mapper.Map<PartyDTO, PartyModel>(SendQuery<GetPartyQuery, PartyDTO>(new GetPartyQuery { PartyId = Convert.ToInt32(id) }));
 
-            return View();
+            return View(model);
         }
 
     }

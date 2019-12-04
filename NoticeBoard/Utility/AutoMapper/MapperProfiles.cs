@@ -203,6 +203,8 @@ namespace NoticeBoard.Utility.AutoMapper
         {
             CreateMap<Party, PartyDTO>()
                 .ForMember(dest => dest.Sources, opts => opts.MapFrom(src => src.PartySource.Select(n => n.Source).ToList()))
+                .ForMember(dest => dest.Players, opts => opts.MapFrom(src => src.PlayerParty.Select(n => n.Player).ToList()))
+                .ForMember(dest => dest.PlayerCharacters, opts => opts.MapFrom(src => src.PlayerCharacter.ToList()))
                 .ForMember(dest => dest.CharacterGenerationMethod, opts => opts.MapFrom(src => src.CharacterGenerationMethod));
 
             CreateMap<PartyDTO, PartyModel>();

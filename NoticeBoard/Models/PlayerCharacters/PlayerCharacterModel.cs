@@ -43,11 +43,11 @@ namespace NoticeBoard.Models.PlayerCharacters
         {
             get
             {
-                if (LevelId >= 17) return 6;
-                if (LevelId >= 13) return 5;
-                if (LevelId >= 9) return 4;
-                if (LevelId >= 5) return 3;
-                if (LevelId >= 1) return 2;
+                if (Level >= 17) return 6;
+                if (Level >= 13) return 5;
+                if (Level >= 9) return 4;
+                if (Level >= 5) return 3;
+                if (Level >= 1) return 2;
                 return 0;
             }
         }
@@ -100,7 +100,7 @@ namespace NoticeBoard.Models.PlayerCharacters
         public string CharacterName { get; set; }
 
         [Display(Name = "Level")]
-        public int LevelId { get; set; }
+        public int Level { get; set; }
 
         public ClassModel PlayerClass { get; set; }
 

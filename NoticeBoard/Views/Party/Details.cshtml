@@ -1,0 +1,71 @@
+﻿@model NoticeBoard.Models.Party.PartyModel
+@{
+    ViewData["Title"] = "Party Details - " + Model.Name;
+}
+
+    <div class="row" style="padding-bottom:10px">
+        <div class="col-xl-4 col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="text-center">Player Characters</div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th width="25%">Name</th>
+                                <th width="20%">Race</th>
+                                <th width="20%">Class</th>
+                                <th width="15%">Level</th>
+                                <th width="20%">Player</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var character in Model.PlayerCharacters)
+                            {
+                            <tr>
+                                <td>@character.CharacterName</td>
+                                <td>@(character.SubRace?.Name ?? character.Race?.Name)</td>
+                                <td>@(character.Archetype?.Name ?? character.PlayerClass?.Name)</td>
+                                <td>@character.Level</td>
+                                <td>@character.Player.Name</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="text-center">Players</div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th width="50%">Name</th>
+                                <th width="50%">Email Address</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var player in Model.Players)
+                            {
+                                <tr>
+                                    <td>@player.Name</td>
+                                    <td>@player.EmailAddress</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+    </div>

@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="col-12">Class & Level</div>
-                            <label class="col-12"><strong>Lv @Model.LevelId @(Model.Archetype?.ShortName ?? @Model.PlayerClass.Name)</strong></label>
+                            <label class="col-12"><strong>Lv @Model.Level @(Model.Archetype?.ShortName ?? @Model.PlayerClass.Name)</strong></label>
                         </div>
                         <div class="col-4">
                             <div class="col-12">Background</div>
@@ -192,7 +192,7 @@
                                 <div class="col-6">
                                     <div class="card" style="margin-bottom:10px">
                                         <div class="card-body">
-                                            Maximum: @Model.LevelId d@(Model.PlayerClass.HitDie)
+                                            Maximum: @Model.Level d@(Model.PlayerClass.HitDie)
                                             <br />
                                             Current:
                                         </div>

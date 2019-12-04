@@ -18,7 +18,6 @@
                         this.selectionName = this.options[i].Name;
                         this.selectionDescription = this.options[i].Description;
                         this.selectionImagePath = this.options[i].ImagePath;
-                        $('#SelectedOptionId').val(this.selectionId);
                     }
                 }
             }

@@ -40,7 +40,7 @@ namespace Core.PlayerCharacters.DTO
 
         public ArchetypeDTO Archetype { get; set; }
 
-        public int LevelId { get; set; }
+        public int Level { get; set; }
 
         public BackgroundDTO Background { get; set; }
 
