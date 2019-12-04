@@ -1,4 +1,14 @@
 ﻿--Cantrips
+
+DECLARE @Abjuration int = (SELECT Id FROM SpellSchool WHERE Name = 'Abjuration')
+DECLARE @Conjuration int = (SELECT Id FROM SpellSchool WHERE Name = 'Conjuration')
+DECLARE @Divination int = (SELECT Id FROM SpellSchool WHERE Name = 'Divination')
+DECLARE @Enchantment int = (SELECT Id FROM SpellSchool WHERE Name = 'Enchantment')
+DECLARE @Evocation int = (SELECT Id FROM SpellSchool WHERE Name = 'Evocation')
+DECLARE @Illusion int = (SELECT Id FROM SpellSchool WHERE Name = 'Illusion')
+DECLARE @Necromancy int = (SELECT Id FROM SpellSchool WHERE Name = 'Necromancy')
+DECLARE @Transmutation int = (SELECT Id FROM SpellSchool WHERE Name = 'Transmutation')
+
 INSERT INTO [dbo].[Spell]
            ([Name]
            ,[SpellSchoolId]
@@ -16,34 +26,92 @@ INSERT INTO [dbo].[Spell]
            ,[HigherLevelDescription])
      VALUES
 
-	 --(''--Name
-     --      ,(SELECT Id FROM SpellSchool WHERE Name = '')--Spell School Id
-     --      ,''--Casting Time
-     --      ,''--Range
-     --      ,''--Duration
-	 --		 ,0--Requires Concentration
-     --      ,--Spell Level
-     --      ,0--Requires Verbal
-     --      ,0--Requires Somatic
-     --      ,0--Requires Material
-     --      ,null--Material Description
-	 --      ,0--Is Ritual
-     --      ,''--Description
-     --      ,null),--Higher Level Description
-
 --A--
 
-
+		   ('Acid Splash'--Name
+           ,@Conjuration--Spell School Id
+           ,'1 action'--Casting Time
+           ,'60 feet'--Range
+           ,'Instantaneous'--Duration
+		   ,0--RequiresConcentration
+           ,0--Spell Level
+           ,1--Requires Verbal
+           ,1--Requires Somatic
+           ,0--Requires Material
+           ,null--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,''),--Higher Level Description		   
+		   
 --B--
 
+		   ('Blade Ward'--Name
+           ,@Abjuration--Spell School Id
+           ,'1 action'--Casting Time
+           ,'Self'--Range
+           ,'1 round'--Duration
+		   ,0--RequiresConcentration
+           ,0--Spell Level
+           ,1--Requires Verbal
+           ,1--Requires Somatic
+           ,0--Requires Material
+           ,null--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,null),--Higher Level Description	
 
 --C--
 
+		   ('Chill Touch'--Name
+           ,@Necromancy--Spell School Id
+           ,'1 action'--Casting Time
+           ,'120 feet'--Range
+           ,'1 round'--Duration
+		   ,0--RequiresConcentration
+           ,0--Spell Level
+           ,1--Requires Verbal
+           ,1--Requires Somatic
+           ,0--Requires Material
+           ,null--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,''),--Higher Level Description
 
+--D--
+
+		   ('Dancing Lights'--Name
+           ,@Evocation--Spell School Id
+           ,'1 action'--Casting Time
+           ,'120 feet'--Range
+           ,'Up to 1 minute'--Duration
+		   ,1--RequiresConcentration
+           ,0--Spell Level
+           ,1--Requires Verbal
+           ,1--Requires Somatic
+           ,1--Requires Material
+           ,''--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,null),--Higher Level Description
+		   
+		   ('Druidcraft'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 action'--Casting Time
+           ,'30 feet'--Range
+           ,'Instantaneous'--Duration
+		   ,0--RequiresConcentration
+           ,0--Spell Level
+           ,1--Requires Verbal
+           ,1--Requires Somatic
+           ,0--Requires Material
+           ,null--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,null),--Higher Level Description
 --E--
 
            ('Eldritch Blast'--Name
-           ,(SELECT Id FROM SpellSchool WHERE Name = 'Evocation') --Spell School Id
+           ,@Evocation--Spell School Id
            ,'1 action'--Casting Time
            ,'120 feet'--Range
            ,'Instantaneous'--Duration
@@ -57,11 +125,10 @@ INSERT INTO [dbo].[Spell]
            ,'A beam of crackling energy streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 force damage.'--Description
            ,'The spell creates more than one beam when you reach higher levels: two beams at 5th level, three beams at 11th level, and four beams at 17th level. You can direct the beams at the same target or different ones. Make a seoarate attack roll for each beam.'),--Higher Level Description		   
 		   
-
 --F--
 
 		   ('Fire Bolt'--Name
-           ,(SELECT Id FROM SpellSchool WHERE Name = 'Evocation')--Spell School Id
+           ,@Evocation--Spell School Id
            ,'1 action'--Casting Time
            ,'120 feet'--Range
            ,'Instantaneous'--Duration
@@ -74,9 +141,37 @@ INSERT INTO [dbo].[Spell]
 		   ,0--Is Ritual
            ,'You hurl a mote of fire at a creature or object within range.  Make a ranged spell attack against the target.  On a hit, the target takes 1d10 fire damage.  A flammable object hit by this spell ignites if it isn''t being worn or carried.'--Description
            ,'This spell''s damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10).'),--Higher Level Description
-
+		   
+		   ('Friends'--Name
+           ,@Enchantment--Spell School Id
+           ,'1 action'--Casting Time
+           ,'Self'--Range
+           ,'Up to 1 minute'--Duration
+		   ,1--RequiresConcentration
+           ,0--Spell Level
+           ,0--Requires Verbal
+           ,1--Requires Somatic
+           ,1--Requires Material
+           ,''--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,null),--Higher Level Description
 --G--
 
+		   ('Guidance'--Name
+           ,@Divination--Spell School Id
+           ,'1 action'--Casting Time
+           ,'Touch'--Range
+           ,'Up to 1 minute'--Duration
+		   ,1--RequiresConcentration
+           ,0--Spell Level
+           ,1--Requires Verbal
+           ,1--Requires Somatic
+           ,0--Requires Material
+           ,null--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,null),--Higher Level Description
 
 --H--
 
@@ -93,7 +188,7 @@ INSERT INTO [dbo].[Spell]
 --L--
 
 		   ('Light'--Name
-           ,(SELECT Id FROM SpellSchool WHERE Name = 'Evocation')--Spell School Id
+           ,@Evocation--Spell School Id
            ,'1 action'--Casting Time
            ,'Touch'--Range
            ,'1 hour'--Duration
@@ -112,7 +207,7 @@ INSERT INTO [dbo].[Spell]
 --M--
 
 		   ('Mage Hand'--Name
-           ,(SELECT Id FROM SpellSchool WHERE Name = 'Conjuration')--Spell School Id
+           ,@Conjuration--Spell School Id
            ,'1 action'--Casting Time
            ,'30 feet'--Range
            ,'1 minute'--Duration
@@ -129,6 +224,51 @@ INSERT INTO [dbo].[Spell]
 		   
 		   The hand can''t attack, activate magic items, or carry more than 10 pounds.'--Description
            ,null),--Higher Level Description
+		   
+		   ('Mending'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 minute'--Casting Time
+           ,'Touch'--Range
+           ,'Instantaneous'--Duration
+		   ,0--RequiresConcentration
+           ,0--Spell Level
+           ,1--Requires Verbal
+           ,1--Requires Somatic
+           ,1--Requires Material
+           ,''--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,null),--Higher Level Description
+		   
+		   ('Message'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 action'--Casting Time
+           ,'120 feet'--Range
+           ,'1 round'--Duration
+		   ,0--RequiresConcentration
+           ,0--Spell Level
+           ,1--Requires Verbal
+           ,1--Requires Somatic
+           ,1--Requires Material
+           ,''--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,null),--Higher Level Description
+		   
+		   ('Minor Illusion'--Name
+           ,@Illusion--Spell School Id
+           ,'1 action'--Casting Time
+           ,'30 feet'--Range
+           ,'1 minute'--Duration
+		   ,0--RequiresConcentration
+           ,0--Spell Level
+           ,0--Requires Verbal
+           ,1--Requires Somatic
+           ,1--Requires Material
+           ,''--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,null),--Higher Level Description
 
 --N--
 
@@ -138,11 +278,26 @@ INSERT INTO [dbo].[Spell]
 
 --P--
 
-		   ('Prestidigitation'--Name
-           ,(SELECT Id FROM SpellSchool WHERE Name = 'Transmutation')--Spell School Id
+		   ('Poison Spray'--Name
+           ,@Conjuration--Spell School Id
            ,'1 action'--Casting Time
            ,'10 feet'--Range
-           ,'Up to 1 hour'--Duration
+           ,'Instantaneous'--Duration
+		   ,0--RequiresConcentration
+           ,0--Spell Level
+           ,1--Requires Verbal
+           ,1--Requires Somatic
+           ,0--Requires Material
+           ,null--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,null),--Higher Level Description
+
+		   ('Prestidigitation'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 action'--Casting Time
+           ,'10 feet'--Range
+           ,'1 hour'--Duration
 		   ,0--Requires Concentration
            ,0--Spell Level
            ,1--Requires Verbal
@@ -161,20 +316,123 @@ INSERT INTO [dbo].[Spell]
 		   
 		   If you cast this spell multiple times, you can have up to three of its non instantaneous effects active at a time, and you can dismiss such an effect as an action.'--Description
            ,null),--Higher Level Description
+		   
+		   ('Produce Flame'--Name
+           ,@Conjuration--Spell School Id
+           ,'1 action'--Casting Time
+           ,'Self'--Range
+           ,'10 minutes'--Duration
+		   ,0--RequiresConcentration
+           ,0--Spell Level
+           ,1--Requires Verbal
+           ,1--Requires Somatic
+           ,0--Requires Material
+           ,null--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,''),--Higher Level Description
 
 --Q--
 
 
 --R--
 
+		   ('Ray of Frost'--Name
+           ,@Evocation--Spell School Id
+           ,'1 action'--Casting Time
+           ,'60 feet'--Range
+           ,'Instantaneous'--Duration
+		   ,0--RequiresConcentration
+           ,0--Spell Level
+           ,1--Requires Verbal
+           ,1--Requires Somatic
+           ,0--Requires Material
+           ,null--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,''),--Higher Level Description
+
+		   ('Resistance'--Name
+           ,@Abjuration--Spell School Id
+           ,'1 action'--Casting Time
+           ,'Touch'--Range
+           ,'Up to 1 minute'--Duration
+		   ,1--RequiresConcentration
+           ,0--Spell Level
+           ,1--Requires Verbal
+           ,1--Requires Somatic
+           ,1--Requires Material
+           ,''--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,null),--Higher Level Description
 
 --S--
 
+		   ('Sacred Flame'--Name
+           ,@Evocation --Spell School Id
+           ,'1 action'--Casting Time
+           ,'60 feet'--Range
+           ,'Instantaneous'--Duration
+		   ,0--RequiresConcentration
+           ,0--Spell Level
+           ,1--Requires Verbal
+           ,1--Requires Somatic
+           ,0--Requires Material
+           ,null--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,null),--Higher Level Description
+		   
+		   ('Shillelagh'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 bonus action'--Casting Time
+           ,'Touch'--Range
+           ,'1 minute'--Duration
+		   ,0--RequiresConcentration
+           ,0--Spell Level
+           ,1--Requires Verbal
+           ,1--Requires Somatic
+           ,1--Requires Material
+           ,''--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,null),--Higher Level Description
+		   
+		   ('Shocking Grasp'--Name
+           ,@Evocation--Spell School Id
+           ,'1 action'--Casting Time
+           ,'Touch'--Range
+           ,'Instantaneous'--Duration
+		   ,0--RequiresConcentration
+           ,0--Spell Level
+           ,1--Requires Verbal
+           ,1--Requires Somatic
+           ,0--Requires Material
+           ,null--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,null),--Higher Level Description
+		   
+		   ('Spare the Dying'--Name
+           ,@Necromancy--Spell School Id
+           ,'1 action'--Casting Time
+           ,'Touch'--Range
+           ,'Instantaneous'--Duration
+		   ,0--RequiresConcentration
+           ,0--Spell Level
+           ,1--Requires Verbal
+           ,1--Requires Somatic
+           ,0--Requires Material
+           ,null--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,null),--Higher Level Description
 
 --T--
 
 		   ('Thaumaturgy'--Name
-           ,(SELECT Id FROM SpellSchool WHERE Name = 'Transmutation')--Spell School Id
+           ,@Transmutation--Spell School Id
            ,'1 action'--Casting Time
            ,'30 feet'--Range
            ,'1 minute'--Duration
@@ -195,13 +453,57 @@ INSERT INTO [dbo].[Spell]
 		   -You alter the appearance of your eyes for 1 minute.
 		   
 		   If you cast this spell multiple times, you can have up to three of its 1 minute effects active at a time, and you can dismiss such an effect as an action.'--Description
-           ,null)--Higher Level Description
+           ,null),--Higher Level Description
+		   
+		   ('Thorn Whip'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 action'--Casting Time
+           ,'30 feet'--Range
+           ,'Instantaneous'--Duration
+		   ,0--RequiresConcentration
+           ,0--Spell Level
+           ,1--Requires Verbal
+           ,1--Requires Somatic
+           ,1--Requires Material
+           ,''--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,''),--Higher Level Description
+		   
+		   ('True Strike'--Name
+           ,@Divination--Spell School Id
+           ,'1 action'--Casting Time
+           ,'30 feet'--Range
+           ,'Up to 1 round'--Duration
+		   ,1--RequiresConcentration
+           ,0--Spell Level
+           ,0--Requires Verbal
+           ,1--Requires Somatic
+           ,0--Requires Material
+           ,null--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,null),--Higher Level Description
 
 --U--
 
 
 --V--
 
+		   ('Vicious Mockery'--Name
+           ,@Enchantment--Spell School Id
+           ,'1 action'--Casting Time
+           ,'60 feet'--Range
+           ,'Instantaneous'--Duration
+		   ,0--RequiresConcentration
+           ,0--Spell Level
+           ,1--Requires Verbal
+           ,0--Requires Somatic
+           ,0--Requires Material
+           ,null--Material Description
+		   ,0--Is Ritual
+           ,''--Description
+           ,'')--Higher Level Description
 
 --W--
 

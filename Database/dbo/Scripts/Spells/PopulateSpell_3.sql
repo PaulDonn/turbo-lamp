@@ -1,4 +1,14 @@
 ﻿--Level 3
+
+DECLARE @Abjuration int = (SELECT Id FROM SpellSchool WHERE Name = 'Abjuration')
+DECLARE @Conjuration int = (SELECT Id FROM SpellSchool WHERE Name = 'Conjuration')
+DECLARE @Divination int = (SELECT Id FROM SpellSchool WHERE Name = 'Divination')
+DECLARE @Enchantment int = (SELECT Id FROM SpellSchool WHERE Name = 'Enchantment')
+DECLARE @Evocation int = (SELECT Id FROM SpellSchool WHERE Name = 'Evocation')
+DECLARE @Illusion int = (SELECT Id FROM SpellSchool WHERE Name = 'Illusion')
+DECLARE @Necromancy int = (SELECT Id FROM SpellSchool WHERE Name = 'Necromancy')
+DECLARE @Transmutation int = (SELECT Id FROM SpellSchool WHERE Name = 'Transmutation')
+
 INSERT INTO [dbo].[Spell]
            ([Name]
            ,[SpellSchoolId]
@@ -16,21 +26,6 @@ INSERT INTO [dbo].[Spell]
            ,[HigherLevelDescription])
      VALUES
 
-			--(''--Name
-   --        ,(SELECT Id FROM SpellSchool WHERE Name = '')--Spell School Id
-   --        ,''--Casting Time
-   --        ,''--Range
-   --        ,''--Duration
-	 	--   ,0--Requires Concentration
-   --        ,--Spell Level
-   --        ,0--Requires Verbal
-   --        ,0--Requires Somatic
-   --        ,0--Requires Material
-   --        ,null--Material Description
-	  --     ,0--Is Ritual
-   --        ,''--Description
-   --        ,null),--Higher Level Description
-
 --A--
 
 
@@ -40,7 +35,7 @@ INSERT INTO [dbo].[Spell]
 --C--
 
 			('Counterspell'--Name
-           ,(SELECT Id FROM SpellSchool WHERE Name = 'Abjuration')--Spell School Id
+           ,@Abjuration--Spell School Id
            ,'1 reaction'--Casting Time
            ,'60 feet'--Range
            ,'Instantaneous'--Duration
@@ -63,7 +58,7 @@ INSERT INTO [dbo].[Spell]
 --F--
 
 			('Fireball'--Name
-           ,(SELECT Id FROM SpellSchool WHERE Name = 'Evocation')--Spell School Id
+           ,@Evocation--Spell School Id
            ,'1 action'--Casting Time
            ,'150 feet'--Range
            ,'Instantaneous'--Duration
@@ -80,7 +75,7 @@ INSERT INTO [dbo].[Spell]
            ,'When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d6 for each slot level above 3rd.'),--Higher Level Description
 
 		    ('Fly'--Name
-           ,(SELECT Id FROM SpellSchool WHERE Name = 'Transmutation')--Spell School Id
+           ,@Transmutation--Spell School Id
            ,'1 action'--Casting Time
            ,'Touch'--Range
            ,'Up to 10 minutes'--Duration
@@ -100,7 +95,7 @@ INSERT INTO [dbo].[Spell]
 --H--
 
 			('Haste'--Name
-           ,(SELECT Id FROM SpellSchool WHERE Name = 'Transmutation')--Spell School Id
+           ,@Transmutation--Spell School Id
            ,'1 action'--Casting Time
            ,'30 feet'--Range
            ,'Up to 1 minute'--Duration
@@ -158,7 +153,7 @@ INSERT INTO [dbo].[Spell]
 --V--
 
 			('Vampiric Touch'--Name
-           ,(SELECT Id FROM SpellSchool WHERE Name = 'Necromancy')--Spell School Id
+           ,@Necromancy--Spell School Id
            ,'1 action'--Casting Time
            ,'Self'--Range
            ,'Up to 1 minute'--Duration

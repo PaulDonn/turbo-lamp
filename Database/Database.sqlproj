@@ -71,6 +71,7 @@
     <None Include="dbo\Scripts\PopulateSource.sql" />
     <None Include="dbo\Scripts\Features\Class\PopulateFeature_Rogue.sql" />
     <None Include="dbo\Scripts\PopulateCharacterGenerationMethod.sql" />
+    <None Include="dbo\Scripts\Spells\PopulateSpellList_Wizard.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Scripts\PopulateAbility.sql" />
@@ -187,5 +188,13 @@
     <None Include="dbo\Scripts\Spells\PopulateSpellSchool.sql" />
     <Build Include="dbo\Tables\dbo.CharacterGenrationMethod.sql" />
     <Build Include="dbo\Tables\dbo.PlayerParty.Table.sql" />
+    <None Include="dbo\Scripts\Spells\PopulateSpellList.sql" />
+    <None Include="dbo\Scripts\Spells\PopulateSpellList_Warlock.sql" />
+    <None Include="dbo\Scripts\Spells\PopulateSpellList_Sorceror.sql" />
+    <None Include="dbo\Scripts\Spells\PopulateSpellList_Ranger.sql" />
+    <None Include="dbo\Scripts\Spells\PopulateSpellList_Paladin.sql" />
+    <None Include="dbo\Scripts\Spells\PopulateSpellList_Druid.sql" />
+    <None Include="dbo\Scripts\Spells\PopulateSpellList_Bard.sql" />
+    <None Include="dbo\Scripts\Spells\PopulateSpellList_Cleric.sql" />
   </ItemGroup>
 </Project>
