@@ -28,16 +28,178 @@ INSERT INTO [dbo].[Spell]
 
 --A--
 
+('Arcane Eye'--Name
+           ,@Divination--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
+
+('Aura of Life'--Name
+           ,@Abjuration--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,0--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
+
+('Aura of Purity'--Name
+           ,@Abjuration--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,0--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
 
 --B--
 			
+('Banishment'--Name
+           ,@Abjuration--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
+
+('Blight'--Name
+           ,@Necromancy--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
 
 --C--
 
+('Compulsion'--Name
+           ,@Enchantment--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
+
+('Confusion'--Name
+           ,@Enchantment--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
+
+('Conjure Minor Elementals'--Name
+           ,@Conjuration--Spell School Id
+           ,'1 minute'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
+
+('Conjure Woodland Beings'--Name
+           ,@Conjuration--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
+
+('Control Water'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
 
 --D--
 
-			('Dimension Door'--Name
+('Death Ward'--Name
+           ,@Abjuration--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
+
+('Dimension Door'--Name
            ,@Conjuration--Spell School Id
            ,'1 action'--Casting Time
            ,'500 feet'--Range
@@ -55,6 +217,36 @@ INSERT INTO [dbo].[Spell]
 		   
 		   If you would arrive in a place already occupied by an object or a creature, you and any creature traveling with you each take 4d6 force damage, and the spell fails to teleport you.'--Description
            ,null),--Higher Level Description
+
+('Divination'--Name
+           ,@Divination--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,1--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
+
+('Dominate Beast'--Name
+           ,@Enchantment--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
 
 --E--
 
@@ -79,37 +271,246 @@ INSERT INTO [dbo].[Spell]
 
 --F--
 
+('Fabricate'--Name
+           ,@Transmutation--Spell School Id
+           ,'10 minutes'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
+
+('Fire Shield'--Name
+           ,@Evocation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
+
+('Freedom of Movement'--Name
+           ,@Abjuration--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
 
 --G--
 
+('Giant Insect'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
+
+('Grasping Vine'--Name
+           ,@Conjuration--Spell School Id
+           ,'1 bonus action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
+
+('Greater Invisibility'--Name
+           ,@Illusion--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
+
+('Guardian of Faith'--Name
+           ,@Conjuration--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,0--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
 
 --H--
 
+('Hallucinatory Terrain'--Name
+           ,@Illusion--Spell School Id
+           ,'10 minutes'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
 
 --I--
 
-
---J--
-
-
---K--
-
+('Ice Storm'--Name
+           ,@Evocation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
 
 --L--
 
+('Leomund''s Secret Chest'--Name
+           ,@Conjuration--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
+
+('Locate Creature'--Name
+           ,@Divination--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
 
 --M--
 
+('Mordenkainen''s Faithful Hound'--Name
+           ,@Conjuration--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
 
---N--
-
+('Mordenkainen''s Private Sanctum'--Name
+           ,@Abjuration--Spell School Id
+           ,'10 minutes'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
 
 --O--
 
+('Otiluke''s Resilient Sphere'--Name
+           ,@Evocation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
 
 --P--
 
-			('Polymorph'--Name
+('Phantasmal Killer'--Name
+           ,@Illusion--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
+
+('Polymorph'--Name
            ,@Transmutation--Spell School Id
            ,'1 action'--Casting Time
            ,'60 feet'--Range
@@ -130,36 +531,70 @@ INSERT INTO [dbo].[Spell]
 		   The creature is limited in the actions it can perform by the nature of its new form, and it can''t speak, cast spells, or take any other action that requires hands or speech.
 		   
 		   The target''s gear melds into the new form. The creature can''t activate, use, wield, or otherwise benefit from any of its equipment.'--Description
-           ,null)--Higher Level Description
-
---Q--
-
-
---R--
-
+           ,null),--Higher Level Description
 
 --S--
 
+('Staggering Smite'--Name
+           ,@Evocation--Spell School Id
+           ,'1 bonus action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,0--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
 
---T--
+('Stone Shape'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
 
-
---U--
-
-
---V--
-
+('Stoneskin'--Name
+           ,@Abjuration--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null),--Higher Level Description
 
 --W--
 
-
---X--
-
-
---Y--
-
-
---Z--
-
+('Wall of Fire'--Name
+           ,@Evocation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,4--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null)--Higher Level Description
 
 GO

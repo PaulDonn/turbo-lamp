@@ -689,9 +689,6 @@ INSERT INTO [dbo].[Spell]
           ,''--Description
           ,null),--Higher Level Description
 
---K--
-
-
 --L--
 
 ('Longstrider'--Name
@@ -741,12 +738,6 @@ INSERT INTO [dbo].[Spell]
            ,'You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals 1d4 + 1 force damage to its target. The darts all strike simultaneously, and you can direct them to hit one creature or several.'--Description
            ,'When you cast this spell using a spell slot of 2nd level or higher, the spell creates one more dart for each slot level above 1st.'),--Higher Level Description
 
---N--
-
-
---O--
-
-
 --P--
 
 ('Protection from Evil and Good'--Name
@@ -778,9 +769,6 @@ INSERT INTO [dbo].[Spell]
           ,1--Is Ritual
           ,''--Description
           ,null),--Higher Level Description
-
---Q--
-
 
 --R--
 
@@ -987,9 +975,6 @@ INSERT INTO [dbo].[Spell]
           ,''--Description
           ,null),--Higher Level Description
 
---V--
-
-
 --W--
 
 ('Witch Bolt'--Name
@@ -1021,14 +1006,5 @@ INSERT INTO [dbo].[Spell]
           ,0--Is Ritual
           ,''--Description
           ,null)--Higher Level Description
-
---X--
-
-
---Y--
-
-
---Z--
-
 
 GO

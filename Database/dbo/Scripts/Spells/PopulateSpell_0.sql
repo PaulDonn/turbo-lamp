@@ -28,7 +28,7 @@ INSERT INTO [dbo].[Spell]
 
 --A--
 
-		   ('Acid Splash'--Name
+('Acid Splash'--Name
            ,@Conjuration--Spell School Id
            ,'1 action'--Casting Time
            ,'60 feet'--Range
@@ -45,7 +45,7 @@ INSERT INTO [dbo].[Spell]
 		   
 --B--
 
-		   ('Blade Ward'--Name
+('Blade Ward'--Name
            ,@Abjuration--Spell School Id
            ,'1 action'--Casting Time
            ,'Self'--Range
@@ -62,7 +62,7 @@ INSERT INTO [dbo].[Spell]
 
 --C--
 
-		   ('Chill Touch'--Name
+('Chill Touch'--Name
            ,@Necromancy--Spell School Id
            ,'1 action'--Casting Time
            ,'120 feet'--Range
@@ -79,7 +79,7 @@ INSERT INTO [dbo].[Spell]
 
 --D--
 
-		   ('Dancing Lights'--Name
+('Dancing Lights'--Name
            ,@Evocation--Spell School Id
            ,'1 action'--Casting Time
            ,'120 feet'--Range
@@ -94,7 +94,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Description
            ,null),--Higher Level Description
 		   
-		   ('Druidcraft'--Name
+('Druidcraft'--Name
            ,@Transmutation--Spell School Id
            ,'1 action'--Casting Time
            ,'30 feet'--Range
@@ -110,7 +110,7 @@ INSERT INTO [dbo].[Spell]
            ,null),--Higher Level Description
 --E--
 
-           ('Eldritch Blast'--Name
+('Eldritch Blast'--Name
            ,@Evocation--Spell School Id
            ,'1 action'--Casting Time
            ,'120 feet'--Range
@@ -127,7 +127,7 @@ INSERT INTO [dbo].[Spell]
 		   
 --F--
 
-		   ('Fire Bolt'--Name
+('Fire Bolt'--Name
            ,@Evocation--Spell School Id
            ,'1 action'--Casting Time
            ,'120 feet'--Range
@@ -142,7 +142,7 @@ INSERT INTO [dbo].[Spell]
            ,'You hurl a mote of fire at a creature or object within range.  Make a ranged spell attack against the target.  On a hit, the target takes 1d10 fire damage.  A flammable object hit by this spell ignites if it isn''t being worn or carried.'--Description
            ,'This spell''s damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10).'),--Higher Level Description
 		   
-		   ('Friends'--Name
+('Friends'--Name
            ,@Enchantment--Spell School Id
            ,'1 action'--Casting Time
            ,'Self'--Range
@@ -158,7 +158,7 @@ INSERT INTO [dbo].[Spell]
            ,null),--Higher Level Description
 --G--
 
-		   ('Guidance'--Name
+('Guidance'--Name
            ,@Divination--Spell School Id
            ,'1 action'--Casting Time
            ,'Touch'--Range
@@ -173,21 +173,9 @@ INSERT INTO [dbo].[Spell]
            ,''--Description
            ,null),--Higher Level Description
 
---H--
-
-
---I--
-
-
---J--
-
-
---K--
-
-
 --L--
 
-		   ('Light'--Name
+('Light'--Name
            ,@Evocation--Spell School Id
            ,'1 action'--Casting Time
            ,'Touch'--Range
@@ -206,7 +194,7 @@ INSERT INTO [dbo].[Spell]
 
 --M--
 
-		   ('Mage Hand'--Name
+('Mage Hand'--Name
            ,@Conjuration--Spell School Id
            ,'1 action'--Casting Time
            ,'30 feet'--Range
@@ -225,7 +213,7 @@ INSERT INTO [dbo].[Spell]
 		   The hand can''t attack, activate magic items, or carry more than 10 pounds.'--Description
            ,null),--Higher Level Description
 		   
-		   ('Mending'--Name
+('Mending'--Name
            ,@Transmutation--Spell School Id
            ,'1 minute'--Casting Time
            ,'Touch'--Range
@@ -240,7 +228,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Description
            ,null),--Higher Level Description
 		   
-		   ('Message'--Name
+('Message'--Name
            ,@Transmutation--Spell School Id
            ,'1 action'--Casting Time
            ,'120 feet'--Range
@@ -255,7 +243,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Description
            ,null),--Higher Level Description
 		   
-		   ('Minor Illusion'--Name
+('Minor Illusion'--Name
            ,@Illusion--Spell School Id
            ,'1 action'--Casting Time
            ,'30 feet'--Range
@@ -270,15 +258,9 @@ INSERT INTO [dbo].[Spell]
            ,''--Description
            ,null),--Higher Level Description
 
---N--
-
-
---O--
-
-
 --P--
 
-		   ('Poison Spray'--Name
+('Poison Spray'--Name
            ,@Conjuration--Spell School Id
            ,'1 action'--Casting Time
            ,'10 feet'--Range
@@ -293,7 +275,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Description
            ,null),--Higher Level Description
 
-		   ('Prestidigitation'--Name
+('Prestidigitation'--Name
            ,@Transmutation--Spell School Id
            ,'1 action'--Casting Time
            ,'10 feet'--Range
@@ -317,7 +299,7 @@ INSERT INTO [dbo].[Spell]
 		   If you cast this spell multiple times, you can have up to three of its non instantaneous effects active at a time, and you can dismiss such an effect as an action.'--Description
            ,null),--Higher Level Description
 		   
-		   ('Produce Flame'--Name
+('Produce Flame'--Name
            ,@Conjuration--Spell School Id
            ,'1 action'--Casting Time
            ,'Self'--Range
@@ -332,12 +314,9 @@ INSERT INTO [dbo].[Spell]
            ,''--Description
            ,''),--Higher Level Description
 
---Q--
-
-
 --R--
 
-		   ('Ray of Frost'--Name
+('Ray of Frost'--Name
            ,@Evocation--Spell School Id
            ,'1 action'--Casting Time
            ,'60 feet'--Range
@@ -352,7 +331,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Description
            ,''),--Higher Level Description
 
-		   ('Resistance'--Name
+('Resistance'--Name
            ,@Abjuration--Spell School Id
            ,'1 action'--Casting Time
            ,'Touch'--Range
@@ -369,7 +348,7 @@ INSERT INTO [dbo].[Spell]
 
 --S--
 
-		   ('Sacred Flame'--Name
+('Sacred Flame'--Name
            ,@Evocation --Spell School Id
            ,'1 action'--Casting Time
            ,'60 feet'--Range
@@ -384,7 +363,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Description
            ,null),--Higher Level Description
 		   
-		   ('Shillelagh'--Name
+('Shillelagh'--Name
            ,@Transmutation--Spell School Id
            ,'1 bonus action'--Casting Time
            ,'Touch'--Range
@@ -399,7 +378,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Description
            ,null),--Higher Level Description
 		   
-		   ('Shocking Grasp'--Name
+('Shocking Grasp'--Name
            ,@Evocation--Spell School Id
            ,'1 action'--Casting Time
            ,'Touch'--Range
@@ -414,7 +393,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Description
            ,null),--Higher Level Description
 		   
-		   ('Spare the Dying'--Name
+('Spare the Dying'--Name
            ,@Necromancy--Spell School Id
            ,'1 action'--Casting Time
            ,'Touch'--Range
@@ -431,7 +410,7 @@ INSERT INTO [dbo].[Spell]
 
 --T--
 
-		   ('Thaumaturgy'--Name
+('Thaumaturgy'--Name
            ,@Transmutation--Spell School Id
            ,'1 action'--Casting Time
            ,'30 feet'--Range
@@ -455,7 +434,7 @@ INSERT INTO [dbo].[Spell]
 		   If you cast this spell multiple times, you can have up to three of its 1 minute effects active at a time, and you can dismiss such an effect as an action.'--Description
            ,null),--Higher Level Description
 		   
-		   ('Thorn Whip'--Name
+('Thorn Whip'--Name
            ,@Transmutation--Spell School Id
            ,'1 action'--Casting Time
            ,'30 feet'--Range
@@ -470,7 +449,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Description
            ,''),--Higher Level Description
 		   
-		   ('True Strike'--Name
+('True Strike'--Name
            ,@Divination--Spell School Id
            ,'1 action'--Casting Time
            ,'30 feet'--Range
@@ -485,12 +464,9 @@ INSERT INTO [dbo].[Spell]
            ,''--Description
            ,null),--Higher Level Description
 
---U--
-
-
 --V--
 
-		   ('Vicious Mockery'--Name
+('Vicious Mockery'--Name
            ,@Enchantment--Spell School Id
            ,'1 action'--Casting Time
            ,'60 feet'--Range
@@ -504,18 +480,5 @@ INSERT INTO [dbo].[Spell]
 		   ,0--Is Ritual
            ,''--Description
            ,'')--Higher Level Description
-
---W--
-
-
---X--
-
-
---Y--
-
-
---Z--
-
-
 
 GO
