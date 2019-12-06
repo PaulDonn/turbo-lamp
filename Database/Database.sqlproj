@@ -60,18 +60,28 @@
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\Scripts" />
     <Folder Include="dbo\Scripts\Features" />
-    <Folder Include="dbo\Scripts\Features\Race" />
-    <Folder Include="dbo\Scripts\Features\Class" />
     <Folder Include="dbo\Scripts\Equipment" />
     <Folder Include="dbo\Scripts\Spells" />
+    <Folder Include="dbo\Scripts\Spells\PHB" />
+    <Folder Include="dbo\Scripts\Features\PHB" />
+    <Folder Include="dbo\Scripts\Features\PHB\Class" />
+    <Folder Include="dbo\Scripts\Features\PHB\Race" />
+    <Folder Include="dbo\Scripts\Equipment\PHB" />
+    <Folder Include="dbo\Scripts\Race" />
+    <Folder Include="dbo\Scripts\Class" />
+    <Folder Include="dbo\Scripts\Class\PHB" />
+    <Folder Include="dbo\Scripts\Race\PHB" />
+    <Folder Include="dbo\Scripts\Background" />
+    <Folder Include="dbo\Scripts\Background\PHB" />
+    <Folder Include="dbo\Scripts\Treasure" />
+    <Folder Include="dbo\Scripts\Treasure\PHB" />
+    <Folder Include="dbo\Scripts\Spells\XGtE" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Database.publish.xml" />
     <None Include="dbo\Scripts\PopulateTestPCs.sql" />
     <None Include="dbo\Scripts\PopulateSource.sql" />
-    <None Include="dbo\Scripts\Features\Class\PopulateFeature_Rogue.sql" />
     <None Include="dbo\Scripts\PopulateCharacterGenerationMethod.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpellList_Wizard.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Scripts\PopulateAbility.sql" />
@@ -102,30 +112,11 @@
     <None Include="dbo\Scripts\PopulateAlignment.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="dbo\Scripts\PopulateClass.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="dbo\Scripts\PopulateRace.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="dbo\Scripts\PopulateBackground.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="dbo\Scripts\PopulateArchetype.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="dbo\Scripts\PopulateSubRace.sql" />
-  </ItemGroup>
-  <ItemGroup>
     <Build Include="dbo\Tables\dbo.Language.Table.sql" />
     <Build Include="dbo\Tables\dbo.PcLanguage.Table.sql" />
     <Build Include="dbo\Tables\dbo.RaceLanguage.Table.sql" />
-    <None Include="dbo\Scripts\PopulateLanguage.sql" />
-    <None Include="dbo\Scripts\PopulateRaceLanguage.sql" />
     <Build Include="dbo\Tables\dbo.BgSkill.Table.sql" />
     <Build Include="dbo\Tables\dbo.ClassSkill.Table.sql" />
-    <None Include="dbo\Scripts\PopulateClassSkill.sql" />
-    <None Include="dbo\Scripts\PopulateBgSkill.sql" />
     <Build Include="dbo\Tables\dbo.PcSavingThrow.Table.sql" />
     <Build Include="dbo\Tables\dbo.Player.Table.sql" />
     <Build Include="dbo\Tables\dbo.SpellSchool.Table.sql" />
@@ -149,52 +140,81 @@
     <Build Include="dbo\Tables\dbo.RaceFeature.Table.sql" />
     <Build Include="dbo\Tables\dbo.Source,Table.sql" />
     <Build Include="dbo\Tables\dbo.PartySource.Table.sql" />
-    <None Include="dbo\Scripts\Features\PopulateFeature.sql" />
-    <None Include="dbo\Scripts\Features\Race\PopulateFeature_Tiefling.sql" />
-    <None Include="dbo\Scripts\Features\Race\PopulateFeature_Human.sql" />
-    <None Include="dbo\Scripts\Features\Race\PopulateFeature_HalfOrc.sql" />
-    <None Include="dbo\Scripts\Features\Race\PopulateFeature_Halfling.sql" />
-    <None Include="dbo\Scripts\Features\Race\PopulateFeature_HalfElf.sql" />
-    <None Include="dbo\Scripts\Features\Race\PopulateFeature_Gnome.sql" />
-    <None Include="dbo\Scripts\Features\Race\PopulateFeature_Elf.sql" />
-    <None Include="dbo\Scripts\Features\Race\PopulateFeature_Dwarf.sql" />
-    <None Include="dbo\Scripts\Features\Race\PopulateFeature_Dragonborn.sql" />
-    <None Include="dbo\Scripts\Features\Class\PopulateFeature_Fighter.sql" />
-    <None Include="dbo\Scripts\Features\Class\PopulateFeature_Wizard.sql" />
-    <None Include="dbo\Scripts\Features\Class\PopulateFeature_Sorceror.sql" />
-    <None Include="dbo\Scripts\Equipment\PopulateEquipment_Armor.sql" />
-    <None Include="dbo\Scripts\Equipment\PopulateEquipment_ArmorPlus1.sql" />
-    <None Include="dbo\Scripts\Equipment\PopulateEquipment_ArmorPlus2.sql" />
-    <None Include="dbo\Scripts\Equipment\PopulateEquipment_ArmorPlus3.sql" />
-    <None Include="dbo\Scripts\Equipment\PopulateEquipment_Clothing.sql" />
-    <None Include="dbo\Scripts\Equipment\PopulateEquipment_Weapons.sql" />
-    <None Include="dbo\Scripts\Equipment\PopulateEquipment_WeaponsPlus1.sql" />
-    <None Include="dbo\Scripts\Equipment\PopulateEquipment_WeaponsPlus2.sql" />
-    <None Include="dbo\Scripts\Equipment\PopulateEquipment_WeaponsPlus3.sql" />
-    <None Include="dbo\Scripts\Equipment\PopulateEquipmentType.sql" />
-    <None Include="dbo\Scripts\Equipment\PopulateWeaponType.sql" />
-    <None Include="dbo\Scripts\Equipment\PopulateArmorType.sql" />
-    <None Include="dbo\Scripts\Equipment\PopulateTreasure.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpell_0.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpell_1.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpell_2.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpell_3.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpell_4.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpell_5.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpell_6.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpell_7.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpell_8.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpell_9.sql" />
     <None Include="dbo\Scripts\Spells\PopulateSpellSchool.sql" />
     <Build Include="dbo\Tables\dbo.CharacterGenrationMethod.sql" />
     <Build Include="dbo\Tables\dbo.PlayerParty.Table.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpellList.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpellList_Warlock.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpellList_Sorceror.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpellList_Ranger.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpellList_Paladin.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpellList_Druid.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpellList_Bard.sql" />
-    <None Include="dbo\Scripts\Spells\PopulateSpellList_Cleric.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpell_0.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpell_1.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpell_2.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpell_3.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpell_4.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpell_5.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpell_6.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpell_7.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpell_8.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpell_9.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpellList_Bard.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpellList_Cleric.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpellList_Druid.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpellList_Paladin.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpellList_Ranger.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpellList_Sorceror.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpellList_Warlock.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpellList_Wizard.sql" />
+    <None Include="dbo\Scripts\Spells\PHB\PopulateSpellList.sql" />
+    <None Include="dbo\Scripts\Features\PHB\Class\PopulateFeature_Fighter.sql" />
+    <None Include="dbo\Scripts\Features\PHB\Class\PopulateFeature_Rogue.sql" />
+    <None Include="dbo\Scripts\Features\PHB\Class\PopulateFeature_Sorceror.sql" />
+    <None Include="dbo\Scripts\Features\PHB\Class\PopulateFeature_Wizard.sql" />
+    <None Include="dbo\Scripts\Features\PHB\Race\PopulateFeature_Dragonborn.sql" />
+    <None Include="dbo\Scripts\Features\PHB\Race\PopulateFeature_Dwarf.sql" />
+    <None Include="dbo\Scripts\Features\PHB\Race\PopulateFeature_Elf.sql" />
+    <None Include="dbo\Scripts\Features\PHB\Race\PopulateFeature_Gnome.sql" />
+    <None Include="dbo\Scripts\Features\PHB\Race\PopulateFeature_HalfElf.sql" />
+    <None Include="dbo\Scripts\Features\PHB\Race\PopulateFeature_Halfling.sql" />
+    <None Include="dbo\Scripts\Features\PHB\Race\PopulateFeature_HalfOrc.sql" />
+    <None Include="dbo\Scripts\Features\PHB\Race\PopulateFeature_Human.sql" />
+    <None Include="dbo\Scripts\Features\PHB\Race\PopulateFeature_Tiefling.sql" />
+    <None Include="dbo\Scripts\Features\PHB\PopulateFeature.sql" />
+    <None Include="dbo\Scripts\Equipment\PHB\PopulateArmorType.sql" />
+    <None Include="dbo\Scripts\Equipment\PHB\PopulateEquipment_Armor.sql" />
+    <None Include="dbo\Scripts\Equipment\PHB\PopulateEquipment_ArmorPlus1.sql" />
+    <None Include="dbo\Scripts\Equipment\PHB\PopulateEquipment_ArmorPlus2.sql" />
+    <None Include="dbo\Scripts\Equipment\PHB\PopulateEquipment_ArmorPlus3.sql" />
+    <None Include="dbo\Scripts\Equipment\PHB\PopulateEquipment_Clothing.sql" />
+    <None Include="dbo\Scripts\Equipment\PHB\PopulateEquipment_Weapons.sql" />
+    <None Include="dbo\Scripts\Equipment\PHB\PopulateEquipment_WeaponsPlus1.sql" />
+    <None Include="dbo\Scripts\Equipment\PHB\PopulateEquipment_WeaponsPlus2.sql" />
+    <None Include="dbo\Scripts\Equipment\PHB\PopulateEquipment_WeaponsPlus3.sql" />
+    <None Include="dbo\Scripts\Equipment\PHB\PopulateEquipmentType.sql" />
+    <None Include="dbo\Scripts\Equipment\PHB\PopulateWeaponType.sql" />
+    <None Include="dbo\Scripts\Class\PHB\PopulateClass.sql" />
+    <None Include="dbo\Scripts\Class\PHB\PopulateClassSkill.sql" />
+    <None Include="dbo\Scripts\Class\PHB\PopulateArchetype.sql" />
+    <None Include="dbo\Scripts\Background\PHB\PopulateBgSkill.sql" />
+    <None Include="dbo\Scripts\Background\PHB\PopulateBackground.sql" />
+    <None Include="dbo\Scripts\Race\PHB\PopulateRace.sql" />
+    <None Include="dbo\Scripts\Race\PHB\PopulateRaceLanguage.sql" />
+    <None Include="dbo\Scripts\Race\PHB\PopulateSubRace.sql" />
+    <None Include="dbo\Scripts\Race\PHB\PopulateLanguage.sql" />
+    <None Include="dbo\Scripts\Treasure\PHB\PopulateTreasure.sql" />
+    <None Include="dbo\Scripts\Spells\XGtE\PopulateSpell_0.sql" />
+    <None Include="dbo\Scripts\Spells\XGtE\PopulateSpell_1.sql" />
+    <None Include="dbo\Scripts\Spells\XGtE\PopulateSpell_2.sql" />
+    <None Include="dbo\Scripts\Spells\XGtE\PopulateSpell_3.sql" />
+    <None Include="dbo\Scripts\Spells\XGtE\PopulateSpell_4.sql" />
+    <None Include="dbo\Scripts\Spells\XGtE\PopulateSpell_5.sql" />
+    <None Include="dbo\Scripts\Spells\XGtE\PopulateSpell_6.sql" />
+    <None Include="dbo\Scripts\Spells\XGtE\PopulateSpell_7.sql" />
+    <None Include="dbo\Scripts\Spells\XGtE\PopulateSpell_8.sql" />
+    <None Include="dbo\Scripts\Spells\XGtE\PopulateSpell_9.sql" />
+    <None Include="dbo\Scripts\Spells\XGtE\PopulateSpellList_Bard.sql" />
+    <None Include="dbo\Scripts\Spells\XGtE\PopulateSpellList_Cleric.sql" />
+    <None Include="dbo\Scripts\Spells\XGtE\PopulateSpellList_Druid.sql" />
+    <None Include="dbo\Scripts\Spells\XGtE\PopulateSpellList_Paladin.sql" />
+    <None Include="dbo\Scripts\Spells\XGtE\PopulateSpellList_Ranger.sql" />
+    <None Include="dbo\Scripts\Spells\XGtE\PopulateSpellList_Sorceror.sql" />
+    <None Include="dbo\Scripts\Spells\XGtE\PopulateSpellList_Warlock.sql" />
+    <None Include="dbo\Scripts\Spells\XGtE\PopulateSpellList_Wizard.sql" />
   </ItemGroup>
 </Project>
