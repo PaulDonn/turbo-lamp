@@ -88,6 +88,15 @@ Post-Deployment Script Template
 --XGtE--
 
 :r .\Spells\XGtE\"PopulateSpell_0.sql"
+:r .\Spells\XGtE\"PopulateSpell_1.sql"
+:r .\Spells\XGtE\"PopulateSpell_2.sql"
+:r .\Spells\XGtE\"PopulateSpell_3.sql"
+:r .\Spells\XGtE\"PopulateSpell_4.sql"
+:r .\Spells\XGtE\"PopulateSpell_5.sql"
+:r .\Spells\XGtE\"PopulateSpell_6.sql"
+:r .\Spells\XGtE\"PopulateSpell_7.sql"
+:r .\Spells\XGtE\"PopulateSpell_8.sql"
+:r .\Spells\XGtE\"PopulateSpell_9.sql"
 
 
 --Test Data

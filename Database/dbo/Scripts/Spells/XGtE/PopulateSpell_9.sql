@@ -25,10 +25,56 @@ INSERT INTO [dbo].[Spell]
            ,[MaterialDescription]
 		   ,[IsRitual]
            ,[Description]
-           ,[HigherLevelDescription])
+           ,[HigherLevelDescription]
+		   ,[SourceId])
      VALUES
 
---A--
+('Invulnerability'--Name
+           ,@Abjuration--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,9--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
 
+('Mass Polymorph'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,9--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Psychic Scream'--Name
+           ,@Enchantment--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,9--Spell Level
+          ,0--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source)--Source
 
 GO

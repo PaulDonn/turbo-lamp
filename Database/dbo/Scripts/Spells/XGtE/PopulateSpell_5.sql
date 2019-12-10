@@ -25,10 +25,249 @@ INSERT INTO [dbo].[Spell]
            ,[MaterialDescription]
 		   ,[IsRitual]
            ,[Description]
-           ,[HigherLevelDescription])
+           ,[HigherLevelDescription]
+		   ,[SourceId])
      VALUES
 
---A--
+('Danse Macabre'--Name
+           ,@Necromancy--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,5--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Dawn'--Name
+           ,@Evocation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,5--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Enervation'--Name
+           ,@Necromancy--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,5--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Far Step'--Name
+           ,@Conjuration--Spell School Id
+           ,'1 bonus action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,5--Spell Level
+          ,1--Requires Verbal
+          ,0--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Holy Weapon'--Name
+           ,@Evocation--Spell School Id
+           ,'1 bonus action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,5--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Immolation'--Name
+           ,@Evocation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,5--Spell Level
+          ,1--Requires Verbal
+          ,0--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Infernal Calling'--Name
+           ,@Conjuration--Spell School Id
+           ,'1 minute'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,5--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Maelstrom'--Name
+           ,@Evocation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,5--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Negative Energy Flood'--Name
+           ,@Necromancy--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,5--Spell Level
+          ,1--Requires Verbal
+          ,0--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Skill Empowerment'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,5--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Steel Wind Strike'--Name
+           ,@Conjuration--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,5--Spell Level
+          ,0--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Synaptic Static'--Name
+           ,@Enchantment--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,5--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Transmute Rock'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,5--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Wall of Light'--Name
+           ,@Evocation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,5--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Wrath of Nature'--Name
+           ,@Evocation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,5--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source)--Source
 
 
 GO

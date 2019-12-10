@@ -25,10 +25,200 @@ INSERT INTO [dbo].[Spell]
            ,[MaterialDescription]
 		   ,[IsRitual]
            ,[Description]
-           ,[HigherLevelDescription])
+           ,[HigherLevelDescription]
+		   ,[SourceId])
      VALUES
 
---A--
+('Bones of the Earth'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,6--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
 
+('Create Homunculus'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 hour'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,6--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Druid Grove'--Name
+           ,@Abjuration--Spell School Id
+           ,'10 minutes'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,6--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Investiture of Flame'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,6--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Investiture of Ice'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,6--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Investiture of Stone'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,6--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Investiture of Wind'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,6--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Mental Prison'--Name
+           ,@Illusion--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,6--Spell Level
+          ,0--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Primordial Ward'--Name
+           ,@Abjuration--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,6--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Scatter'--Name
+           ,@Abjuration--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,6--Spell Level
+          ,1--Requires Verbal
+          ,0--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Soul Cage'--Name
+           ,@Necromancy--Spell School Id
+           ,'1 reaction'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,6--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Tenser''s Transformation'--Name
+           ,@Transmutation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,6--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source)--Source
 
 GO

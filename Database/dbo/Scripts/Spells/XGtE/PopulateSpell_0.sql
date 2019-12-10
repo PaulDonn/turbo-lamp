@@ -37,14 +37,14 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,9--Spell Level
+          ,0--Spell Level
           ,0--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
           ,null--Material Description
           ,0--Is Ritual
           ,''--Description
-         ,''--Higher Level Description		
+         ,null--Higher Level Description		
          ,@Source),--Source
 
 ('Create Bonfire'--Name
@@ -53,14 +53,14 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,9--Spell Level
+          ,0--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
           ,null--Material Description
           ,0--Is Ritual
           ,''--Description
-         ,''--Higher Level Description		
+         ,null--Higher Level Description		
          ,@Source),--Source
 		 
 --F--
@@ -71,14 +71,14 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,9--Spell Level
+          ,0--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
           ,null--Material Description
           ,0--Is Ritual
           ,''--Description
-         ,''--Higher Level Description		
+         ,null--Higher Level Description		
          ,@Source),--Source
 		 
 --G--
@@ -89,14 +89,14 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,9--Spell Level
+          ,0--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
           ,null--Material Description
           ,0--Is Ritual
           ,''--Description
-         ,''--Higher Level Description		
+         ,null--Higher Level Description		
          ,@Source),--Source
 		 
 --I--
@@ -107,14 +107,14 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,9--Spell Level
+          ,0--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
           ,''--Material Description
           ,0--Is Ritual
           ,''--Description
-         ,''--Higher Level Description		
+         ,null--Higher Level Description		
          ,@Source),--Source
 		 
 --M--
@@ -125,14 +125,14 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,9--Spell Level
+          ,0--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
           ,null--Material Description
           ,0--Is Ritual
           ,''--Description
-         ,''--Higher Level Description		
+         ,null--Higher Level Description		
          ,@Source),--Source
 
 ('Mold Earth'--Name
@@ -141,14 +141,14 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,9--Spell Level
+          ,0--Spell Level
           ,0--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
           ,null--Material Description
           ,0--Is Ritual
           ,''--Description
-         ,''--Higher Level Description		
+         ,null--Higher Level Description		
          ,@Source),--Source
 		 
 --P--
@@ -159,14 +159,14 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,9--Spell Level
+          ,0--Spell Level
           ,0--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
           ,null--Material Description
           ,0--Is Ritual
           ,''--Description
-         ,''--Higher Level Description		
+         ,null--Higher Level Description		
          ,@Source),--Source
 		 
 --T--
@@ -177,14 +177,14 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,9--Spell Level
+          ,0--Spell Level
           ,0--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
           ,null--Material Description
           ,0--Is Ritual
           ,''--Description
-         ,''--Higher Level Description		
+         ,null--Higher Level Description		
          ,@Source),--Source
 
 ('Toll the Dead'--Name
@@ -193,14 +193,14 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,9--Spell Level
+          ,0--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
           ,null--Material Description
           ,0--Is Ritual
           ,''--Description
-         ,''--Higher Level Description		
+         ,null--Higher Level Description		
          ,@Source),--Source
 		 
 --W--
@@ -211,14 +211,14 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,9--Spell Level
+          ,0--Spell Level
           ,1--Requires Verbal
           ,0--Requires Somatic
           ,1--Requires Material
           ,''--Material Description
           ,0--Is Ritual
           ,''--Description
-         ,''--Higher Level Description		
+         ,null--Higher Level Description		
          ,@Source)--Source
 
 GO

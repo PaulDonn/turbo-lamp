@@ -25,10 +25,72 @@ INSERT INTO [dbo].[Spell]
            ,[MaterialDescription]
 		   ,[IsRitual]
            ,[Description]
-           ,[HigherLevelDescription])
+           ,[HigherLevelDescription]
+		   ,[SourceId])
      VALUES
 
---C--
+('Crown of Stars'--Name
+           ,@Evocation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,7--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
 
+('Power Word Pain'--Name
+           ,@Enchantment--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,7--Spell Level
+          ,1--Requires Verbal
+          ,0--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Temple of the Gods'--Name
+           ,@Conjuration--Spell School Id
+           ,'1 hour'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,7--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Whirlwind'--Name
+           ,@Evocation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,7--Spell Level
+          ,1--Requires Verbal
+          ,0--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source)--Source
 
 GO

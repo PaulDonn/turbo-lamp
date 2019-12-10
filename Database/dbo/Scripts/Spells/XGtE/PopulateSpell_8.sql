@@ -25,10 +25,72 @@ INSERT INTO [dbo].[Spell]
            ,[MaterialDescription]
 		   ,[IsRitual]
            ,[Description]
-           ,[HigherLevelDescription])
+           ,[HigherLevelDescription]
+		   ,[SourceId])
      VALUES
 
---A--
+('Abi-Dalzim''s Horrid Wilting'--Name
+           ,@Necromancy--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,8--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
 
+('Illusory Dragon'--Name
+           ,@Illusion--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,8--Spell Level
+          ,0--Requires Verbal
+          ,1--Requires Somatic
+          ,0--Requires Material
+          ,null--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Maddening Darkness'--Name
+           ,@Evocation--Spell School Id
+           ,'1 action'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,1--RequiresConcentration
+          ,8--Spell Level
+          ,1--Requires Verbal
+          ,0--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source),--Source
+
+('Mighty Fortress'--Name
+           ,@Conjuration--Spell School Id
+           ,'1 minute'--Casting Time
+           ,''--Range
+           ,''--Duration
+          ,0--RequiresConcentration
+          ,8--Spell Level
+          ,1--Requires Verbal
+          ,1--Requires Somatic
+          ,1--Requires Material
+          ,''--Material Description
+          ,0--Is Ritual
+          ,''--Description
+          ,null--Higher Level Description		
+         ,@Source)--Source
 
 GO
