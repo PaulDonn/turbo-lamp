@@ -203,12 +203,37 @@
 	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Sequester')),
 	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Simulacrum')),
 	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Symbol')),
-	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Teleport'))
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Teleport')),
 
 
 		   --Level 8--
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Antimagic Field')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Antipathy/Sympathy')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Clone')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Control Weather')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Demiplane')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Dominate Monster')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Feeblemind')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Incendiary Cloud')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Maze')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Mind Blank')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Power Word Stun')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Sunburst')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Telepathy')),
 
 
 		   --Level 9--
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Astral Projection')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Foresight')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Gate')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Imprisonment')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Meteor Swarm')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Power Word Kill')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Prismatic Wall')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Shapechange')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Time Stop')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'True Polymorph')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Weird')),
+	       (8, (SELECT TOP(1) [Id] FROM [dbo].[Spell] WHERE [Name] = 'Wish'))
 
 GO

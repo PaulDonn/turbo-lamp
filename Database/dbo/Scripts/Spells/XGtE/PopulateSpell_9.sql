@@ -10,6 +10,7 @@ DECLARE @Necromancy int = (SELECT Id FROM SpellSchool WHERE Name = 'Necromancy')
 DECLARE @Transmutation int = (SELECT Id FROM SpellSchool WHERE Name = 'Transmutation')
 
 DECLARE @Source int = (SELECT Id FROM Source WHERE [Code] = 'XGtE')
+DECLARE @SpellLevel int = 9
 
 INSERT INTO [dbo].[Spell]
            ([Name]
@@ -35,7 +36,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,9--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -51,7 +52,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,9--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -67,7 +68,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,9--Spell Level
+          ,@SpellLevel--Spell Level
           ,0--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material

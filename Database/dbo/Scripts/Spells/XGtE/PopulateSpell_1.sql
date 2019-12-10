@@ -10,6 +10,7 @@ DECLARE @Necromancy int = (SELECT Id FROM SpellSchool WHERE Name = 'Necromancy')
 DECLARE @Transmutation int = (SELECT Id FROM SpellSchool WHERE Name = 'Transmutation')
 
 DECLARE @Source int = (SELECT Id FROM Source WHERE [Code] = 'XGtE')
+DECLARE @SpellLevel int = 1
 
 INSERT INTO [dbo].[Spell]
            ([Name]

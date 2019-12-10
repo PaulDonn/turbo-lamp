@@ -9,6 +9,8 @@ DECLARE @Illusion int = (SELECT Id FROM SpellSchool WHERE Name = 'Illusion')
 DECLARE @Necromancy int = (SELECT Id FROM SpellSchool WHERE Name = 'Necromancy')
 DECLARE @Transmutation int = (SELECT Id FROM SpellSchool WHERE Name = 'Transmutation')
 
+DECLARE @SpellLevel int = 2
+
 INSERT INTO [dbo].[Spell]
            ([Name]
            ,[SpellSchoolId]
@@ -34,7 +36,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -49,7 +51,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
@@ -64,7 +66,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -79,7 +81,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -94,7 +96,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -111,7 +113,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -126,7 +128,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,0--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
@@ -141,7 +143,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,0--Requires Somatic
           ,0--Requires Material
@@ -156,7 +158,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,0--Requires Somatic
           ,0--Requires Material
@@ -171,7 +173,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,0--Requires Somatic
           ,0--Requires Material
@@ -187,7 +189,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
@@ -202,7 +204,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -217,7 +219,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -232,7 +234,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -247,7 +249,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
@@ -264,7 +266,7 @@ INSERT INTO [dbo].[Spell]
            ,'60 feet'--Range
            ,'Up to 10 minutes'--Duration
 	 	   ,1--Requires Concentration
-           ,2--Spell Level
+           ,@SpellLevel--Spell Level
            ,1--Requires Verbal
            ,0--Requires Somatic
            ,1--Requires Material
@@ -283,7 +285,7 @@ INSERT INTO [dbo].[Spell]
            ,'Touch'--Range
            ,'8 hours'--Duration
 	 	   ,0--Requires Concentration
-           ,2--Spell Level
+           ,@SpellLevel--Spell Level
            ,1--Requires Verbal
            ,1--Requires Somatic
            ,1--Requires Material
@@ -298,7 +300,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -315,7 +317,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -330,7 +332,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -345,7 +347,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
@@ -362,7 +364,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
@@ -377,7 +379,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
@@ -392,7 +394,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -407,7 +409,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -424,7 +426,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -439,7 +441,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -456,7 +458,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -471,7 +473,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -488,7 +490,7 @@ INSERT INTO [dbo].[Spell]
            ,'Touch'--Range
            ,'Up to 1 hour'--Duration
 	 	   ,1--Requires Concentration
-           ,2--Spell Level
+           ,@SpellLevel--Spell Level
            ,1--Requires Verbal
            ,1--Requires Somatic
            ,1--Requires Material
@@ -505,7 +507,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,0--Requires Somatic
           ,0--Requires Material
@@ -522,7 +524,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
@@ -537,7 +539,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -552,7 +554,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -567,7 +569,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -584,7 +586,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -599,7 +601,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
@@ -614,7 +616,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -629,7 +631,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
@@ -644,7 +646,7 @@ INSERT INTO [dbo].[Spell]
            ,'Self'--Range
            ,'Instantaneous'--Duration
 	 	   ,0--Requires Concentration
-           ,2--Spell Level
+           ,@SpellLevel--Spell Level
            ,1--Requires Verbal
            ,0--Requires Somatic
            ,0--Requires Material
@@ -659,7 +661,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -676,7 +678,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -693,7 +695,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -708,7 +710,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -723,7 +725,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,0--Requires Somatic
           ,0--Requires Material
@@ -738,7 +740,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
@@ -755,7 +757,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
@@ -770,7 +772,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -787,7 +789,7 @@ INSERT INTO [dbo].[Spell]
            ,'120 feet'--Range
            ,'Instantaneous'--Duration
 	 	   ,0--Requires Concentration
-           ,2--Spell Level
+           ,@SpellLevel--Spell Level
            ,1--Requires Verbal
            ,1--Requires Somatic
            ,0--Requires Material
@@ -804,7 +806,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -819,7 +821,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -834,7 +836,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
@@ -849,7 +851,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -864,7 +866,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -879,7 +881,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
@@ -894,7 +896,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,0--Requires Somatic
           ,1--Requires Material
@@ -911,7 +913,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -926,7 +928,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,1--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,1--Requires Material
@@ -943,7 +945,7 @@ INSERT INTO [dbo].[Spell]
            ,''--Range
            ,''--Duration
           ,0--RequiresConcentration
-          ,2--Spell Level
+          ,@SpellLevel--Spell Level
           ,1--Requires Verbal
           ,1--Requires Somatic
           ,0--Requires Material
