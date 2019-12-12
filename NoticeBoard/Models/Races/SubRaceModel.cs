@@ -24,5 +24,7 @@ namespace NoticeBoard.Models.Races
         public int RaceId { get; set; }
 
         public List<FeatureModel> Features { get; set; }
+
+        public string ImagePath { get; set; }
     }
 }

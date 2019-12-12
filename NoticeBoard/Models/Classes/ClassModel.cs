@@ -33,5 +33,7 @@ namespace NoticeBoard.Models.Classes
         public AbilityModel SpellcastingAbility { get; set; }
 
         public List<FeatureModel> Features { get; set; }
+
+        public string ImagePath { get; set; }
     }
 }

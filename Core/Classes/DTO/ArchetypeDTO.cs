@@ -21,5 +21,7 @@ namespace Core.Classes.DTO
         public int ClassId { get; set; }
 
         public List<FeatureDTO> Features { get; set; }
+
+        public string ImagePath { get; set; }
     }
 }

@@ -29,18 +29,18 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <div class="row">
-                                <div class="text-center">{{ selectionName }}</div>
+                                <h3>{{ selectionName }}</h3>
                             </div>
                             <div class="row">
-                                <div>{{ selectionDescription }}</div>
+                                <div v-html="selectionDescription">{{ selectionDescription }}</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4">
-                    <div class="card">
+                    <div class="card h-100">
                         <div class="card-body">
-                            <img class="resize" :src="'/img/race/' + selectionImagePath" />
+                            <img v-if="selectionImagePath" class="resize" :src="'/img/race/' + selectionImagePath" />
                         </div>
                     </div>
                 </div>

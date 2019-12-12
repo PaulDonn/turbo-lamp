@@ -19,5 +19,7 @@ namespace Core.Races.DTO
         public int RaceId { get; set; }
 
         public List<FeatureDTO> Features { get; set; }
+
+        public string ImagePath { get; set; }
     }
 }

@@ -30,5 +30,7 @@ namespace Core.Classes.DTO
         public AbilityDTO SpellcastingAbility { get; set; }
 
         public List<FeatureDTO> Features { get; set; }
+
+        public string ImagePath { get; set; }
     }
 }

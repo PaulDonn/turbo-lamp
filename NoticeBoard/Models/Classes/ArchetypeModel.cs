@@ -27,5 +27,7 @@ namespace NoticeBoard.Models.Classes
         public int ClassId { get; set; }
 
         public List<FeatureModel> Features { get; set; }
+
+        public string ImagePath { get; set; }
     }
 }
