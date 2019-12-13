@@ -42,7 +42,6 @@ namespace Core.Classes.Query
                 var archetypes = _context.Archetype.Where(n => n.ClassId == query.ClassId &&
                                                                n.Class.ArchetypeStartingLevel == query.Level &&
                                                                partySources.Contains(n.SourceId))
-                                                   .Include(n => n.ClassFeature)
                                                    .OrderBy(n => n.Name);
 
                 foreach (var archetype in archetypes)

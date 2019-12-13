@@ -6,11 +6,10 @@
 
 <div id="NewCharacterVue">
     @Html.HiddenFor(model => model.Options)
-    @Html.HiddenFor(model => model.PartyId)
     @using (Html.BeginForm("SelectBackground", "PlayerCharacter", "POST"))
     {
         @Html.HiddenFor(model => model.PcId)
-        @Html.HiddenFor(model => model.SelectedOptionId)
+        @Html.HiddenFor(model => model.PartyId)
         <div class="row h-100">
             <div class="col-xl-4">
                 <div class="card">
@@ -18,7 +17,7 @@
                         @foreach (var background in Model.OptionModels)
                         {
                             <div>
-                                <input id="Background" v-model="selectionId" v-on:change="OnSelection()" type="radio" name="background" value="@background.Id">
+                                <input asp-for="SelectedOptionId" type="radio" value="@background.Id" v-model="selectionId" v-on:change="OnSelection()">
                                 <label>@background.Name</label>
                             </div>
                         }
@@ -30,10 +29,10 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <div class="row">
-                            <div class="text-center">{{ selectionName }}</div>
+                            <h3 class="text-center">{{ selectionName }}</h3>
                         </div>
                         <div class="row">
-                            <div>{{ selectionDescription }}</div>
+                            <div v-html="selectionDescription">{{ selectionDescription }}</div>
                         </div>
                     </div>
                 </div>
@@ -41,7 +40,9 @@
             <div class="col-xl-4">
                 <div class="card">
                     <div class="card-body">
-                        <img class="resize" :src="'/img/background/' + selectionImagePath" />
+                        <div class="text-center">
+                            <img style="max-width:65%;" class="resize" v-if="selectionImagePath" :src="'/img/background/' + selectionImagePath" />
+                        </div>
                     </div>
                 </div>
             </div>

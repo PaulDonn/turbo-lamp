@@ -14,6 +14,7 @@ namespace DataModel
             Class = new HashSet<Class>();
             Equipment = new HashSet<Equipment>();
             Feature = new HashSet<Feature>();
+            Language = new HashSet<Language>();
             PartySource = new HashSet<PartySource>();
             Race = new HashSet<Race>();
             Spell = new HashSet<Spell>();
@@ -40,6 +41,8 @@ namespace DataModel
         public virtual ICollection<Equipment> Equipment { get; set; }
         [InverseProperty("Source")]
         public virtual ICollection<Feature> Feature { get; set; }
+        [InverseProperty("Source")]
+        public virtual ICollection<Language> Language { get; set; }
         [InverseProperty("Source")]
         public virtual ICollection<PartySource> PartySource { get; set; }
         [InverseProperty("Source")]

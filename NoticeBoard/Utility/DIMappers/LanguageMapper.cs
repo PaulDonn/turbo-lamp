@@ -16,6 +16,7 @@ namespace NoticeBoard.Utility.DIMappers
             services.AddTransient<IQueryHandler<GetLanguageQuery, LanguageDTO>, GetLanguageQueryHandler>();
             services.AddTransient<IQueryHandler<GetLanguagesQuery, IEnumerable<LanguageDTO>>, GetLanguagesQueryHandler>();
             services.AddTransient<IQueryHandler<GetPcLanguagesQuery, PcLanguagesDTO>, GetPcLanguagesQueryHandler>();
+            services.AddTransient<IQueryHandler<GetLanguageOptionsQuery, PlayerLanguagesDTO>, GetLanguageOptionsQueryHandler>();
         }
     }
 }

@@ -14,7 +14,7 @@ INSERT INTO [dbo].[Party]
            ('The Undateables',
 		    'A band of misfits leaving either salvation or devestation their wake.
 			
-			These daring advernturers have saved the mining town of Phandalin from a villainous sorceror, freed the city of Waterdeep from the clutches of a coven of Hags, and defeated the mighty Remorhaz in the ancestral home of a great Dwarven clan. They have also banished a shopkeeper to oblivion, helped in the revival of a crime lord and unleashed two demonic princes upon the material plane.',
+			These daring advernturers have saved the mining town of Phandalin from a villainous sorcerer, freed the city of Waterdeep from the clutches of a coven of Hags, and defeated the mighty Remorhaz in the ancestral home of a great Dwarven clan. They have also banished a shopkeeper to oblivion, helped in the revival of a crime lord and unleashed two demonic princes upon the material plane.',
 		    (SELECT TOP(1) Id FROM Player WHERE [Name] = 'Paul'),
 			1,
 			1)

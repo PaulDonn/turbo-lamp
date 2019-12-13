@@ -241,7 +241,7 @@ namespace DataModel
             modelBuilder.Entity<Feature>(entity =>
             {
                 entity.HasIndex(e => e.Code)
-                    .HasName("UQ__Feature__A25C5AA713800978")
+                    .HasName("UQ__Feature__A25C5AA7D83BE15D")
                     .IsUnique();
 
                 entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
@@ -256,6 +256,14 @@ namespace DataModel
             modelBuilder.Entity<Language>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
+
+                entity.HasOne(d => d.Source)
+                    .WithMany(p => p.Language)
+                    .HasForeignKey(d => d.SourceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Language_Source");
             });
 
             modelBuilder.Entity<Party>(entity =>
@@ -428,7 +436,7 @@ namespace DataModel
             modelBuilder.Entity<Player>(entity =>
             {
                 entity.HasIndex(e => e.UserId)
-                    .HasName("UQ__Player__1788CC4D659FD22A")
+                    .HasName("UQ__Player__1788CC4D71867009")
                     .IsUnique();
             });
 
@@ -556,7 +564,7 @@ namespace DataModel
             modelBuilder.Entity<Source>(entity =>
             {
                 entity.HasIndex(e => e.Code)
-                    .HasName("UQ__Source__A25C5AA760D55742")
+                    .HasName("UQ__Source__A25C5AA775B36B95")
                     .IsUnique();
 
                 entity.Property(e => e.Id).ValueGeneratedNever();

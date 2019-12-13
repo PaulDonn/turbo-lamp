@@ -40,7 +40,9 @@
             <div class="col-xl-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <img class="resize" v-if="selectionImagePath" :src="'/img/race/' + selectionImagePath" />
+                        <div class="text-center">
+                            <img style="max-width:65%;" class="resize" v-if="selectionImagePath" :src="'/img/race/' + selectionImagePath" />
+                        </div>
                     </div>
                 </div>
             </div>

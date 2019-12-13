@@ -216,5 +216,6 @@
     <None Include="dbo\Scripts\Spells\XGtE\PopulateSpellList_Sorceror.sql" />
     <None Include="dbo\Scripts\Spells\XGtE\PopulateSpellList_Warlock.sql" />
     <None Include="dbo\Scripts\Spells\XGtE\PopulateSpellList_Wizard.sql" />
+    <None Include="dbo\Scripts\Features\PHB\PopulateFeature_Backgrounds.sql" />
   </ItemGroup>
 </Project>

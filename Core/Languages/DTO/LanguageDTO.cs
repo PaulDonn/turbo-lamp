@@ -11,5 +11,7 @@
         public string Script { get; set; }
 
         public bool IsExotic { get; set; }
+
+        public bool IsMandatory { get; set; }
     }
 }

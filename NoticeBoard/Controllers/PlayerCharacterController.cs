@@ -22,6 +22,7 @@ using Microsoft.Extensions.Configuration;
 using NoticeBoard.Models.Alignments;
 using NoticeBoard.Models.Backgrounds;
 using NoticeBoard.Models.Classes;
+using NoticeBoard.Models.Languages;
 using NoticeBoard.Models.PlayerCharacters;
 using NoticeBoard.Models.Races;
 using NoticeBoard.Models.Shared;
@@ -191,7 +192,11 @@ namespace NoticeBoard.Controllers
 
         public IActionResult SelectAlignment(string pcId, int partyId)
         {
-            var model = new RadioSelectModel<AlignmentModel> { PcId = pcId, PartyId = partyId };
+            var model = new RadioSelectModel<AlignmentModel> 
+            { 
+                PcId = pcId, 
+                PartyId = partyId 
+            };
 
             var query = new GetAlignmentsQuery();
 
@@ -205,9 +210,36 @@ namespace NoticeBoard.Controllers
         {
             var pcId = Convert.ToInt32(Decrypt(model.PcId));
 
-            SendCommand(new SetPCAlignmentCommand { PcId = pcId, AlignmentId = model.SelectedOptionId });
+            SendCommand(new SetPCAlignmentCommand 
+            { 
+                PcId = pcId, 
+                AlignmentId = model.SelectedOptionId 
+            });
 
-            throw new NotImplementedException();
+            return RedirectToAction(nameof(SelectLanguages), new { model.PcId, model.PartyId });
+        }
+
+        public IActionResult SelectLanguages(string pcId, int partyId)
+        {
+            var query = new GetLanguageOptionsQuery 
+            { 
+                PcId = Convert.ToInt32(Decrypt(pcId)), 
+                PartyId = partyId 
+            };
+
+            var model = _mapper.Map<PlayerLanguagesDTO, SelectLanguagesModel>(SendQuery<GetLanguageOptionsQuery, PlayerLanguagesDTO>(query));
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult SelectLanguages(SelectLanguagesModel model)
+        {
+            var pcId = Convert.ToInt32(Decrypt(model.PcId));
+
+            SendCommand(new SetPCLanguagesCommand { PcId = pcId, Languages = model.Languages.Select(n => n.Id).ToList() });
+
+            return RedirectToAction(nameof(Index), nameof(HomeController));
         }
 
         #region Create Ajax calls

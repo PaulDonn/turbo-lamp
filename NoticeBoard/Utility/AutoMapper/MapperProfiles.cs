@@ -19,6 +19,7 @@ using NoticeBoard.Models.Backgrounds;
 using NoticeBoard.Models.Classes;
 using NoticeBoard.Models.Equipment;
 using NoticeBoard.Models.Features;
+using NoticeBoard.Models.Languages;
 using NoticeBoard.Models.Party;
 using NoticeBoard.Models.Player;
 using NoticeBoard.Models.PlayerCharacters;
@@ -197,6 +198,10 @@ namespace NoticeBoard.Utility.AutoMapper
         private void LanguageMaps()
         {
             CreateMap<Language, LanguageDTO>();
+            CreateMap<LanguageDTO, LanguageModel>()
+                .ForMember(dest => dest.IsSelected, opts => opts.MapFrom(src => src.IsMandatory));
+            CreateMap<PlayerLanguagesDTO, SelectLanguagesModel>()
+                .ForMember(dest => dest.Languages, opts => opts.MapFrom(src => src.Languages));
         }
 
         private void PartyMaps()

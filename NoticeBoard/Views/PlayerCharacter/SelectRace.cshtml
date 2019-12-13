@@ -4,49 +4,51 @@
     ViewData["Title"] = "New Character - Race";
 }
 
-    <div id="NewCharacterVue">
-        @Html.HiddenFor(model => model.Options)
-        @using (Html.BeginForm("SelectRace", "PlayerCharacter", "POST"))
-        {
-            @Html.HiddenFor(model => model.PcId)
-            @Html.HiddenFor(model => model.PartyId)
-            <div class="row h-100">
-                <div class="col-xl-4">
-                    <div class="card">
-                        <div class="card-body">
-                            @foreach (var race in Model.OptionModels)
-                            {
-                                    <div>
-                                        <input asp-for="SelectedOptionId" type="radio" value="@race.Id" v-model="selectionId" v-on:change="OnSelection()">
-                                        <label>@race.Name</label>
-                                    </div>
-                            }
-                            <input class="btn btn-primary" type="submit" :disabled="selectionId <= 0" />
-                        </div>
+<div id="NewCharacterVue">
+    @Html.HiddenFor(model => model.Options)
+    @using (Html.BeginForm("SelectRace", "PlayerCharacter", "POST"))
+    {
+        @Html.HiddenFor(model => model.PcId)
+        @Html.HiddenFor(model => model.PartyId)
+        <div class="row h-100">
+            <div class="col-xl-4">
+                <div class="card">
+                    <div class="card-body">
+                        @foreach (var race in Model.OptionModels)
+                        {
+                            <div>
+                                <input asp-for="SelectedOptionId" type="radio" value="@race.Id" v-model="selectionId" v-on:change="OnSelection()">
+                                <label>@race.Name</label>
+                            </div>
+                        }
+                        <input class="btn btn-primary" type="submit" :disabled="selectionId <= 0" />
                     </div>
                 </div>
-                <div class="col-xl-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="row">
-                                <h3>{{ selectionName }}</h3>
-                            </div>
-                            <div class="row">
-                                <div v-html="selectionDescription">{{ selectionDescription }}</div>
-                            </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row">
+                            <h3>{{ selectionName }}</h3>
                         </div>
-                    </div>
-                </div>
-                <div class="col-xl-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <img v-if="selectionImagePath" class="resize" :src="'/img/race/' + selectionImagePath" />
+                        <div class="row">
+                            <div v-html="selectionDescription">{{ selectionDescription }}</div>
                         </div>
                     </div>
                 </div>
             </div>
-        }
-    </div>
+            <div class="col-xl-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img style="max-width:65%;" v-if="selectionImagePath" class="resize" :src="'/img/race/' + selectionImagePath" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 @section Scripts {
     <script src="~/js/NewCharacter.js" type="text/javascript"></script>
 }

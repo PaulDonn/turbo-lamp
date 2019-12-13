@@ -33,7 +33,8 @@ namespace Core.PlayerCharacters.Command
                 var pc = new PlayerCharacter
                 {
                     PartyId = command.PartyId,
-                    PlayerId = player.Id
+                    PlayerId = player.Id,
+                    Level = 1
                 };
 
                 _context.PlayerCharacter.Add(pc);

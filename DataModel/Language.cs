@@ -25,7 +25,11 @@ namespace DataModel
         [StringLength(50)]
         public string Script { get; set; }
         public bool IsExotic { get; set; }
+        public int SourceId { get; set; }
 
+        [ForeignKey(nameof(SourceId))]
+        [InverseProperty("Language")]
+        public virtual Source Source { get; set; }
         [InverseProperty("Language")]
         public virtual ICollection<PcLanguage> PcLanguage { get; set; }
         [InverseProperty("Language")]

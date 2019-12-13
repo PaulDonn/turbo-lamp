@@ -54,6 +54,7 @@ Post-Deployment Script Template
 :r .\Background\PHB\"PopulateBgSkill.sql"
 
 :r .\Features\PHB\"PopulateFeature.sql"
+:r .\Features\PHB\"PopulateFeature_Backgrounds.sql"
 
 :r .\Features\PHB\Race\"PopulateFeature_Dragonborn.sql"
 :r .\Features\PHB\Race\"PopulateFeature_Dwarf.sql"
