@@ -9,22 +9,23 @@
 		   ),
            ('Flexible Casting'--<Name, nvarchar(50),>
            ,'You can use your sorcery points to gain additional spell slots, or sacrifice spell slots to gain additional sorcery points. You learn other ways to use your sorcery points as you reach higher levels.
-		   
-		   -Creating Spell Slots. You can transform unexpended sorcery points into one spell slot as a bonus action on your turn. The Creating Spell Slots table shows the cost of creating a spell slot of a given level. You can create spell slots no higher in level than 5th.
-		   
-		   2 Sorcery Points => Level 1 Spell Slot
-		   3 Sorcery Points => Level 2 Spell Slot
-		   5 Sorcery Points => Level 3 Spell Slot
-		   6 Sorcery Points => Level 4 Spell Slot
-		   7 Sorcery Points => Level 5 Spell Slot
-		   
-		   Converting a Spell Slot to Sorcery Points. As a bonus action on your turn, you can expend one spell slot and gain a number of sorcery points equal to the slot''s level.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/><strong>Creating Spell Slots</strong>
+		   <br/>You can transform unexpended sorcery points into one spell slot as a bonus action on your turn. The Creating Spell Slots table shows the cost of creating a spell slot of a given level. You can create spell slots no higher in level than 5th.
+		   <br/>
+		   <br/>2 Sorcery Points => Level 1 Spell Slot
+		   <br/>3 Sorcery Points => Level 2 Spell Slot
+		   <br/>5 Sorcery Points => Level 3 Spell Slot
+		   <br/>6 Sorcery Points => Level 4 Spell Slot
+		   <br/>7 Sorcery Points => Level 5 Spell Slot
+		   <br/>
+		   <br/>Converting a Spell Slot to Sorcery Points. As a bonus action on your turn, you can expend one spell slot and gain a number of sorcery points equal to the slot''s level.'--<Description, nvarchar(max),>
            ,'Sorceror_FlexibleCasting'--<Code, nvarchar(50),>
 		   ),
            ('Metamagic'--<Name, nvarchar(50),>
            ,'At 3rd level, you gain the ability to twist your spells to suit your needs. You gain two of the following Metamagic options of your choice. You gain another one at 10th and 17th level.
-		   
-		   You can use only one Metamagic option on a spell when you cast it, unless otherwise noted.'--<Description, nvarchar(max),>
+		    <br/>
+		    <br/>You can use only one Metamagic option on a spell when you cast it, unless otherwise noted.'--<Description, nvarchar(max),>
            ,'Sorceror_Metamagic'--<Code, nvarchar(50),>
 		   ),
            ('Sorcerous Restoration'--<Name, nvarchar(50),>
@@ -37,14 +38,14 @@
 		   ),
            ('Distant Spell'--<Name, nvarchar(50),>
            ,'When you cast a spell that has a range of 5 feet or greater, you can spend 1 sorcery point to double the range of the spell.
-		   
-		   When you cast a spell that has a range of touch, you can spend 1 sorcery point to make the range of the spell 30 feet.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>When you cast a spell that has a range of touch, you can spend 1 sorcery point to make the range of the spell 30 feet.'--<Description, nvarchar(max),>
            ,'Metamagic_DistantSpell'--<Code, nvarchar(50),>
 		   ),
            ('Empowered Spell'--<Name, nvarchar(50),>
            ,'When you roll damage for a spell, you can spend 1 sorcery point to reroll a number of the damage dice up to your Charisma modifier (minimum of one). You must use the new rolls.
-		   
-		   You can use Empowered Spell even if you have already used a different Metamagic option during the casting of the spell.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>You can use Empowered Spell even if you have already used a different Metamagic option during the casting of the spell.'--<Description, nvarchar(max),>
            ,'Metamagic_EmpoweredSpell'--<Code, nvarchar(50),>
 		   ),
            ('Extended Spell'--<Name, nvarchar(50),>
@@ -71,26 +72,26 @@
 		   --Draconic Sorceror--
            ('Dragon Ancestor'--<Name, nvarchar(50),>
            ,'At 1st level, you choose one type of dragon as your ancestor. The damage type associated with each dragon is used by features you gain later.
-		   
-		   You can speak, read, and write Draconic. Additionally, whenever you make a Charisma check when interacting with dragons, your proficiency bonus is doubled if it applies to the check.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>You can speak, read, and write Draconic. Additionally, whenever you make a Charisma check when interacting with dragons, your proficiency bonus is doubled if it applies to the check.'--<Description, nvarchar(max),>
            ,'DraconicSorceror_Ancestor'--<Code, nvarchar(50),>
 		   ),
            ('Draconic Resilience'--<Name, nvarchar(50),>
            ,'As magic flows through your body, it causes physical traits of your dragon ancestors to emerge. At 1st level, your hit point maximum increases by 1 and increases by 1 again whenever you gain a level in this class.
-		   
-		   Additionally, parts of your skin are covered by a thin sheen of dragon-like scales. When you aren''t wearing armor, your AC equals 13 + your Dexterity modifier.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Additionally, parts of your skin are covered by a thin sheen of dragon-like scales. When you aren''t wearing armor, your AC equals 13 + your Dexterity modifier.'--<Description, nvarchar(max),>
            ,'DraconicSorceror_Resilience'--<Code, nvarchar(50),>
 		   ),
            ('Elemental Affinity'--<Name, nvarchar(50),>
            ,'Starting at 6th level, when you cast a spell thal deals damage of the type associated with your draconic ancestry, add your Charisma modifier to that damage.
-		   
-		   At the same time, you can spend 1 sorcery point to gain resistance to that damage type for 1 hour.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>At the same time, you can spend 1 sorcery point to gain resistance to that damage type for 1 hour.'--<Description, nvarchar(max),>
            ,'DraconicSorceror_ElementalAffinity'--<Code, nvarchar(50),>
 		   ),
            ('Dragon Wings'--<Name, nvarchar(50),>
            ,'At 14th level, you gain the ability to sprout a pair of dragon wings from your back, gaining a flying speed equal to your current speed. You can create these wings as a bonus action on your turno They last until you dismiss them as a bonus action on your turn.
-		   
-		   You can''t manifest your wings while wearing armor unless the armor is made to accommodate them, and clothing not made to accommodate your wings might be destroyed when you manifest them.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>You can''t manifest your wings while wearing armor unless the armor is made to accommodate them, and clothing not made to accommodate your wings might be destroyed when you manifest them.'--<Description, nvarchar(max),>
            ,'DraconicSorceror_Wings'--<Code, nvarchar(50),>
 		   ),
            ('Draconic Presence'--<Name, nvarchar(50),>
@@ -101,14 +102,14 @@
 		   --Wild Magic Sorceror--
            ('Wild Magic Surge'--<Name, nvarchar(50),>
            ,'Starting when you choose this origin at 1st level, your spellcasting can unleash surges of untamed magic.
-		   
-		   Immediately after you cast a sorcerer spell of 1st level or higher, the DM can have you roll a d20. If you roll a 1, roll on the Wild Magic Surge table to create a random magical effect.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Immediately after you cast a sorcerer spell of 1st level or higher, the DM can have you roll a d20. If you roll a 1, roll on the Wild Magic Surge table to create a random magical effect.'--<Description, nvarchar(max),>
            ,'WildMagicSorceror_WildMagicSurge'--<Code, nvarchar(50),>
 		   ),
            ('Tides of Chaos'--<Name, nvarchar(50),>
            ,'Starting at 1st level, you can manipulate the forces of chance and chaos to gain advantage on one attack roll, ability check, or saving throw. Once you do so.you must fnish a long rest before you can use this feature again.
-		   
-		   Any time before you regain the use of this feature, the DM can have you roll on the Wild Magic Surge table immediately after you cast a sorcerer spell of 1st level or higher. You then regain the use of this feature.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Any time before you regain the use of this feature, the DM can have you roll on the Wild Magic Surge table immediately after you cast a sorcerer spell of 1st level or higher. You then regain the use of this feature.'--<Description, nvarchar(max),>
            ,'WildMagicSorceror_TidesOfChaos'--<Code, nvarchar(50),>
 		   ),
            ('Bend Luck'--<Name, nvarchar(50),>
@@ -145,8 +146,8 @@ INSERT INTO [dbo].[ClassFeature]
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'SpellSlots')--<FeatureId, int,>
 		   ,1--<Level, int>
            ,'The Sorcerer table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these sorcerer spells, you must expend a slot of the spell''s level or higher. You regain all expended spell slots when you finish a long rest.
-		   
-		   For example, if you know the 1st-level spell burning hands and have a 1st-level and a 2nd-level spell slot available, you can cast burning hands using either slot.'--<Description, int,>
+		   <br/>
+		   <br/>For example, if you know the 1st-level spell burning hands and have a 1st-level and a 2nd-level spell slot available, you can cast burning hands using either slot.'--<Description, int,>
            ,1--<Hidden, bit,>
 		   ),
            ((SELECT TOP(1) Id FROM Class WHERE [Name] = 'Sorceror')--<ClassId, int,>
@@ -154,8 +155,8 @@ INSERT INTO [dbo].[ClassFeature]
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'SpellsKnown')--<FeatureId, int,>
 		   ,1--<Level, int>
            ,'You know two 1st-level spells of your choice from the sorcerer spell list. Each of these spells must be of a level for which you have spell slots. For instance, when you reach 3rd level in this class, you can learn one new spell of 1st or 2nd level.
-		   
-		   Additionally, when you gain a level in this class, you can choose one of the sorcerer spells you know and replace it with another spell from the sorcerer spell list, which also must be of a level for which you have spell slots.'--<Description, int,>
+		   <br/>
+		   <br/>Additionally, when you gain a level in this class, you can choose one of the sorcerer spells you know and replace it with another spell from the sorcerer spell list, which also must be of a level for which you have spell slots.'--<Description, int,>
            ,1--<Hidden, bit,>
 		   ),
            ((SELECT TOP(1) Id FROM Class WHERE [Name] = 'Sorceror')--<ClassId, int,>
@@ -163,10 +164,10 @@ INSERT INTO [dbo].[ClassFeature]
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'SpellcastingAbility')--<FeatureId, int,>
 		   ,1--<Level, int>
            ,'Charisma is your spellcasting ability for your sorcerer spells, since the power of your magic relies on your ability to project your will into the world. You use your Charisma whenever a spell refers to your spellcasting ability. In addition. you use your Charisma modifier when setting the saving throw DC for a sorcerer spell you cast and when making an attack roll with one.
-		   
-		   - Spell save DC = 8 + your proficiencybonus + your Charisma modifier
-		   
-		   - Spell attack modifier = your proficiencybonus + your Charisma modifier'--<Description, int,>
+		   <br/>
+		   <br/>Spell save DC = 8 + your proficiencybonus + your Charisma modifier
+		   <br/>
+		   <br/>Spell attack modifier = your proficiencybonus + your Charisma modifier'--<Description, int,>
            ,1--<Hidden, bit,>
 		   ),
            ((SELECT TOP(1) Id FROM Class WHERE [Name] = 'Sorceror')--<ClassId, int,>

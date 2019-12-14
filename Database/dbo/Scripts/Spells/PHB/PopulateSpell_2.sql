@@ -273,10 +273,10 @@ INSERT INTO [dbo].[Spell]
            ,'Bat fur and a drop of pitch or piece of coal'--Material Description
 	       ,0--Is Ritual
            ,'Magical darkness spreads from a point you choose within range to fill a 15 foot radius sphere for the duration. The darkness spreads around corners. A creature with darkvision can''t see through this darkness, and nonmagical light can''t illuminate it.
-		   
-		   If the point you choose is on an object you are holding or one that isn''t being worn or carried, the darkness emanates from the object and moves with it. Completely covering the source of the darkness with an opaque object, such as a bowl or a helm, blocks the darkness.
-		   
-		   If any of this spell''s area overlaps with an area of light created by a spell of 2nd level or lower, the spell that created the light is dispelled.'--Description
+		   <br/>
+		   <br/>If the point you choose is on an object you are holding or one that isn''t being worn or carried, the darkness emanates from the object and moves with it. Completely covering the source of the darkness with an opaque object, such as a bowl or a helm, blocks the darkness.
+		   <br/>
+		   <br/>If any of this spell''s area overlaps with an area of light created by a spell of 2nd level or lower, the spell that created the light is dispelled.'--Description
            ,null),--Higher Level Description
 
 		   	('Darkvision'--Name
@@ -796,8 +796,8 @@ INSERT INTO [dbo].[Spell]
            ,null--Material Description
 	       ,0--Is Ritual
            ,'You create three rays of fire and hurl them at targets within range. You can hurl them at one target or several.
-		   
-		   Make a ranged spell attack for each ray. On a hit, the target takes 2d6 fire damage.'--Description
+		   <br/>
+		   <br/>Make a ranged spell attack for each ray. On a hit, the target takes 2d6 fire damage.'--Description
            ,'When you cast this spell using a spell slot of 3rd level or higher, you create one additional ray for each slot level above 2nd.'),--Higher Level Description
 
 ('See Invisibility'--Name

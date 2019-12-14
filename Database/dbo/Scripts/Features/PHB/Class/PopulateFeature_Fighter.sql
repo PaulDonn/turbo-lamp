@@ -33,14 +33,14 @@
 		   ),
            ('Second Wind'--<Name, nvarchar(50),>
            ,'You have a limited well of stamina that you can draw on to protect yourself from harm. On your turn, you can use a bonus action to regain hit points equal to 1d10 + your fighter level. 
-		   
-		   Once you use this feature, you must finish a short or long rest before you can use it again.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Once you use this feature, you must finish a short or long rest before you can use it again.'--<Description, nvarchar(max),>
            ,'Fighter_SecondWind'--<Code, nvarchar(50),>
 		   ),
            ('Action Surge'--<Name, nvarchar(50),>
            ,'Starting at 2nd level, you can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action on top of your regular action and a possible bonus action.
-		   
-		   Once you use this feature, you must finish a short or long rest before you can use it again. Starting at 17th level, you can use it twice before a rest, but only once on the same turn.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Once you use this feature, you must finish a short or long rest before you can use it again. Starting at 17th level, you can use it twice before a rest, but only once on the same turn.'--<Description, nvarchar(max),>
            ,'Fighter_ActionSurge'--<Code, nvarchar(50),>
 		   ),
            ('Martial Archetype'--<Name, nvarchar(50),>
@@ -49,8 +49,8 @@
 		   ),
            ('Indomitable'--<Name, nvarchar(50),>
            ,'Beginning at 9th level, you can reroll a saving throw that you fail. If you do so, you must use the new roll, and you can''t use this feature again until you finish a long rest.
-		   
-		   You can use this feature twice between long rests starting at 13th level and three times between long rests starting at 17th level.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>You can use this feature twice between long rests starting at 13th level and three times between long rests starting at 17th level.'--<Description, nvarchar(max),>
            ,'Fighter_Indomitable'--<Code, nvarchar(50),>
 		   ),
            
@@ -61,8 +61,8 @@
 		   ),
            ('Remarkable Athlete'--<Name, nvarchar(50),>
            ,'Starting at 7th level, you can add half your proficiency bonus (round up) to any Strength, Dexterity, or Constitutioo check you make that doesn''t already use your proficiency bonus. 
-		   
-		   In addition, when you make a running longjump, the distance you can cover increases by a number of feet equal to your Strength modifier.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>In addition, when you make a running longjump, the distance you can cover increases by a number of feet equal to your Strength modifier.'--<Description, nvarchar(max),>
            ,'Champion_RemarkableAthlete'--<Code, nvarchar(50),>
 		   ),
            ('Additional Fighting Style'--<Name, nvarchar(50),>
@@ -81,18 +81,21 @@
 		   --Battle Master--
            ('Combat Superiority'--<Name, nvarchar(50),>
            ,'When you choose this archetype at 3rd level, you learn maneuvers that are fueled by special dice called superiority dice.
-
-		   -Maneuvers. You learn three maneuvers of your choice. Many maneuvers enhance an attack in some way. You can use only one maneuver per attack.
-		   
-		   You learn two additional maneuvers of your choice at 7th, 10th, and 15th level. Each time you learn new maneuvers, you can also replace one maneuver you know with a different one.
-		   
-		   -Superiority Dice. You have four superiority dice, which are d8s. A superiority die is expended when you use it. You regain all of your expended superiority dice when you finish a short or long rest.
-		   
-		   You gain another superiority die at 7th level and one more at 15th level.
-		   
-		   -Saving Throws. Some of your maneuvers require your target to make a saving throw to resist the maneuver''s effects. The saving throw DC is calculated as follows:
-		   
-		   Maneuver save DC = 8 + your profieieney bonus + your Strength or Dexterity modifier (your choice)'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/><strong>Maneuvers</strong>
+		   <br/>You learn three maneuvers of your choice. Many maneuvers enhance an attack in some way. You can use only one maneuver per attack.
+		   <br/>
+		   <br/>You learn two additional maneuvers of your choice at 7th, 10th, and 15th level. Each time you learn new maneuvers, you can also replace one maneuver you know with a different one.
+		   <br/>
+		   <br/><strong>Superiority Dice</strong>
+		   <br/>You have four superiority dice, which are d8s. A superiority die is expended when you use it. You regain all of your expended superiority dice when you finish a short or long rest.
+		   <br/>
+		   <br/>You gain another superiority die at 7th level and one more at 15th level.
+		   <br/>
+		   <br/><strong>Saving Throws</strong>
+		   <br/>Some of your maneuvers require your target to make a saving throw to resist the maneuver''s effects. The saving throw DC is calculated as follows:
+		   <br/>
+		   <br/>Maneuver save DC = 8 + your profieieney bonus + your Strength or Dexterity modifier (your choice)'--<Description, nvarchar(max),>
            ,'BattleMaster_CombatSuperiority'--<Code, nvarchar(50),>
 		   ),
            ('Student of War'--<Name, nvarchar(50),>
@@ -101,20 +104,14 @@
 		   ),
            ('Know Your Enemy'--<Name, nvarchar(50),>
            ,'Starting at 7th level, if you spend at least 1 minute observing or interacting with another creature outside combat, you can learn certain information about its capabilities compared to your own. The DM tells you if the creature is your equal, superior, or inferior in regard to two of the following characteristics ofyour choice:
-		   
-		   -Strength score
-		   
-		   -Dexterity score
-		   
-		   -Constitution score
-		   
-		   -Armor Class
-		   
-		   -Current hit points
-		   
-		   -Total class leveIs (if any)
-		   
-		   -Fighter class leveIs (if any)'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>-Strength score
+		   <br/>-Dexterity score
+		   <br/>-Constitution score
+		   <br/>-Armor Class
+		   <br/>-Current hit points
+		   <br/>-Total class leveIs (if any)
+		   <br/>-Fighter class leveIs (if any)'--<Description, nvarchar(max),>
            ,'BattleMaster_KnowYourEnemy'--<Code, nvarchar(50),>
 		   ),
            ('Improved Combat Superiority'--<Name, nvarchar(50),>
@@ -193,10 +190,10 @@
 		   --Eldritch Knight--
            ('Weapon Bond'--<Name, nvarchar(50),>
            ,'At 3rd level, you learn a ritual that creates a magical bond between yourself and one weapon. You perform the ritual over the course of 1 hour, which can be done during a short rest. The weapon must be within your reach throughout the ritual, at the conc1usion of which you touch the weapon and forge the bond. 
-		   
-		   Once you have bonded a weapon to yourself, you can''t be disarmed of that weapon unless you are incapacitated. If It is on the same plane of existence, you can summon that weapon as a bonus action on your turn, causing it to teleport instantiy to your hand.
-		   
-		   You can have up to two bonded weapons, but can summon only one at a time with your bonus action. 1f you attempt to bond with a third weapon, you must break the bond with one of the other two.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Once you have bonded a weapon to yourself, you can''t be disarmed of that weapon unless you are incapacitated. If It is on the same plane of existence, you can summon that weapon as a bonus action on your turn, causing it to teleport instantiy to your hand.
+		   <br/>
+		   <br/>You can have up to two bonded weapons, but can summon only one at a time with your bonus action. 1f you attempt to bond with a third weapon, you must break the bond with one of the other two.'--<Description, nvarchar(max),>
            ,'EldritchKnight_WeaponBond'--<Code, nvarchar(50),>
 		   ),
            ('War Magic'--<Name, nvarchar(50),>
@@ -265,8 +262,8 @@ INSERT INTO [dbo].[ClassFeature]
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'ExtraAttack')--<FeatureId, int,>
 		   ,5--<Level, int>
            ,'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.
-		   
-		   The number of attacks increases to three when you reach 11th level in this c1ass and to four when you reach 20th level in this c1ass.'--<Description, int,>
+		   <br/>
+		   <br/>The number of attacks increases to three when you reach 11th level in this c1ass and to four when you reach 20th level in this c1ass.'--<Description, int,>
            ,0--<Hidden, bit,>
 		   ),
            ((SELECT TOP(1) Id FROM Class WHERE [Name] = 'Fighter')--<ClassId, int,>
@@ -399,22 +396,20 @@ INSERT INTO [dbo].[ClassFeature]
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'Spellcasting')--<FeatureId, int,>
 		   ,3--<Level, int>
            ,'When you reach 3rd level, you augment your martial prowess with the ability to cast spells.
-		   
-		   -Cantrips. You learn two cantrips of your choice from the wizard spell list. You learn an additional wizard cantrip of your choice at 10th level. 
-		   
-		   -Spell Slots. To cast spells, you must expend a slot of the spell''s levei or higher. You regain all expended spell slots when you finish a long rest. For example, if you know the 1st.level spell shield and have a 1st level and a 2nd level spell slot available, you can cast shieId using either slot.
-		   
-		   -Spells Known of 1st Level and Higher. You know three 1st level wizard spells of your choice, two of which you must choose from the abjuration and evocation spells on the wizard spelllist. Spells learned later must be abjuration or evocation spells of your choice, and must be of a leveI for which you have spell slots. For instance, when you reach 7th levei in this c1ass, you can learn one new spell of 1st or 2nd level. 
-		   
-		   The spells you learn at 8th, 14th, and 20th leveI can come from any school of magic.
-		   
-		   Whenever you gain a level in this c1ass, you can replace one of the wizard spells you know with another spell of your choice from lhe wizard spelllist. The new spell must be of a level for which you have spell slots, and it must be an abjuration or evocation spell, unless you''re replacing the spell you gained at 8th, 14th, or 20th level.
-		   
-		   -Spellcasting Ability. Intelligence is your spellcasting ability for your wizard spells, since you learn your spells through study and memorization. You use your Intelligence whenever a spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for a wizard spell you cast and when making an attack roll with one.
-		   
-		   -Spell save DC = 8 + your proficiency bonus + your Intelligence modifier.
-		   
-		   -Spell attack modifier = your proficiency bonus + your Intelligence modifier'--<Description, int,>
+		   <br/>
+		   <br/><strong>Cantrips</strong> - You learn two cantrips of your choice from the wizard spell list. You learn an additional wizard cantrip of your choice at 10th level. 
+		   <br/>
+		   <br/><strong>Spell Slots</strong> - To cast spells, you must expend a slot of the spell''s levei or higher. You regain all expended spell slots when you finish a long rest. For example, if you know the 1st.level spell shield and have a 1st level and a 2nd level spell slot available, you can cast shieId using either slot.
+		   <br/>
+		   <br/><strong>Spells Known of 1st Level and Higher</strong> - You know three 1st level wizard spells of your choice, two of which you must choose from the abjuration and evocation spells on the wizard spelllist. Spells learned later must be abjuration or evocation spells of your choice, and must be of a leveI for which you have spell slots. For instance, when you reach 7th levei in this c1ass, you can learn one new spell of 1st or 2nd level.
+		   <br/>The spells you learn at 8th, 14th, and 20th level can come from any school of magic.
+		   <br/>Whenever you gain a level in this c1ass, you can replace one of the wizard spells you know with another spell of your choice from lhe wizard spelllist. The new spell must be of a level for which you have spell slots, and it must be an abjuration or evocation spell, unless you''re replacing the spell you gained at 8th, 14th, or 20th level.
+		   <br/>
+		   <br/><strong>Spellcasting Ability</strong> - Intelligence is your spellcasting ability for your wizard spells, since you learn your spells through study and memorization. You use your Intelligence whenever a spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for a wizard spell you cast and when making an attack roll with one.
+		   <br/>
+		   <br/>Spell save DC = 8 + your proficiency bonus + your Intelligence modifier.
+		   <br/>
+		   <br/>Spell attack modifier = your proficiency bonus + your Intelligence modifier'--<Description, int,>
            ,1--<Hidden, bit,>
 		   ),
            (null--<ClassId, int,>

@@ -5,22 +5,22 @@
      VALUES
            ('Expertise'--<Name, nvarchar(50),>
            ,'At 1st level, choose two of your skill proficiencies, or one of your skill proficiencies and your proficiency with thieves'' tools. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.
-		   
-		   At 6th level, you can choose two more of your proficiencies (in skills or with thieves'' tools) to gain this benefit.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>At 6th level, you can choose two more of your proficiencies (in skills or with thieves'' tools) to gain this benefit.'--<Description, nvarchar(max),>
            ,'Rogue_Expertise'--<Code, nvarchar(50),>
 		   ),
            ('Sneak Attack'--<Name, nvarchar(50),>
            ,'Beginning at 1st level, you know how to strike subtly and exploit a foe''s distraction. Once per turn, you can deal an extra 1d6 damage to one creature you hit with an attack if you have advantage on the attack roll. The attack must use a finesse or a ranged weapon.
-		   
-		   You don''t need advantage on the attack roll if another enemy of the target is within 5 feet of it, that enemy isn''t incapacitated, and you don''t have disadvantage on the attack roll.
-		   
-		   The amount of the extra damage increases as you gain levels in this class, as shown in the Sneak Attack column of the Rogue table.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>You don''t need advantage on the attack roll if another enemy of the target is within 5 feet of it, that enemy isn''t incapacitated, and you don''t have disadvantage on the attack roll.
+		   <br/>
+		   <br/>The amount of the extra damage increases as you gain levels in this class, as shown in the Sneak Attack column of the Rogue table.'--<Description, nvarchar(max),>
            ,'Rogue_SneakAttack'--<Code, nvarchar(50),>
 		   ),
            ('Thieves'' Cant'--<Name, nvarchar(50),>
            ,'During your rogue training you learned thieves'' cant, a secret mix of dialect, jargon, and code that allows you to hide messages in seemingly normal conversation. Only another creature that knows thieves'' cant understands such messages. It takes four times longer to convey such a message than it does to speak the same idea plainly.
-		   
-		   In addition, you understand a set of secret signs and symbols used to convey short, simple messages, such as whether an area is dangerous or the territory of a thieves'' guild, whether loot is nearby, or whether the people in an area are easy marks or will provide a safe house for thieves on the run.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>In addition, you understand a set of secret signs and symbols used to convey short, simple messages, such as whether an area is dangerous or the territory of a thieves'' guild, whether loot is nearby, or whether the people in an area are easy marks or will provide a safe house for thieves on the run.'--<Description, nvarchar(max),>
            ,'Rogue_ThievesCant'--<Code, nvarchar(50),>
 		   ),
            ('Cunning Action'--<Name, nvarchar(50),>
@@ -57,8 +57,8 @@
 		   ),
            ('Stroke of Luck'--<Name, nvarchar(50),>
            ,'At 20th level, you have an uncanny knack for succeeding when you need to. If your attack misses a target within range, you can turn the miss into a hit. Alternatively, if you fail an ability check, you can treat the d20 roll as a 20.
-		   
-		   Once you use this feature, you can''t use it again until you finish a short or long rest.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Once you use this feature, you can''t use it again until you finish a short or long rest.'--<Description, nvarchar(max),>
            ,'Rogue_StrokeOfLuck'--<Code, nvarchar(50),>
 		   ),
            
@@ -69,8 +69,8 @@
 		   ),
            ('Second-Story Work'--<Name, nvarchar(50),>
            ,'When you choose this archetype at 3rd level, you gain the ability to climb faster than normal; climbing no longer costs you extra movement.
-		   
-		   In addition, when you make a running jump, the distance you cover increases by a number of feet equal to your Dexterity modifier.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>In addition, when you make a running jump, the distance you cover increases by a number of feet equal to your Dexterity modifier.'--<Description, nvarchar(max),>
            ,'Thief_SecondStoryWork'--<Code, nvarchar(50),>
 		   ),
            ('Supreme Sneak'--<Name, nvarchar(50),>
@@ -97,16 +97,16 @@
 		   ),
            ('Infiltration Expertise'--<Name, nvarchar(50),>
            ,'Starting at 9th level, you can unfailingly create false identities for yourself. You must spend seven days and 25 gp to establish the history, profession, and affiliations for an identity. You can''t establish an identity that belongs to someone else. For example, you might acquire appropriate clothing, letters of introduction, and official looking certification to establish yourself as a member of a trading house from a remote city so you can insinuate yourself into the company of other wealthy merchants.
-		   
-		   Thereafter, if you adopt the new identity as a disguise, other creatures believe you to be that person until given an obvious reason not to.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Thereafter, if you adopt the new identity as a disguise, other creatures believe you to be that person until given an obvious reason not to.'--<Description, nvarchar(max),>
            ,'Assassin_InfiltrationExpertise'--<Code, nvarchar(50),>
 		   ),
            ('Imposter'--<Name, nvarchar(50),>
            ,'At 13th level, you gain the ability to unerringly mimic another person''s speech, writing, and behavior.
-		   
-		   You must spend at least three hours studying these three components of the person''s behavior, listening to speech, examining handwriting, and observing mannerisms.
-		   
-		   Your ruse is indiscernible to the casual observer. If a wary creature suspects something is amiss, you have advantage on any Charisma (Deception) check you make to avoid detection.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>You must spend at least three hours studying these three components of the person''s behavior, listening to speech, examining handwriting, and observing mannerisms.
+		   <br/>
+		   <br/>Your ruse is indiscernible to the casual observer. If a wary creature suspects something is amiss, you have advantage on any Charisma (Deception) check you make to avoid detection.'--<Description, nvarchar(max),>
            ,'Assassin_Imposter'--<Code, nvarchar(50),>
 		   ),
            ('Death Strike'--<Name, nvarchar(50),>
@@ -117,16 +117,14 @@
 		   --Arcane Trickster--
            ('Mage Hand Legermain'--<Name, nvarchar(50),>
            ,'Starting at 3rd level, when you cast mage hand, you can make the spectral hand invisible, and you can perform the following additional tasks with it:
-		   
-		   -You can stow one object the hand is holding in a container worn or carried by another creature.
-		   
-		   -You can retrieve an object in a container worn or carried by another creature.
-		   
-		   -You can use thieves'' tools to pick locks and disarm traps at range.
-		   
-		   You can perform one of these tasks without being noticed by a creature if you succeed on a Dexterity (Sleight of Hand) check contested by the creature''s Wisdom (Perception) check.
-		   
-		   In addition, you can use the bonus action granted by your Cunning Action to controlthe hand.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>You can stow one object the hand is holding in a container worn or carried by another creature.
+		   <br/>You can retrieve an object in a container worn or carried by another creature.
+		   <br/>You can use thieves'' tools to pick locks and disarm traps at range.
+		   <br/>
+		   <br/>You can perform one of these tasks without being noticed by a creature if you succeed on a Dexterity (Sleight of Hand) check contested by the creature''s Wisdom (Perception) check.
+		   <br/>
+		   <br/>In addition, you can use the bonus action granted by your Cunning Action to controlthe hand.'--<Description, nvarchar(max),>
            ,'ArcaneTrickster_MageHandLegermain'--<Code, nvarchar(50),>
 		   ),
            ('Magical Ambush'--<Name, nvarchar(50),>
@@ -139,10 +137,10 @@
 		   ),
            ('Spell Thief'--<Name, nvarchar(50),>
            ,'At 17th level, you gain the ability to magically steal the knowledge of how to cast a spell from another spellcaster.
-		   
-		   Immediately after a creature casts a spell that targets you or includes you in its area of effect, you can use your reaction to force the creature to make a saving throw with its spellcasting ability modifier. The DC equals your spell save DC. On a failed save, you negate the spell''s effect against you, and you steal the knowledge of the spell if it is at least 1st leveI and of a level you can cast (it doesn''t need to be a wizard spell). For the next 8 hours, you know the spell and can cast it using your spell slolS. The crealure can''t cast that spell until the 8 hours have passed.
-		   
-		   Once you use this feature, you can''t use it again until you finish a long rest.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Immediately after a creature casts a spell that targets you or includes you in its area of effect, you can use your reaction to force the creature to make a saving throw with its spellcasting ability modifier. The DC equals your spell save DC. On a failed save, you negate the spell''s effect against you, and you steal the knowledge of the spell if it is at least 1st leveI and of a level you can cast (it doesn''t need to be a wizard spell). For the next 8 hours, you know the spell and can cast it using your spell slolS. The crealure can''t cast that spell until the 8 hours have passed.
+		   <br/>
+		   <br/>Once you use this feature, you can''t use it again until you finish a long rest.'--<Description, nvarchar(max),>
            ,'ArcaneTrickster_SpellThief'--<Code, nvarchar(50),>
 		   )
 GO
@@ -362,24 +360,21 @@ INSERT INTO [dbo].[ClassFeature]
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'Spellcasting')--<FeatureId, int,>
 		   ,3--<Level, int>
            ,'When you reach 3rd level, you gain the ability to cast spells.
-		   
-		   -Cantrips. You learn three cantrips: mage hand and two other cantrips of your choice fram the wizard spell list. You learn another wizard cantrip of your choice at 10th level.
-		   
-		   -Spell Slots. To cast a spell, you must expend a slot of the spell''s level or higher. You regain all expended spell slots when you finish a long rest.
-		   
-		   For example, if you know the 1st level spell charm person and have a 1st level and a 2nd level spell slot available, you can cast charm person using either slot.
-		   
-		   -Spells Known of 1st Level and Higher. You know three 1st level wizard spells of your choice, two of which you must choose from the enchantment and illusion spells on the wizard spell list. Spells learned later must be an enchantment or illusion spell of your choice, and must be of a level for which you have spell slots. For instance, when you reach 7th level in this c1ass, you can learn one new spell of 1st or 2nd level. The spells you learn at 8th. 14th, and 20th level can come fram any school of magic.
-		   
-		   Whenever you gain a level in this c1ass, you can replace one of the wizard spells you know with another spell of your choice from the wizard spell list. The new spell must be of a level for which you have spell slots. and it must be an enchantment or illusion spell, unless you''re replacing the spell you gained at 8th, 14th, ar 20th level.
-		   
-		   -Spellcasting Ability. Intelligence is your spellcasting ability for your wizard spells, since you learn your spells thraugh dedicated study and memorization.
-		   
-		   You use your Intelligence whenever a spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for a wizard spell you cast and when making an attack roll with one.
-		   
-		   -Spell save DC = 8 + your proficiency bonus + your Intelligence modifier
-		   
-		   -Spell attack modifier = your proficiency bonus + your Intelligence modifier'--<Description, int,>
+		   <br/>
+		   <br/><strong>Cantrips</strong> - You learn three cantrips: mage hand and two other cantrips of your choice fram the wizard spell list. You learn another wizard cantrip of your choice at 10th level.
+		   <br/>
+		   <br/><strong>Spell Slots</strong> - To cast a spell, you must expend a slot of the spell''s level or higher. You regain all expended spell slots when you finish a long rest.
+		   <br/>For example, if you know the 1st level spell charm person and have a 1st level and a 2nd level spell slot available, you can cast charm person using either slot.
+		   <br/>
+		   <br/><strong>Spells Known of 1st Level and Higher</strong> - You know three 1st level wizard spells of your choice, two of which you must choose from the enchantment and illusion spells on the wizard spell list. Spells learned later must be an enchantment or illusion spell of your choice, and must be of a level for which you have spell slots. For instance, when you reach 7th level in this c1ass, you can learn one new spell of 1st or 2nd level. The spells you learn at 8th. 14th, and 20th level can come fram any school of magic.
+		   <br/>Whenever you gain a level in this c1ass, you can replace one of the wizard spells you know with another spell of your choice from the wizard spell list. The new spell must be of a level for which you have spell slots. and it must be an enchantment or illusion spell, unless you''re replacing the spell you gained at 8th, 14th, ar 20th level.
+		   <br/>
+		   <br/><strong>Spellcasting Ability</strong> - Intelligence is your spellcasting ability for your wizard spells, since you learn your spells thraugh dedicated study and memorization.
+		   <br/>You use your Intelligence whenever a spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for a wizard spell you cast and when making an attack roll with one.
+		   <br/>
+		   <br/>Spell save DC = 8 + your proficiency bonus + your Intelligence modifier
+		   <br/>
+		   <br/>Spell attack modifier = your proficiency bonus + your Intelligence modifier'--<Description, int,>
            ,1--<Hidden, bit,>
 		   ),
            (null--<ClassId, int,>

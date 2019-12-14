@@ -9,24 +9,24 @@
 		   ),
            ('Your Spellbook'--<Name, nvarchar(50),>
            ,'The Spells that you add to your Spellbook as you gain levels reflect the arcane Research you conduct on your own, as well as intellectual breakthroughs you have had about the Nature of the multiverse. You might find other Spells during your Adventures. You could discover a spell recorded on a scroll in an evil wizard’s chest, for example, or in a dusty tome in an ancient Library.
-		   
-		   Copying a Spell into the Book: When you find a Wizard spell of 1st level or higher, you can add it to your Spellbook if it is of a Spell Level you can prepare and if you can spare the time to decipher and copy it.
-		   
-		   Copying that spell into your Spellbook involves reproducing the basic form of the spell, then deciphering the unique system of notation used by the Wizard who wrote it. You must practice the spell until you understand the sounds or gestures required, then transcribe it into your Spellbook using your own notation.
-		   
-		   For each level of the spell, the process takes 2 hours and costs 50 gp. The cost represents material Components you expend as you experiment with the spell to Master it, as well as the fine inks you need to record it. Once you have spent this time and money, you can prepare the spell just like your other Spells.
-		   
-		   Replacing the Book: You can copy a spell from your own Spellbook into another book—for example, if you want to make a backup copy of your Spellbook. This is just like copying a new spell into your Spellbook, but faster and easier, since you understand your own notation and already know how to cast the spell. You need spend only 1 hour and 10 gp for each level of the copied spell.
-		   
-		   If you lose your Spellbook, you can use the same procedure to transcribe the Spells that you have prepared into a new Spellbook. Filling out the remainder of your Spellbook requires you to find new Spells to do so, as normal. For this reason, many wizards keep backup spellbooks in a safe place.
-		   
-		   The Book’s Appearance: Your Spellbook is a unique compilation of Spells, with its own decorative flourishes and margin notes. It might be a plain, functional leather volume that you received as a gift from your Master, a finely bound gilt-­edged tome you found in an ancient Library, or even a loose collection of notes scrounged together after you lost your previous Spellbook in a mishap.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Copying a Spell into the Book: When you find a Wizard spell of 1st level or higher, you can add it to your Spellbook if it is of a Spell Level you can prepare and if you can spare the time to decipher and copy it.
+		   <br/>
+		   <br/>Copying that spell into your Spellbook involves reproducing the basic form of the spell, then deciphering the unique system of notation used by the Wizard who wrote it. You must practice the spell until you understand the sounds or gestures required, then transcribe it into your Spellbook using your own notation.
+		   <br/>
+		   <br/>For each level of the spell, the process takes 2 hours and costs 50 gp. The cost represents material Components you expend as you experiment with the spell to Master it, as well as the fine inks you need to record it. Once you have spent this time and money, you can prepare the spell just like your other Spells.
+		   <br/>
+		   <br/>Replacing the Book: You can copy a spell from your own Spellbook into another book—for example, if you want to make a backup copy of your Spellbook. This is just like copying a new spell into your Spellbook, but faster and easier, since you understand your own notation and already know how to cast the spell. You need spend only 1 hour and 10 gp for each level of the copied spell.
+		   <br/>
+		   <br/>If you lose your Spellbook, you can use the same procedure to transcribe the Spells that you have prepared into a new Spellbook. Filling out the remainder of your Spellbook requires you to find new Spells to do so, as normal. For this reason, many wizards keep backup spellbooks in a safe place.
+		   <br/>
+		   <br/>The Book’s Appearance: Your Spellbook is a unique compilation of Spells, with its own decorative flourishes and margin notes. It might be a plain, functional leather volume that you received as a gift from your Master, a finely bound gilt-­edged tome you found in an ancient Library, or even a loose collection of notes scrounged together after you lost your previous Spellbook in a mishap.'--<Description, nvarchar(max),>
            ,'Wizard_YourSpellbook'--<Code, nvarchar(50),>
 		   ),
            ('Arcane Recovery'--<Name, nvarchar(50),>
            ,'You have learned to regain some of your magical energy by studying your Spellbook. Once per day when you finish a Short Rest, you can choose expended Spell Slots to recover. The Spell Slots can have a combined level that is equal to or less than half your Wizard level (rounded up), and none of the slots can be 6th level or higher.
-		   
-		   For example, if you’re a 4th-level Wizard, you can recover up to two levels worth of Spell Slots. You can recover either a 2nd-level spell slot or two 1st-level Spell Slots.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>For example, if you’re a 4th-level Wizard, you can recover up to two levels worth of Spell Slots. You can recover either a 2nd-level spell slot or two 1st-level Spell Slots.'--<Description, nvarchar(max),>
            ,'Wizard_ArcaneRecovery'--<Code, nvarchar(50),>
 		   ),
            ('Arcane Tradition'--<Name, nvarchar(50),>
@@ -35,14 +35,14 @@
 		   ),
            ('Spell Mastery'--<Name, nvarchar(50),>
            ,'At 18th level, you have achieved such mastery over certain Spells that you can cast them at will. Choose a 1st-level Wizard spell and a 2nd-level Wizard spell that are in your Spellbook. You can cast those Spells at their lowest level without expending a spell slot when you have them prepared. If you want to cast either spell at a higher level, you must expend a spell slot as normal.
-		   
-		   By spending 8 hours in study, you can exchange one or both of the Spells you chose for different Spells of the same levels.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>By spending 8 hours in study, you can exchange one or both of the Spells you chose for different Spells of the same levels.'--<Description, nvarchar(max),>
            ,'Wizard_SpellMastery'--<Code, nvarchar(50),>
 		   ),
            ('Signature Spells'--<Name, nvarchar(50),>
            ,'When you reach 20th level, you gain mastery over two powerful Spells and can cast them with little effort. Choose two 3rd-level Wizard Spells in your Spellbook as your signature Spells. You always have these Spells prepared, they don''t count against the number of Spells you have prepared, and you can cast each of them once at 3rd level without expending a spell slot. When you do so, you can''t do so again until you finish a short or Long Rest.
-		   
-		   If you want to cast either spell at a higher level, you must expend a spell slot as normal.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>If you want to cast either spell at a higher level, you must expend a spell slot as normal.'--<Description, nvarchar(max),>
            ,'Wizard_SignatureSpells'--<Code, nvarchar(50),>
 		   ),
 
@@ -53,10 +53,10 @@
 		   ),
            ('Arcane Ward'--<Name, nvarchar(50),>
            ,'Starting at 2nd level, you can weave magic around yourself for protection. When you cast an abjuration spell of 1st level or higher, you can simultaneously use a strand of the spell''s magic to create a magical ward on yourself that lasts until you finish a long rest. The ward has a hit point maximum equal to twice your wizard level + yout Intelligence modifier. Whenever you take damage, the ward takes the damage instead. If this damage reduces the ward to 0 hit points, you take any remaining damage.
-		   
-		   While the ward has 0 hit points, it can''t absorb damage but its magic remains. Whenever you cast an abjuration spell of first level or higher, the ward regains a number of hit points equal to twice the level of the spell.
-		   
-		   Once yoy create the ward, you can''t create it again until you finish a long rest.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>While the ward has 0 hit points, it can''t absorb damage but its magic remains. Whenever you cast an abjuration spell of first level or higher, the ward regains a number of hit points equal to twice the level of the spell.
+		   <br/>
+		   <br/>Once yoy create the ward, you can''t create it again until you finish a long rest.'--<Description, nvarchar(max),>
            ,'Abjurer_ArcaneWard'--<Code, nvarchar(50),>
 		   ),
            ('Projected Ward'--<Name, nvarchar(50),>
@@ -69,8 +69,8 @@
 		   ),
            ('Spell Resistance'--<Name, nvarchar(50),>
            ,'Starting at 14th level, you have advantage on saving throws against spells. 
-		   
-		   Furthermore, you have resistance against the damage of spells.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Furthermore, you have resistance against the damage of spells.'--<Description, nvarchar(max),>
            ,'Abjurer_SpellResistance'--<Code, nvarchar(50),>
 		   ),
 
@@ -81,14 +81,14 @@
 		   ),
            ('Minor Conjuration'--<Name, nvarchar(50),>
            ,'Starting at 2nd level when you select this school, you can use your action to conjure up an inanimate object in your hand or on the ground in an unoccupied space that you can see within 10 feet of you. This object can be no larger than 3 feet on a side and weigh no more than 10 pounds, and its form must be that of a nonmagical object that you have seen. The object is visibly magical, radiating dim light out to 5 feet.
-		   
-		   The object disappears after 1 hour, when you use this feature again, or if it takes any damage.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>The object disappears after 1 hour, when you use this feature again, or if it takes any damage.'--<Description, nvarchar(max),>
            ,'Conjurer_MinorConjuration'--<Code, nvarchar(50),>
 		   ),
            ('Benign Transposition'--<Name, nvarchar(50),>
            ,'Starting at 6th level, you can use your action to teleport up to 30 feet to an unoccupied space that you can see. Alternatively, you can choose a space within range that is occupied by a Small or Medium creature. If that creature is willing, you both teleport, swapping places. 
-		   
-		   Once you use this feature, you can''t use it again until you finish a long rest or you cast a conjuration spell of 1st levei or higher.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Once you use this feature, you can''t use it again until you finish a long rest or you cast a conjuration spell of 1st levei or higher.'--<Description, nvarchar(max),>
            ,'Conjurer_BenignTransposition'--<Code, nvarchar(50),>
 		   ),
            ('Focused Conjuration'--<Name, nvarchar(50),>
@@ -107,8 +107,8 @@
 		   ),
            ('Portent'--<Name, nvarchar(50),>
            ,'Starting at 2nd level when you choose this school, glimpses of the future begin to press in on your awareness. When you finish a long rest, roll two d20s and record the numbers rolled. You can replace any attack roll, saving throw, or ability check made by you or a creature that you can see with one of these foretelling rolls. You must choose to do so before the roll, and you can replace a roll in this way only once per turn.
-		   
-		   Each foretelling roll can be used only once. When you finish a long rest, you lose any unused foretelling rolls.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Each foretelling roll can be used only once. When you finish a long rest, you lose any unused foretelling rolls.'--<Description, nvarchar(max),>
            ,'Diviner_Portent'--<Code, nvarchar(50),>
 		   ),
            ('Expert Divination'--<Name, nvarchar(50),>
@@ -117,14 +117,14 @@
 		   ),
            ('The Third Eye'--<Name, nvarchar(50),>
            ,'Starting at 10th level, you can use your action to increase your powers of perception. When you do so, choose one of the following benefits, which lasts until you are incapacitated or you take a short or long rest. You can''t use the feature again until you finish a rest.
-		   
-		   -Darkvision. You gain darkvision out to a range of 60 feet, as described in chapter 8.
-		   
-		   -Ethereal Sight. You can see into the Ethereal Plane within 60 feet of you.
-		   
-		   -Greater Comprehension. You can read any language.
-		   
-		   -See Invisibility. You can see invisible creatures and objects within 10 feet of you that are within line of sight.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/><strong>Darkvision</strong> - You gain darkvision out to a range of 60 feet, as described in chapter 8.
+		   <br/>
+		   <br/><strong>Ethereal Sight</strong> - You can see into the Ethereal Plane within 60 feet of you.
+		   <br/>
+		   <br/><strong>Greater Comprehension</strong> - You can read any language.
+		   <br/>
+		   <br/><strong>See Invisibility</strong> - You can see invisible creatures and objects within 10 feet of you that are within line of sight.'--<Description, nvarchar(max),>
            ,'Diviner_TheThirdEye'--<Code, nvarchar(50),>
 		   ),
            ('Greater Portent'--<Name, nvarchar(50),>
@@ -139,16 +139,16 @@
 		   ),
            ('Hypnotic Gaze'--<Name, nvarchar(50),>
            ,'Starting at 2nd level when you choose this school, your soft words and enchanting gaze can magically enthrall another creature. As an action, choose one creature that you can see within 5 feet of you. If the target can see or hear you, it must succeed on a Wisdom saving throw against your wizard spell save DC or be charmed by you until the end of your next turn. The charmed creature''s speed drops to O, and the creature is incapacitated and visibly dazed.
-		   
-		   On subsequent turns, you can use your action to maintain this effect, extending its duration until the end of your next turn. However, the effect ends if you move more than 5 feet away from the creature, if the creature can neither see nor hear you, or if the creature takes damage. 
-		   
-		   Once the effect ends, or if the creature succeeds on its initial saving throw against this effect, you can''t use this feature on that creature again until you finish a long rest.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>On subsequent turns, you can use your action to maintain this effect, extending its duration until the end of your next turn. However, the effect ends if you move more than 5 feet away from the creature, if the creature can neither see nor hear you, or if the creature takes damage. 
+		   <br/>
+		   <br/>Once the effect ends, or if the creature succeeds on its initial saving throw against this effect, you can''t use this feature on that creature again until you finish a long rest.'--<Description, nvarchar(max),>
            ,'Enchanter_HypnoticGaze'--<Code, nvarchar(50),>
 		   ),
            ('Instinctive Charm'--<Name, nvarchar(50),>
            ,'Beginning at 6th level, when a creature you can see within 30 feet of you makes an attack roll against you, you can use your reaction to divert the attack, provided that another creature is within the attack''s range. The attacker must make a Wisdom saving throw against your wizard spell save DC. On a failed save, the attacker must target the creature that is closest to it, not including you or itself. If multiple creatures are closest, lhe attacker chooses which one to target. On a successful save, you can''t use this feature on the attacker again until you finish a long rest.
-		   
-		   You must choose to use this feature before knowing whether the attack hits or misses. Creatures that can''t be charmed are immune to this effect.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>You must choose to use this feature before knowing whether the attack hits or misses. Creatures that can''t be charmed are immune to this effect.'--<Description, nvarchar(max),>
            ,'Enchanter_InstinctiveCharm'--<Code, nvarchar(50),>
 		   ),
            ('Split Enchantment'--<Name, nvarchar(50),>
@@ -157,8 +157,8 @@
 		   ),
            ('Alter Memories'--<Name, nvarchar(50),>
            ,'At 14th level, you gain the ability to make a creature unaware of your magical influence on it. When you cast an enchantment spell to charm one or more creatures, you can alter one creature''s understanding so that it remains unaware of being charmed.
-		   
-		   Additionally, once before the spell expires, you can use your action to try to make the chosen creature forget some of the time it spent charmed. The creature must succeed on an Intelligence saving throw against your wizard spell save DC or lose a number of hours of its memories equal to 1 + your Charisma modifier (minimum 1). You can make the creature forget less time, and the amount of time can''t exceed the duration of your enchantment spell.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Additionally, once before the spell expires, you can use your action to try to make the chosen creature forget some of the time it spent charmed. The creature must succeed on an Intelligence saving throw against your wizard spell save DC or lose a number of hours of its memories equal to 1 + your Charisma modifier (minimum 1). You can make the creature forget less time, and the amount of time can''t exceed the duration of your enchantment spell.'--<Description, nvarchar(max),>
            ,'Enchanter_AlterMemories'--<Code, nvarchar(50),>
 		   ),
 
@@ -181,8 +181,8 @@
 		   ),
            ('Overchannel'--<Name, nvarchar(50),>
            ,'Starting at 14th level, you can increase the power of your simpler Spells. When you cast a Wizard spell of 1st through 5th level that deals damage, you can deal maximum damage with that spell.
-		   
-		   The first time you do so, you suffer no adverse effect. If you use this feature again before you finish a Long Rest, you take 2d12 necrotic damage for each level of the spell, immediately after you cast it. Each time you use this feature again before finishing a Long Rest, the necrotic damage per Spell Level increases by 1d12. This damage ignores Resistance and immunity.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>The first time you do so, you suffer no adverse effect. If you use this feature again before you finish a Long Rest, you take 2d12 necrotic damage for each level of the spell, immediately after you cast it. Each time you use this feature again before finishing a Long Rest, the necrotic damage per Spell Level increases by 1d12. This damage ignores Resistance and immunity.'--<Description, nvarchar(max),>
            ,'Evoker_Overchannel'--<Code, nvarchar(50),>
 		   ),
 
@@ -193,8 +193,8 @@
 		   ),
            ('Improved Minor Illusion'--<Name, nvarchar(50),>
            ,'When you choose this school at 2nd level, you learn the minor illusion cantrip. lf you already know this cantrip, you learn a different wizard cantrip of your choice. The cantrip doesn''t count against your number of cantrips known.
-		   
-		   When you cast minar illusion, yau can create both a sound and an image with a single casting of the spell.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>When you cast minar illusion, yau can create both a sound and an image with a single casting of the spell.'--<Description, nvarchar(max),>
            ,'Illusionist_ImprovedMinorIllusion'--<Code, nvarchar(50),>
 		   ),
            ('Malleable Illusions'--<Name, nvarchar(50),>
@@ -203,14 +203,14 @@
 		   ),
            ('Illusory Self'--<Name, nvarchar(50),>
            ,'Beginning at 10th level, you can create an illusory duplicate of yourself as an instant, almost instinctual reaction to danger. When a creature makes an attack roll against you, you can use your reaction to interpose the illusory duplicate between the attacker and yourself. The attack automatically misses you, then the ilIusion dissipates.
-		   
-		   Once you use this feature, you can''t use it again until you finish a short or long rest.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Once you use this feature, you can''t use it again until you finish a short or long rest.'--<Description, nvarchar(max),>
            ,'Illusionist_IllusorySelf'--<Code, nvarchar(50),>
 		   ),
            ('Illusory Reality'--<Name, nvarchar(50),>
            ,'By 14th level, you have learned the secret of weaving shadow magic into your illusions to give them a semi-reality. When you cast an illusion spell of 1st level or higher, you can choose one inanimate, nonmagical object that is part of the illusion and make that object real. You can do this on your turn as a bonus action while the spell is ongoing. The object remains real for 1 minute. For example, you can create an illusion of a bridge over a chasm and then make it real long enough for your allies to cross.
-		   
-		   The object can''t deal damage or otherwise directly harm anyone.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>The object can''t deal damage or otherwise directly harm anyone.'--<Description, nvarchar(max),>
            ,'Illusionist_IllusoryReality'--<Code, nvarchar(50),>
 		   ),
 
@@ -225,12 +225,12 @@
 		   ),
            ('Undead Thralls'--<Name, nvarchar(50),>
            ,'At 6th level, you add the animate dead spell to your spellbook if it is not there already, When you cast animate dead, you can target one additional corpse or pile of bones, creating another zombie or ske1eton, as appropriate.
-		   
-		   Whenever you create an undead using a necromancy spell, it has additional benefits:
-		   
-		   -The creature''s hit point maximum is increased by an amount equal to your wizard level.
-		   
-		   -The creature adds your proficiency bonus to its weapon damage rolls,'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Whenever you create an undead using a necromancy spell, it has additional benefits:
+		   <br/>
+		   <br/>The creature''s hit point maximum is increased by an amount equal to your wizard level.
+		   <br/>
+		   <br/>The creature adds your proficiency bonus to its weapon damage rolls,'--<Description, nvarchar(max),>
            ,'Necromancer_UndeadThralls'--<Code, nvarchar(50),>
 		   ),
            ('Inured To Undeath'--<Name, nvarchar(50),>
@@ -239,8 +239,8 @@
 		   ),
            ('Command Undead'--<Name, nvarchar(50),>
            ,'Starting at 14th level, you can use magic to bring undead under your control, even those created by other wizards. As an action, you can choose one undead that you can see within 60 feet of you. That creature must make a Charisma saving throw against your wizard spell save DC. If it succeeds, you can''t use this feature on it again. If it fails, it becomes friendly to you and obeys your commands until you use this feature again.
-		   
-		   Intelligent undead are harder to control in this way. If the target has an Intelligence of 8 or higher, it has advantage on the saving throw. If it fails the saving throw and has an Intelligence of 12 or higher, it can repeat the saving throw at the end of every hour until it succeeds and breaks free.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Intelligent undead are harder to control in this way. If the target has an Intelligence of 8 or higher, it has advantage on the saving throw. If it fails the saving throw and has an Intelligence of 12 or higher, it can repeat the saving throw at the end of every hour until it succeeds and breaks free.'--<Description, nvarchar(max),>
            ,'Necromancer_CommandUndead'--<Code, nvarchar(50),>
 		   ),
 
@@ -255,34 +255,34 @@
 		   ),
            ('Transmuter''s Stone'--<Name, nvarchar(50),>
            ,'Starting at 6th level, you can spend 8 hours creating a transmuter''s stone that stores transmutation magic. You can benefit from the stone yourself or give it to another creature. A creature gains a benefit of your choice as long as the stone is in the creature''s possession. When you create the stone, choose the benefit from the following options:
-		   
-		   -Darkvision out to a range of 60 feet, as described in chapter 8
-		   
-		   -An increase to speed of lO feet while the creature is unencumbered
-		   
-		   -Proficiency in Constitution saving throws
-		   
-		   -Resistance to acid, cold, fire, lightning, or thunder damage (your choice whenever you choose this benefit)
-		   
-		   Each time you cast a transmutation spell of Ist level or higher, you can change the effect of your stone if the stone is on your person. If you create a new transmuter''s stone, the previous one ceases to function.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Darkvision out to a range of 60 feet, as described in chapter 8
+		   <br/>
+		   <br/>An increase to speed of lO feet while the creature is unencumbered
+		   <br/>
+		   <br/>Proficiency in Constitution saving throws
+		   <br/>
+		   <br/>Resistance to acid, cold, fire, lightning, or thunder damage (your choice whenever you choose this benefit)
+		   <br/>
+		   <br/>Each time you cast a transmutation spell of Ist level or higher, you can change the effect of your stone if the stone is on your person. If you create a new transmuter''s stone, the previous one ceases to function.'--<Description, nvarchar(max),>
            ,'Transmuter_TransmutersStone'--<Code, nvarchar(50),>
 		   ),
            ('Shapechanger'--<Name, nvarchar(50),>
            ,'At 10th level, you add the polymorph spell to your spellbook, if it is not there already. You can cast polymorph without expending a spell slot. When you do so, you can target only yourself and transform into a beast whose challenge rating is 1 or lower.
-		   
-		   Once you cast polymorph in this way, you can''t do so again until you finish a short or long rest, though you can still cast it normally using an available spell slot.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/>Once you cast polymorph in this way, you can''t do so again until you finish a short or long rest, though you can still cast it normally using an available spell slot.'--<Description, nvarchar(max),>
            ,'Transmuter_Shapechanger'--<Code, nvarchar(50),>
 		   ),
            ('Master Transmuter'--<Name, nvarchar(50),>
            ,'Starting at 14th level, you can use your action to consume the reserve of transmutation magic stored within your transmuter''s stone in a single burst. When you do so, choose one of the following effects. Your transmuter''s stone is destroyed and can''t be remade until you finish a long rest.
-		   
-		   -Minor Transformation. You can transmute one nonmagical object - no larger than a 5 foot cube - into another nonmagical object of similar size and mass and of equal or lesser value. You must spend 10 minutes handling the object to transform it.
-		   
-		   -Panacea. You remove all curses, diseases, and poisons affecting a creature that you touch with the transmuter''s stone. The creature also regains all its hit points.
-		   
-		   -Restore Life. You cast the raise dead spell on a creature you touch with the transmuter''s stone, without expending a spell slot or needing to have the spell in your spellbook.
-		   
-		   -Restore Youth. You touch the transmuter''s stone to a willing creature, and that creature''s apparent age is reduced by 3d1O years, to a minimum of 13 years. This effect doesn''t extend lhe creature''s lifespan.'--<Description, nvarchar(max),>
+		   <br/>
+		   <br/><strong>Minor Transformation</strong> - You can transmute one nonmagical object - no larger than a 5 foot cube - into another nonmagical object of similar size and mass and of equal or lesser value. You must spend 10 minutes handling the object to transform it.
+		   <br/>
+		   <br/><strong>Panacea</strong> - You remove all curses, diseases, and poisons affecting a creature that you touch with the transmuter''s stone. The creature also regains all its hit points.
+		   <br/>
+		   <br/><strong>Restore Life</strong> - You cast the raise dead spell on a creature you touch with the transmuter''s stone, without expending a spell slot or needing to have the spell in your spellbook.
+		   <br/>
+		   <br/><strong>Restore Youth</strong> - You touch the transmuter''s stone to a willing creature, and that creature''s apparent age is reduced by 3d1O years, to a minimum of 13 years. This effect doesn''t extend lhe creature''s lifespan.'--<Description, nvarchar(max),>
            ,'Transmuter_MasterTransmuter'--<Code, nvarchar(50),>
 		   )
 GO
@@ -328,12 +328,12 @@ INSERT INTO [dbo].[ClassFeature]
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'PreparingSpells')--<FeatureId, int,>
 		   ,1--<Level, int>
            ,'The Wizard table shows how many Spell Slots you have to cast your Spells of 1st level and higher. To cast one of these Spells, you must expend a slot of the spell''s level or higher. You regain all expended Spell Slots when you finish a Long Rest.
-		   
-		   You prepare the list of Wizard Spells that are available for you to cast. To do so, choose a number of Wizard Spells from your Spellbook equal to your Intelligence modifier + your Wizard level (minimum of one spell). The Spells must be of a level for which you have Spell Slots.
-		   
-		   For example, if you''re a 3rd-level Wizard, you have four 1st-level and two 2nd-level Spell Slots. With an Intelligence of 16, your list of prepared Spells can include six Spells of 1st or 2nd level, in any combination, chosen from your Spellbook. If you prepare the 1st-level spell Magic Missile, you can cast it using a 1st-level or a 2nd-level slot. Casting the spell doesn''t remove it from your list of prepared Spells.
-		   
-		   You can change your list of prepared Spells when you finish a Long Rest. Preparing a new list of Wizard Spells requires time spent studying your Spellbook and memorizing the incantations and gestures you must make to cast the spell: at least 1 minute per Spell Level for each spell on your list.'--<Description, int,>
+		   <br/>
+		   <br/>You prepare the list of Wizard Spells that are available for you to cast. To do so, choose a number of Wizard Spells from your Spellbook equal to your Intelligence modifier + your Wizard level (minimum of one spell). The Spells must be of a level for which you have Spell Slots.
+		   <br/>
+		   <br/>For example, if you''re a 3rd-level Wizard, you have four 1st-level and two 2nd-level Spell Slots. With an Intelligence of 16, your list of prepared Spells can include six Spells of 1st or 2nd level, in any combination, chosen from your Spellbook. If you prepare the 1st-level spell Magic Missile, you can cast it using a 1st-level or a 2nd-level slot. Casting the spell doesn''t remove it from your list of prepared Spells.
+		   <br/>
+		   <br/>You can change your list of prepared Spells when you finish a Long Rest. Preparing a new list of Wizard Spells requires time spent studying your Spellbook and memorizing the incantations and gestures you must make to cast the spell: at least 1 minute per Spell Level for each spell on your list.'--<Description, int,>
            ,0--<Hidden, bit,>
 		   ),
            ((SELECT TOP(1) Id FROM Class WHERE [Name] = 'Wizard')--<ClassId, int,>
@@ -341,10 +341,10 @@ INSERT INTO [dbo].[ClassFeature]
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'SpellcastingAbility')--<FeatureId, int,>
 		   ,1--<Level, int>
            ,'Intelligence is your Spellcasting Ability for your Wizard Spells, since you learn your Spells through dedicated study and memorization. You use your Intelligence whenever a spell refers to your Spellcasting Ability. In addition, you use your Intelligence modifier when setting the saving throw DC for a Wizard spell you cast and when Making an Attack roll with one.
-		   
-		   Spell save DC = 8 + your Proficiency Bonus + your Intelligence modifier
-		   
-		   Spell Attack modifier = your Proficiency Bonus + your Intelligence modifier'--<Description, int,>
+		   <br/>
+		   <br/>Spell save DC = 8 + your Proficiency Bonus + your Intelligence modifier
+		   <br/>
+		   <br/>Spell Attack modifier = your Proficiency Bonus + your Intelligence modifier'--<Description, int,>
            ,1--<Hidden, bit,>
 		   ),
            ((SELECT TOP(1) Id FROM Class WHERE [Name] = 'Wizard')--<ClassId, int,>

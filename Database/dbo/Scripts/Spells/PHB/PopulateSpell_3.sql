@@ -323,8 +323,8 @@ INSERT INTO [dbo].[Spell]
            ,'A tiny ball of bat guano and sulfur'--Material Description
 	       ,0--Is Ritual
            ,'A bright streak flashes from your pointing finger to a point you choose within range and then blossoms with a low roar into an explosion of flame. Each creature in a 20 foot radius sphere centered on that point must make a Dexterity saving throw. A target takes 8d6 fire damage on a failed save, or half as much damage on a successful one.
-		   
-		   The fire spreads around corners. It ignites flammable objects in the area that aren''t being worn or carried.'--Description
+		   <br/>
+		   <br/>The fire spreads around corners. It ignites flammable objects in the area that aren''t being worn or carried.'--Description
            ,'When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d6 for each slot level above 3rd.'),--Higher Level Description
 
 		    ('Fly'--Name
@@ -389,8 +389,8 @@ INSERT INTO [dbo].[Spell]
            ,'A shaving of licorice root'--Material Description
 	       ,0--Is Ritual
            ,'Choose a willing creature that you can see within range. Until the spell ends, the target''s speed is doubled, it gains a +2 bonus to AC, it has advantage on Dexterity saving throws, and it gains an additional action on each of its turns. That action can be used only to take the Attack (one weapon attack only), Dash, Disengage, Hide, or Use an Object action.
-		   
-		   When the spell ends, the target can''t move or take actions until after its next turn, as a wave of lethargy sweeps over it.'--Description
+		   <br/>
+		   <br/>When the spell ends, the target can''t move or take actions until after its next turn, as a wave of lethargy sweeps over it.'--Description
            ,null),--Higher Level Description
 
 ('Hunger of Hadar'--Name

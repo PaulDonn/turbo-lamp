@@ -72,12 +72,9 @@ INSERT INTO [dbo].[RaceFeature]
            ,(SELECT TOP(1) Id FROM SubRace WHERE [Name] = 'Black Dragonborn')--<SubRaceId, int,>
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'BreathWeapon')--<FeatureId, int,>
 		   ,1--<Level, int>
-           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in
-		   a 30 foot line must make 
-		   a Dexterity saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes
-		   2d6 acid damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
-		   
-		   After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
+           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in a 30 foot line must make a Dexterity saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 acid damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
+		   <br/>
+		   <br/>After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
            ,0--<Hidden, bit,>
 		   ),
            (null--<RaceId, int,>
@@ -100,12 +97,9 @@ INSERT INTO [dbo].[RaceFeature]
            ,(SELECT TOP(1) Id FROM SubRace WHERE [Name] = 'Blue Dragonborn')--<SubRaceId, int,>
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'BreathWeapon')--<FeatureId, int,>
 		   ,1--<Level, int>
-           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in
-		   a 30 foot line must make 
-		   a Dexterity saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes
-		   2d6 lightning damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
-		   
-		   After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
+           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in a 30 foot line must make a Dexterity saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 lightning damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
+		   <br/>
+		   <br/>After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
            ,0--<Hidden, bit,>
 		   ),
            (null--<RaceId, int,>
@@ -128,12 +122,9 @@ INSERT INTO [dbo].[RaceFeature]
            ,(SELECT TOP(1) Id FROM SubRace WHERE [Name] = 'Brass Dragonborn')--<SubRaceId, int,>
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'BreathWeapon')--<FeatureId, int,>
 		   ,1--<Level, int>
-           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in
-		   a 30 foot line must make 
-		   a Dexterity saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes
-		   2d6 fire damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
-		   
-		   After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
+           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in a 30 foot line must make a Dexterity saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 fire damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
+		   <br/>
+		   <br/>After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
            ,0--<Hidden, bit,>
 		   ),
            (null--<RaceId, int,>
@@ -156,12 +147,9 @@ INSERT INTO [dbo].[RaceFeature]
            ,(SELECT TOP(1) Id FROM SubRace WHERE [Name] = 'Bronze Dragonborn')--<SubRaceId, int,>
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'BreathWeapon')--<FeatureId, int,>
 		   ,1--<Level, int>
-           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in
-		   a 30 foot line must make 
-		   a Dexterity saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes
-		   2d6 lightning damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
-		   
-		   After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
+           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in a 30 foot line must make a Dexterity saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 lightning damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
+		   <br/>
+		   <br/>After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
            ,0--<Hidden, bit,>
 		   ),
            (null--<RaceId, int,>
@@ -184,12 +172,9 @@ INSERT INTO [dbo].[RaceFeature]
            ,(SELECT TOP(1) Id FROM SubRace WHERE [Name] = 'Copper Dragonborn')--<SubRaceId, int,>
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'BreathWeapon')--<FeatureId, int,>
 		   ,1--<Level, int>
-           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in
-		   a 30 foot line must make 
-		   a Dexterity saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes
-		   2d6 acid damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
-		   
-		   After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
+           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in a 30 foot line must make a Dexterity saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 acid damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
+		   <br/>
+		   <br/>After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
            ,0--<Hidden, bit,>
 		   ),
            (null--<RaceId, int,>
@@ -212,12 +197,9 @@ INSERT INTO [dbo].[RaceFeature]
            ,(SELECT TOP(1) Id FROM SubRace WHERE [Name] = 'Gold Dragonborn')--<SubRaceId, int,>
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'BreathWeapon')--<FeatureId, int,>
 		   ,1--<Level, int>
-           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in
-		   a 12 foot cone must make 
-		   a Dexterity saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes
-		   2d6 fire damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
-		   
-		   After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
+           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in a 12 foot cone must make a Dexterity saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 fire damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
+		   <br/>
+		   <br/>After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
            ,0--<Hidden, bit,>
 		   ),
            (null--<RaceId, int,>
@@ -240,12 +222,9 @@ INSERT INTO [dbo].[RaceFeature]
            ,(SELECT TOP(1) Id FROM SubRace WHERE [Name] = 'Green Dragonborn')--<SubRaceId, int,>
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'BreathWeapon')--<FeatureId, int,>
 		   ,1--<Level, int>
-           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in
-		   a 12 foot cone must make 
-		   a Constitution saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes
-		   2d6 poison damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
-		   
-		   After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
+           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in a 12 foot cone must make a Constitution saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 poison damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
+		   <br/>
+		   <br/>After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
            ,0--<Hidden, bit,>
 		   ),
            (null--<RaceId, int,>
@@ -268,12 +247,9 @@ INSERT INTO [dbo].[RaceFeature]
            ,(SELECT TOP(1) Id FROM SubRace WHERE [Name] = 'Red Dragonborn')--<SubRaceId, int,>
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'BreathWeapon')--<FeatureId, int,>
 		   ,1--<Level, int>
-           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in
-		   a 12 foot cone must make 
-		   a Dexterity saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes
-		   2d6 fire damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
-		   
-		   After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
+           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in a 12 foot cone must make a Dexterity saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 fire damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
+		   <br/>
+		   <br/>After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
            ,0--<Hidden, bit,>
 		   ),
            (null--<RaceId, int,>
@@ -296,12 +272,9 @@ INSERT INTO [dbo].[RaceFeature]
            ,(SELECT TOP(1) Id FROM SubRace WHERE [Name] = 'Silver Dragonborn')--<SubRaceId, int,>
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'BreathWeapon')--<FeatureId, int,>
 		   ,1--<Level, int>
-           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in
-		   a 12 foot cone must make 
-		   a Constitution saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes
-		   2d6 cold damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
-		   
-		   After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
+           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in a 12 foot cone must make a Constitution saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 cold damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
+		   <br/>
+		   <br/>After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
            ,0--<Hidden, bit,>
 		   ),
            (null--<RaceId, int,>
@@ -324,12 +297,9 @@ INSERT INTO [dbo].[RaceFeature]
            ,(SELECT TOP(1) Id FROM SubRace WHERE [Name] = 'White Dragonborn')--<SubRaceId, int,>
            ,(SELECT TOP(1) Id FROM Feature WHERE [Code] = 'BreathWeapon')--<FeatureId, int,>
 		   ,1--<Level, int>
-           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in
-		   a 12 foot cone must make 
-		   a Constitution saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes
-		   2d6 cold damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
-		   
-		   After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
+           ,'You can use your action to exhale destructive energy. When you use your breath weapon, each creature in a 12 foot cone must make  a Constitution saving throw. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 cold damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level. 4d6 at 11th level, and 5d6 at 16th level.
+		   <br/>
+		   <br/>After you use your breath weapon, you can''t use it again until you complete a short or long rest.'--<Description, int,>
            ,0--<Hidden, bit,>
 		   ),
            (null--<RaceId, int,>

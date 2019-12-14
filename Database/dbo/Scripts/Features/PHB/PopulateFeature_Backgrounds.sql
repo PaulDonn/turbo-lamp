@@ -5,6 +5,7 @@
      VALUES
            ('Shelter of the Faithful'--<Name, nvarchar(50),>
            ,'As an acolyte, you command the respect of those who share your faith, and you can perform the religious ceremonies of your deity. You and your adventuring companions can expect to receive free healing and care at a temple, shrine, or other established presence of your faith, though you must provide any material components needed for spells. Those who share your religion will support you (but only you) at a modest lifestyle.
+			<br/>
 			<br/>You might also have ties to a specific temple dedicated to your chosen deity or pantheon, and you have a residence there. This could be the temple where you used to serve, if you remain on good terms with it, or a temple where you have found a new home. While near your temple, you can call upon the priests for assistance, provided the assistance you ask for is not hazardous and you remain in good standing with your temple.'--<Description, nvarchar(max),>
            ,'ShelterOfTheFaithful'--<Code, nvarchar(50),>
 		   ),
@@ -26,7 +27,9 @@
 		   ),
            ('Guild Membership'--<Name, nvarchar(50),>
            ,'As an established and respected member of a guild, you can rely on certain benefits that membership provides. Your fellow guild members will provide you with lodging and food if necessary, and pay for your funeral if needed. In some cities and towns, a guildhall offers a central place to meet other members of your profession, which can be a good place to meet potential patrons, allies, or hirelings.
+			<br/>
 			<br/>Guilds often wield tremendous political power. If you are accused of a crime, your guild will support you if a good case can be made for your innocence or the crime is justifiable. You can also gain access to powerful political figures through the guild, if you are a member in good standing. Such connections might require the donation of money or magic items to the guild''s coffers.
+			<br/>
 			<br/>You must pay dues of 5 gp per month to the guild. If you miss payments, you must make up back dues to remain in the guild''s good graces.'--<Description, nvarchar(max),>
            ,'GuildMembership'--<Code, nvarchar(50),>
 		   ),
