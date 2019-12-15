@@ -14,6 +14,7 @@ namespace NoticeBoard.Utility.DIMappers
             PartyMapper.Setup(services);
             PlayerCharacterMapper.Setup(services);
             RaceMapper.Setup(services);
+            SkillMapper.Setup(services);
             SpellMapper.Setup(services);
             TreasureMapper.Setup(services);
         }

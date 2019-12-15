@@ -13,5 +13,7 @@
         public bool IsExotic { get; set; }
 
         public bool IsMandatory { get; set; }
+
+        public bool IsSelected { get; set; }
     }
 }

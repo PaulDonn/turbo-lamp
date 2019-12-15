@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace NoticeBoard.Models.Abilities
+﻿namespace Core.Skills.DTO
 {
-    public class SkillModel
+    public class SkillDTO
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public int AbilityId { get; set; }
+        public string AbilityId { get; set; }
 
         public string AbilityName { get; set; }
 

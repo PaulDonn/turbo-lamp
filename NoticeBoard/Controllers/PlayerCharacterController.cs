@@ -12,6 +12,8 @@ using Core.PlayerCharacters.DTO;
 using Core.PlayerCharacters.Query;
 using Core.Races.DTO;
 using Core.Races.Query;
+using Core.Skills.DTO;
+using Core.Skills.Query;
 using DataModel;
 using Infrastructure.Mediator;
 using Infrastructure.Session;
@@ -19,6 +21,7 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
+using NoticeBoard.Models.Abilities;
 using NoticeBoard.Models.Alignments;
 using NoticeBoard.Models.Backgrounds;
 using NoticeBoard.Models.Classes;
@@ -227,166 +230,57 @@ namespace NoticeBoard.Controllers
                 PartyId = partyId 
             };
 
-            var model = _mapper.Map<PlayerLanguagesDTO, SelectLanguagesModel>(SendQuery<GetLanguageOptionsQuery, PlayerLanguagesDTO>(query));
+            var model = _mapper.Map<PlayerLanguagesDTO, CheckboxSelectModel<LanguageModel>>(SendQuery<GetLanguageOptionsQuery, PlayerLanguagesDTO>(query));
+            model.PcId = pcId;
+            model.PartyId = partyId;
+
+            if (model.Options.Where(n => n.IsSelected).Count() == model.NumberOfSelections)
+            {
+                return SelectLanguages(model);
+            }
 
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult SelectLanguages(SelectLanguagesModel model)
+        public IActionResult SelectLanguages(CheckboxSelectModel<LanguageModel> model)
         {
             var pcId = Convert.ToInt32(Decrypt(model.PcId));
 
-            SendCommand(new SetPCLanguagesCommand { PcId = pcId, Languages = model.Languages.Select(n => n.Id).ToList() });
+            SendCommand(new SetPCLanguagesCommand { PcId = pcId, Languages = model.Options.Where(n => n.IsSelected).Select(n => n.Id).ToList() });
 
-            return RedirectToAction(nameof(Index), nameof(HomeController));
+            return RedirectToAction(nameof(SelectSkills), new { model.PcId, model.PartyId });
         }
 
-        #region Create Ajax calls
-
-        public JsonResult GetRaces()
+        public IActionResult SelectSkills(string pcId, int partyId)
         {
-            var racesQuery = new GetRacesQuery { };
-            var racesDto = SendQuery<GetRacesQuery, IEnumerable<RaceDTO>>(racesQuery);
-            var races = new SelectList(racesDto, nameof(RaceDTO.Id), nameof(RaceDTO.Name));
-
-            return Json(races);
-        }
-
-        public JsonResult GetSubRaces(int raceId)
-        {
-            var subRacesQuery = new GetSubRacesQuery { RaceId = raceId };
-            var subRacesDto = SendQuery<GetSubRacesQuery, IEnumerable<SubRaceDTO>>(subRacesQuery);
-            var subRaces = new SelectList(subRacesDto, nameof(SubRaceDTO.Id), nameof(SubRaceDTO.Name));
-
-            return Json(subRaces);
-        }
-
-        public JsonResult GetClasses()
-        {
-            var classesQuery = new GetClassesQuery { };
-            var classesDto = SendQuery<GetClassesQuery, IEnumerable<ClassDTO>>(classesQuery);
-            var classes = new SelectList(classesDto, nameof(ClassDTO.Id), nameof(ClassDTO.Name));
-
-            return Json(classes);
-        }
-
-        public JsonResult GetArchetypes(int classId)
-        {
-            var archetypesQuery = new GetArchetypesQuery { ClassId = classId };
-            var archetypesDto = SendQuery<GetArchetypesQuery, IEnumerable<ArchetypeDTO>>(archetypesQuery);
-            var archetypes = new SelectList(archetypesDto, nameof(ArchetypeDTO.Id), nameof(ArchetypeDTO.Name));
-
-            return Json(archetypes);
-        }
-
-        public JsonResult GetBackgrounds()
-        {
-            var backgroundsQuery = new GetBackgroundsQuery { };
-            var backgroundsDto = SendQuery<GetBackgroundsQuery, IEnumerable<BackgroundDTO>>(backgroundsQuery);
-            var backgrounds = new SelectList(backgroundsDto, nameof(BackgroundDTO.Id), nameof(BackgroundDTO.Name));
-
-            return Json(backgrounds);
-        }
-
-        public JsonResult GetAlignments()
-        {
-            var alignmentsQuery = new GetAlignmentsQuery { };
-            var alignmentsDto = SendQuery<GetAlignmentsQuery, IEnumerable<AlignmentDTO>>(alignmentsQuery);
-            var alignments = new SelectList(alignmentsDto, nameof(AlignmentDTO.Id), nameof(AlignmentDTO.Name));
-
-            return Json(alignments);
-        }
-
-        public JsonResult GetLanguages(bool filter, bool? isExotic)
-        {
-            var langagesQuery = new GetLanguagesQuery { Filter = filter, IsExotic = isExotic };
-            var languagesDto = SendQuery<GetLanguagesQuery, IEnumerable<LanguageDTO>>(langagesQuery);
-
-            return Json(languagesDto);
-        }
-
-        public JsonResult GetRaceDetails(int raceId)
-        {
-            var query = new GetRaceQuery
+            var query = new GetSkillOptionsQuery
             {
-                Id = raceId
+                PcId = Convert.ToInt32(Decrypt(pcId)),
+                PartyId = partyId
             };
 
-            var result = SendQuery<GetRaceQuery, RaceDTO>(query);
+            var model = _mapper.Map<PlayerSkillsDTO, CheckboxSelectModel<SkillModel>>(SendQuery<GetSkillOptionsQuery, PlayerSkillsDTO>(query));
+            model.PcId = pcId;
+            model.PartyId = partyId;
 
-            return Json(result);
-        }
-
-        public JsonResult GetSubRaceDetails(int subRaceId)
-        {
-            var query = new GetSubRaceQuery
+            if (model.Options.Where(n => n.IsSelected).Count() == model.NumberOfSelections)
             {
-                Id = subRaceId
-            };
+                return SelectSkills(model);
+            }
 
-            var result = SendQuery<GetSubRaceQuery, SubRaceDTO>(query);
-
-            return Json(result);
+            return View(model);
         }
 
-        public JsonResult GetClassDetails(int classId)
+        [HttpPost]
+        public IActionResult SelectSkills(CheckboxSelectModel<SkillModel> model)
         {
-            var query = new GetClassQuery
-            {
-                Id = classId
-            };
+            var pcId = Convert.ToInt32(Decrypt(model.PcId));
 
-            var result = SendQuery<GetClassQuery, ClassDTO>(query);
+            SendCommand(new SetPCSkillsCommand { PcId = pcId, Skills = model.Options.Where(n => n.IsSelected).Select(n => n.Id).ToList() });
 
-            return Json(result);
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
-
-        public JsonResult GetArchetypeDetails(int archetypeId)
-        {
-            var query = new GetArchetypeQuery
-            {
-                Id = archetypeId
-            };
-
-            var result = SendQuery<GetArchetypeQuery, ArchetypeDTO>(query);
-
-            return Json(result);
-        }
-
-        public JsonResult GetBackgroundDetails(int backgroundId)
-        {
-            var query = new GetBackgroundQuery
-            {
-                Id = backgroundId
-            };
-
-            var result = SendQuery<GetBackgroundQuery, BackgroundDTO>(query);
-
-            return Json(result);
-        }
-
-        public JsonResult GetAlignmentDetails(int alignmentId)
-        {
-            var query = new GetAlignmentQuery
-            {
-                Id = alignmentId
-            };
-
-            var result = SendQuery<GetAlignmentQuery, AlignmentDTO>(query);
-
-            return Json(result);
-        }
-
-        public JsonResult GetPcLanguages(int raceId, int? subRaceId, int? archetypeId, int backgroundId)
-        {
-            var langagesQuery = new GetPcLanguagesQuery { RaceId = raceId, SubRaceId = subRaceId, ArchetypeId = archetypeId, BackgroundId = backgroundId };
-            var languagesDto = SendQuery<GetPcLanguagesQuery, PcLanguagesDTO>(langagesQuery);
-
-            return Json(languagesDto);
-        }
-
-        #endregion
 
         public IActionResult Details(int pcid)
         {

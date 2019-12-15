@@ -11,6 +11,8 @@ namespace NoticeBoard.Models.Languages
 
         public string Name { get; set; }
 
+        public string TypicalSpeakers { get; set; }
+
         public string Script { get; set; }
 
         public bool IsMandatory { get; set; }

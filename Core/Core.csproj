@@ -12,8 +12,6 @@
     <Folder Include="Features\Command\" />
     <Folder Include="Races\Command\" />
     <Folder Include="Skills\Command\" />
-    <Folder Include="Skills\DTO\" />
-    <Folder Include="Skills\Query\" />
     <Folder Include="SubFeature\Command\" />
     <Folder Include="SubFeature\DTO\" />
     <Folder Include="SubFeature\Query\" />

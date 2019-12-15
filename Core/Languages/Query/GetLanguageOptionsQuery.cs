@@ -4,6 +4,7 @@ using Core.Races.DTO;
 using DataModel;
 using Infrastructure.CQRS;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -39,6 +40,7 @@ namespace Core.Languages.Query
                                              .Include(n => n.Race.RaceLanguage)
                                              .Include(n => n.SubRace)
                                              .Include(n => n.Background)
+                                             .Include(n => n.PcLanguage)
                                              .FirstOrDefault();
 
             if (pc != null && partySources.Count() > 0)
@@ -53,16 +55,21 @@ namespace Core.Languages.Query
                     if (pc.Race.RaceLanguage.Any(n => n.LanguageId == languageOption.Id))
                     {
                         languageOption.IsMandatory = true;
+                        languageOption.IsSelected = true;
+                    }
+                    if(pc.PcLanguage.Any(n => n.LanguageId == language.Id))
+                    {
+                        languageOption.IsSelected = true;
                     }
                     languageOptions.Add(languageOption);
                 }
 
                 dto.Languages = languageOptions;
 
-                dto.NumberOfLanguages = dto.Languages.Count(n => n.IsMandatory) +
+                dto.NumberOfLanguages = Math.Max(pc.PcLanguage.Count(), dto.Languages.Count(n => n.IsMandatory) +
                                         (pc.Race?.AdditionalLanguages ?? 0) +
                                         (pc.SubRace?.AdditionalLanguages ?? 0) +
-                                        (pc.Background?.AdditionalLanguages ?? 0);
+                                        (pc.Background?.AdditionalLanguages ?? 0));
             }
 
             return dto;

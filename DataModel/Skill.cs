@@ -20,6 +20,8 @@ namespace DataModel
         [StringLength(50)]
         public string Name { get; set; }
         public int AbilityId { get; set; }
+        [Required]
+        public string Actions { get; set; }
 
         [ForeignKey(nameof(AbilityId))]
         [InverseProperty("Skill")]

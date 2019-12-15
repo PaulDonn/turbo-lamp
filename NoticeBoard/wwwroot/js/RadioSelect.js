@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
     characterCreate = new Vue({
-        el: '#NewCharacterVue',
+        el: '#RadioSelect',
         data: {
             options: JSON.parse($('#Options').val()),
             selectionId: 0,

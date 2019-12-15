@@ -11,6 +11,7 @@ using Core.Languages.DTO;
 using Core.PlayerCharacters.DTO;
 using Core.Players.DTO;
 using Core.Races.DTO;
+using Core.Skills.DTO;
 using Core.Spells.DTO;
 using DataModel;
 using NoticeBoard.Models.Abilities;
@@ -24,6 +25,7 @@ using NoticeBoard.Models.Party;
 using NoticeBoard.Models.Player;
 using NoticeBoard.Models.PlayerCharacters;
 using NoticeBoard.Models.Races;
+using NoticeBoard.Models.Shared;
 using NoticeBoard.Models.Spells;
 using NoticeBoard.Models.Treasure;
 using System;
@@ -47,6 +49,7 @@ namespace NoticeBoard.Utility.AutoMapper
             PlayerMaps();
             PlayerCharacterMaps();
             RaceMaps();
+            SkillMaps();
             SpellMaps();
             TreasureMaps();
         }
@@ -62,14 +65,6 @@ namespace NoticeBoard.Utility.AutoMapper
             CreateMap<PcAbilityScoreDTO, PcAbilityScoreModel>();
 
             CreateMap<PcSavingThrow, PcSavingThrowDTO>();
-
-            CreateMap<Skill, SkillDTO>();
-
-            CreateMap<SkillDTO, SkillModel>();
-
-            CreateMap<PcSkill, PcSkillDTO>();
-
-            CreateMap<PcSkillDTO, PcSkillModel>();
         }
 
         private void AlignmentMaps()
@@ -200,8 +195,9 @@ namespace NoticeBoard.Utility.AutoMapper
             CreateMap<Language, LanguageDTO>();
             CreateMap<LanguageDTO, LanguageModel>()
                 .ForMember(dest => dest.IsSelected, opts => opts.MapFrom(src => src.IsMandatory));
-            CreateMap<PlayerLanguagesDTO, SelectLanguagesModel>()
-                .ForMember(dest => dest.Languages, opts => opts.MapFrom(src => src.Languages));
+            CreateMap<PlayerLanguagesDTO, CheckboxSelectModel<LanguageModel>>()
+                .ForMember(dest => dest.Options, opts => opts.MapFrom(src => src.Languages))
+                .ForMember(dest => dest.NumberOfSelections, opts => opts.MapFrom(src => src.NumberOfLanguages));
         }
 
         private void PartyMaps()
@@ -285,6 +281,25 @@ namespace NoticeBoard.Utility.AutoMapper
             CreateMap<SubRace, SubRaceDTO>();
 
             CreateMap<SubRaceDTO, SubRaceModel>();
+        }
+
+        private void SkillMaps()
+        {
+            CreateMap<Skill, SkillDTO>()
+                .ForMember(dest => dest.AbilityName, opts => {
+                    opts.Condition(src => src.Ability != null);
+                    opts.MapFrom(src => src.Ability.Name);
+                });
+
+            CreateMap<SkillDTO, SkillModel>();
+
+            CreateMap<PcSkill, PcSkillDTO>();
+
+            CreateMap<PcSkillDTO, PcSkillModel>();
+
+            CreateMap<PlayerSkillsDTO, CheckboxSelectModel<SkillModel>>()
+                .ForMember(dest => dest.Options, opts => opts.MapFrom(src => src.Skills))
+                .ForMember(dest => dest.NumberOfSelections, opts => opts.MapFrom(src => src.NumberOfSkills));
         }
 
         private void SpellMaps()

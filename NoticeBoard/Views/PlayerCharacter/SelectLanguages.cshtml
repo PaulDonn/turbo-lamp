@@ -1,40 +1,85 @@
-﻿@model NoticeBoard.Models.Languages.SelectLanguagesModel
+﻿@model NoticeBoard.Models.Shared.CheckboxSelectModel<NoticeBoard.Models.Languages.LanguageModel>
 
 @{
     ViewData["Title"] = "New Character - Languages";
 }
 
-    <div id="NewCharacterVue">
-        @using (Html.BeginForm("SelectLanguages", "PlayerCharacter", "POST"))
-        {
-            @Html.HiddenFor(model => model.PcId)
-            @Html.HiddenFor(model => model.PartyId)
-            @Html.HiddenFor(model => model.NumberOfLanguages)
+<div id="CheckboxSelect">
+    @using (Html.BeginForm("SelectLanguages", "PlayerCharacter", "POST"))
+    {
+        @Html.HiddenFor(model => model.PcId)
+        @Html.HiddenFor(model => model.PartyId)
+        @Html.HiddenFor(model => model.NumberOfSelections)
         <div class="row h-100">
-            <div class="col-xl-12">
+            <div class="col-xl-4">
                 <div class="card">
                     <div class="card-header">
-                        <div class="text-center">Common Languages</div>
+                        <div class="text-center">Select {{maxNumberOfSelections - numberOfSelectedOptions}} more language(s)</div>
                     </div>
                     <div class="card-body">
-                        @for (int i = 0; i < Model.Languages.Count(); i++)
+                        @for (int i = 0; i < Model.Options.Count(); i++)
                         {
                             <div class="row">
                                 <div>
-                                    @Html.HiddenFor(m => m.Languages[i].Id)
-                                    @Html.HiddenFor(m => m.Languages[i].Name)
-                                    <input asp-for="Languages[i].IsSelected" type="checkbox" disabled="@Model.Languages[i].IsMandatory" />
-                                    <label asp-for="Languages[i].Name">@Model.Languages[i].Name</label>
+                                    @Html.HiddenFor(m => m.Options[i].Id)
+                                    @Html.HiddenFor(m => m.Options[i].Name)
+                                    <input asp-for="Options[i].IsSelected" data-no-toggle="@Model.Options[i].IsMandatory" type="checkbox" readonly="@(Model.Options[i].IsMandatory)" v-on:change="OnSelection()" />
+                                    <label asp-for="Options[i].Name">@Model.Options[i].Name</label>
                                 </div>
                             </div>
                         }
-                        <input class="btn btn-primary" type="submit" :disabled="selectionId <= 0" />
+                        <input class="btn btn-primary" type="submit" :disabled="numberOfSelectedOptions < maxNumberOfSelections" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="col-12">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th width="30%">Langauge</th>
+                                        <th width="40%">Typical Speakers</th>
+                                        <th width="30%">Script</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Common Languages</strong></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    @foreach (var language in Model.Options.Where(n => !n.IsExotic).OrderBy(n => n.Name))
+                                    {
+                                        <tr>
+                                            <td>@language.Name</td>
+                                            <td>@language.TypicalSpeakers</td>
+                                            <td>@language.Script</td>
+                                        </tr>
+                                    }
+                                <tr>
+                                    <td><strong>Exotic Languages</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                    @foreach (var language in Model.Options.Where(n => n.IsExotic).OrderBy(n => n.Name))
+                                    {
+                                        <tr>
+                                            <td>@language.Name</td>
+                                            <td>@language.TypicalSpeakers</td>
+                                            <td>@language.Script</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        }
-    </div>
+    }
+</div>
 @section Scripts {
-    <script src="~/js/NewCharacter.js" type="text/javascript"></script>
+    <script src="~/js/CheckboxSelect.js" type="text/javascript"></script>
 }

@@ -241,7 +241,7 @@ namespace DataModel
             modelBuilder.Entity<Feature>(entity =>
             {
                 entity.HasIndex(e => e.Code)
-                    .HasName("UQ__Feature__A25C5AA7D83BE15D")
+                    .HasName("UQ__Feature__A25C5AA7B50835DB")
                     .IsUnique();
 
                 entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
@@ -436,7 +436,7 @@ namespace DataModel
             modelBuilder.Entity<Player>(entity =>
             {
                 entity.HasIndex(e => e.UserId)
-                    .HasName("UQ__Player__1788CC4D71867009")
+                    .HasName("UQ__Player__1788CC4DB9F23D7E")
                     .IsUnique();
             });
 
@@ -564,7 +564,7 @@ namespace DataModel
             modelBuilder.Entity<Source>(entity =>
             {
                 entity.HasIndex(e => e.Code)
-                    .HasName("UQ__Source__A25C5AA775B36B95")
+                    .HasName("UQ__Source__A25C5AA755A4A82D")
                     .IsUnique();
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
