@@ -39,6 +39,7 @@ namespace DataModel
         public virtual DbSet<PcSavingThrow> PcSavingThrow { get; set; }
         public virtual DbSet<PcSkill> PcSkill { get; set; }
         public virtual DbSet<PcSpell> PcSpell { get; set; }
+        public virtual DbSet<PcSpellLevel> PcSpellLevel { get; set; }
         public virtual DbSet<PcTrait> PcTrait { get; set; }
         public virtual DbSet<PcTreasure> PcTreasure { get; set; }
         public virtual DbSet<Player> Player { get; set; }
@@ -241,7 +242,7 @@ namespace DataModel
             modelBuilder.Entity<Feature>(entity =>
             {
                 entity.HasIndex(e => e.Code)
-                    .HasName("UQ__Feature__A25C5AA7B50835DB")
+                    .HasName("UQ__Feature__A25C5AA7D3C11883")
                     .IsUnique();
 
                 entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
@@ -403,6 +404,19 @@ namespace DataModel
                     .HasConstraintName("FK_PcSpell_Spell");
             });
 
+            modelBuilder.Entity<PcSpellLevel>(entity =>
+            {
+                entity.HasIndex(e => new { e.PcId, e.SpellLevel })
+                    .HasName("UQ_PcSpellLevel_PcId_SpellLevel")
+                    .IsUnique();
+
+                entity.HasOne(d => d.Pc)
+                    .WithMany(p => p.PcSpellLevel)
+                    .HasForeignKey(d => d.PcId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PcSpellLevel_PlayerCharacter");
+            });
+
             modelBuilder.Entity<PcTrait>(entity =>
             {
                 entity.HasOne(d => d.Pc)
@@ -436,12 +450,20 @@ namespace DataModel
             modelBuilder.Entity<Player>(entity =>
             {
                 entity.HasIndex(e => e.UserId)
-                    .HasName("UQ__Player__1788CC4DB9F23D7E")
+                    .HasName("UQ__Player__1788CC4DD9A4C5F2")
                     .IsUnique();
             });
 
             modelBuilder.Entity<PlayerCharacter>(entity =>
             {
+                entity.Property(e => e.HitDiceCurrent).HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.HitDiceMaximum).HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.Level).HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.ProficiencyBonus).HasDefaultValueSql("((2))");
+
                 entity.HasOne(d => d.Alignment)
                     .WithMany(p => p.PlayerCharacter)
                     .HasForeignKey(d => d.AlignmentId)
@@ -564,7 +586,7 @@ namespace DataModel
             modelBuilder.Entity<Source>(entity =>
             {
                 entity.HasIndex(e => e.Code)
-                    .HasName("UQ__Source__A25C5AA755A4A82D")
+                    .HasName("UQ__Source__A25C5AA79EBA23D0")
                     .IsUnique();
 
                 entity.Property(e => e.Id).ValueGeneratedNever();

@@ -33,6 +33,7 @@ namespace NoticeBoard.Models.PlayerCharacters
             SavingThrows = new List<int>();
             PlayerSkills = new List<int>();
             Spells = new List<PcSpellModel>();
+            SpellLevels = new List<PcSpellLevelModel>();
             Traits = new List<TraitModel>();
             Treasure = new List<PcTreasureModel>();
         }
@@ -123,6 +124,8 @@ namespace NoticeBoard.Models.PlayerCharacters
 
         public List<Ability> Abilities { get; set; }
 
+        public List<PcSpellLevelModel> SpellLevels { get; set; }
+
         public List<PcAbilityScoreModel> AbilityScores { get; set; }
 
         public List<int> SavingThrows { get; set; }
@@ -150,8 +153,6 @@ namespace NoticeBoard.Models.PlayerCharacters
         public int HitDieCurrent { get; set; }
 
         public List<PcSpellModel> Spells { get; set; }
-
-        public Dictionary<int, Tuple<int,int>> SpellSlots { get; set; }
 
         public List<PcEquipmentModel> Equipment { get; set; }
 

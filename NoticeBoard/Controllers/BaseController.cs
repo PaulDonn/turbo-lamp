@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using BusinessLogic.Classes;
+using Core.PlayerCharacters.Query;
 using DataModel;
 using Infrastructure.CQRS;
 using Infrastructure.Mediator;
@@ -16,8 +18,9 @@ namespace NoticeBoard.Controllers
         protected readonly IConfiguration _configuration;
         protected readonly IMapper _mapper;
         protected readonly ISessionInformation _sessionInformation;
-        private IMediator _mediator { get; }
+        public IMediator _mediator { get; }
         private readonly IDataProtectionProvider _dataProtectionProvider;
+        protected ClassBusinessLogic _classBusinessLogic;
 
         public BaseController(IMediator mediator, NoticeBoardContext databaseContext, IConfiguration configuration, IMapper mapper, ISessionInformation sessionInformation, IDataProtectionProvider dataProtectionProvider)
         {
@@ -66,6 +69,18 @@ namespace NoticeBoard.Controllers
             }
 
             return result;
+        }
+
+        protected void SetBusinessLogic(int pcId)
+        {
+            var classId = SendQuery<GetPCClassIdQuery, int>(new GetPCClassIdQuery { PcId = pcId });
+
+            switch(classId)
+            {
+                case 12:
+                    _classBusinessLogic = new WizardBusinessLogic(_mediator);
+                    break;
+            }
         }
 
         public string Encrypt(string input)

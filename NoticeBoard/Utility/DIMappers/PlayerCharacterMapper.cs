@@ -20,9 +20,13 @@ namespace NoticeBoard.Utility.DIMappers
             services.AddTransient<ICommandHandler<SetPCAlignmentCommand>, SetPCAlignmentCommandHandler>();
             services.AddTransient<ICommandHandler<SetPCLanguagesCommand>, SetPCLanguagesCommandHandler>();
             services.AddTransient<ICommandHandler<SetPCSkillsCommand>, SetPCSkillsCommandHandler>();
+            services.AddTransient<ICommandHandler<SetPCSpellSlotsCommand>, SetPCSpellSlotsCommandHandler>();
+            services.AddTransient<ICommandHandler<LevelUpPCCommand>, LevelUpPCCommandHandler>();
 
             //Query Handlers
             services.AddTransient<IQueryHandler<GetPlayerCharacterQuery, PlayerCharacterDTO>, GetPlayerCharacterQueryHandler>();
+            services.AddTransient<IQueryHandler<GetPCLevelQuery, int>, GetPCLevelQueryHandler>();
+            services.AddTransient<IQueryHandler<GetPCClassIdQuery, int>, GetPCClassIdQueryHandler>();
         }
     }
 }

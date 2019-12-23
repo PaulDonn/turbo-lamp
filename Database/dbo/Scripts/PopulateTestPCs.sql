@@ -42,6 +42,7 @@ INSERT INTO [dbo].[PlayerCharacter]
 ,[ClassId]
 ,[ArchetypeId]
 ,[Level]
+,[ProficiencyBonus]
 ,[BackgroundId]
 ,[PlayerId]
 ,[RaceId]
@@ -51,24 +52,8 @@ INSERT INTO [dbo].[PlayerCharacter]
 ,[PartyId]
 ,[HitPointMaximum]
 ,[HitPointCurrent]
-,[Level1SlotsMaximum]
-,[Level1SlotsCurrent]
-,[Level2SlotsMaximum]
-,[Level2SlotsCurrent]
-,[Level3SlotsMaximum]
-,[Level3SlotsCurrent]
-,[Level4SlotsMaximum]
-,[Level4SlotsCurrent]
-,[Level5SlotsMaximum]
-,[Level5SlotsCurrent]
-,[Level6SlotsMaximum]
-,[Level6SlotsCurrent]
-,[Level7SlotsMaximum]
-,[Level7SlotsCurrent]
-,[Level8SlotsMaximum]
-,[Level8SlotsCurrent]
-,[Level9SlotsMaximum]
-,[Level9SlotsCurrent]
+,[HitDiceMaximum]
+,[HitDiceCurrent]
 ,[Age]
 ,[Height]
 ,[Weight]
@@ -89,6 +74,7 @@ INSERT INTO [dbo].[PlayerCharacter]
            ,12 --<ClassId, int,>
            ,37 --<ArchetypeId, int,>
            ,8 --<LevelId, int,>
+           ,4 --<ProficiencyBonus, int,>
            ,10 --<BackgroundId, int,>
            ,(SELECT TOP(1) Id FROM Player WHERE Name = 'Stephen')--<PlayerId, int,>
            ,9 --<RaceId, int,>
@@ -98,24 +84,8 @@ INSERT INTO [dbo].[PlayerCharacter]
            ,(SELECT TOP(1) Id FROM Party WHERE Name = 'The Undateables') --<PartyId, int,>
            ,49 --<HitPointMaximum, int,>
            ,24 --<HitPointCurrent, int,>
-           ,4 --<Level1SlotsMaximum, int,>
-           ,0 --<Level1SlotsCurrent, int,>
-           ,3 --<Level2SlotsMaximum, int,>
-           ,2 --<Level2SlotsCurrent, int,>
-           ,3 --<Level3SlotsMaximum, int,>
-           ,1 --<Level3SlotsCurrent, int,>
-           ,2 --<Level4SlotsMaximum, int,>
-           ,0 --<Level4SlotsCurrent, int,>
-           ,0 --<Level5SlotsMaximum, int,>
-           ,0 --<Level5SlotsCurrent, int,>
-           ,0 --<Level6SlotsMaximum, int,>
-           ,0 --<Level6SlotsCurrent, int,>
-           ,0 --<Level7SlotsMaximum, int,>
-           ,0 --<Level7SlotsCurrent, int,>
-           ,0 --<Level8SlotsMaximum, int,>
-           ,0 --<Level8SlotsCurrent, int,>
-           ,0 --<Level9SlotsMaximum, int,>
-           ,0 --<Level9SlotsCurrent, int,>
+           ,8 --<HitDiceMaximum, int,>
+           ,7 --<HitDiceCurrent, int,>
 		   ,'Old' --[Age]
 		   ,null --[Height]
 		   ,null --[Weight]
@@ -132,6 +102,57 @@ INSERT INTO [dbo].[PlayerCharacter]
 		   ,81 --[Platinum]
 		   )
 GO
+
+INSERT INTO [dbo].[PcSpellLevel]
+		   ([PcId]
+		   ,[SpellLevel]
+		   ,[SlotsMaximum]
+		   ,[SlotsCurrent])
+	 VALUES((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),--[PcId]
+			1,--[SpellLevel]
+			4,--[SlotsMaximum]
+			0--[SlotsCurrent]
+			),
+			((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),--[PcId]
+			2,--[SpellLevel]
+			3,--[SlotsMaximum]
+			2--[SlotsCurrent]
+			),
+			((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),--[PcId]
+			3,--[SpellLevel]
+			3,--[SlotsMaximum]
+			1--[SlotsCurrent]
+			),
+			((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),--[PcId]
+			4,--[SpellLevel]
+			2,--[SlotsMaximum]
+			0--[SlotsCurrent]
+			),
+			((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),--[PcId]
+			5,--[SpellLevel]
+			0,--[SlotsMaximum]
+			0--[SlotsCurrent]
+			),
+			((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),--[PcId]
+			6,--[SpellLevel]
+			0,--[SlotsMaximum]
+			0--[SlotsCurrent]
+			),
+			((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),--[PcId]
+			7,--[SpellLevel]
+			0,--[SlotsMaximum]
+			0--[SlotsCurrent]
+			),
+			((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),--[PcId]
+			8,--[SpellLevel]
+			0,--[SlotsMaximum]
+			0--[SlotsCurrent]
+			),
+			((SELECT TOP(1) Id FROM PlayerCharacter WHERE [CharacterName] = 'Varg'),--[PcId]
+			9,--[SpellLevel]
+			0,--[SlotsMaximum]
+			0--[SlotsCurrent]
+			)
 
 INSERT INTO [dbo].[PcTrait]
            ([PcId]

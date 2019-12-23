@@ -32,6 +32,7 @@ using NoticeBoard.Models.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace NoticeBoard.Controllers
 {
@@ -54,6 +55,29 @@ namespace NoticeBoard.Controllers
 
             return RedirectToAction(nameof(SelectRace), new { pcId, partyId });
         }
+
+        public IActionResult LevelUp(int pcId, string additionalOptions)
+        {
+            SetBusinessLogic(pcId);
+            var requirements = _classBusinessLogic.GetLevelUpRequirements(pcId);
+
+            if(requirements.Any())
+            {
+
+            }
+            else
+            {
+                _classBusinessLogic.LevelUp(pcId, 4, new List<int>(), new List<int>(), null, additionalOptions);
+            }
+
+            return RedirectToAction(nameof(Details), new { pcId });
+        }
+
+        //[HttpPost]
+        //public IActionResult LevelUp(LevelUpModel model)
+        //{
+
+        //}
 
         public IActionResult SelectRace(string pcId, int partyId)
         {

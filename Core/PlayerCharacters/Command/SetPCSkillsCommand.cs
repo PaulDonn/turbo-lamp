@@ -32,6 +32,7 @@ namespace Core.PlayerCharacters.Command
                                              .Include(n => n.Class.ClassSkill)
                                              .ThenInclude(n => n.Skill)
                                              .Include(n => n.Background.BgSkill)
+                                             .ThenInclude(n => n.Skill)
                                              .SingleOrDefault();
 
             if (pc != null)

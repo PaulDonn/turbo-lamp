@@ -241,6 +241,7 @@ namespace NoticeBoard.Utility.AutoMapper
                         TraitType = n.TraitType.Name,
                         Description = n.Description
                     })))
+                .ForMember(dest => dest.SpellLevels, opts => opts.MapFrom(src => src.PcSpellLevel))
                 .ForMember(dest => dest.Equipment, opts => opts.MapFrom(src => src.PcEquipment))
                 .ForMember(dest => dest.Treasure, opts => opts.MapFrom(src => src.PcTreasure))
                 .ForMember(dest => dest.Features, opts => opts.MapFrom(src => PcFeatureResolver(src.PcFeature)));
@@ -248,21 +249,10 @@ namespace NoticeBoard.Utility.AutoMapper
             CreateMap<PlayerCharacterDTO, PlayerCharacterModel>()
                 .ForMember(dest => dest.SavingThrows, opts => opts.MapFrom(src => src.SavingThrows.Select(n => n.AbilityId)))
                 .ForMember(dest => dest.PlayerSkills, opts => opts.MapFrom(src => src.Skills.Select(n => n.SkillId)))
-                .ForMember(dest => dest.SpellSlots, opts => opts.MapFrom(src => new Dictionary<int, Tuple<int,int>>()
-                    {
-                        { 1, new Tuple<int,int>(src.Level1SlotsMaximum, src.Level1SlotsCurrent) },
-                        { 2, new Tuple<int,int>(src.Level2SlotsMaximum, src.Level2SlotsCurrent) },
-                        { 3, new Tuple<int,int>(src.Level3SlotsMaximum, src.Level3SlotsCurrent) },
-                        { 4, new Tuple<int,int>(src.Level4SlotsMaximum, src.Level4SlotsCurrent) },
-                        { 5, new Tuple<int,int>(src.Level5SlotsMaximum, src.Level5SlotsCurrent) },
-                        { 6, new Tuple<int,int>(src.Level6SlotsMaximum, src.Level6SlotsCurrent) },
-                        { 7, new Tuple<int,int>(src.Level7SlotsMaximum, src.Level7SlotsCurrent) },
-                        { 8, new Tuple<int,int>(src.Level8SlotsMaximum, src.Level8SlotsCurrent) },
-                        { 9, new Tuple<int,int>(src.Level9SlotsMaximum, src.Level9SlotsCurrent) },
-                    }))
                 .ForMember(dest => dest.Equipment, opts => opts.MapFrom(src => src.Equipment))
                 .ForMember(dest => dest.Features, opts => opts.MapFrom(src => src.Features))
                 .ForMember(dest => dest.Treasure, opts => opts.MapFrom(src => src.Treasure))
+                .ForMember(dest => dest.SpellLevels, opts => opts.MapFrom(src => src.SpellLevels))
                 .ForMember(dest => dest.Abilities, opts => opts.Ignore())
                 .ForMember(dest => dest.Skills, opts => opts.Ignore())
                 .ForMember(dest => dest.Spells, opts => opts.MapFrom(src => src.Spells.OrderBy(n => n.Spell.Name)));
@@ -308,6 +298,10 @@ namespace NoticeBoard.Utility.AutoMapper
                 .ForMember(dest => dest.SpellSchool, opts => opts.MapFrom(src => src.SpellSchool.Name));
 
             CreateMap<SpellDTO, SpellModel>();
+
+            CreateMap<PcSpellLevel, PcSpellLevelDTO>();
+
+            CreateMap<PcSpellLevelDTO, PcSpellLevelModel>();
 
             CreateMap<PcSpell, PcSpellDTO>();
 

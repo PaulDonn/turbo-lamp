@@ -38,6 +38,24 @@ namespace Core.PlayerCharacters.Command
                 };
 
                 _context.PlayerCharacter.Add(pc);
+
+                foreach(var abilityId in _context.Ability.ToList().Select(n => n.Id))
+                {
+                    pc.PcAbilityScore.Add(new PcAbilityScore
+                    {
+                        AbilityId = abilityId,
+                        Score = 0
+                    });
+                }
+
+                for(int i = 1; i <= 9; i++)
+                {
+                    pc.PcSpellLevel.Add(new PcSpellLevel
+                    {
+                        SpellLevel = i
+                    });
+                }
+
                 _context.SaveChanges();
 
                 result.Success = true;

@@ -16,6 +16,7 @@ namespace DataModel
             PcSavingThrow = new HashSet<PcSavingThrow>();
             PcSkill = new HashSet<PcSkill>();
             PcSpell = new HashSet<PcSpell>();
+            PcSpellLevel = new HashSet<PcSpellLevel>();
             PcTrait = new HashSet<PcTrait>();
             PcTreasure = new HashSet<PcTreasure>();
         }
@@ -26,7 +27,8 @@ namespace DataModel
         public string CharacterName { get; set; }
         public int? ClassId { get; set; }
         public int? ArchetypeId { get; set; }
-        public int? Level { get; set; }
+        public int Level { get; set; }
+        public int ProficiencyBonus { get; set; }
         public int? BackgroundId { get; set; }
         public int PlayerId { get; set; }
         public int? RaceId { get; set; }
@@ -36,24 +38,8 @@ namespace DataModel
         public int? PartyId { get; set; }
         public int HitPointMaximum { get; set; }
         public int HitPointCurrent { get; set; }
-        public int Level1SlotsMaximum { get; set; }
-        public int Level1SlotsCurrent { get; set; }
-        public int Level2SlotsMaximum { get; set; }
-        public int Level2SlotsCurrent { get; set; }
-        public int Level3SlotsMaximum { get; set; }
-        public int Level3SlotsCurrent { get; set; }
-        public int Level4SlotsMaximum { get; set; }
-        public int Level4SlotsCurrent { get; set; }
-        public int Level5SlotsMaximum { get; set; }
-        public int Level5SlotsCurrent { get; set; }
-        public int Level6SlotsMaximum { get; set; }
-        public int Level6SlotsCurrent { get; set; }
-        public int Level7SlotsMaximum { get; set; }
-        public int Level7SlotsCurrent { get; set; }
-        public int Level8SlotsMaximum { get; set; }
-        public int Level8SlotsCurrent { get; set; }
-        public int Level9SlotsMaximum { get; set; }
-        public int Level9SlotsCurrent { get; set; }
+        public int HitDiceMaximum { get; set; }
+        public int HitDiceCurrent { get; set; }
         [StringLength(50)]
         public string Age { get; set; }
         [StringLength(50)]
@@ -113,6 +99,8 @@ namespace DataModel
         public virtual ICollection<PcSkill> PcSkill { get; set; }
         [InverseProperty("Pc")]
         public virtual ICollection<PcSpell> PcSpell { get; set; }
+        [InverseProperty("Pc")]
+        public virtual ICollection<PcSpellLevel> PcSpellLevel { get; set; }
         [InverseProperty("Pc")]
         public virtual ICollection<PcTrait> PcTrait { get; set; }
         [InverseProperty("Pc")]

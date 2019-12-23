@@ -25,6 +25,7 @@ namespace Core.PlayerCharacters.DTO
             SavingThrows = new List<PcSavingThrowDTO>();
             Skills = new List<PcSkillDTO>();
             Player = new PlayerDTO();
+            SpellLevels = new List<PcSpellLevelDTO>();
             Spells = new List<PcSpellDTO>();
             Traits = new List<TraitDTO>();
             Equipment = new List<PcEquipmentDTO>();
@@ -59,6 +60,8 @@ namespace Core.PlayerCharacters.DTO
 
         public List<PcAbilityScoreDTO> AbilityScores { get; set; }
 
+        public List<PcSpellLevelDTO> SpellLevels { get; set; }
+
         public List<PcSavingThrowDTO> SavingThrows { get; set; }
 
         public List<PcSkillDTO> Skills { get; set; }
@@ -81,42 +84,6 @@ namespace Core.PlayerCharacters.DTO
         public int HitDieCurrent { get; set; }
 
         public List<PcSpellDTO> Spells { get; set; }
-
-        public int Level1SlotsMaximum { get; set; }
-
-        public int Level1SlotsCurrent { get; set; }
-
-        public int Level2SlotsMaximum { get; set; }
-
-        public int Level2SlotsCurrent { get; set; }
-
-        public int Level3SlotsMaximum { get; set; }
-
-        public int Level3SlotsCurrent { get; set; }
-
-        public int Level4SlotsMaximum { get; set; }
-
-        public int Level4SlotsCurrent { get; set; }
-
-        public int Level5SlotsMaximum { get; set; }
-
-        public int Level5SlotsCurrent { get; set; }
-
-        public int Level6SlotsMaximum { get; set; }
-
-        public int Level6SlotsCurrent { get; set; }
-
-        public int Level7SlotsMaximum { get; set; }
-
-        public int Level7SlotsCurrent { get; set; }
-
-        public int Level8SlotsMaximum { get; set; }
-
-        public int Level8SlotsCurrent { get; set; }
-
-        public int Level9SlotsMaximum { get; set; }
-
-        public int Level9SlotsCurrent { get; set; }
 
         public string Age { get; set; }
 

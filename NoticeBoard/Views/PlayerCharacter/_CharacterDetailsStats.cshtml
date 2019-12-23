@@ -1,4 +1,5 @@
 ﻿@model NoticeBoard.Models.PlayerCharacters.PlayerCharacterModel
+@using System.Text.RegularExpressions;
 
 <div>
     <div class="row" style="padding-bottom:10px">
@@ -292,7 +293,7 @@
                             @foreach (var raceFeature in Model.Features.Where(n => n.IsRaceFeature && !n.Hidden).OrderBy(n => n.Level).ThenBy(n => n.Name))
                             {
                                 <div class="row">
-                                    <div class="col-12" data-toggle="tooltip" data-placement="left" title="@raceFeature.ShortDescription">
+                                    <div class="col-12" data-toggle="tooltip" data-placement="left" title="@Regex.Replace(raceFeature.ShortDescription, @"<[^>]*>", String.Empty)">
                                         @raceFeature.Name @if (raceFeature.QuantityCurrent.HasValue)
                                         {@: x@(raceFeature.QuantityCurrent)
                                     }
@@ -314,7 +315,7 @@
                             @foreach (var classFeature in Model.Features.Where(n => n.IsClassFeature && !n.Hidden).OrderBy(n => n.Level).ThenBy(n => n.Name))
                             {
                                 <div class="row">
-                                    <div class="col-12" data-toggle="tooltip" data-placement="left" title="@classFeature.ShortDescription">
+                                    <div class="col-12" data-toggle="tooltip" data-placement="left" title="@Regex.Replace(classFeature.ShortDescription, @"<[^>]*>", String.Empty)">
                                         @classFeature.Name @if (classFeature.QuantityCurrent.HasValue)
                                         {@: x@(classFeature.QuantityCurrent)
                                     }
@@ -336,7 +337,7 @@
                             @foreach (var otherFeature in Model.Features.Where(n => !n.IsRaceFeature && !n.IsClassFeature && !n.Hidden).OrderBy(n => n.Level).ThenBy(n => n.Name))
                             {
                                 <div class="row">
-                                    <div class="col-12" data-toggle="tooltip" data-placement="left" title="@otherFeature.ShortDescription">
+                                    <div class="col-12" data-toggle="tooltip" data-placement="left" title="@Regex.Replace(otherFeature.ShortDescription, @"<[^>]*>", String.Empty)">
                                         @otherFeature.Name @if (otherFeature.QuantityCurrent.HasValue)
                                         {@: x@(otherFeature.QuantityCurrent)
                                     }
