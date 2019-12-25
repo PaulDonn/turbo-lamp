@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NoticeBoard.Models.Abilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -48,5 +49,11 @@ namespace NoticeBoard.Models.Spells
         }
 
         public string HigherLevelDescription { get; set; }
+
+        public bool IsSpellAttack { get; set; }
+
+        public AbilityModel SavingThrowAbility { get; set; }
+
+        public string DamageType { get; set; }
     }
 }

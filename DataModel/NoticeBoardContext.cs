@@ -242,7 +242,7 @@ namespace DataModel
             modelBuilder.Entity<Feature>(entity =>
             {
                 entity.HasIndex(e => e.Code)
-                    .HasName("UQ__Feature__A25C5AA7D3C11883")
+                    .HasName("UQ__Feature__A25C5AA7F248E4B1")
                     .IsUnique();
 
                 entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
@@ -450,7 +450,7 @@ namespace DataModel
             modelBuilder.Entity<Player>(entity =>
             {
                 entity.HasIndex(e => e.UserId)
-                    .HasName("UQ__Player__1788CC4DD9A4C5F2")
+                    .HasName("UQ__Player__1788CC4D7EDBD15E")
                     .IsUnique();
             });
 
@@ -586,7 +586,7 @@ namespace DataModel
             modelBuilder.Entity<Source>(entity =>
             {
                 entity.HasIndex(e => e.Code)
-                    .HasName("UQ__Source__A25C5AA79EBA23D0")
+                    .HasName("UQ__Source__A25C5AA753C9F31E")
                     .IsUnique();
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
@@ -595,6 +595,16 @@ namespace DataModel
             modelBuilder.Entity<Spell>(entity =>
             {
                 entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
+
+                entity.HasOne(d => d.DamageType)
+                    .WithMany(p => p.Spell)
+                    .HasForeignKey(d => d.DamageTypeId)
+                    .HasConstraintName("FK_Spell_DamageType");
+
+                entity.HasOne(d => d.SavingThrowAbility)
+                    .WithMany(p => p.Spell)
+                    .HasForeignKey(d => d.SavingThrowAbilityId)
+                    .HasConstraintName("FK_Spell_Ability");
 
                 entity.HasOne(d => d.Source)
                     .WithMany(p => p.Spell)

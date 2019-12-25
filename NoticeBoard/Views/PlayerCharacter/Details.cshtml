@@ -13,9 +13,9 @@
             <div class="col-8">
                 <div class="float-right">
                     <button id="statsBtn" type="button" class="btn btn-secondary" onclick="setPage('stats')" disabled>Stats</button>
-                    <button id="characterBtn" type="button" class="btn btn-secondary"  onclick="setPage('character')" >Character</button>
-                    <button id="equipmentBtn" type="button" class="btn btn-secondary"  onclick="setPage('equipment')" >Equipment</button>
-                    <button id="spellsBtn" type="button" class="btn btn-secondary"  onclick="setPage('spells')" >Spells</button>
+                    <button id="characterBtn" type="button" class="btn btn-secondary" onclick="setPage('character')">Character</button>
+                    <button id="equipmentBtn" type="button" class="btn btn-secondary" onclick="setPage('equipment')">Equipment</button>
+                    <button id="spellsBtn" type="button" class="btn btn-secondary" onclick="setPage('spells')">Spells</button>
                 </div>
             </div>
         </div>
@@ -26,16 +26,99 @@
 <div id="statsPage">
     @{await Html.RenderPartialAsync("_CharacterDetailsStats", Model);}
 </div>
-<div  id="characterPage" hidden>
+<div id="characterPage" hidden>
     @{await Html.RenderPartialAsync("_CharacterDetailsCharacter", Model);}
 </div>
-<div  id="equipmentPage" hidden>
+<div id="equipmentPage" hidden>
     @{await Html.RenderPartialAsync("_CharacterDetailsEquipment", Model);}
 </div>
-<div  id="spellsPage" hidden>
+<div id="spellsPage" hidden>
     @{await Html.RenderPartialAsync("_CharacterDetailsSpells", Model);}
 </div>
 
-@section scripts{ 
+<div class="modal fade" id="dieRollModal" tabindex="-1" role="dialog" aria-labelledby="dieRollModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="dieRollModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-center"><strong id="dieRoll1"></strong></div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-center">Die Roll</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-center"><strong id="bonus1"></strong></div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-center">Bonus</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card" id="totalCard1">
+                            <div class="card-body">
+                                <div class="text-center"><strong id="total1"></strong></div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-center">Total</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="roll2" class="row mb-3" style="display:none">
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-center"><strong id="dieRoll2"></strong></div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-center">Die Roll</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-center"><strong id="bonus2"></strong></div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-center">Bonus</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card" id="totalCard2">
+                            <div class="card-body">
+                                <div class="text-center"><strong id="total2"></strong></div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-center">Total</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="advantageBtn" type="button" class="btn btn-success" onclick="roll(1)">Advantage</button>
+                <button id="disadvantageBtn" type="button" class="btn btn-danger" onclick="roll(2)">Disadvantage</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
     <script src="~/js/CharacterDetails.js"></script>
 }

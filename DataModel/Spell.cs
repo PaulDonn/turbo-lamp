@@ -41,7 +41,16 @@ namespace DataModel
         [StringLength(150)]
         public string ImagePath { get; set; }
         public int SourceId { get; set; }
+        public bool IsSpellAttack { get; set; }
+        public int? SavingThrowAbilityId { get; set; }
+        public int? DamageTypeId { get; set; }
 
+        [ForeignKey(nameof(DamageTypeId))]
+        [InverseProperty("Spell")]
+        public virtual DamageType DamageType { get; set; }
+        [ForeignKey(nameof(SavingThrowAbilityId))]
+        [InverseProperty(nameof(Ability.Spell))]
+        public virtual Ability SavingThrowAbility { get; set; }
         [ForeignKey(nameof(SourceId))]
         [InverseProperty("Spell")]
         public virtual Source Source { get; set; }

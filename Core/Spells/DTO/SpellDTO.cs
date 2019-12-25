@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Abilities.DTO;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -35,5 +36,11 @@ namespace Core.Spells.DTO
         public string Description { get; set; }
 
         public string HigherLevelDescription { get; set; }
+
+        public bool IsSpellAttack { get; set; }
+
+        public AbilityDTO SavingThrowAbility { get; set; }
+
+        public string DamageType { get; set; }
     }
 }

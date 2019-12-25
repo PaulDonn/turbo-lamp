@@ -16,7 +16,10 @@
 	[HigherLevelDescription] [nvarchar](max) NULL,
 	[ImagePath] NVARCHAR(150) NULL, 
 	[SourceId] INT NOT NULL DEFAULT 1, 
- CONSTRAINT [PK_Spell] PRIMARY KEY CLUSTERED 
+	[IsSpellAttack] BIT NOT NULL DEFAULT 0, 
+    [SavingThrowAbilityId] INT NULL , 
+    [DamageTypeId] INT NULL, 
+    CONSTRAINT [PK_Spell] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -35,4 +38,18 @@ REFERENCES [dbo].[Source] ([Id])
 GO
 
 ALTER TABLE [dbo].[Spell] CHECK CONSTRAINT [FK_Spell_Source]
+GO
+
+ALTER TABLE [dbo].[Spell]  WITH CHECK ADD  CONSTRAINT [FK_Spell_DamageType] FOREIGN KEY([DamageTypeId])
+REFERENCES [dbo].[DamageType] ([Id])
+GO
+
+ALTER TABLE [dbo].[Spell] CHECK CONSTRAINT [FK_Spell_DamageType]
+GO
+
+ALTER TABLE [dbo].[Spell]  WITH CHECK ADD  CONSTRAINT [FK_Spell_Ability] FOREIGN KEY([SavingThrowAbilityId])
+REFERENCES [dbo].[Ability] ([Id])
+GO
+
+ALTER TABLE [dbo].[Spell] CHECK CONSTRAINT [FK_Spell_Ability]
 GO

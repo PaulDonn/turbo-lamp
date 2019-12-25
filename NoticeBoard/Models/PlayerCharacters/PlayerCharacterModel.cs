@@ -78,6 +78,78 @@ namespace NoticeBoard.Models.PlayerCharacters
             return (total >= 0 ? "+" : null) + total.ToString();
         }
 
+        public string WeaponAttackBonus(int equipmentId)
+        {
+            var weapon = Equipment.Single(n => n.Id == equipmentId).Equipment;
+            var bonus = 0;
+            var strBonus = AbilityScores.Single(n => n.AbilityId == 1).Bonus;
+            var dexBonus = AbilityScores.Single(n => n.AbilityId == 2).Bonus;
+            
+            if(weapon.WeaponType.IsRanged)
+            {
+                bonus = dexBonus;
+            }
+            else
+            {
+                bonus = strBonus;
+            }
+            
+            if (weapon.WeaponType.IsFinesse)
+            {
+                if (weapon.WeaponType.IsFinesse)
+                {
+                    bonus = Math.Max(strBonus, dexBonus);
+                }
+            }
+
+            var proficiencyBonus = _ProficiencyBonus; //TODO: Get weapon proficiency from user
+            var weaponBonus = weapon.Bonus + bonus + proficiencyBonus;
+
+            if (weaponBonus >= 0)
+            {
+                return "+" + weaponBonus.ToString();
+            }
+            return weaponBonus.ToString();
+        }
+
+        public string WeaponDamageBonus(int equipmentId)
+        {
+            var weapon = Equipment.Single(n => n.Id == equipmentId).Equipment;
+            var bonus = 0;
+            var strBonus = AbilityScores.Single(n => n.AbilityId == 1).Bonus;
+            var dexBonus = AbilityScores.Single(n => n.AbilityId == 2).Bonus;
+
+            if (weapon.WeaponType.IsRanged)
+            {
+                bonus = dexBonus;
+            }
+            else
+            {
+                bonus = strBonus;
+            }
+
+            if (weapon.WeaponType.IsFinesse)
+            {
+                if (weapon.WeaponType.IsFinesse)
+                {
+                    bonus = Math.Max(strBonus, dexBonus);
+                }
+            }
+
+            var weaponBonus = weapon.Bonus + bonus;
+
+            if(weaponBonus < 0)
+            {
+                return weapon.WeaponType.NumberOfDice + "d" + weapon.WeaponType.DamageDie + weaponBonus.ToString();
+            }
+            else if (weaponBonus > 0)
+            {
+                return weapon.WeaponType.NumberOfDice + "d" + weapon.WeaponType.DamageDie + "+" + weaponBonus.ToString();
+            }
+
+            return weapon.WeaponType.NumberOfDice + "d" + weapon.WeaponType.DamageDie;
+        }
+
         public string SpellSaveDC
         {
             get

@@ -119,4 +119,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="OwningDmId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="eba4d969-44f6-48ea-a2b3-9ae078a9ca18" ChangeDateTime="12/23/2019 15:41:44">
+    <Property Name="ElementName" Value="[dbo].[Spell].[DamageType]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Spell]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DamageTypeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="32a1e4ea-fd2d-4b82-936f-4800350d55ac" ChangeDateTime="12/23/2019 15:43:43">
+    <Property Name="ElementName" Value="[dbo].[Spell].[IsSavingThrow]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Spell]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SavingThrowAbilityId" />
+  </Operation>
 </Operations>

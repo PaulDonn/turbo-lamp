@@ -25,6 +25,9 @@ INSERT INTO [dbo].[Spell]
            ,[RequiresMaterial]
            ,[MaterialDescription]
 		   ,[IsRitual]
+		   ,[IsSpellAttack]
+		   ,[SavingThrowAbilityId]
+		   ,[DamageTypeId]
            ,[Description]
            ,[HigherLevelDescription]
 		   ,[SourceId])
@@ -44,6 +47,9 @@ INSERT INTO [dbo].[Spell]
           ,0--Requires Material
           ,null--Material Description
           ,0--Is Ritual
+		  ,0--IsSpellAttack
+		  ,2--SavingThrowAbilityId
+		  ,1--DamageTypeId
           ,''--Description
          ,null--Higher Level Description		
          ,@Source),--Source
@@ -60,6 +66,9 @@ INSERT INTO [dbo].[Spell]
           ,0--Requires Material
           ,null--Material Description
           ,0--Is Ritual
+		  ,0--IsSpellAttack
+		  ,2--SavingThrowAbilityId
+		  ,1--DamageTypeId
           ,''--Description
          ,null--Higher Level Description		
          ,@Source),--Source
@@ -78,6 +87,9 @@ INSERT INTO [dbo].[Spell]
           ,0--Requires Material
           ,null--Material Description
           ,0--Is Ritual
+		  ,0--IsSpellAttack
+		  ,3--SavingThrowAbilityId
+		  ,3--DamageTypeId
           ,''--Description
          ,null--Higher Level Description		
          ,@Source),--Source
@@ -96,6 +108,9 @@ INSERT INTO [dbo].[Spell]
           ,0--Requires Material
           ,null--Material Description
           ,0--Is Ritual
+		  ,0--IsSpellAttack
+		  ,1--SavingThrowAbilityId
+		  ,null--DamageTypeId
           ,''--Description
          ,null--Higher Level Description		
          ,@Source),--Source
@@ -114,6 +129,9 @@ INSERT INTO [dbo].[Spell]
           ,1--Requires Material
           ,''--Material Description
           ,0--Is Ritual
+		  ,0--IsSpellAttack
+		  ,null--SavingThrowAbilityId
+		  ,null--DamageTypeId
           ,''--Description
          ,null--Higher Level Description		
          ,@Source),--Source
@@ -132,6 +150,9 @@ INSERT INTO [dbo].[Spell]
           ,0--Requires Material
           ,null--Material Description
           ,0--Is Ritual
+		  ,0--IsSpellAttack
+		  ,null--SavingThrowAbilityId
+		  ,null--DamageTypeId
           ,''--Description
          ,null--Higher Level Description		
          ,@Source),--Source
@@ -148,6 +169,9 @@ INSERT INTO [dbo].[Spell]
           ,0--Requires Material
           ,null--Material Description
           ,0--Is Ritual
+		  ,0--IsSpellAttack
+		  ,null--SavingThrowAbilityId
+		  ,null--DamageTypeId
           ,''--Description
          ,null--Higher Level Description		
          ,@Source),--Source
@@ -166,6 +190,9 @@ INSERT INTO [dbo].[Spell]
           ,0--Requires Material
           ,null--Material Description
           ,0--Is Ritual
+		  ,1--IsSpellAttack
+		  ,null--SavingThrowAbilityId
+		  ,1--DamageTypeId
           ,''--Description
          ,null--Higher Level Description		
          ,@Source),--Source
@@ -184,6 +211,9 @@ INSERT INTO [dbo].[Spell]
           ,0--Requires Material
           ,null--Material Description
           ,0--Is Ritual
+		  ,0--IsSpellAttack
+		  ,3--SavingThrowAbilityId
+		  ,13--DamageTypeId
           ,''--Description
          ,null--Higher Level Description		
          ,@Source),--Source
@@ -200,6 +230,9 @@ INSERT INTO [dbo].[Spell]
           ,0--Requires Material
           ,null--Material Description
           ,0--Is Ritual
+		  ,0--IsSpellAttack
+		  ,null--SavingThrowAbilityId
+		  ,null--DamageTypeId
           ,''--Description
          ,null--Higher Level Description		
          ,@Source),--Source
@@ -218,6 +251,9 @@ INSERT INTO [dbo].[Spell]
           ,1--Requires Material
           ,''--Material Description
           ,0--Is Ritual
+		  ,0--IsSpellAttack
+		  ,3--SavingThrowAbilityId
+		  ,11--DamageTypeId
           ,''--Description
          ,null--Higher Level Description		
          ,@Source)--Source

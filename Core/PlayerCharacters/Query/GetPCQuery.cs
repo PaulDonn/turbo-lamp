@@ -47,6 +47,8 @@ namespace Core.PlayerCharacters.Query
             pc.PcSpell = _context.PcSpell.AsNoTracking()
                                          .Where(n => n.PcId == pc.Id)
                                          .Include(n => n.Spell.SpellSchool)
+                                         .Include(n => n.Spell.DamageType)
+                                         .Include(n => n.Spell.SavingThrowAbility)
                                          .ToList();
 
             pc.PcTrait = _context.PcTrait.AsNoTracking()
@@ -61,7 +63,7 @@ namespace Core.PlayerCharacters.Query
 
             pc.PcEquipment = _context.PcEquipment.AsNoTracking()
                                                  .Where(n => n.PcId == pc.Id)
-                                                 .Include(n => n.Equipment.WeaponType)
+                                                 .Include(n => n.Equipment.WeaponType.DamageType)
                                                  .Include(n => n.Equipment.ArmorType)
                                                  .Include(n => n.Equipment.EquipmentType)
                                                  .ToList();

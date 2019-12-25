@@ -2,35 +2,35 @@
 @using System.Text.RegularExpressions;
 
 <div>
-    <div class="row" style="padding-bottom:10px">
+    <div class="row mb-3">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-4">
+                    <div class="row mb-3">
+                        <div class="col-4 h-100">
                             <div class="col-12">Class & Level</div>
                             <label class="col-12"><strong>Lv @Model.Level @(Model.Archetype?.ShortName ?? @Model.PlayerClass.Name)</strong></label>
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 h-100">
                             <div class="col-12">Background</div>
                             <label class="col-12"><strong>@Model.Background.Name</strong></label>
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 h-100">
                             <div class="col-12">Player Name</div>
                             <label class="col-12"><strong>@Model.Player.Name</strong></label>
                         </div>
                     </div>
                     <hr />
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-4 h-100">
                             <div class="col-12">Race</div>
                             <label class="col-12"><strong>@(Model.SubRace?.Name ?? @Model.Race.Name)</strong></label>
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 h-100">
                             <div class="col-12">Alignment</div>
                             <label class="col-12"><strong>@Model.Alignment.Name</strong></label>
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 h-100">
                             <div class="col-12">Experience Points</div>
                             <label class="col-12"><strong>@Model.ExperiencePoints</strong></label>
                         </div>
@@ -41,10 +41,10 @@
     </div>
     <div class="row">
         <div class="col-xl-4 col-lg-12">
-            <div class="row">
+            <div class="row mb-3">
                 @*Ability Scores*@
-                <div class="col-4" style="margin-bottom:10px">
-                    <div class="card">
+                <div class="col-4">
+                    <div class="card h-100">
                         <div class="card-body">
                             @foreach (var ability in Model.Abilities)
                             {
@@ -64,10 +64,9 @@
                 </div>
 
                 @*Saving Throws and Skills*@
-                <div class="col-8" style="margin-bottom:10px">
-
+                <div class="col-8">
                     @*Proficiency Bonus*@
-                    <div class="card" style="margin-bottom:10px">
+                    <div class="card mb-3">
                         <div class="card-body">
                             <div class="row">
                                 <div class="card bg-light mb-3 col-4">
@@ -81,14 +80,23 @@
                     </div>
 
                     @*Saving Throws*@
-                    <div class="card" style="margin-bottom:10px">
+                    <div class="card mb-3">
                         <div class="card-body">
                             @foreach (var ability in Model.Abilities)
                             {
-                                <div class="row" style="padding-bottom:5px">
-                                    <input class="col-2" type="radio" disabled checked="@Model.SavingThrows.Contains(ability.Id)" />
-                                    <div class="col-2 text-center">@Model.SavingThrowBonus(ability.Id)</div>
-                                    <div class="col-8">@ability.Name</div>
+                                <div class="row mb-1">
+                                    <div class="col-2">
+                                        <input type="radio" disabled checked="@Model.SavingThrows.Contains(ability.Id)" />
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="text-center">@Model.SavingThrowBonus(ability.Id)</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div>@ability.Name</div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img type="button" class="roll text-center" data-toggle="modal" data-target="#dieRollModalModal" data-modal-label="@ability.Name Saving Throw" data-die-type="20" data-bonus="@Model.SavingThrowBonus(ability.Id)" src="~/img/icon/d6_16x16.png" />
+                                    </div>
                                 </div>
                             }
                         </div>
@@ -98,14 +106,23 @@
                     </div>
 
                     @*Skills*@
-                    <div class="card" style="margin-bottom:10px">
+                    <div class="card">
                         <div class="card-body">
                             @foreach (var skill in Model.Skills)
                             {
-                                <div class="row" style="padding-bottom:5px">
-                                    <input class="col-2" type="radio" disabled checked="@Model.PlayerSkills.Contains(skill.Id)" />
-                                    <div class="col-2 text-center">@Model.SkillBonus(skill.Id)</div>
-                                    <div class="col-8">@skill.Name</div>
+                                <div class="row mb-1">
+                                    <div class="col-2">
+                                        <input type="radio" disabled checked="@Model.PlayerSkills.Contains(skill.Id)" />
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="text-center">@Model.SkillBonus(skill.Id)</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div>@skill.Name</div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img type="button" class="roll text-center" data-toggle="modal" data-target="#dieRollModalModal" data-modal-label="@skill.Name Skill Check" data-die-type="20" data-bonus="@Model.SkillBonus(skill.Id)" src="~/img/icon/d6_16x16.png" />
+                                    </div>
                                 </div>
                             }
                         </div>
@@ -114,8 +131,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row mb-3">
                 @*Passive Perception*@
-                <div class="col-12" style="padding-bottom:10px">
+                <div class="col-12 h-100">
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
@@ -135,11 +154,11 @@
             <div class="row">
                 @*Status and Equipment*@
                 <div class="col-12">
-                    <div class="card" style="margin-bottom:10px">
+                    <div class="card mb-3">
                         <div class="card-body">
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-4">
-                                    <div class="card bg-light mb-3">
+                                    <div class="card bg-light h-100">
                                         <div align="center">
                                             <strong>14</strong>
                                             <br />
@@ -148,7 +167,7 @@
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <div class="card bg-light mb-3">
+                                    <div class="card bg-light h-100">
                                         <div align="center">
                                             <strong>-</strong>
                                             <br />
@@ -157,7 +176,7 @@
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <div class="card bg-light mb-3">
+                                    <div class="card bg-light h-100">
                                         <div align="center">
                                             <strong>30</strong>
                                             <br />
@@ -166,7 +185,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card" style="margin-bottom:10px">
+                            <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-6">
@@ -181,7 +200,7 @@
                                     <div class="text-center">Hit Points</div>
                                 </div>
                             </div>
-                            <div class="card" style="margin-bottom:10px">
+                            <div class="card mb-3">
                                 <div class="card-body">
                                     @Model.HitPointTemporary
                                 </div>
@@ -189,21 +208,32 @@
                                     <div class="text-center">Temporary Hit Points</div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-6">
-                                    <div class="card" style="margin-bottom:10px">
+                                    <div class="card h-100">
                                         <div class="card-body">
                                             Maximum: @Model.Level d@(Model.PlayerClass.HitDie)
                                             <br />
                                             Current:
                                         </div>
                                         <div class="card-footer">
-                                            <div class="text-center">Hit Dice</div>
+                                            <div class="row">
+                                                @*<div class="col-3">
+                                                        <img type="button" class="refresh-hit-die text-center" src="~/img/icon/refresh_32x32.png" />
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="text-center">Hit Dice</div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <img type="button" class="heal text-center" data-die-type="@Model.PlayerClass.HitDie" data-bonus="@Model.AbilityScores.Single(n => n.AbilityId == 3).Bonus" src="~/img/icon/add_32x32.png" />
+                                                    </div>*@
+                                                <div class="col-12 text-center"><span class="float-left"><img type="button" class="refresh-hit-die text-center" src="~/img/icon/refresh_32x32.png" /></span>Hit Dice<span class="float-right"><img type="button" class="heal text-center" data-die-type="@Model.PlayerClass.HitDie" data-bonus="@Model.AbilityScores.Single(n => n.AbilityId == 3).Bonus" src="~/img/icon/add_32x32.png" /></span></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="card" style="margin-bottom:10px">
+                                    <div class="card h-100">
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-5">
@@ -235,14 +265,16 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <div class="text-center">Death Saves</div>
+                                            <div class="row">
+                                                <div class="col-12 text-center"><span class="float-left"><img type="button" class="refresh-death-saves text-center" src="~/img/icon/refresh_32x32.png" /></span>Death Saves<span class="float-right"><img type="button" class="resolve-death-save text-center" data-die-type="20" src="~/img/icon/add_subtract_32x32.png" /></span></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card" style="margin-bottom:10px">
+                    <div class="card mb-3">
                         <div class="card-body">
                             <table class="table table-bordered table-striped">
                                 <thead>
@@ -254,18 +286,37 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Shortsword</td>
-                                        <td>+2</td>
-                                        <td>1d6</td>
-                                        <td>Slashing</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Shortbow</td>
-                                        <td>+2</td>
-                                        <td>1d6</td>
-                                        <td>Piercing</td>
-                                    </tr>
+                                    @foreach (var weapon in Model.Equipment.Where(n => n.Equipment.WeaponType != null && !string.IsNullOrEmpty(n.EquippedSlot)))
+                                    {
+                                        <tr>
+                                            <td>@(weapon.DisplayName())</td>
+                                            <td>@Model.WeaponAttackBonus(weapon.Id)</td>
+                                            <td>@(Model.WeaponDamageBonus(weapon.Id))</td>
+                                            <td>@(weapon.Equipment.WeaponType.DamageType)</td>
+                                        </tr>
+                                    }
+                                    @foreach (var spell in Model.Spells.Where(n => n.Spell.SpellLevel == 0 &&
+                                                                               n.IsPrepared &&
+                                                                               (n.Spell.IsSpellAttack || n.Spell.SavingThrowAbility != null)))
+                                    {
+                                        <tr>
+                                            <td>@(spell.Spell.Name)</td>
+                                            @if (spell.Spell.IsSpellAttack)
+                                            {
+                                                <td>@Model.SpellAttackBonus</td>
+                                            }
+                                            else if (spell.Spell.SavingThrowAbility != null)
+                                            {
+                                                <td>DC @Model.SpellSaveDC (@spell.Spell.SavingThrowAbility.Code)</td>
+                                            }
+                                            else
+                                            {
+                                                <td />
+                                            }
+                                            <td />
+                                            <td>@spell.Spell.DamageType</td>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>
@@ -278,9 +329,9 @@
         </div>
         <div class="col-xl-4 co-lg-12">
             @*Features*@
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-12">
-                    <div class="card" style="margin-bottom:10px">
+                    <div class="card h-100">
                         <div class="card-body">
                             @if (Model.Features.Any(n => n.IsRaceFeature && !n.Hidden))
                             {
@@ -354,7 +405,7 @@
                 </div>
             </div>
             @*Proficiencies and Languages*@
-            <div class="row" style="padding-bottom:10px">
+            <div class="row mb-3">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">

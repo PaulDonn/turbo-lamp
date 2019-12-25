@@ -98,10 +98,7 @@
                                     {
                                         <tr>
                                             @if (i > 0
-                                           && (Model.PlayerClass.Id == 3
-                                           || Model.PlayerClass.Id == 4
-                                           || Model.PlayerClass.Id == 7
-                                           || Model.PlayerClass.Id == 12))
+                                           && (Model.PlayerClass.Id == 12))
                                             {
                                                 <td class="text-center">
                                                     <input type="radio" disabled @if (pcSpell.IsPrepared) { @: checked

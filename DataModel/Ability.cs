@@ -14,6 +14,7 @@ namespace DataModel
             PcAbilityScore = new HashSet<PcAbilityScore>();
             PcSavingThrow = new HashSet<PcSavingThrow>();
             Skill = new HashSet<Skill>();
+            Spell = new HashSet<Spell>();
         }
 
         [Key]
@@ -35,5 +36,7 @@ namespace DataModel
         public virtual ICollection<PcSavingThrow> PcSavingThrow { get; set; }
         [InverseProperty("Ability")]
         public virtual ICollection<Skill> Skill { get; set; }
+        [InverseProperty("SavingThrowAbility")]
+        public virtual ICollection<Spell> Spell { get; set; }
     }
 }

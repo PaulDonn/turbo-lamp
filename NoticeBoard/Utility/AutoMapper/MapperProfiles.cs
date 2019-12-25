@@ -295,9 +295,12 @@ namespace NoticeBoard.Utility.AutoMapper
         private void SpellMaps()
         {
             CreateMap<Spell, SpellDTO>()
-                .ForMember(dest => dest.SpellSchool, opts => opts.MapFrom(src => src.SpellSchool.Name));
+                .ForMember(dest => dest.SpellSchool, opts => opts.MapFrom(src => src.SpellSchool.Name))
+                .ForMember(dest => dest.SavingThrowAbility, opts => opts.MapFrom(src => src.SavingThrowAbility))
+                .ForMember(dest => dest.DamageType, opts => opts.MapFrom(src => src.DamageType.Name));
 
-            CreateMap<SpellDTO, SpellModel>();
+            CreateMap<SpellDTO, SpellModel>()
+                .ForMember(dest => dest.SavingThrowAbility, opts => opts.MapFrom(src => src.SavingThrowAbility));
 
             CreateMap<PcSpellLevel, PcSpellLevelDTO>();
 

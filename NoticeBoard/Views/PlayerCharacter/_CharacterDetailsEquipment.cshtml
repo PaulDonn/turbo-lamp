@@ -76,9 +76,9 @@
         <div class="col-xl-4 col-lg-12">
             <div class="card" style="margin-bottom:10px">
                 <div class="card-body">
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-4">
-                            <div class="card bg-light mb-3">
+                            <div class="card bg-light h-100">
                                 <div class="card-body" align="center">
                                     @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Cloak") != null)
                                     {
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                         <div class="col-4">
-                            <div class="card bg-light mb-3">
+                            <div class="card bg-light h-100">
                                 <div class="card-body" align="center">
                                     @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Helmet") != null)
                                     {
@@ -124,7 +124,7 @@
                             </div>
                         </div>
                         <div class="col-4">
-                            <div class="card bg-light mb-3">
+                            <div class="card bg-light h-100">
                                 <div class="card-body" align="center">
                                     @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Amulet") != null)
                                     {
@@ -147,9 +147,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-4">
-                            <div class="card bg-light mb-3">
+                            <div class="card bg-light h-100">
                                 <div class="card-body" align="center">
                                     @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "MainHand" || n.EquippedSlot == "BothHands") != null)
                                     {
@@ -172,12 +172,12 @@
                                     }
                                 </div>
                                 <div class="card-footer">
-                                    <div class="text-center">Main-Hand</div>
+                                    <div class="text-center">Main-Hand Weapon</div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-4">
-                            <div class="card bg-light mb-3">
+                            <div class="card bg-light h-100">
                                 <div class="card-body" align="center">
                                     @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Armor") != null)
                                     {
@@ -200,7 +200,7 @@
                             </div>
                         </div>
                         <div class="col-4">
-                            <div class="card bg-light mb-3">
+                            <div class="card bg-light h-100">
                                 <div class="card-body" align="center">
                                     @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "OffHand" || n.EquippedSlot == "BothHands") != null)
                                     {
@@ -223,14 +223,14 @@
                                     }
                                 </div>
                                 <div class="card-footer">
-                                    <div class="text-center">Off-Hand</div>
+                                    <div class="text-center">Off-Hand Weapon</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-4">
-                            <div class="card bg-light mb-3">
+                            <div class="card bg-light h-100">
                                 <div class="card-body" align="center">
                                     @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Ring1") != null)
                                     {
@@ -253,7 +253,7 @@
                             </div>
                         </div>
                         <div class="col-4">
-                            <div class="card bg-light mb-3">
+                            <div class="card bg-light h-100">
                                 <div class="card-body" align="center">
                                     @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Boots") != null)
                                     {
@@ -276,7 +276,7 @@
                             </div>
                         </div>
                         <div class="col-4">
-                            <div class="card bg-light mb-3">
+                            <div class="card bg-light h-100">
                                 <div class="card-body" align="center">
                                     @if (@Model.Equipment.SingleOrDefault(n => n.EquippedSlot == "Ring2") != null)
                                     {
