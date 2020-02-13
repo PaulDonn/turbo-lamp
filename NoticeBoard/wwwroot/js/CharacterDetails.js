@@ -32,23 +32,46 @@
 }
 
 var dieType = 6;
+var numberOfDie = 1;
 var bonus = 0;
+var damageType = '';
 
 var roll1 = 0;
 var roll2 = 0;
 
 function roll(rollType) {//0 - First Roll, 1 - Advantage Roll, 2 - Disadvantage Roll
-
+    
 
     var dieRoll = Math.floor(Math.random() * dieType) + 1;
     if (rollType === 0) {
+        $('#dieRollModal').find('#dieCard1').removeClass('critical-success').removeClass('critical-failure');
+        $('#dieRollModal').find('#dieCard2').removeClass('critical-success').removeClass('critical-failure');
+        $('#dieRollModal').find('#totalCard1').removeClass('card-advantage').removeClass('card-disadvantage');
+        $('#dieRollModal').find('#totalCard2').removeClass('card-advantage').removeClass('card-disadvantage');
+
         roll1 = dieRoll;
         roll2 = 0;
-        $('#dieRollModal').find('#totalCard1').removeClass('border-success');
-        $('#dieRollModal').find('#totalCard2').removeClass('border-success');
+
+        if (dieType === 20) {
+            if (dieRoll === 1) {
+                $('#dieRollModal').find('#dieCard1').addClass('critical-failure');
+            }
+            else if (dieRoll === 20) {
+                $('#dieRollModal').find('#dieCard1').addClass('critical-success');
+            }
+        }
     }
     else {
         roll2 = dieRoll;
+
+        if (dieType === 20) {
+            if (dieRoll === 1) {
+                $('#dieRollModal').find('#dieCard2').addClass('critical-failure');
+            }
+            else if (dieRoll === 20) {
+                $('#dieRollModal').find('#dieCard2').addClass('critical-success');
+            }
+        }
     }
 
     var total = bonus + dieRoll;
@@ -61,8 +84,6 @@ function roll(rollType) {//0 - First Roll, 1 - Advantage Roll, 2 - Disadvantage 
 
     if (rollType === 0) {
         $('#roll2').hide();
-        $('#dieRollModal').find('#totalCard1').removeClass('card-advantage').removeClass('card-disadvantage');
-        $('#dieRollModal').find('#totalCard2').removeClass('card-advantage').removeClass('card-disadvantage');
         $('#advantageBtn').prop('disabled', false);
         $('#disadvantageBtn').prop('disabled', false);
         $('#dieRollModal').find('#dieRoll1').text(dieRoll.toString());
@@ -96,6 +117,86 @@ function roll(rollType) {//0 - First Roll, 1 - Advantage Roll, 2 - Disadvantage 
     }
 }
 
+function damageRoll() {
+
+    var total = 0;
+
+    var damageDieRowHtml = '';
+
+    for (i = 0; i < numberOfDie; i++) {
+        var roll = Math.floor(Math.random() * dieType) + 1;
+        total = total + roll;
+
+        damageDieRowHtml = damageDieRowHtml +
+        '<div class="col-4 mb-3">' +
+            '<div class="card" id="damageDieCard' + i + '">' +
+                '<div class="card-body">' +
+            '<div class="text-center"><strong id="damageDieRoll' + i + '">' + roll + '</strong></div>' +
+                '</div>' +
+                '<div class="card-footer">' +
+            '<div class="text-center">D' + dieType + '<span class="float-right"><img type="button" onclick="rerollDamage(\'#damageDieRoll' + i + '\', ' + dieType + ')" class="text-center" src="../img/icon/d6_16x16.png" /></div>' +
+                '</div>' +
+            '</div>' +
+        '</div>';
+    }
+
+    total += bonus;
+
+    var bonusString = bonus.toString();
+    if (bonus >= 0) {
+        bonusString = '+' + bonusString;
+    }
+    $('#damageRollModal').find('#damageBonus').text(bonusString);
+
+    $('#damageRollModal').find('#damageTotal').text(total.toString());
+
+    $('#damageRollModal').find('#damageType').text(damageType);
+
+    $('#damageDieRow').html(damageDieRowHtml);
+}
+
+function rerollDamage(die, thisDieType) {
+
+    dieType = thisDieType;
+
+    var roll = Math.floor(Math.random() * dieType) + 1;
+    var previousRoll = parseInt($('#damageRollModal').find(die).text());
+    var total = parseInt($('#damageRollModal').find('#damageTotal').text());
+    total = total - previousRoll + roll;
+    $('#damageRollModal').find(die).text(roll.toString());
+    $('#damageRollModal').find('#damageTotal').text(total);
+
+}
+
+function criticalDamage() {
+
+    var damageDieRowHtml = $('#damageDieRow').html();
+
+    total = parseInt($('#damageRollModal').find('#damageTotal').text());
+
+    for (i = 0; i < numberOfDie; i++) {
+        var roll = Math.floor(Math.random() * dieType) + 1;
+        total = total + roll;
+
+        damageDieRowHtml = damageDieRowHtml +
+            '<div class="col-4 mb-3">' +
+            '<div class="card" id="damageDieCard' + i + '">' +
+            '<div class="card-body">' +
+            '<div class="text-center"><strong id="damageDieCritRoll' + i + '">' + roll + '</strong></div>' +
+            '</div>' +
+            '<div class="card-footer">' +
+            '<div class="text-center">D' + dieType + '<span class="float-right"><img type="button" onclick="rerollDamage(\'#damageDieCritRoll' + i + '\', ' + dieType + ')" class="text-center" src="../img/icon/d6_16x16.png" /></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+    }
+
+    $('#damageDieRow').html(damageDieRowHtml);
+
+    $('#damageRollModal').find('#damageTotal').text(total);
+
+}
+
 $(document).ready(function () {
     $(".roll").on('click', function () {
         label = this.dataset.modalLabel;
@@ -106,17 +207,32 @@ $(document).ready(function () {
 
         roll(0);
 
-        //$('#dieRollModal').find('.modal-title').text(dieRoll.toString() + ' + ' + bonus.toString() + ' = ' + total.toString());
         $('#dieRollModal').modal('show');
     });
-});
 
-$('#dieRollModal').on('show.bs.modal', function (event) {
-    //var button = $(event.relatedTarget) // Button that triggered the modal
-    //var recipient = '' // Extract info from data-* attributes
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    //var modal = $(this);
-    //modal.find('.modal-title').text('New message to ' + recipient);
-    //modal.find('.modal-body input').val(recipient);
-})
+    $(".damage").on('click', function () {
+        label = this.dataset.modalLabel;
+        $('#damageRollModal').find('#damageRollModalLabel').text(label);
+
+        var damage = this.dataset.damage;
+        damageType = this.dataset.damageType;
+
+        var indexOfD = damage.indexOf('d');
+        var indexOfBonus = Math.max(damage.indexOf('-'), (damage.indexOf('+'))); 
+
+        numberOfDie = parseInt(damage.substring(0, indexOfD));
+        if (indexOfBonus !== -1) {
+            dieType = parseInt(damage.substring(indexOfD + 1, indexOfBonus));
+            bonus = parseInt(damage.substring(indexOfBonus).replace('+', ''));
+        }
+        else {
+            dieType = parseInt(damage.substring(indexOfD + 1));
+            bonus = 0;
+        }
+
+        damageRoll();
+
+        $('#damageRollModal').modal('show');
+    });
+
+});

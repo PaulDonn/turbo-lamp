@@ -55,5 +55,7 @@ namespace NoticeBoard.Models.Spells
         public AbilityModel SavingThrowAbility { get; set; }
 
         public string DamageType { get; set; }
+
+        public bool IsSelected { get; set; }
     }
 }

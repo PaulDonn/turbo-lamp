@@ -14,9 +14,7 @@ namespace Core.Classes.Query
     {
         public int PartyId { get; set; }
 
-        public int ClassId { get; set; }
-
-        public int Level { get; set; }
+        public int PcId { get; set; }
     }
 
     public class GetArchetypeOptionsQueryHandler : IQueryHandler<GetArchetypeOptionsQuery, IEnumerable<ArchetypeDTO>>
@@ -37,10 +35,12 @@ namespace Core.Classes.Query
 
             var partySources = _context.PartySource.Where(n => n.PartyId == query.PartyId).Select(n => n.SourceId);
 
-            if (partySources.Count() > 0)
+            var pc = _context.PlayerCharacter.Find(query.PcId);
+
+            if (partySources.Count() > 0 && pc != null)
             {
-                var archetypes = _context.Archetype.Where(n => n.ClassId == query.ClassId &&
-                                                               n.Class.ArchetypeStartingLevel == query.Level &&
+                var archetypes = _context.Archetype.Where(n => n.ClassId == pc.ClassId &&
+                                                               n.Class.ArchetypeStartingLevel == pc.Level &&
                                                                partySources.Contains(n.SourceId))
                                                    .OrderBy(n => n.Name);
 

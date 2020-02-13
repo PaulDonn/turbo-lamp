@@ -42,5 +42,9 @@ namespace Core.Spells.DTO
         public AbilityDTO SavingThrowAbility { get; set; }
 
         public string DamageType { get; set; }
+
+        public bool IsMandatory { get; set; }
+
+        public bool IsSelected { get; set; }
     }
 }

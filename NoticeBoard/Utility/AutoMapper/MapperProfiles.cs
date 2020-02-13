@@ -287,7 +287,7 @@ namespace NoticeBoard.Utility.AutoMapper
 
             CreateMap<PcSkillDTO, PcSkillModel>();
 
-            CreateMap<PlayerSkillsDTO, CheckboxSelectModel<SkillModel>>()
+            CreateMap<PcSkillsDTO, CheckboxSelectModel<SkillModel>>()
                 .ForMember(dest => dest.Options, opts => opts.MapFrom(src => src.Skills))
                 .ForMember(dest => dest.NumberOfSelections, opts => opts.MapFrom(src => src.NumberOfSkills));
         }

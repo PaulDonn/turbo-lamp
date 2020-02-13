@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Core.Skills.DTO
 {
-    public class PlayerSkillsDTO
+    public class PcSkillsDTO
     {
-        public PlayerSkillsDTO()
+        public PcSkillsDTO()
         {
             Skills = new List<SkillDTO>();
         }

@@ -11,13 +11,13 @@ using System.Linq;
 
 namespace Core.Skills.Query
 {
-    public class GetSkillOptionsQuery : IQuery<PlayerSkillsDTO>
+    public class GetSkillOptionsQuery : IQuery<PcSkillsDTO>
     {
         public int PartyId { get; set; }
         public int PcId { get; set; }
     }
 
-    public class GetSkillOptionsQueryHandler : IQueryHandler<GetSkillOptionsQuery, PlayerSkillsDTO>
+    public class GetSkillOptionsQueryHandler : IQueryHandler<GetSkillOptionsQuery, PcSkillsDTO>
     {
         private NoticeBoardContext _context;
         private IMapper _mapper;
@@ -28,9 +28,9 @@ namespace Core.Skills.Query
             _mapper = mapper;
         }
 
-        PlayerSkillsDTO IQueryHandler<GetSkillOptionsQuery, PlayerSkillsDTO>.Handle(GetSkillOptionsQuery query)
+        PcSkillsDTO IQueryHandler<GetSkillOptionsQuery, PcSkillsDTO>.Handle(GetSkillOptionsQuery query)
         {
-            var dto = new PlayerSkillsDTO();
+            var dto = new PcSkillsDTO();
             var skillOptions = new List<SkillDTO>();
 
             var partySources = _context.PartySource.Where(n => n.PartyId == query.PartyId)

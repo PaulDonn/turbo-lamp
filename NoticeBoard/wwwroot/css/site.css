@@ -130,6 +130,16 @@ img.resize {
         color: white;
     }
 
+
+.critical-success > .card-body {
+    color: #28a745;
+}
+
+
+.critical-failure > .card-body {
+    color: #dc3545;
+}
+
 .textarea-no-resize {
     resize: none;
 }

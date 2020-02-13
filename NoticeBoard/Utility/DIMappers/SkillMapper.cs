@@ -15,7 +15,7 @@ namespace NoticeBoard.Utility.DIMappers
             //Command Handlers
 
             //Query Handlers
-            services.AddTransient<IQueryHandler<GetSkillOptionsQuery, PlayerSkillsDTO>, GetSkillOptionsQueryHandler>();
+            services.AddTransient<IQueryHandler<GetSkillOptionsQuery, PcSkillsDTO>, GetSkillOptionsQueryHandler>();
         }
     }
 }

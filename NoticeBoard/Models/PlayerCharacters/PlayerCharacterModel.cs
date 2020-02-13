@@ -112,7 +112,7 @@ namespace NoticeBoard.Models.PlayerCharacters
             return weaponBonus.ToString();
         }
 
-        public string WeaponDamageBonus(int equipmentId)
+        public string WeaponDamage(int equipmentId)
         {
             var weapon = Equipment.Single(n => n.Id == equipmentId).Equipment;
             var bonus = 0;

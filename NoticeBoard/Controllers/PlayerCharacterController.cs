@@ -14,6 +14,8 @@ using Core.Races.DTO;
 using Core.Races.Query;
 using Core.Skills.DTO;
 using Core.Skills.Query;
+using Core.Spells.DTO;
+using Core.Spells.Query;
 using DataModel;
 using Infrastructure.Mediator;
 using Infrastructure.Session;
@@ -29,6 +31,7 @@ using NoticeBoard.Models.Languages;
 using NoticeBoard.Models.PlayerCharacters;
 using NoticeBoard.Models.Races;
 using NoticeBoard.Models.Shared;
+using NoticeBoard.Models.Spells;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -168,8 +171,7 @@ namespace NoticeBoard.Controllers
             var query = new GetArchetypeOptionsQuery
             {
                 PartyId = partyId,
-                ClassId = classId,
-                Level = 1
+                PcId = Convert.ToInt32(Decrypt(pcId))
             };
 
             var archetypes = SendQuery<GetArchetypeOptionsQuery, IEnumerable<ArchetypeDTO>>(query).ToList();
@@ -284,7 +286,7 @@ namespace NoticeBoard.Controllers
                 PartyId = partyId
             };
 
-            var model = _mapper.Map<PlayerSkillsDTO, CheckboxSelectModel<SkillModel>>(SendQuery<GetSkillOptionsQuery, PlayerSkillsDTO>(query));
+            var model = _mapper.Map<PcSkillsDTO, CheckboxSelectModel<SkillModel>>(SendQuery<GetSkillOptionsQuery, PcSkillsDTO>(query));
             model.PcId = pcId;
             model.PartyId = partyId;
 
@@ -303,8 +305,48 @@ namespace NoticeBoard.Controllers
 
             SendCommand(new SetPCSkillsCommand { PcId = pcId, Skills = model.Options.Where(n => n.IsSelected).Select(n => n.Id).ToList() });
 
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction(nameof(SelectSpells), new { model.PcId, model.PartyId });
         }
+
+        public IActionResult SelectSpells(string pcId, int partyId)
+        {
+            var query = new GetSpellOptionsQuery
+            {
+                PcId = Convert.ToInt32(Decrypt(pcId)),
+                PartyId = partyId
+            };
+
+            var model = new SpellSelectModel();
+
+            model.checkboxSelectModel = _mapper.Map<List<SpellDTO>, CheckboxSelectModel<SpellModel>>(SendQuery<GetSpellOptionsQuery, IEnumerable<SpellDTO>>(query).ToList());
+            model.checkboxSelectModel.PcId = pcId;
+            model.checkboxSelectModel.PartyId = partyId;
+
+            //model.radioSelectModel = _mapper.Map<PcSpellDTO, RadioSelectModel<SpellModel>>(SendQuery<GetPcSpellsQuery, PcSpellDTO>(query));
+            //model.radioSelectModel.PcId = pcId;
+            //model.radioSelectModel.PartyId = partyId;
+
+            if (model.checkboxSelectModel.Options.Where(n => n.IsSelected).Count() == model.checkboxSelectModel.NumberOfSelections)
+            {
+                return SelectSpells(model);
+            }
+
+            return View(model);
+        }
+
+        public IActionResult SelectSpells(SpellSelectModel model)
+        {
+            var pcId = Convert.ToInt32(Decrypt(model.checkboxSelectModel.PcId));
+
+            SendCommand(new SetPCSpellsCommand { PcId = pcId, SpellToRemove = model.radioSelectModel.SelectedOptionId, Spells = model.checkboxSelectModel.Options.Where(n => n.IsSelected).Select(n => n.Id).ToList() });
+
+            return RedirectToAction(nameof(SelectSpells), new { model.checkboxSelectModel.PcId, model.checkboxSelectModel.PartyId });
+        }
+
+
+
+
+
 
         public IActionResult Details(int pcid)
         {
