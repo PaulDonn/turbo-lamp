@@ -78,10 +78,10 @@
     <Folder Include="dbo\Scripts\Spells\XGtE" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Database.publish.xml" />
     <None Include="dbo\Scripts\PopulateTestPCs.sql" />
     <None Include="dbo\Scripts\PopulateSource.sql" />
     <None Include="dbo\Scripts\PopulateCharacterGenerationMethod.sql" />
+    <None Include="Database.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Scripts\PopulateAbility.sql" />
