@@ -1,7 +1,7 @@
 ﻿@model NoticeBoard.Models.PlayerCharacters.PlayerCharacterModel
 @using System.Text.RegularExpressions;
 
-<div>
+<div id="stats">
     <div class="row mb-3">
         <div class="col-12">
             <div class="card">
@@ -9,30 +9,30 @@
                     <div class="row mb-3">
                         <div class="col-4 h-100">
                             <div class="col-12">Class & Level</div>
-                            <label class="col-12"><strong>Lv @Model.Level @(Model.Archetype?.ShortName ?? @Model.PlayerClass.Name)</strong></label>
+                            <label class="col-12"><strong>{{classes[0].name}} Lv{{classes[0].level}}</strong></label>
                         </div>
                         <div class="col-4 h-100">
                             <div class="col-12">Background</div>
-                            <label class="col-12"><strong>@Model.Background.Name</strong></label>
+                            <label class="col-12"><strong>{{background}}</strong></label>
                         </div>
                         <div class="col-4 h-100">
                             <div class="col-12">Player Name</div>
-                            <label class="col-12"><strong>@Model.Player.Name</strong></label>
+                            <label class="col-12"><strong>{{playerName}}</strong></label>
                         </div>
                     </div>
                     <hr />
                     <div class="row">
                         <div class="col-4 h-100">
                             <div class="col-12">Race</div>
-                            <label class="col-12"><strong>@(Model.SubRace?.Name ?? @Model.Race.Name)</strong></label>
+                            <label class="col-12"><strong>{{race}}</strong></label>
                         </div>
                         <div class="col-4 h-100">
                             <div class="col-12">Alignment</div>
-                            <label class="col-12"><strong>@Model.Alignment.Name</strong></label>
+                            <label class="col-12"><strong>{{alignment}}</strong></label>
                         </div>
                         <div class="col-4 h-100">
                             <div class="col-12">Experience Points</div>
-                            <label class="col-12"><strong>@Model.ExperiencePoints</strong></label>
+                            <label class="col-12"><strong>{{experiencePoints}}</strong></label>
                         </div>
                     </div>
                 </div>
@@ -46,19 +46,67 @@
                 <div class="col-4">
                     <div class="card h-100">
                         <div class="card-body">
-                            @foreach (var ability in Model.Abilities)
-                            {
-                                <div class="card bg-light mb-3">
-                                    <div class="card-body" align="center">
-                                        @ability.Name
-                                        <br />
-                                        @Model.AbilityScores.Single(n => n.AbilityId == ability.Id).Score
-                                    </div>
-                                    <div class="card-footer" align="center">
-                                        <strong>(@(Model.AbilityScores.Single(n => n.AbilityId == ability.Id).Bonus >= 0 ? "+" : "")@Model.AbilityScores.Single(n => n.AbilityId == ability.Id).Bonus.ToString())</strong><span class="float-right"><img type="button" class="roll text-center" data-toggle="modal" data-target="#dieRollModal" data-modal-label="@ability.Name Ability Check" data-die-type="20" data-bonus="@Model.AbilityScores.Single(n => n.AbilityId == ability.Id).Bonus" src="~/img/icon/d6_16x16.png" /></span>
-                                    </div>
+
+                            <div class="card bg-light mb-3">
+                                <div class="card-body" align="center">
+                                    <div>Strength</div>
+                                    <div><span class="float-left"><img type="button" class="text-center" src="~/img/icon/subtract_16x16.png" /></span>{{abilityScores[0].score}}<span class="float-right"><img type="button" class="text-center" src="~/img/icon/add_16x16.png" /></span></div>
                                 </div>
-                            }
+                                <div class="card-footer" align="center">
+                                    <strong><span v-if="abilityScores[0].bonus >= 0">+</span>{{abilityScores[0].bonus}}</strong><span class="float-right"><img type="button" class="roll text-center" data-toggle="modal" data-target="#dieRollModal" data-modal-label="Strength Ability Check" data-die-type="20" data-bonus="{{abilityScores[0].bonus}}" src="~/img/icon/d6_16x16.png" /></span>
+                                </div>
+                            </div>
+
+                            <div class="card bg-light mb-3">
+                                <div class="card-body" align="center">
+                                    <div>Dexterity</div>
+                                    <div><span class="float-left"><img type="button" class="text-center" src="~/img/icon/subtract_16x16.png" /></span>{{abilityScores[1].score}}<span class="float-right"><img type="button" class="text-center" src="~/img/icon/add_16x16.png" /></span></div>
+                                </div>
+                                <div class="card-footer" align="center">
+                                    <strong><span v-if="abilityScores[1].bonus >= 0">+</span>{{abilityScores[1].bonus}}</strong><span class="float-right"><img type="button" class="roll text-center" data-toggle="modal" data-target="#dieRollModal" data-modal-label="Dexterity Ability Check" data-die-type="20" data-bonus="{{abilityScores[1].bonus}}" src="~/img/icon/d6_16x16.png" /></span>
+                                </div>
+                            </div>
+
+                            <div class="card bg-light mb-3">
+                                <div class="card-body" align="center">
+                                    <div>Constitution</div>
+                                    <div><span class="float-left"><img type="button" class="text-center" src="~/img/icon/subtract_16x16.png" /></span>{{abilityScores[2].score}}<span class="float-right"><img type="button" class="text-center" src="~/img/icon/add_16x16.png" /></span></div>
+                                </div>
+                                <div class="card-footer" align="center">
+                                    <strong><span v-if="abilityScores[2].bonus >= 0">+</span>{{abilityScores[2].bonus}}</strong><span class="float-right"><img type="button" class="roll text-center" data-toggle="modal" data-target="#dieRollModal" data-modal-label="Constitution Ability Check" data-die-type="20" data-bonus="{{abilityScores[2].bonus}}" src="~/img/icon/d6_16x16.png" /></span>
+                                </div>
+                            </div>
+
+                            <div class="card bg-light mb-3">
+                                <div class="card-body" align="center">
+                                    <div>Intelligence</div>
+                                    <div><span class="float-left"><img type="button" class="text-center" src="~/img/icon/subtract_16x16.png" /></span>{{abilityScores[3].score}}<span class="float-right"><img type="button" class="text-center" src="~/img/icon/add_16x16.png" /></span></div>
+                                </div>
+                                <div class="card-footer" align="center">
+                                    <strong><span v-if="abilityScores[3].bonus >= 0">+</span>{{abilityScores[3].bonus}}</strong><span class="float-right"><img type="button" class="roll text-center" data-toggle="modal" data-target="#dieRollModal" data-modal-label="Intelligence Ability Check" data-die-type="20" data-bonus="{{abilityScores[3].bonus}}" src="~/img/icon/d6_16x16.png" /></span>
+                                </div>
+                            </div>
+
+                            <div class="card bg-light mb-3">
+                                <div class="card-body" align="center">
+                                    <div>Wisdom</div>
+                                    <div><span class="float-left"><img type="button" class="text-center" src="~/img/icon/subtract_16x16.png" /></span>{{abilityScores[4].score}}<span class="float-right"><img type="button" class="text-center" src="~/img/icon/add_16x16.png" /></span></div>
+                                </div>
+                                <div class="card-footer" align="center">
+                                    <strong><span v-if="abilityScores[4].bonus >= 0">+</span>{{abilityScores[4].bonus}}</strong><span class="float-right"><img type="button" class="roll text-center" data-toggle="modal" data-target="#dieRollModal" data-modal-label="Wisdom Ability Check" data-die-type="20" data-bonus="{{abilityScores[4].bonus}}" src="~/img/icon/d6_16x16.png" /></span>
+                                </div>
+                            </div>
+
+                            <div class="card bg-light mb-3">
+                                <div class="card-body" align="center">
+                                    <div>Charisma</div>
+                                    <div><span class="float-left"><img type="button" class="text-center" src="~/img/icon/subtract_16x16.png" /></span>{{abilityScores[5].score}}<span class="float-right"><img type="button" class="text-center" src="~/img/icon/add_16x16.png" /></span></div>
+                                </div>
+                                <div class="card-footer" align="center">
+                                    <strong><span v-if="abilityScores[5].bonus >= 0">+</span>{{abilityScores[5].bonus}}</strong><span class="float-right"><img type="button" class="roll text-center" data-toggle="modal" data-target="#dieRollModal" data-modal-label="Charisma Ability Check" data-die-type="20" data-bonus="{{abilityScores[5].bonus}}" src="~/img/icon/d6_16x16.png" /></span>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -280,18 +328,18 @@
                                 <tbody>
                                     @foreach (var weapon in Model.Equipment.Where(n => n.Equipment.WeaponType != null && !string.IsNullOrEmpty(n.EquippedSlot)))
                                     {
-                                    <tr>
-                                        <td>@(weapon.DisplayName())</td>
-                                        <td>@Model.WeaponAttackBonus(weapon.Id)</td>
-                                        <td>@(Model.WeaponDamage(weapon.Id))</td>
-                                        <td>@(weapon.Equipment.WeaponType.DamageType)</td>
-                                        <td><img type="button" class="roll text-center" data-toggle="modal" data-target="#dieRollModal" data-modal-label="Attack Roll" data-die-type="20" data-bonus="@(Model.WeaponAttackBonus(weapon.Id))" src="~/img/icon/attack_32x32.png" /></td>
-                                        <td><img type="button" class="damage text-center" data-toggle="modal" data-target="#damageRollModal" data-modal-label="Damage Roll" data-damage="@(Model.WeaponDamage(weapon.Id))" data-damage-type="@(weapon.Equipment.WeaponType.DamageType)" src="~/img/icon/damage_32x32.png" /></td>
-                                    </tr>
+                                        <tr>
+                                            <td>@(weapon.DisplayName())</td>
+                                            <td>@Model.WeaponAttackBonus(weapon.Id)</td>
+                                            <td>@(Model.WeaponDamage(weapon.Id))</td>
+                                            <td>@(weapon.Equipment.WeaponType.DamageType)</td>
+                                            <td><img type="button" class="roll text-center" data-toggle="modal" data-target="#dieRollModal" data-modal-label="Attack Roll" data-die-type="20" data-bonus="@(Model.WeaponAttackBonus(weapon.Id))" src="~/img/icon/attack_32x32.png" /></td>
+                                            <td><img type="button" class="damage text-center" data-toggle="modal" data-target="#damageRollModal" data-modal-label="Damage Roll" data-damage="@(Model.WeaponDamage(weapon.Id))" data-damage-type="@(weapon.Equipment.WeaponType.DamageType)" src="~/img/icon/damage_32x32.png" /></td>
+                                        </tr>
                                     }
                                     @foreach (var spell in Model.Spells.Where(n => n.Spell.SpellLevel == 0 &&
-                                                                          n.IsPrepared &&
-                                                                          (n.Spell.IsSpellAttack || n.Spell.SavingThrowAbility != null)))
+                                                                  n.IsPrepared &&
+                                                                  (n.Spell.IsSpellAttack || n.Spell.SavingThrowAbility != null)))
                                     {
                                         <tr>
                                             <td>@(spell.Spell.Name)</td>
@@ -310,7 +358,7 @@
                                             <td />
                                             <td>@spell.Spell.DamageType</td>
                                             <td><img type="button" class="roll text-center" data-toggle="modal" data-target="#dieRollModal" data-modal-label="Attack Roll" data-die-type="20" data-bonus="@Model.SpellAttackBonus" src="~/img/icon/refresh_32x32.png" /></td>
-                                            <td/>
+                                            <td />
                                         </tr>
                                     }
                                 </tbody>

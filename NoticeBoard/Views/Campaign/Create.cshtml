@@ -1,15 +1,15 @@
-﻿@model NoticeBoard.Models.Party.CreatePartyModel
+﻿@model NoticeBoard.Models.Campaign.CreateCampaignModel
 @{
-    ViewData["Title"] = "New Party";
+    ViewData["Title"] = "New Campaign";
 }
 
-@using (Html.BeginForm("Create", "Party", "POST"))
+@using (Html.BeginForm("Create", "Campaign", "POST"))
 {
     <div class="row" style="padding-bottom:10px">
         <div class="col-4">
             <div class="card h-100 ">
                 <div class="card-header">
-                    <div class="text-center">Party Details</div>
+                    <div class="text-center">Campaign Details</div>
                 </div>
                 <div class="card-body">
                     <div class="row">

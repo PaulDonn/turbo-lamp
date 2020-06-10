@@ -7,7 +7,7 @@ namespace Core.PlayerCharacters.Command
 {
     public class CreatePCCommand : ICommand
     {
-        public int PartyId { get; set; }
+        public int CampaignId { get; set; }
     }
 
     public class CreatePCCommandHandler : ICommandHandler<CreatePCCommand>
@@ -32,7 +32,7 @@ namespace Core.PlayerCharacters.Command
             {
                 var pc = new PlayerCharacter
                 {
-                    PartyId = command.PartyId,
+                    CampaignId = command.CampaignId,
                     PlayerId = player.Id,
                     Level = 1
                 };

@@ -8,7 +8,7 @@
           ,('5', 'Terry', 'terry.reynolds@dndmail.com', 0, 1)
 GO
 
-INSERT INTO [dbo].[Party]
+INSERT INTO [dbo].[Campaign]
            ([Name],[Description],[OwningDmId], [CharacterGenerationMethodId], [NewCharacterStartingLevel])
      VALUES
            ('The Undateables',
@@ -20,21 +20,21 @@ INSERT INTO [dbo].[Party]
 			1)
 GO
 
-INSERT INTO [dbo].[PartySource] ([PartyId], [SourceId])
-VALUES ((SELECT TOP(1) Id FROM Party WHERE Name = 'The Undateables'), 1)
+INSERT INTO [dbo].[CampaignSource] ([CampaignId], [SourceId])
+VALUES ((SELECT TOP(1) Id FROM Campaign WHERE Name = 'The Undateables'), 1)
 
-INSERT INTO [dbo].[PlayerParty] ([PlayerId], [PartyId])
+INSERT INTO [dbo].[PlayerCampaign] ([PlayerId], [CampaignId])
 VALUES
 	((SELECT TOP(1) Id FROM Player WHERE [Name] = 'Paul'),
-	 (SELECT TOP(1) Id FROM Party WHERE [Name] = 'The Undateables')), 
+	 (SELECT TOP(1) Id FROM Campaign WHERE [Name] = 'The Undateables')), 
 	((SELECT TOP(1) Id FROM Player WHERE [Name] = 'Stephen'),
-	 (SELECT TOP(1) Id FROM Party WHERE [Name] = 'The Undateables')), 
+	 (SELECT TOP(1) Id FROM Campaign WHERE [Name] = 'The Undateables')), 
 	((SELECT TOP(1) Id FROM Player WHERE [Name] = 'Amy'),
-	 (SELECT TOP(1) Id FROM Party WHERE [Name] = 'The Undateables')), 
+	 (SELECT TOP(1) Id FROM Campaign WHERE [Name] = 'The Undateables')), 
 	((SELECT TOP(1) Id FROM Player WHERE [Name] = 'Chrissy'),
-	 (SELECT TOP(1) Id FROM Party WHERE [Name] = 'The Undateables')), 
+	 (SELECT TOP(1) Id FROM Campaign WHERE [Name] = 'The Undateables')), 
 	((SELECT TOP(1) Id FROM Player WHERE [Name] = 'Terry'),
-	 (SELECT TOP(1) Id FROM Party WHERE [Name] = 'The Undateables'))
+	 (SELECT TOP(1) Id FROM Campaign WHERE [Name] = 'The Undateables'))
 GO
 
 INSERT INTO [dbo].[PlayerCharacter]
@@ -49,7 +49,7 @@ INSERT INTO [dbo].[PlayerCharacter]
 ,[SubRaceId]
 ,[AlignmentId]
 ,[ExperiencePoints]
-,[PartyId]
+,[CampaignId]
 ,[HitPointMaximum]
 ,[HitPointCurrent]
 ,[HitDiceMaximum]
@@ -81,7 +81,7 @@ INSERT INTO [dbo].[PlayerCharacter]
            ,null --<SubRaceId, int,>
            ,6 --<AlignmentId, int,>
            ,34000 --<ExperiencePoints, int,>
-           ,(SELECT TOP(1) Id FROM Party WHERE Name = 'The Undateables') --<PartyId, int,>
+           ,(SELECT TOP(1) Id FROM Campaign WHERE Name = 'The Undateables') --<CampaignId, int,>
            ,49 --<HitPointMaximum, int,>
            ,24 --<HitPointCurrent, int,>
            ,8 --<HitDiceMaximum, int,>

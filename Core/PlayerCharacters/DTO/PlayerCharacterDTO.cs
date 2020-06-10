@@ -70,8 +70,8 @@ namespace Core.PlayerCharacters.DTO
 
         public PlayerDTO Player { get; set; }
 
-        //TODO: Add PartyDTO 
-        //public PartyDTO Party { get; set; }
+        //TODO: Add CampaignDTO 
+        //public CampaignDTO Campaign { get; set; }
 
         public int HitPointMaximum { get; set; }
 

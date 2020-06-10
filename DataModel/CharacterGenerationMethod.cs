@@ -9,7 +9,7 @@ namespace DataModel
     {
         public CharacterGenerationMethod()
         {
-            Party = new HashSet<Party>();
+            Campaign = new HashSet<Campaign>();
         }
 
         [Key]
@@ -21,6 +21,6 @@ namespace DataModel
         public string Description { get; set; }
 
         [InverseProperty("CharacterGenerationMethod")]
-        public virtual ICollection<Party> Party { get; set; }
+        public virtual ICollection<Campaign> Campaign { get; set; }
     }
 }

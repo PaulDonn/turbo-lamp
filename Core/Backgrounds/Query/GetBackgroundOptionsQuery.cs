@@ -13,7 +13,7 @@ namespace Core.Backgrounds.Query
 {
     public class GetBackgroundOptionsQuery : IQuery<IEnumerable<BackgroundDTO>>
     {
-        public int PartyId { get; set; }
+        public int CampaignId { get; set; }
     }
 
     public class GetBackgroundOptionsQueryHandler : IQueryHandler<GetBackgroundOptionsQuery, IEnumerable<BackgroundDTO>>
@@ -32,11 +32,11 @@ namespace Core.Backgrounds.Query
         {
             var dto = new List<BackgroundDTO>();
 
-            var partySources = _context.PartySource.Where(n => n.PartyId == query.PartyId).Select(n => n.SourceId);
+            var campaignSources = _context.CampaignSource.Where(n => n.CampaignId == query.CampaignId).Select(n => n.SourceId);
 
-            if (partySources.Count() > 0)
+            if (campaignSources.Count() > 0)
             {
-                var backgrounds = _context.Background.Where(n => partySources.Contains(n.SourceId))
+                var backgrounds = _context.Background.Where(n => campaignSources.Contains(n.SourceId))
                                                      .OrderBy(n => n.Name);
 
                 foreach (var background in backgrounds)

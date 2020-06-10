@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Core._Party.DTO;
+using Core._Campaign.DTO;
 using DataModel;
 using Infrastructure.CQRS;
 using Infrastructure.Session;
@@ -9,14 +9,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Core._Party.Query
+namespace Core._Campaign.Query
 {
-    public class GetPartyQuery : IQuery<PartyDTO>
+    public class GetCampaignQuery : IQuery<CampaignDTO>
     {
-        public int PartyId { get; set; }
+        public int CampaignId { get; set; }
     }
 
-    public class GetPartyQueryHandler : IQueryHandler<GetPartyQuery, PartyDTO>
+    public class GetCampaignQueryHandler : IQueryHandler<GetCampaignQuery, CampaignDTO>
     {
         private NoticeBoardContext _context;
 
@@ -24,25 +24,25 @@ namespace Core._Party.Query
 
         private IMapper _mapper;
 
-        public GetPartyQueryHandler(NoticeBoardContext context, ISessionInformation sessionInformation, IMapper mapper)
+        public GetCampaignQueryHandler(NoticeBoardContext context, ISessionInformation sessionInformation, IMapper mapper)
         {
             _context = context;
             _sessionInformation = sessionInformation;
             _mapper = mapper;
         }
 
-        public PartyDTO Handle(GetPartyQuery query)
+        public CampaignDTO Handle(GetCampaignQuery query)
         {
-            var dto = new PartyDTO();
+            var dto = new CampaignDTO();
 
             var player = _context.Player.SingleOrDefault(n => n.UserId == _sessionInformation.UserId && n.IsEnabled);
 
             if(player != null)
             {
-                dto = _mapper.Map<Party, PartyDTO>(_context.Party.Include(n => n.CharacterGenerationMethod)
-                                                                 .Include(n => n.PartySource)
+                dto = _mapper.Map<Campaign, CampaignDTO>(_context.Campaign.Include(n => n.CharacterGenerationMethod)
+                                                                 .Include(n => n.CampaignSource)
                                                                     .ThenInclude(n => n.Source)
-                                                                 .Include(n => n.PlayerParty)
+                                                                 .Include(n => n.PlayerCampaign)
                                                                     .ThenInclude(n => n.Player)
                                                                  .Include(n => n.PlayerCharacter)
                                                                     .ThenInclude(n => n.Class)
@@ -52,8 +52,8 @@ namespace Core._Party.Query
                                                                     .ThenInclude(n => n.Race)
                                                                  .Include(n => n.PlayerCharacter)
                                                                     .ThenInclude(n => n.SubRace)
-                                                                 .SingleOrDefault(n => n.Id == query.PartyId && 
-                                                                                       n.PlayerParty.Any(m => m.PlayerId == player.Id)));
+                                                                 .SingleOrDefault(n => n.Id == query.CampaignId && 
+                                                                                       n.PlayerCampaign.Any(m => m.PlayerId == player.Id)));
             }
 
             return dto;

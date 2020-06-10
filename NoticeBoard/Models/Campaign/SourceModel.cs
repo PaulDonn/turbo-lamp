@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NoticeBoard.Models.Party
+namespace NoticeBoard.Models.Campaign
 {
     public class SourceModel
     {

@@ -12,7 +12,7 @@ namespace Core.Spells.Query
 {
     public class GetSpellOptionsQuery : IQuery<IEnumerable<SpellDTO>>
     {
-        public int PartyId { get; set; }
+        public int CampaignId { get; set; }
 
         public int PcId { get; set; }
 
@@ -34,7 +34,7 @@ namespace Core.Spells.Query
         {
             var dto = new List<SpellDTO>();
 
-            var partySources = _context.PartySource.Where(n => n.PartyId == query.PartyId).Select(n => n.SourceId);
+            var campaignSources = _context.CampaignSource.Where(n => n.CampaignId == query.CampaignId).Select(n => n.SourceId);
 
             var pc = _context.PlayerCharacter.Where(n => n.Id == query.PcId)
                                              .Include(n => n.Race)
@@ -43,7 +43,7 @@ namespace Core.Spells.Query
                                              .Include(n => n.Archetype)
                                              .SingleOrDefault();
 
-            if (partySources.Count() > 0 && pc != null)
+            if (campaignSources.Count() > 0 && pc != null)
             {
                 //var spells = _context.Spell.Where(n => n.)
 

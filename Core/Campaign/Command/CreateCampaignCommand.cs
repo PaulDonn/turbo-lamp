@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Core._Party.Command
+namespace Core._Campaign.Command
 {
-    public class CreatePartyCommand : ICommand
+    public class CreateCampaignCommand : ICommand
     {
         public string Name { get; set; }
 
@@ -21,19 +21,19 @@ namespace Core._Party.Command
         public int CharacterGenerationMethodId { get; set; }
     }
 
-    public class CreatePartyCommandHandler : ICommandHandler<CreatePartyCommand>
+    public class CreateCampaignCommandHandler : ICommandHandler<CreateCampaignCommand>
     {
         private NoticeBoardContext _context;
 
         private ISessionInformation _sessionInformation;
 
-        public CreatePartyCommandHandler(NoticeBoardContext context, ISessionInformation sessionInformation)
+        public CreateCampaignCommandHandler(NoticeBoardContext context, ISessionInformation sessionInformation)
         {
             _context = context;
             _sessionInformation = sessionInformation;
         }
 
-        public ExecutionResult Handle(CreatePartyCommand command)
+        public ExecutionResult Handle(CreateCampaignCommand command)
         {
             var result = new ExecutionResult();
 
@@ -43,7 +43,7 @@ namespace Core._Party.Command
 
                 if (dm != null)
                 {
-                    var party = new Party
+                    var campaign = new Campaign
                     {
                         Name = command.Name,
                         Description = command.Description,
@@ -52,22 +52,24 @@ namespace Core._Party.Command
                         NewCharacterStartingLevel = command.NewCharacterStartingLevel
                     };
 
-                    _context.Party.Add(party);
+                    _context.Campaign.Add(campaign);
 
-                    party.PlayerParty.Add(new PlayerParty
+                    campaign.PlayerCampaign.Add(new PlayerCampaign
                     {
                         PlayerId = dm.Id
                     });
 
                     foreach (var source in command.Sources)
                     {
-                        party.PartySource.Add(new PartySource
+                        campaign.CampaignSource.Add(new CampaignSource
                         {
                             SourceId = source
                         });
                     }
 
                     _context.SaveChanges();
+
+                    result.NewRecordId = campaign.Id;
                 }
             }
 

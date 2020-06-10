@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Core._Party.DTO;
+using Core._Campaign.DTO;
 using DataModel;
 using Infrastructure.CQRS;
 using Infrastructure.Session;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Core._Party.Query
+namespace Core._Campaign.Query
 {
     public class GetCharacterGenerationOptionsQuery : IQuery<IEnumerable<CharacterGenerationMethodDTO>>
     {

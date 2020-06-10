@@ -13,7 +13,7 @@ namespace Core.Skills.Query
 {
     public class GetSkillOptionsQuery : IQuery<PcSkillsDTO>
     {
-        public int PartyId { get; set; }
+        public int CampaignId { get; set; }
         public int PcId { get; set; }
     }
 
@@ -33,7 +33,7 @@ namespace Core.Skills.Query
             var dto = new PcSkillsDTO();
             var skillOptions = new List<SkillDTO>();
 
-            var partySources = _context.PartySource.Where(n => n.PartyId == query.PartyId)
+            var campaignSources = _context.CampaignSource.Where(n => n.CampaignId == query.CampaignId)
                                                    .Select(n => n.SourceId);
 
 
@@ -42,7 +42,7 @@ namespace Core.Skills.Query
                                              .Include(n => n.Background.BgSkill)
                                              .FirstOrDefault();
 
-            if (pc != null && partySources.Count() > 0)
+            if (pc != null && campaignSources.Count() > 0)
             {
                 var skills = _context.Skill.Include(n => n.Ability).OrderBy(n => n.Name).ToList();
 

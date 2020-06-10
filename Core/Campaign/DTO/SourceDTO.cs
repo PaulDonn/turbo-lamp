@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Core._Party.DTO
+namespace Core._Campaign.DTO
 {
     public class SourceDTO
     {

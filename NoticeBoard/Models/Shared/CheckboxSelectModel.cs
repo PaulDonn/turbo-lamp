@@ -16,7 +16,7 @@ namespace NoticeBoard.Models.Shared
 
         public string PcId { get; set; }
 
-        public int PartyId { get; set; }
+        public int CampaignId { get; set; }
 
         public List<T> Options { get; set; }
 

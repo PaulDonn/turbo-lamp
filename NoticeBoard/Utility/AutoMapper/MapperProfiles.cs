@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Core._Equipment.DTO;
-using Core._Party.DTO;
+using Core._Campaign.DTO;
 using Core._Treasure.DTO;
 using Core.Abilities.DTO;
 using Core.Alignments.DTO;
@@ -21,7 +21,7 @@ using NoticeBoard.Models.Classes;
 using NoticeBoard.Models.Equipment;
 using NoticeBoard.Models.Features;
 using NoticeBoard.Models.Languages;
-using NoticeBoard.Models.Party;
+using NoticeBoard.Models.Campaign;
 using NoticeBoard.Models.Player;
 using NoticeBoard.Models.PlayerCharacters;
 using NoticeBoard.Models.Races;
@@ -45,7 +45,7 @@ namespace NoticeBoard.Utility.AutoMapper
             EquipmentMaps();
             FeatureMaps();
             LanguageMaps();
-            PartyMaps();
+            CampaignMaps();
             PlayerMaps();
             PlayerCharacterMaps();
             RaceMaps();
@@ -200,15 +200,15 @@ namespace NoticeBoard.Utility.AutoMapper
                 .ForMember(dest => dest.NumberOfSelections, opts => opts.MapFrom(src => src.NumberOfLanguages));
         }
 
-        private void PartyMaps()
+        private void CampaignMaps()
         {
-            CreateMap<Party, PartyDTO>()
-                .ForMember(dest => dest.Sources, opts => opts.MapFrom(src => src.PartySource.Select(n => n.Source).ToList()))
-                .ForMember(dest => dest.Players, opts => opts.MapFrom(src => src.PlayerParty.Select(n => n.Player).ToList()))
+            CreateMap<Campaign, CampaignDTO>()
+                .ForMember(dest => dest.Sources, opts => opts.MapFrom(src => src.CampaignSource.Select(n => n.Source).ToList()))
+                .ForMember(dest => dest.Players, opts => opts.MapFrom(src => src.PlayerCampaign.Select(n => n.Player).ToList()))
                 .ForMember(dest => dest.PlayerCharacters, opts => opts.MapFrom(src => src.PlayerCharacter.ToList()))
                 .ForMember(dest => dest.CharacterGenerationMethod, opts => opts.MapFrom(src => src.CharacterGenerationMethod));
 
-            CreateMap<PartyDTO, PartyModel>();
+            CreateMap<CampaignDTO, CampaignModel>();
 
             CreateMap<Source, SourceDTO>();
 

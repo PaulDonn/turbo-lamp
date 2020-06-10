@@ -10,7 +10,7 @@ namespace Core.Races.Query
 {
     public class GetRaceOptionsQuery : IQuery<IEnumerable<RaceDTO>>
     {
-        public int PartyId { get; set; }
+        public int CampaignId { get; set; }
     }
 
     public class GetRaceOptionsQueryHandler : IQueryHandler<GetRaceOptionsQuery, IEnumerable<RaceDTO>>
@@ -28,11 +28,11 @@ namespace Core.Races.Query
         {
             var dto = new List<RaceDTO>();
 
-            var partySources = _context.PartySource.Where(n => n.PartyId == query.PartyId).Select(n => n.SourceId);
+            var campaignSources = _context.CampaignSource.Where(n => n.CampaignId == query.CampaignId).Select(n => n.SourceId);
 
-            if (partySources.Count() > 0)
+            if (campaignSources.Count() > 0)
             {
-                var races = _context.Race.Where(n => partySources.Contains(n.SourceId))
+                var races = _context.Race.Where(n => campaignSources.Contains(n.SourceId))
                                          .Include(n => n.RaceFeature)
                                          .OrderBy(n => n.Name)
                                          .ToList();

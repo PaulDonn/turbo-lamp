@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace NoticeBoard.Models.Party
+namespace NoticeBoard.Models.Campaign
 {
-    public class CreatePartyModel
+    public class CreateCampaignModel
     {
-        public CreatePartyModel()
+        public CreateCampaignModel()
         {
             NewCharacterStartingLevel = 1;
         }

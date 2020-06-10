@@ -39,7 +39,7 @@ namespace Core.PlayerCharacters.Query
                                              .Include(n => n.Race)
                                              .Include(n => n.SubRace)
                                              .Include(n => n.Player)
-                                             .Include(n => n.Party)
+                                             .Include(n => n.Campaign)
                                              .Include(n => n.PcSkill)
                                              .Include(n => n.PcSpellLevel)
                                              .SingleOrDefault(n => n.Id == query.PcId);

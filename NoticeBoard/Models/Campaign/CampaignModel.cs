@@ -8,13 +8,13 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace NoticeBoard.Models.Party
+namespace NoticeBoard.Models.Campaign
 {
-    public class PartyModel
+    public class CampaignModel
     {
         public int Id { get; set; }
 
-        public string PartyId { get; set; }
+        public string CampaignId { get; set; }
 
         public string Name { get; set; }
 

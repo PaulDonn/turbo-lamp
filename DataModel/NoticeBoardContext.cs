@@ -21,6 +21,8 @@ namespace DataModel
         public virtual DbSet<ArmorType> ArmorType { get; set; }
         public virtual DbSet<Background> Background { get; set; }
         public virtual DbSet<BgSkill> BgSkill { get; set; }
+        public virtual DbSet<Campaign> Campaign { get; set; }
+        public virtual DbSet<CampaignSource> CampaignSource { get; set; }
         public virtual DbSet<CharacterGenerationMethod> CharacterGenerationMethod { get; set; }
         public virtual DbSet<Class> Class { get; set; }
         public virtual DbSet<ClassFeature> ClassFeature { get; set; }
@@ -30,8 +32,6 @@ namespace DataModel
         public virtual DbSet<EquipmentType> EquipmentType { get; set; }
         public virtual DbSet<Feature> Feature { get; set; }
         public virtual DbSet<Language> Language { get; set; }
-        public virtual DbSet<Party> Party { get; set; }
-        public virtual DbSet<PartySource> PartySource { get; set; }
         public virtual DbSet<PcAbilityScore> PcAbilityScore { get; set; }
         public virtual DbSet<PcEquipment> PcEquipment { get; set; }
         public virtual DbSet<PcFeature> PcFeature { get; set; }
@@ -43,8 +43,8 @@ namespace DataModel
         public virtual DbSet<PcTrait> PcTrait { get; set; }
         public virtual DbSet<PcTreasure> PcTreasure { get; set; }
         public virtual DbSet<Player> Player { get; set; }
+        public virtual DbSet<PlayerCampaign> PlayerCampaign { get; set; }
         public virtual DbSet<PlayerCharacter> PlayerCharacter { get; set; }
-        public virtual DbSet<PlayerParty> PlayerParty { get; set; }
         public virtual DbSet<Race> Race { get; set; }
         public virtual DbSet<RaceFeature> RaceFeature { get; set; }
         public virtual DbSet<RaceLanguage> RaceLanguage { get; set; }
@@ -65,7 +65,7 @@ namespace DataModel
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=localhost\\mssqlserver01;Database=NoticeBoard;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=.;Database=NoticeBoard;Trusted_Connection=True;");
             }
         }
 
@@ -133,6 +133,30 @@ namespace DataModel
                     .HasForeignKey(d => d.SkillId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_BgSkill_Skill");
+            });
+
+            modelBuilder.Entity<Campaign>(entity =>
+            {
+                entity.HasOne(d => d.CharacterGenerationMethod)
+                    .WithMany(p => p.Campaign)
+                    .HasForeignKey(d => d.CharacterGenerationMethodId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Campaign_CharacterGenerationMethod");
+            });
+
+            modelBuilder.Entity<CampaignSource>(entity =>
+            {
+                entity.HasOne(d => d.Campaign)
+                    .WithMany(p => p.CampaignSource)
+                    .HasForeignKey(d => d.CampaignId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_CampaignSource_Campaign");
+
+                entity.HasOne(d => d.Source)
+                    .WithMany(p => p.CampaignSource)
+                    .HasForeignKey(d => d.SourceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_CampaignSource_Source");
             });
 
             modelBuilder.Entity<CharacterGenerationMethod>(entity =>
@@ -242,7 +266,7 @@ namespace DataModel
             modelBuilder.Entity<Feature>(entity =>
             {
                 entity.HasIndex(e => e.Code)
-                    .HasName("UQ__Feature__A25C5AA7F248E4B1")
+                    .HasName("UQ__Feature__A25C5AA71B153855")
                     .IsUnique();
 
                 entity.Property(e => e.SourceId).HasDefaultValueSql("((1))");
@@ -265,30 +289,6 @@ namespace DataModel
                     .HasForeignKey(d => d.SourceId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Language_Source");
-            });
-
-            modelBuilder.Entity<Party>(entity =>
-            {
-                entity.HasOne(d => d.CharacterGenerationMethod)
-                    .WithMany(p => p.Party)
-                    .HasForeignKey(d => d.CharacterGenerationMethodId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Party_CharacterGenerationMethod");
-            });
-
-            modelBuilder.Entity<PartySource>(entity =>
-            {
-                entity.HasOne(d => d.Party)
-                    .WithMany(p => p.PartySource)
-                    .HasForeignKey(d => d.PartyId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PartySource_Party");
-
-                entity.HasOne(d => d.Source)
-                    .WithMany(p => p.PartySource)
-                    .HasForeignKey(d => d.SourceId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PartySource_Source");
             });
 
             modelBuilder.Entity<PcAbilityScore>(entity =>
@@ -450,8 +450,23 @@ namespace DataModel
             modelBuilder.Entity<Player>(entity =>
             {
                 entity.HasIndex(e => e.UserId)
-                    .HasName("UQ__Player__1788CC4D7EDBD15E")
+                    .HasName("UQ__Player__1788CC4D61525139")
                     .IsUnique();
+            });
+
+            modelBuilder.Entity<PlayerCampaign>(entity =>
+            {
+                entity.HasOne(d => d.Campaign)
+                    .WithMany(p => p.PlayerCampaign)
+                    .HasForeignKey(d => d.CampaignId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PlayerCampaign_Campaign");
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.PlayerCampaign)
+                    .HasForeignKey(d => d.PlayerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PlayerCampaign_Player");
             });
 
             modelBuilder.Entity<PlayerCharacter>(entity =>
@@ -479,15 +494,15 @@ namespace DataModel
                     .HasForeignKey(d => d.BackgroundId)
                     .HasConstraintName("FK_PlayerCharacter_Background");
 
+                entity.HasOne(d => d.Campaign)
+                    .WithMany(p => p.PlayerCharacter)
+                    .HasForeignKey(d => d.CampaignId)
+                    .HasConstraintName("FK_PlayerCharacter_Campaign");
+
                 entity.HasOne(d => d.Class)
                     .WithMany(p => p.PlayerCharacter)
                     .HasForeignKey(d => d.ClassId)
                     .HasConstraintName("FK_PlayerCharacter_Class");
-
-                entity.HasOne(d => d.Party)
-                    .WithMany(p => p.PlayerCharacter)
-                    .HasForeignKey(d => d.PartyId)
-                    .HasConstraintName("FK_PlayerCharacter_Party");
 
                 entity.HasOne(d => d.Player)
                     .WithMany(p => p.PlayerCharacter)
@@ -504,21 +519,6 @@ namespace DataModel
                     .WithMany(p => p.PlayerCharacter)
                     .HasForeignKey(d => d.SubRaceId)
                     .HasConstraintName("FK_PlayerCharacter_SubRace");
-            });
-
-            modelBuilder.Entity<PlayerParty>(entity =>
-            {
-                entity.HasOne(d => d.Party)
-                    .WithMany(p => p.PlayerParty)
-                    .HasForeignKey(d => d.PartyId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PlayerParty_Party");
-
-                entity.HasOne(d => d.Player)
-                    .WithMany(p => p.PlayerParty)
-                    .HasForeignKey(d => d.PlayerId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PlayerParty_Player");
             });
 
             modelBuilder.Entity<Race>(entity =>
@@ -586,7 +586,7 @@ namespace DataModel
             modelBuilder.Entity<Source>(entity =>
             {
                 entity.HasIndex(e => e.Code)
-                    .HasName("UQ__Source__A25C5AA753C9F31E")
+                    .HasName("UQ__Source__A25C5AA76C26A286")
                     .IsUnique();
 
                 entity.Property(e => e.Id).ValueGeneratedNever();

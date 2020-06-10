@@ -12,7 +12,7 @@ namespace Core.Classes.Query
 {
     public class GetClassOptionsQuery : IQuery<IEnumerable<ClassDTO>>
     {
-        public int PartyId { get; set; }
+        public int CampaignId { get; set; }
     }
 
     public class GetClassOptionsQueryHandler : IQueryHandler<GetClassOptionsQuery, IEnumerable<ClassDTO>>
@@ -31,11 +31,11 @@ namespace Core.Classes.Query
         {
             var dto = new List<ClassDTO>();
 
-            var partySources = _context.PartySource.Where(n => n.PartyId == query.PartyId).Select(n => n.SourceId);
+            var campaignSources = _context.CampaignSource.Where(n => n.CampaignId == query.CampaignId).Select(n => n.SourceId);
 
-            if (partySources.Count() > 0)
+            if (campaignSources.Count() > 0)
             {
-                var classes = _context.Class.Where(n => partySources.Contains(n.SourceId))
+                var classes = _context.Class.Where(n => campaignSources.Contains(n.SourceId))
                                             .OrderBy(n => n.Name);
 
                 foreach (var playerClass in classes)

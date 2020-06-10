@@ -5,18 +5,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataModel
 {
-    public partial class PlayerParty
+    public partial class PlayerCampaign
     {
         [Key]
         public int Id { get; set; }
         public int PlayerId { get; set; }
-        public int PartyId { get; set; }
+        public int CampaignId { get; set; }
 
-        [ForeignKey(nameof(PartyId))]
-        [InverseProperty("PlayerParty")]
-        public virtual Party Party { get; set; }
+        [ForeignKey(nameof(CampaignId))]
+        [InverseProperty("PlayerCampaign")]
+        public virtual Campaign Campaign { get; set; }
         [ForeignKey(nameof(PlayerId))]
-        [InverseProperty("PlayerParty")]
+        [InverseProperty("PlayerCampaign")]
         public virtual Player Player { get; set; }
     }
 }

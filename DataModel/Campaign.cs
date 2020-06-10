@@ -5,13 +5,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataModel
 {
-    public partial class Party
+    public partial class Campaign
     {
-        public Party()
+        public Campaign()
         {
-            PartySource = new HashSet<PartySource>();
+            CampaignSource = new HashSet<CampaignSource>();
+            PlayerCampaign = new HashSet<PlayerCampaign>();
             PlayerCharacter = new HashSet<PlayerCharacter>();
-            PlayerParty = new HashSet<PlayerParty>();
         }
 
         [Key]
@@ -25,13 +25,13 @@ namespace DataModel
         public int NewCharacterStartingLevel { get; set; }
 
         [ForeignKey(nameof(CharacterGenerationMethodId))]
-        [InverseProperty("Party")]
+        [InverseProperty("Campaign")]
         public virtual CharacterGenerationMethod CharacterGenerationMethod { get; set; }
-        [InverseProperty("Party")]
-        public virtual ICollection<PartySource> PartySource { get; set; }
-        [InverseProperty("Party")]
+        [InverseProperty("Campaign")]
+        public virtual ICollection<CampaignSource> CampaignSource { get; set; }
+        [InverseProperty("Campaign")]
+        public virtual ICollection<PlayerCampaign> PlayerCampaign { get; set; }
+        [InverseProperty("Campaign")]
         public virtual ICollection<PlayerCharacter> PlayerCharacter { get; set; }
-        [InverseProperty("Party")]
-        public virtual ICollection<PlayerParty> PlayerParty { get; set; }
     }
 }

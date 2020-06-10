@@ -10,7 +10,7 @@ namespace Core.Races.Query
 {
     public class GetSubRaceOptionsQuery : IQuery<IEnumerable<SubRaceDTO>>
     {
-        public int PartyId { get; set; }
+        public int CampaignId { get; set; }
         public int RaceId { get; set; }
     }
 
@@ -29,12 +29,12 @@ namespace Core.Races.Query
         {
             var dto = new List<SubRaceDTO>();
 
-            var partySources = _context.PartySource.Where(n => n.PartyId == query.PartyId).Select(n => n.SourceId);
+            var campaignSources = _context.CampaignSource.Where(n => n.CampaignId == query.CampaignId).Select(n => n.SourceId);
 
-            if (partySources.Count() > 0)
+            if (campaignSources.Count() > 0)
             {
                 var subRaces = _context.SubRace.Where(n => n.RaceId == query.RaceId &&
-                                                           partySources.Contains(n.SourceId))
+                                                           campaignSources.Contains(n.SourceId))
                                                .Include(n => n.RaceFeature)
                                                .OrderBy(n => n.Name);
 

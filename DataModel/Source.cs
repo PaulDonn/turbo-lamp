@@ -11,11 +11,11 @@ namespace DataModel
         {
             Archetype = new HashSet<Archetype>();
             Background = new HashSet<Background>();
+            CampaignSource = new HashSet<CampaignSource>();
             Class = new HashSet<Class>();
             Equipment = new HashSet<Equipment>();
             Feature = new HashSet<Feature>();
             Language = new HashSet<Language>();
-            PartySource = new HashSet<PartySource>();
             Race = new HashSet<Race>();
             Spell = new HashSet<Spell>();
             SubRace = new HashSet<SubRace>();
@@ -36,6 +36,8 @@ namespace DataModel
         [InverseProperty("Source")]
         public virtual ICollection<Background> Background { get; set; }
         [InverseProperty("Source")]
+        public virtual ICollection<CampaignSource> CampaignSource { get; set; }
+        [InverseProperty("Source")]
         public virtual ICollection<Class> Class { get; set; }
         [InverseProperty("Source")]
         public virtual ICollection<Equipment> Equipment { get; set; }
@@ -43,8 +45,6 @@ namespace DataModel
         public virtual ICollection<Feature> Feature { get; set; }
         [InverseProperty("Source")]
         public virtual ICollection<Language> Language { get; set; }
-        [InverseProperty("Source")]
-        public virtual ICollection<PartySource> PartySource { get; set; }
         [InverseProperty("Source")]
         public virtual ICollection<Race> Race { get; set; }
         [InverseProperty("Source")]

@@ -9,8 +9,8 @@ namespace DataModel
     {
         public Player()
         {
+            PlayerCampaign = new HashSet<PlayerCampaign>();
             PlayerCharacter = new HashSet<PlayerCharacter>();
-            PlayerParty = new HashSet<PlayerParty>();
         }
 
         [Key]
@@ -28,8 +28,8 @@ namespace DataModel
         public bool IsDm { get; set; }
 
         [InverseProperty("Player")]
-        public virtual ICollection<PlayerCharacter> PlayerCharacter { get; set; }
+        public virtual ICollection<PlayerCampaign> PlayerCampaign { get; set; }
         [InverseProperty("Player")]
-        public virtual ICollection<PlayerParty> PlayerParty { get; set; }
+        public virtual ICollection<PlayerCharacter> PlayerCharacter { get; set; }
     }
 }

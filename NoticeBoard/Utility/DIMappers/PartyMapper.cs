@@ -1,6 +1,6 @@
-﻿using Core._Party.Command;
-using Core._Party.DTO;
-using Core._Party.Query;
+﻿using Core._Campaign.Command;
+using Core._Campaign.DTO;
+using Core._Campaign.Query;
 using Core.Races.DTO;
 using Core.Races.Query;
 using Infrastructure.CQRS;
@@ -9,16 +9,16 @@ using System.Collections.Generic;
 
 namespace NoticeBoard.Utility.DIMappers
 {
-    public class PartyMapper
+    public class CampaignMapper
     {
         public static void Setup(IServiceCollection services)
         {
             //Command Handlers
-            services.AddTransient<ICommandHandler<CreatePartyCommand>, CreatePartyCommandHandler>();
+            services.AddTransient<ICommandHandler<CreateCampaignCommand>, CreateCampaignCommandHandler>();
 
             //Query Handlers
-            services.AddTransient<IQueryHandler<GetPartyQuery, PartyDTO>, GetPartyQueryHandler>();
-            services.AddTransient<IQueryHandler<GetPlayerPartiesQuery, IEnumerable<PartyDTO>>, GetPlayerPartiesQueryHandler>();
+            services.AddTransient<IQueryHandler<GetCampaignQuery, CampaignDTO>, GetCampaignQueryHandler>();
+            services.AddTransient<IQueryHandler<GetPlayerCampaignsQuery, IEnumerable<CampaignDTO>>, GetPlayerCampaignsQueryHandler>();
             services.AddTransient<IQueryHandler<GetSourcesQuery, IEnumerable<SourceDTO>>, GetSourcesQueryHandler>();
             services.AddTransient<IQueryHandler<GetCharacterGenerationOptionsQuery, IEnumerable<CharacterGenerationMethodDTO>>, GetCharacterGenerationOptionsQueryHandler>();
         }

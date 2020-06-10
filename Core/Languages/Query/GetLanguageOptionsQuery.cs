@@ -12,7 +12,7 @@ namespace Core.Languages.Query
 {
     public class GetLanguageOptionsQuery : IQuery<PlayerLanguagesDTO>
     {
-        public int PartyId { get; set; }
+        public int CampaignId { get; set; }
         public int PcId { get; set; }
     }
 
@@ -32,7 +32,7 @@ namespace Core.Languages.Query
             var dto = new PlayerLanguagesDTO();
             var languageOptions = new List<LanguageDTO>();
 
-            var partySources = _context.PartySource.Where(n => n.PartyId == query.PartyId)
+            var campaignSources = _context.CampaignSource.Where(n => n.CampaignId == query.CampaignId)
                                                    .Select(n => n.SourceId);
 
 
@@ -43,9 +43,9 @@ namespace Core.Languages.Query
                                              .Include(n => n.PcLanguage)
                                              .FirstOrDefault();
 
-            if (pc != null && partySources.Count() > 0)
+            if (pc != null && campaignSources.Count() > 0)
             {
-                var languages = _context.Language.Where(n => partySources.Contains(n.SourceId))
+                var languages = _context.Language.Where(n => campaignSources.Contains(n.SourceId))
                                                  .OrderBy(n => n.Name)
                                                  .ToList();
 

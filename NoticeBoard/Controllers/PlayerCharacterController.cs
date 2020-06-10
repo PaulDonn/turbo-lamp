@@ -47,16 +47,16 @@ namespace NoticeBoard.Controllers
 
         }
 
-        public IActionResult Create(int partyId)
+        public IActionResult Create(int campaignId)
         {
             var command = SendCommand(new CreatePCCommand
             {
-                PartyId = partyId
+                CampaignId = campaignId
             });
 
             var pcId = Encrypt(command.NewRecordId.ToString());
 
-            return RedirectToAction(nameof(SelectRace), new { pcId, partyId });
+            return RedirectToAction(nameof(SelectRace), new { pcId, campaignId });
         }
 
         public IActionResult LevelUp(int pcId, string additionalOptions)
@@ -82,11 +82,11 @@ namespace NoticeBoard.Controllers
 
         //}
 
-        public IActionResult SelectRace(string pcId, int partyId)
+        public IActionResult SelectRace(string pcId, int campaignId)
         {
-            var model = new RadioSelectModel<RaceModel> { PcId = pcId, PartyId = partyId };
+            var model = new RadioSelectModel<RaceModel> { PcId = pcId, CampaignId = campaignId };
 
-            var query = new GetRaceOptionsQuery { PartyId = partyId };
+            var query = new GetRaceOptionsQuery { CampaignId = campaignId };
 
             model.OptionModels = _mapper.Map<List<RaceDTO>, List<RaceModel>>(SendQuery<GetRaceOptionsQuery, IEnumerable<RaceDTO>>(query).ToList());
 
@@ -103,18 +103,18 @@ namespace NoticeBoard.Controllers
             return RedirectToAction(nameof(SelectSubRace), new
             {
                 pcId = model.PcId,
-                partyId = model.PartyId,
+                campaignId = model.CampaignId,
                 raceId = model.SelectedOptionId
             });
         }
 
-        public IActionResult SelectSubRace(string pcId, int partyId, int raceId)
+        public IActionResult SelectSubRace(string pcId, int campaignId, int raceId)
         {
-            var model = new RadioSelectModel<SubRaceModel> { PcId = pcId, PartyId = partyId };
+            var model = new RadioSelectModel<SubRaceModel> { PcId = pcId, CampaignId = campaignId };
 
             var query = new GetSubRaceOptionsQuery
             {
-                PartyId = partyId,
+                CampaignId = campaignId,
                 RaceId = raceId
             };
 
@@ -125,7 +125,7 @@ namespace NoticeBoard.Controllers
                 return View(model);
             }
 
-            return RedirectToAction(nameof(SelectClass), new { pcId, partyId });
+            return RedirectToAction(nameof(SelectClass), new { pcId, campaignId });
         }
 
         [HttpPost]
@@ -135,14 +135,14 @@ namespace NoticeBoard.Controllers
 
             SendCommand(new SetPCSubRaceCommand { PcId = pcId, SubRaceId = model.SelectedOptionId });
 
-            return RedirectToAction(nameof(SelectClass), new { model.PcId, model.PartyId });
+            return RedirectToAction(nameof(SelectClass), new { model.PcId, model.CampaignId });
         }
 
-        public IActionResult SelectClass(string pcId, int partyId)
+        public IActionResult SelectClass(string pcId, int campaignId)
         {
-            var model = new RadioSelectModel<ClassModel> { PcId = pcId, PartyId = partyId };
+            var model = new RadioSelectModel<ClassModel> { PcId = pcId, CampaignId = campaignId };
 
-            var query = new GetClassOptionsQuery { PartyId = partyId };
+            var query = new GetClassOptionsQuery { CampaignId = campaignId };
 
             model.OptionModels = _mapper.Map<List<ClassDTO>, List<ClassModel>>(SendQuery<GetClassOptionsQuery, IEnumerable<ClassDTO>>(query).ToList());
 
@@ -159,18 +159,18 @@ namespace NoticeBoard.Controllers
             return RedirectToAction(nameof(SelectArchetype), new
             {
                 pcId = model.PcId,
-                partyId = model.PartyId,
+                campaignId = model.CampaignId,
                 classId = model.SelectedOptionId
             });
         }
 
-        public IActionResult SelectArchetype(string pcId, int partyId, int classId)
+        public IActionResult SelectArchetype(string pcId, int campaignId, int classId)
         {
-            var model = new ArchetypeSelectModel { PcId = pcId, PartyId = partyId };
+            var model = new ArchetypeSelectModel { PcId = pcId, CampaignId = campaignId };
 
             var query = new GetArchetypeOptionsQuery
             {
-                PartyId = partyId,
+                CampaignId = campaignId,
                 PcId = Convert.ToInt32(Decrypt(pcId))
             };
 
@@ -185,7 +185,7 @@ namespace NoticeBoard.Controllers
                 return View(model);
             }
 
-            return RedirectToAction(nameof(SelectBackground), new { pcId, partyId });
+            return RedirectToAction(nameof(SelectBackground), new { pcId, campaignId });
         }
 
         [HttpPost]
@@ -195,14 +195,14 @@ namespace NoticeBoard.Controllers
 
             SendCommand(new SetPCArchetypeCommand { PcId = pcId, ArchetypeId = model.SelectedOptionId });
 
-            return RedirectToAction(nameof(SelectBackground), new { model.PcId, model.PartyId });
+            return RedirectToAction(nameof(SelectBackground), new { model.PcId, model.CampaignId });
         }
 
-        public IActionResult SelectBackground(string pcId, int partyId)
+        public IActionResult SelectBackground(string pcId, int campaignId)
         {
-            var model = new RadioSelectModel<BackgroundModel> { PcId = pcId, PartyId = partyId };
+            var model = new RadioSelectModel<BackgroundModel> { PcId = pcId, CampaignId = campaignId };
 
-            var query = new GetBackgroundOptionsQuery { PartyId = partyId };
+            var query = new GetBackgroundOptionsQuery { CampaignId = campaignId };
 
             model.OptionModels = _mapper.Map<List<BackgroundDTO>, List<BackgroundModel>>(SendQuery<GetBackgroundOptionsQuery, IEnumerable<BackgroundDTO>>(query).ToList());
 
@@ -216,15 +216,15 @@ namespace NoticeBoard.Controllers
 
             SendCommand(new SetPCBackgroundCommand { PcId = pcId, BackgroundId = model.SelectedOptionId });
 
-            return RedirectToAction(nameof(SelectAlignment), new { model.PcId, model.PartyId });
+            return RedirectToAction(nameof(SelectAlignment), new { model.PcId, model.CampaignId });
         }
 
-        public IActionResult SelectAlignment(string pcId, int partyId)
+        public IActionResult SelectAlignment(string pcId, int campaignId)
         {
             var model = new RadioSelectModel<AlignmentModel> 
             { 
                 PcId = pcId, 
-                PartyId = partyId 
+                CampaignId = campaignId 
             };
 
             var query = new GetAlignmentsQuery();
@@ -245,20 +245,20 @@ namespace NoticeBoard.Controllers
                 AlignmentId = model.SelectedOptionId 
             });
 
-            return RedirectToAction(nameof(SelectLanguages), new { model.PcId, model.PartyId });
+            return RedirectToAction(nameof(SelectLanguages), new { model.PcId, model.CampaignId });
         }
 
-        public IActionResult SelectLanguages(string pcId, int partyId)
+        public IActionResult SelectLanguages(string pcId, int campaignId)
         {
             var query = new GetLanguageOptionsQuery 
             { 
                 PcId = Convert.ToInt32(Decrypt(pcId)), 
-                PartyId = partyId 
+                CampaignId = campaignId 
             };
 
             var model = _mapper.Map<PlayerLanguagesDTO, CheckboxSelectModel<LanguageModel>>(SendQuery<GetLanguageOptionsQuery, PlayerLanguagesDTO>(query));
             model.PcId = pcId;
-            model.PartyId = partyId;
+            model.CampaignId = campaignId;
 
             if (model.Options.Where(n => n.IsSelected).Count() == model.NumberOfSelections)
             {
@@ -275,20 +275,20 @@ namespace NoticeBoard.Controllers
 
             SendCommand(new SetPCLanguagesCommand { PcId = pcId, Languages = model.Options.Where(n => n.IsSelected).Select(n => n.Id).ToList() });
 
-            return RedirectToAction(nameof(SelectSkills), new { model.PcId, model.PartyId });
+            return RedirectToAction(nameof(SelectSkills), new { model.PcId, model.CampaignId });
         }
 
-        public IActionResult SelectSkills(string pcId, int partyId)
+        public IActionResult SelectSkills(string pcId, int campaignId)
         {
             var query = new GetSkillOptionsQuery
             {
                 PcId = Convert.ToInt32(Decrypt(pcId)),
-                PartyId = partyId
+                CampaignId = campaignId
             };
 
             var model = _mapper.Map<PcSkillsDTO, CheckboxSelectModel<SkillModel>>(SendQuery<GetSkillOptionsQuery, PcSkillsDTO>(query));
             model.PcId = pcId;
-            model.PartyId = partyId;
+            model.CampaignId = campaignId;
 
             if (model.Options.Where(n => n.IsSelected).Count() == model.NumberOfSelections)
             {
@@ -305,26 +305,26 @@ namespace NoticeBoard.Controllers
 
             SendCommand(new SetPCSkillsCommand { PcId = pcId, Skills = model.Options.Where(n => n.IsSelected).Select(n => n.Id).ToList() });
 
-            return RedirectToAction(nameof(SelectSpells), new { model.PcId, model.PartyId });
+            return RedirectToAction(nameof(SelectSpells), new { model.PcId, model.CampaignId });
         }
 
-        public IActionResult SelectSpells(string pcId, int partyId)
+        public IActionResult SelectSpells(string pcId, int campaignId)
         {
             var query = new GetSpellOptionsQuery
             {
                 PcId = Convert.ToInt32(Decrypt(pcId)),
-                PartyId = partyId
+                CampaignId = campaignId
             };
 
             var model = new SpellSelectModel();
 
             model.checkboxSelectModel = _mapper.Map<List<SpellDTO>, CheckboxSelectModel<SpellModel>>(SendQuery<GetSpellOptionsQuery, IEnumerable<SpellDTO>>(query).ToList());
             model.checkboxSelectModel.PcId = pcId;
-            model.checkboxSelectModel.PartyId = partyId;
+            model.checkboxSelectModel.CampaignId = campaignId;
 
             //model.radioSelectModel = _mapper.Map<PcSpellDTO, RadioSelectModel<SpellModel>>(SendQuery<GetPcSpellsQuery, PcSpellDTO>(query));
             //model.radioSelectModel.PcId = pcId;
-            //model.radioSelectModel.PartyId = partyId;
+            //model.radioSelectModel.CampaignId = campaignId;
 
             if (model.checkboxSelectModel.Options.Where(n => n.IsSelected).Count() == model.checkboxSelectModel.NumberOfSelections)
             {
@@ -340,13 +340,8 @@ namespace NoticeBoard.Controllers
 
             SendCommand(new SetPCSpellsCommand { PcId = pcId, SpellToRemove = model.radioSelectModel.SelectedOptionId, Spells = model.checkboxSelectModel.Options.Where(n => n.IsSelected).Select(n => n.Id).ToList() });
 
-            return RedirectToAction(nameof(SelectSpells), new { model.checkboxSelectModel.PcId, model.checkboxSelectModel.PartyId });
+            return RedirectToAction(nameof(SelectSpells), new { model.checkboxSelectModel.PcId, model.checkboxSelectModel.CampaignId });
         }
-
-
-
-
-
 
         public IActionResult Details(int pcid)
         {
@@ -360,6 +355,17 @@ namespace NoticeBoard.Controllers
             model.Skills = _context.Skill.OrderBy(n => n.Id).ToList();
 
             return View(model);
+        }
+
+        public JsonResult DetailsMount(int pcid)
+        {
+            var query = new GetPlayerCharacterQuery { PcId = pcid };
+
+            var dto = SendQuery<GetPlayerCharacterQuery, PlayerCharacterDTO>(query);
+
+            var model = _mapper.Map<PlayerCharacterDTO, PlayerCharacterModel>(dto);
+
+            return Json(model);
         }
     }
 }

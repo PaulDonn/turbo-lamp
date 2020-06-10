@@ -25,7 +25,7 @@ namespace NoticeBoard.Models.Alignments
 
         public string PcId { get; set; }
 
-        public int PartyId { get; set; }
+        public int CampaignId { get; set; }
 
         public int SelectedOptionId { get; set; }
     }

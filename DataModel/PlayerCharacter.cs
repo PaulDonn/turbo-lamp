@@ -35,7 +35,7 @@ namespace DataModel
         public int? SubRaceId { get; set; }
         public int? AlignmentId { get; set; }
         public int ExperiencePoints { get; set; }
-        public int? PartyId { get; set; }
+        public int? CampaignId { get; set; }
         public int HitPointMaximum { get; set; }
         public int HitPointCurrent { get; set; }
         public int HitDiceMaximum { get; set; }
@@ -70,12 +70,12 @@ namespace DataModel
         [ForeignKey(nameof(BackgroundId))]
         [InverseProperty("PlayerCharacter")]
         public virtual Background Background { get; set; }
+        [ForeignKey(nameof(CampaignId))]
+        [InverseProperty("PlayerCharacter")]
+        public virtual Campaign Campaign { get; set; }
         [ForeignKey(nameof(ClassId))]
         [InverseProperty("PlayerCharacter")]
         public virtual Class Class { get; set; }
-        [ForeignKey(nameof(PartyId))]
-        [InverseProperty("PlayerCharacter")]
-        public virtual Party Party { get; set; }
         [ForeignKey(nameof(PlayerId))]
         [InverseProperty("PlayerCharacter")]
         public virtual Player Player { get; set; }
